@@ -1,0 +1,11 @@
+Bot
+	Critical Functions
+		Upgrade People
+			-upgradePeople
+		Start & Stop moving forward in levels
+			-stayBack
+			-moveForward
+		Kill Enemies
+			-killEnemies
+	Common Functions
+		-Grabing Images	

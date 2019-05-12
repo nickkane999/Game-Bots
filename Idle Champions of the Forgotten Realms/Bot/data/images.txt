@@ -1,0 +1,5 @@
+Coins: "coin.png"
+Completing Realm (Step 1): "realmComplete1.png"
+Completing Realm (Step 2): "realmComplete2.png"
+Boss Fight Available: "bossAvailable.png"
+In Boss Fight: "bossFight.png"

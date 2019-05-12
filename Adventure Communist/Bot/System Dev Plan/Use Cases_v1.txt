@@ -1,0 +1,16 @@
+Bot
+	Critical Functions
+		Farm Resources
+			-farmResources
+		Buying Items
+			-buyItems
+		Collect Specials
+			-collectSpecials
+	Additional Functions
+		Collect Unlocks and Medals
+			-collectAchievements
+		Click through daily bonus items (from clicking)
+			-grabDailyBonus
+		Count and record # of Items and Resources; put that data into txt file
+			-recordData
+	

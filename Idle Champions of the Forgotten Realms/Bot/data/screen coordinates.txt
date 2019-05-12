@@ -1,0 +1,16 @@
+Specialization Title: (520, 80, 325, 72)
+Specialization Person Name: (755, 230, 165, 30)
+Specialization Select Buttons: (500, 580, 360, 40)
+
+
+
+pyautogui.click(755,230)
+pyautogui.click(920,260)
+
+pyautogui.click(500,580)
+pyautogui.click(860,580)
+pyautogui.click(860,620)
+
+pyautogui.click(520,80) 			# Inital
+pyautogui.click(845,80)				# Width
+pyautogui.click(845,152)			# Height

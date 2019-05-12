@@ -1,0 +1,11 @@
+Bot
+	Start Game
+		-startGame
+	Farm Resources
+		-farmResources
+	Get Capsule
+		-getCapsule
+	End Game
+		-endGame
+	Change Clock
+		-changeClock

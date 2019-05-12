@@ -1,0 +1,4 @@
+"Check" Icon: (1294, 3, 66, 64)
+Daily Capsule Button: (550, 600, 300, 100)
+All Resources Button: (7, 389, 231, 52)
+
