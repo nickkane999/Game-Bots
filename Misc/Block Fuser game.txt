@@ -1,0 +1,7 @@
+import pyautogui
+import time
+
+while true:
+	pyautogui.mouseDown(); 
+	time.sleep(0.1)
+	pyautogui.mouseUp();

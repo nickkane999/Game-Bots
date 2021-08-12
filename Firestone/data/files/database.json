@@ -1,0 +1,572 @@
+{
+    "general": {
+        "current_server": "1",
+        "server_swap_progress": {
+            "actor_status": {
+                "campaign_progress": false,
+                "firestone_progress": false,
+                "guild_progress": false,
+                "magic_quarter_progress": false
+            },
+            "current_swap_option": "short",
+            "last_swap_time": 1628717565.0857522,
+            "swap_options": {
+                "long": 3600,
+                "medium": 600,
+                "short": 1000000
+            }
+        }
+    },
+    "server_1": {
+        "campaign_progress": {
+            "campaign_claim_time": 21599,
+            "dailies": {
+                "liberation": {
+                    "mission_1": false,
+                    "mission_2": false,
+                    "mission_3": false,
+                    "mission_4": "locked"
+                }
+            },
+            "daily_wait_time": 50,
+            "save_time": 1628777200.4785862
+        },
+        "firestone_progress": {
+            "current_tier": 1,
+            "options": {
+                "0": {
+                    "completed": true,
+                    "current_level": 20,
+                    "index": 0,
+                    "max_level": 20,
+                    "name": "firestone_prestigious",
+                    "placement_area": 2,
+                    "priority": 1
+                },
+                "1": {
+                    "completed": true,
+                    "current_level": 25,
+                    "index": 1,
+                    "max_level": 25,
+                    "name": "firestone_gold",
+                    "placement_area": 1,
+                    "priority": 2
+                },
+                "10": {
+                    "completed": true,
+                    "current_level": 15,
+                    "index": 10,
+                    "max_level": 15,
+                    "name": "firestone_weak_enemy",
+                    "placement_area": 2,
+                    "priority": 11
+                },
+                "11": {
+                    "completed": true,
+                    "current_level": 15,
+                    "index": 11,
+                    "max_level": 15,
+                    "name": "firestone_weak_boss",
+                    "placement_area": 2,
+                    "priority": 12
+                },
+                "12": {
+                    "completed": false,
+                    "current_level": 36,
+                    "index": 12,
+                    "max_level": 50,
+                    "name": "firestone_armor",
+                    "placement_area": 1,
+                    "priority": 13
+                },
+                "13": {
+                    "completed": false,
+                    "current_level": 36,
+                    "index": 13,
+                    "max_level": 50,
+                    "name": "firestone_health",
+                    "placement_area": 1,
+                    "priority": 14
+                },
+                "14": {
+                    "completed": true,
+                    "current_level": 20,
+                    "index": 14,
+                    "max_level": 20,
+                    "name": "firestone_loot_chance",
+                    "placement_area": 3,
+                    "priority": 15
+                },
+                "15": {
+                    "completed": false,
+                    "current_level": 16,
+                    "index": 15,
+                    "max_level": 30,
+                    "name": "firestone_loot_bonus",
+                    "placement_area": 3,
+                    "priority": 16
+                },
+                "2": {
+                    "completed": true,
+                    "current_level": 25,
+                    "index": 2,
+                    "max_level": 25,
+                    "name": "firestone_training",
+                    "placement_area": 2,
+                    "priority": 3
+                },
+                "3": {
+                    "completed": true,
+                    "current_level": 25,
+                    "index": 3,
+                    "max_level": 25,
+                    "name": "firestone_wave",
+                    "placement_area": 2,
+                    "priority": 4
+                },
+                "4": {
+                    "completed": true,
+                    "current_level": 20,
+                    "index": 4,
+                    "max_level": 20,
+                    "name": "firestone_mission_planning",
+                    "placement_area": 2,
+                    "priority": 5
+                },
+                "5": {
+                    "completed": true,
+                    "current_level": 12,
+                    "index": 5,
+                    "max_level": 12,
+                    "name": "firestone_honor",
+                    "placement_area": 2,
+                    "priority": 6
+                },
+                "6": {
+                    "completed": true,
+                    "current_level": 50,
+                    "index": 6,
+                    "max_level": 50,
+                    "name": "firestone_damage",
+                    "placement_area": 1,
+                    "priority": 7
+                },
+                "7": {
+                    "completed": true,
+                    "current_level": 30,
+                    "index": 7,
+                    "max_level": 30,
+                    "name": "firestone_projectiles",
+                    "placement_area": 1,
+                    "priority": 8
+                },
+                "8": {
+                    "completed": true,
+                    "current_level": 30,
+                    "index": 8,
+                    "max_level": 30,
+                    "name": "firestone_fist",
+                    "placement_area": 1,
+                    "priority": 9
+                },
+                "9": {
+                    "completed": true,
+                    "current_level": 30,
+                    "index": 9,
+                    "max_level": 30,
+                    "name": "firestone_guardian",
+                    "placement_area": 1,
+                    "priority": 10
+                }
+            },
+            "upgrades_in_progress": {
+                "count": 2,
+                "items": {
+                    "firestone_armor": 3444.8760058879852,
+                    "firestone_health": 6231
+                },
+                "save_time": 1628787781.1389902
+            }
+        },
+        "general": {
+            "current_time": 1628777204.3384027,
+            "reset_time": 85996
+        },
+        "guild_progress": {
+            "expeditions": {
+                "renew_time": 9361,
+                "save_time": 1628787455.7054567,
+                "upgrade_time": 2460
+            },
+            "expeditions_remaining": 1,
+            "save_time": 1628293592.4005527
+        },
+        "magic_quarter_progress": {
+            "priority_guardian": 2,
+            "save_time": 1628775393.3163984,
+            "upgrade_time": "14975"
+        },
+        "map_progress": {
+            "missions": {
+                "items": {
+                    "mission_1": {
+                        "slot": 1,
+                        "squad_cost": 1,
+                        "time": 1222,
+                        "type": "1"
+                    },
+                    "mission_2": {
+                        "slot": 2,
+                        "squad_cost": 1,
+                        "time": 1334,
+                        "type": "1"
+                    }
+                },
+                "save_time": 1628789129.406742,
+                "total_missions": 2,
+                "total_squads": 1
+            },
+            "save_time": 1628789129.406742,
+            "stats": {
+                "mission_level": 1,
+                "squad_count": 2
+            }
+        },
+        "max_wave": 350,
+        "merchant_progress": {
+            "items": {
+                "0": 12,
+                "Bucket of Gold": 16,
+                "Crate of Gold": 22,
+                "Dragon Armor": 0,
+                "Guardian's Rune": 19,
+                "Midas' Touch": 0,
+                "Pile of Gold": 24,
+                "Pouch of Gold": 0,
+                "Scroll of Damage": 0,
+                "Scroll of Health": 15,
+                "Scroll of Speed": 0,
+                "Ta": 0,
+                "Totem Of Agony": 33,
+                "Totem of": 0,
+                "Totem of Agony": 12,
+                "Totem of Annihilation": 0,
+                "War Banner": 19,
+                "net": 0
+            }
+        },
+        "multiple_rewards_progress": {
+            "check_interval": 8000000,
+            "completed_quests": 0,
+            "daily_reset_timer": "3300",
+            "performed_dailies": false,
+            "quests": {
+                "Collector": {
+                    "claimed": true,
+                    "completed": true
+                },
+                "Conqueror": {
+                    "claimed": false,
+                    "completed": false
+                },
+                "Expeditioner": {
+                    "claimed": false,
+                    "completed": false
+                },
+                "Gamer": {
+                    "claimed": true,
+                    "completed": true
+                },
+                "Liberator": {
+                    "claimed": false,
+                    "completed": true
+                },
+                "Merchant": {
+                    "claimed": true,
+                    "completed": true
+                },
+                "Miner": {
+                    "claimed": true,
+                    "completed": true
+                },
+                "Trainer": {
+                    "claimed": true,
+                    "completed": true
+                }
+            },
+            "save_time": 1628733849.5750644,
+            "total_quests": 8
+        }
+    },
+    "server_5": {
+        "campaign_progress": {
+            "campaign_claim_time": 21598,
+            "dailies": {
+                "liberation": {
+                    "mission_1": false,
+                    "mission_2": false,
+                    "mission_3": false,
+                    "mission_4": "locked"
+                }
+            },
+            "daily_wait_time": 40,
+            "save_time": 1628785149.7293797
+        },
+        "firestone_progress": {
+            "current_tier": 1,
+            "options": {
+                "0": {
+                    "completed": true,
+                    "current_level": 20,
+                    "index": 0,
+                    "max_level": 20,
+                    "name": "firestone_prestigious",
+                    "placement_area": 2,
+                    "priority": 1
+                },
+                "1": {
+                    "completed": true,
+                    "current_level": 25,
+                    "index": 1,
+                    "max_level": 25,
+                    "name": "firestone_gold",
+                    "placement_area": 1,
+                    "priority": 2
+                },
+                "10": {
+                    "completed": true,
+                    "current_level": 15,
+                    "index": 10,
+                    "max_level": 15,
+                    "name": "firestone_weak_enemy",
+                    "placement_area": 2,
+                    "priority": 11
+                },
+                "11": {
+                    "completed": true,
+                    "current_level": 15,
+                    "index": 11,
+                    "max_level": 15,
+                    "name": "firestone_weak_boss",
+                    "placement_area": 2,
+                    "priority": 12
+                },
+                "12": {
+                    "completed": false,
+                    "current_level": 35,
+                    "index": 12,
+                    "max_level": 50,
+                    "name": "firestone_armor",
+                    "placement_area": 1,
+                    "priority": 13
+                },
+                "13": {
+                    "completed": false,
+                    "current_level": 33,
+                    "index": 13,
+                    "max_level": 50,
+                    "name": "firestone_health",
+                    "placement_area": 1,
+                    "priority": 14
+                },
+                "14": {
+                    "completed": true,
+                    "current_level": 20,
+                    "index": 14,
+                    "max_level": 20,
+                    "name": "firestone_loot_chance",
+                    "placement_area": 3,
+                    "priority": 15
+                },
+                "15": {
+                    "completed": false,
+                    "current_level": 16,
+                    "index": 15,
+                    "max_level": 30,
+                    "name": "firestone_loot_bonus",
+                    "placement_area": 3,
+                    "priority": 16
+                },
+                "2": {
+                    "completed": true,
+                    "current_level": 25,
+                    "index": 2,
+                    "max_level": 25,
+                    "name": "firestone_training",
+                    "placement_area": 2,
+                    "priority": 3
+                },
+                "3": {
+                    "completed": true,
+                    "current_level": 25,
+                    "index": 3,
+                    "max_level": 25,
+                    "name": "firestone_wave",
+                    "placement_area": 2,
+                    "priority": 4
+                },
+                "4": {
+                    "completed": true,
+                    "current_level": 20,
+                    "index": 4,
+                    "max_level": 20,
+                    "name": "firestone_mission_planning",
+                    "placement_area": 2,
+                    "priority": 5
+                },
+                "5": {
+                    "completed": true,
+                    "current_level": 12,
+                    "index": 5,
+                    "max_level": 12,
+                    "name": "firestone_honor",
+                    "placement_area": 2,
+                    "priority": 6
+                },
+                "6": {
+                    "completed": true,
+                    "current_level": 50,
+                    "index": 6,
+                    "max_level": 50,
+                    "name": "firestone_damage",
+                    "placement_area": 1,
+                    "priority": 7
+                },
+                "7": {
+                    "completed": true,
+                    "current_level": 30,
+                    "index": 7,
+                    "max_level": 30,
+                    "name": "firestone_projectiles",
+                    "placement_area": 1,
+                    "priority": 8
+                },
+                "8": {
+                    "completed": true,
+                    "current_level": 30,
+                    "index": 8,
+                    "max_level": 30,
+                    "name": "firestone_fist",
+                    "placement_area": 1,
+                    "priority": 9
+                },
+                "9": {
+                    "completed": true,
+                    "current_level": 30,
+                    "index": 9,
+                    "max_level": 30,
+                    "name": "firestone_guardian",
+                    "placement_area": 1,
+                    "priority": 10
+                }
+            },
+            "upgrades_in_progress": {
+                "count": 2,
+                "items": {
+                    "firestone_armor": 7779,
+                    "firestone_loot_bonus": 4696.009674787521
+                },
+                "save_time": 1628785199.515383
+            }
+        },
+        "general": {
+            "current_time": 1628785205.0955038,
+            "reset_time": 77996
+        },
+        "guild_progress": {
+            "expeditions": {
+                "renew_time": 9151,
+                "save_time": 1628787319.0651233,
+                "upgrade_time": 1200
+            },
+            "expeditions_remaining": 3,
+            "save_time": 1628293592.4005527
+        },
+        "magic_quarter_progress": {
+            "priority_guardian": 2,
+            "save_time": 1628774989.291676,
+            "upgrade_time": "17856"
+        },
+        "map_progress": {
+            "missions": {
+                "items": {
+                    "mission_1": {
+                        "slot": 1,
+                        "squad_cost": 1,
+                        "time": 1998,
+                        "type": "1"
+                    }
+                },
+                "save_time": 1628788587.1463084,
+                "total_missions": 1,
+                "total_squads": 1
+            },
+            "save_time": 1528788326,
+            "stats": {
+                "mission_level": 1,
+                "squad_count": 2
+            }
+        },
+        "max_wave": 273,
+        "merchant_progress": {
+            "items": {
+                "Bucket of Gold": 38,
+                "Crate of Gold": 32,
+                "Dragon Armor": 26,
+                "Guardian's Rune": 23,
+                "Midas' Touch": 33,
+                "Pile of Gold": 23,
+                "Pouch of Gold": 20,
+                "Scroll of Damage": 12,
+                "Scroll of Health": 24,
+                "Scroll of Spee": 0,
+                "Scroll of Speed": 0,
+                "Totem of Agony": 33,
+                "Totem of Annihilation": 12,
+                "War Banner": 34
+            }
+        },
+        "multiple_rewards_progress": {
+            "check_interval": 1000000000,
+            "completed_quests": 0,
+            "daily_reset_timer": "3300",
+            "performed_dailies": false,
+            "quests": {
+                "Collector": {
+                    "claimed": true,
+                    "completed": true
+                },
+                "Conqueror": {
+                    "claimed": true,
+                    "completed": true
+                },
+                "Expeditioner": {
+                    "claimed": true,
+                    "completed": true
+                },
+                "Gamer": {
+                    "claimed": true,
+                    "completed": true
+                },
+                "Liberator": {
+                    "claimed": false,
+                    "completed": true
+                },
+                "Merchant": {
+                    "claimed": true,
+                    "completed": true
+                },
+                "Miner": {
+                    "claimed": false,
+                    "completed": true
+                },
+                "Trainer": {
+                    "claimed": false,
+                    "completed": false
+                }
+            },
+            "save_time": 1628726124.9538884,
+            "total_quests": 8
+        }
+    }
+}
