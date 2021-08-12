@@ -22,12 +22,14 @@ class MissionStart:
         self.mission_images = bot.screenshot_data.data["missions"]
 
     def resetMissionMap(self):
-        pyautogui.click(50, 270)
+        pyautogui.click(50, 500)
         pyautogui.dragTo(1000, 970, 1, button='left')
-        pyautogui.click(50, 270)
-        pyautogui.dragTo(1000, 700, 1, button='left')
-        pyautogui.click(50, 270)
-        pyautogui.dragTo(1000, 970, 1, button='left')
+        pyautogui.click(400, 200)
+        pyautogui.dragTo(1000, 900, 1, button='left')
+        pyautogui.click(400, 200)
+        pyautogui.dragTo(1000, 900, 1, button='left')
+        pyautogui.click(400, 200)
+        pyautogui.dragTo(1000, 900, 1, button='left')
         time.sleep(2)
 
     def moveToMissionSlotOne(self):

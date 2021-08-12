@@ -126,9 +126,8 @@ def runTest():
     tester.performTest(actors["map"])
 
 
-
-# runUI()
-runNormal()
+runUI()
+# runNormal()
 # runTest()
 '''
 

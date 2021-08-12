@@ -209,7 +209,6 @@ class QueueInstructions:
                 claimed_missions[mission] = items[mission]
             else:
                 unclaimed_missions[mission] = items[mission]
-                unclaimed_missions[mission]["time"] -= save_time
 
         has_one_claim = total_claims >= 1
         results = {

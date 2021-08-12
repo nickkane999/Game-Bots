@@ -49,10 +49,11 @@ class MissionClaim:
 
         if needs_claim:
             self.clickOnClaims()
-            save_data = {
-                "remaining_missions": remaining_missions
-            }
-            self.saveClaimData(save_data)
+
+        save_data = {
+            "remaining_missions": remaining_missions
+        }
+        self.saveClaimData(save_data)
 
     def clickOnClaims(self):
         instructions = self.instructions

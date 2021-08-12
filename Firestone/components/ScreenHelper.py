@@ -93,7 +93,7 @@ class ScreenHelper:
         return str(upgrade_time)
 
     def convertTime2(self, string):
-        string = string.replace("I", "1").replace("o", "0")
+        string = string.replace("I", "1").replace("o", "0").replace("O", "0")
         string = string.replace(".", ":").split(":")
         sections = {
             0: 1,  # second

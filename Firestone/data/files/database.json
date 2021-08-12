@@ -1,6 +1,6 @@
 {
     "general": {
-        "current_server": "1",
+        "current_server": "5",
         "server_swap_progress": {
             "actor_status": {
                 "campaign_progress": false,
@@ -9,17 +9,17 @@
                 "magic_quarter_progress": false
             },
             "current_swap_option": "short",
-            "last_swap_time": 1628717565.0857522,
+            "last_swap_time": 1628801989.5341713,
             "swap_options": {
                 "long": 3600,
                 "medium": 600,
-                "short": 1000000
+                "short": 1200
             }
         }
     },
     "server_1": {
         "campaign_progress": {
-            "campaign_claim_time": 21599,
+            "campaign_claim_time": 21598,
             "dailies": {
                 "liberation": {
                     "mission_1": false,
@@ -29,7 +29,7 @@
                 }
             },
             "daily_wait_time": 50,
-            "save_time": 1628777200.4785862
+            "save_time": 1628798824.7413251
         },
         "firestone_progress": {
             "current_tier": 1,
@@ -72,7 +72,7 @@
                 },
                 "12": {
                     "completed": false,
-                    "current_level": 36,
+                    "current_level": 39,
                     "index": 12,
                     "max_level": 50,
                     "name": "firestone_armor",
@@ -81,7 +81,7 @@
                 },
                 "13": {
                     "completed": false,
-                    "current_level": 36,
+                    "current_level": 38,
                     "index": 13,
                     "max_level": 50,
                     "name": "firestone_health",
@@ -99,7 +99,7 @@
                 },
                 "15": {
                     "completed": false,
-                    "current_level": 16,
+                    "current_level": 18,
                     "index": 15,
                     "max_level": 30,
                     "name": "firestone_loot_bonus",
@@ -182,10 +182,10 @@
             "upgrades_in_progress": {
                 "count": 2,
                 "items": {
-                    "firestone_armor": 3444.8760058879852,
+                    "firestone_armor": 6186.549743413925,
                     "firestone_health": 6231
                 },
-                "save_time": 1628787781.1389902
+                "save_time": 1628801215.2110925
             }
         },
         "general": {
@@ -194,42 +194,42 @@
         },
         "guild_progress": {
             "expeditions": {
-                "renew_time": 9361,
-                "save_time": 1628787455.7054567,
-                "upgrade_time": 2460
+                "renew_time": 17257,
+                "save_time": 1628801162.001249,
+                "upgrade_time": 1920
             },
-            "expeditions_remaining": 1,
+            "expeditions_remaining": 3,
             "save_time": 1628293592.4005527
         },
         "magic_quarter_progress": {
             "priority_guardian": 2,
-            "save_time": 1628775393.3163984,
-            "upgrade_time": "14975"
+            "save_time": 1628792541.2610538,
+            "upgrade_time": "14688"
         },
         "map_progress": {
             "missions": {
                 "items": {
                     "mission_1": {
-                        "slot": 1,
-                        "squad_cost": 1,
-                        "time": 1222,
-                        "type": "1"
-                    },
-                    "mission_2": {
                         "slot": 2,
                         "squad_cost": 1,
-                        "time": 1334,
+                        "time": 1461,
                         "type": "1"
+                    },
+                    "mission_4": {
+                        "slot": 1,
+                        "squad_cost": 2,
+                        "time": 1387.2834510803223,
+                        "type": "4"
                     }
                 },
-                "save_time": 1628789129.406742,
+                "save_time": 1628801749.1354756,
                 "total_missions": 2,
-                "total_squads": 1
+                "total_squads": 3
             },
-            "save_time": 1628789129.406742,
+            "save_time": 1628801749.1354756,
             "stats": {
-                "mission_level": 1,
-                "squad_count": 2
+                "mission_level": 3,
+                "squad_count": 3
             }
         },
         "max_wave": 350,
@@ -353,7 +353,7 @@
                 },
                 "12": {
                     "completed": false,
-                    "current_level": 35,
+                    "current_level": 36,
                     "index": 12,
                     "max_level": 50,
                     "name": "firestone_armor",
@@ -362,7 +362,7 @@
                 },
                 "13": {
                     "completed": false,
-                    "current_level": 33,
+                    "current_level": 34,
                     "index": 13,
                     "max_level": 50,
                     "name": "firestone_health",
@@ -464,9 +464,9 @@
                 "count": 2,
                 "items": {
                     "firestone_armor": 7779,
-                    "firestone_loot_bonus": 4696.009674787521
+                    "firestone_health": 7703.05960392952
                 },
-                "save_time": 1628785199.515383
+                "save_time": 1628797733.1868415
             }
         },
         "general": {
@@ -475,36 +475,42 @@
         },
         "guild_progress": {
             "expeditions": {
-                "renew_time": 9151,
-                "save_time": 1628787319.0651233,
-                "upgrade_time": 1200
+                "renew_time": 17020,
+                "save_time": 1628802030.1994808,
+                "upgrade_time": 2820
             },
-            "expeditions_remaining": 3,
+            "expeditions_remaining": 2,
             "save_time": 1628293592.4005527
         },
         "magic_quarter_progress": {
             "priority_guardian": 2,
-            "save_time": 1628774989.291676,
-            "upgrade_time": "17856"
+            "save_time": 1628797675.5460873,
+            "upgrade_time": "17568"
         },
         "map_progress": {
             "missions": {
                 "items": {
                     "mission_1": {
+                        "slot": 2,
+                        "squad_cost": 1,
+                        "time": 1255.1474440097809,
+                        "type": "1"
+                    },
+                    "mission_3": {
                         "slot": 1,
                         "squad_cost": 1,
-                        "time": 1998,
-                        "type": "1"
+                        "time": 4368.147444009781,
+                        "type": "3"
                     }
                 },
-                "save_time": 1628788587.1463084,
-                "total_missions": 1,
-                "total_squads": 1
+                "save_time": 1628802523.8730721,
+                "total_missions": 2,
+                "total_squads": 2
             },
-            "save_time": 1528788326,
+            "save_time": 1628802523.8730721,
             "stats": {
-                "mission_level": 1,
-                "squad_count": 2
+                "mission_level": 3,
+                "squad_count": 3
             }
         },
         "max_wave": 273,
