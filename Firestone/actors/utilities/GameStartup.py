@@ -11,9 +11,13 @@ class GameStartup:
     rotationsAfterBoss = 0
 
     # Initializing Object
-    def __init__(self, bot):
+    def __init__(self, bot, device_type):
         self.game_bot = bot
-        self.startup_screen = bot.data["startup_non_fullscreen_100_zoom"]
+        if device_type == "desktop":
+            self.startup_screen = bot.data["startup_desktop_100_zoom"]
+        elif device_type == "laptop":
+            self.startup_screen = bot.data["startup_laptop_100_zoom"]
+
         self.conditions = bot.conditions
 
     def runStartup(self, startup_settings):

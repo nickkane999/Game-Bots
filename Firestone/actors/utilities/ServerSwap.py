@@ -12,13 +12,14 @@ class ServerSwap:
     rotationsAfterBoss = 0
 
     # Initializing Object
-    def __init__(self, bot):
+    def __init__(self, bot, desktop_type):
         self.zone = "123"
         self.game_bot = bot
         self.battle_screen = bot.data["battle"]
         self.setting_screen = bot.data["settings"]
         self.conditions = bot.conditions
         self.screenshot_helper = bot.screenshot_helper
+        self.desktop_type = desktop_type
 
     def assignQueueData(self, coordinates, instructions):
         self.coordinates = coordinates
@@ -79,7 +80,7 @@ class ServerSwap:
         time.sleep(40)
         print("Now in fullscreen mode")
         bot = self.game_bot
-        startup = GameStartup(bot)
+        startup = GameStartup(bot, self.desktop_type)
         startup_coordinates = startup.startup_screen["icons"]
         startup.enterFullScreen(startup_coordinates)
 

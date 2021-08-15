@@ -46,7 +46,7 @@ pyautogui.PAUSE = 0.3
 # --------------------------------------------
 # --------------------------------------------
 
-def createGameBot():
+def createGameBot(device):
     zones = Zones()
     zones_data = zones.data
     conditions = ConditionManager()
@@ -65,7 +65,7 @@ def createGameBot():
     }
 
     bot = Bot(info)
-    server_swap = ServerSwap(bot)
+    server_swap = ServerSwap(bot, device)
     bot.assignSeverSwap(server_swap)
     return bot
 
@@ -103,8 +103,16 @@ def assignActors(game_bot, actors):
 # --------------------------------------------
 
 
-def runUI():
-    game_bot = createGameBot()
+def runUIDesktop():
+    game_bot = createGameBot("desktop")
+    actors = createActors(game_bot)
+    tester = Tester()
+    game_bot = assignActors(game_bot, actors)
+    ui = GameUI(game_bot)
+    ui.startMenu()
+
+def runUILaptop():
+    game_bot = createGameBot("laptop")
     actors = createActors(game_bot)
     tester = Tester()
     game_bot = assignActors(game_bot, actors)
@@ -112,8 +120,15 @@ def runUI():
     ui.startMenu()
 
 
-def runNormal():
-    game_bot = createGameBot()
+def runNormalDesktop():
+    game_bot = createGameBot("desktop")
+    actors = createActors(game_bot)
+    game_bot = assignActors(game_bot, actors)
+    game_bot.startQueue()
+
+
+def runNormalLaptop():
+    game_bot = createGameBot("laptop")
     actors = createActors(game_bot)
     game_bot = assignActors(game_bot, actors)
     game_bot.startQueue()
@@ -126,8 +141,10 @@ def runTest():
     tester.performTest(actors["map"])
 
 
-# runUI()
-runNormal()
+# runUIDesktop()
+# runUILaptop()
+# runNormalDesktop()
+runNormalLaptop()
 # runTest()
 '''
 

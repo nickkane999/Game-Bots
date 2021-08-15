@@ -150,12 +150,21 @@ class Zones:
                     "x_icon": {"x": 1840, "y": 60},
                 }
             },
-            "startup_non_fullscreen_100_zoom": {
+            "startup_desktop_100_zoom": {
                 "layer": 0,
                 "icons": {
                     "loot_collect": {"x": 950, "y": 820},
                     "settings_icon": {"x": 1530, "y": 340},
                     "fullscreen_button": {"x": 1550, "y": 510},
+                    "x_icon": {"x": 1840, "y": 50},
+                }
+            },
+            "startup_laptop_100_zoom": {
+                "layer": 0,
+                "icons": {
+                    "loot_collect": {"x": 975, "y": 980},
+                    "settings_icon": {"x": 1640, "y": 420},
+                    "fullscreen_button": {"x": 1600, "y": 630},
                     "x_icon": {"x": 1840, "y": 50},
                 }
             },
