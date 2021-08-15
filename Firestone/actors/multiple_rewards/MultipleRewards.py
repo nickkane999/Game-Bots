@@ -34,6 +34,8 @@ class MultipleRewards:
 
     def startMultipleRewardsDuties(self):
         self.game_bot.db.refreshData()
+        print("Short sleep before starting multiple rewards")
+        time.sleep(3)
         game_bot = self.game_bot
         queue_processor = game_bot.queue_processor
 
@@ -65,6 +67,7 @@ class MultipleRewards:
                     quest_queue = self.buildQuestQueue()
                     if quest_queue:
                         self.processQuestQueue(quest_queue)
+                self.game_bot.click(self.coordinates["x_icon"])
 
         if not self.mission_status:
             self.game_bot.click(self.coordinates["x_icon"])
@@ -144,9 +147,6 @@ class MultipleRewards:
 
             time.sleep(1)
             mission_actions[title](times_completed)
-
-            self.game_bot.click(self.coordinates["x_icon"])
-            self.enterQuestZone()
             quest_results["completed"] = True
         else:
             print(

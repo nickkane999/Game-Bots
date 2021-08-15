@@ -163,80 +163,78 @@ class DataHelper:
     def saveMissionsClaimed(self, data, file):
         server = self.getServerString()
         active_missions = data["remaining_missions"]
-        print(active_missions)
-        new_active_missions = {}
+        new_missions = []
+
         used_squads = 0
         current_missions = 0
-        save_time = file[server]["map_progress"]["missions"]["save_time"]
+
+        save_time = file[server]["map_progress"]["stats"]["save_time"]
         current_time = time.time()
         passed_time = current_time - save_time
 
         if active_missions:
-            print(active_missions)
-            print(new_active_missions)
             for mission in active_missions:
                 current_missions += 1
-                new_active_missions[mission] = active_missions[mission]
-                used_squads += new_active_missions[mission]["squad_cost"]
+                used_squads += mission["squad_cost"]
+                mission["time"] = mission["time"] - passed_time
 
-                mission_time = active_missions[mission]["time"] - passed_time
-                file[server]["map_progress"]["missions"]["items"][mission]["time"] = mission_time
-                print(new_active_missions)
+                new_missions.append(mission)
 
+        print("saved active missions")
+        print(new_missions)
         file[server]["map_progress"]["missions"]["total_missions"] = current_missions
         file[server]["map_progress"]["missions"]["total_squads"] = used_squads
-        file[server]["map_progress"]["missions"]["items"] = new_active_missions
-
-        file[server]["map_progress"]["missions"]["save_time"] = save_time
-        file[server]["map_progress"]["save_time"] = save_time
-        print("data")
-        print(file[server]["map_progress"]["missions"]["items"])
+        file[server]["map_progress"]["missions"]["in_progress"] = new_missions
+        file[server]["map_progress"]["stats"]["save_time"] = current_time
 
         return file
 
     def saveMissionsStarted(self, data, file):
-        squad_cost_map = {
-            "mission_1": 1,
-            "mission_2": 1,
-            "mission_3": 1,
-            "mission_4": 2,
-        }
+        server = self.getServerString()
+        new_missions_points = data["new_available_points"]
+        new_missions = data["missions_selected"]
+        used_missions = file[server]["map_progress"]["missions"]["total_missions"]
+        used_squads = file[server]["map_progress"]["missions"]["total_squads"]
+
+        current_time = time.time()
+        save_time = file[server]["map_progress"]["stats"]["save_time"]
+        reset_time = file[server]["map_progress"]["stats"]["reset_time"]
+        passed_time = current_time - save_time
+        reset_time = reset_time - passed_time
+
+        file[server]["map_progress"]["missions"]["available"] = new_missions_points
+
+        index = 0
+        for mission in file[server]["map_progress"]["missions"]["in_progress"]:
+            mission_time = file[server]["map_progress"]["missions"]["in_progress"][index]["time"]
+            file[server]["map_progress"]["missions"]["in_progress"][index]["time"] = mission_time - passed_time
+            index += 1
+        for mission in new_missions:
+            file[server]["map_progress"]["missions"]["in_progress"].append(
+                mission)
+            print("adding to mission size:" + str(used_missions))
+            print("adding to mission cost:" + str(used_squads))
+            used_missions += 1
+            used_squads += mission["squad_cost"]
+            print("added to mission size:" + str(used_missions))
+            print("added to mission cost:" + str(used_squads))
+
+        file[server]["map_progress"]["stats"]["reset_time"] = reset_time
+        file[server]["map_progress"]["stats"]["save_time"] = current_time
+        file[server]["map_progress"]["missions"]["total_missions"] = used_missions
+        file[server]["map_progress"]["missions"]["total_squads"] = used_squads
+
+        print("Mission start data")
+        print(file[server]["map_progress"])
+        return file
+
+    def saveMissionsPoints(self, data, file):
         server = self.getServerString()
         new_missions = data["found_missions"]
-        saved_missions = file[server]["map_progress"]["missions"]["items"]
-        slot = file[server]["map_progress"]["missions"]["total_missions"]
-        save_time = time.time()
+        reset_time = int(data["reset_time"])
+        current_time = time.time()
 
-        for mission in new_missions:
-            for index in range(new_missions[mission]["count"]):
-                mission_index = len(saved_missions)
-                print(mission_index)
-                to_add_mission = mission
-
-                while (to_add_mission in saved_missions):
-                    mission_index += 1
-                    print(mission_index)
-                    to_add_mission = mission[:-1] + str(mission_index)
-                    print(to_add_mission)
-
-                print("Got mission string")
-                print(to_add_mission)
-                slot += 1
-                mission_type = mission[-1]
-                mission_data = {
-                    "slot": slot,
-                    "squad_cost": squad_cost_map[mission],
-                    "time": new_missions[mission]["times"][index],
-                    "type": mission_type
-                }
-                print("New mission data")
-                print(mission_data)
-
-                file[server]["map_progress"]["missions"]["items"][to_add_mission] = mission_data
-                file[server]["map_progress"]["missions"]["total_missions"] += 1
-                file[server]["map_progress"]["missions"]["total_squads"] += squad_cost_map[mission]
-
-        file[server]["map_progress"]["missions"]["save_time"] = save_time
-        file[server]["map_progress"]["save_time"] = save_time
-
+        file[server]["map_progress"]["missions"]["available"] = new_missions
+        file[server]["map_progress"]["stats"]["reset_time"] = reset_time
+        file[server]["map_progress"]["stats"]["save_time"] = current_time
         return file

@@ -41,6 +41,7 @@ class ScreenHelper:
             'guild-expedition-is-complete': self.convertText,
             'map-sidebar-claim': self.convertText,
             'map-mission-timer': self.convertTime2,
+            'map-reset-timer': self.convertTimeMapReset,
         }
 
     def convertImageToText(self, path, type):
@@ -93,7 +94,8 @@ class ScreenHelper:
         return str(upgrade_time)
 
     def convertTime2(self, string):
-        string = string.replace("I", "1").replace("o", "0").replace("O", "0")
+        string = string.replace("I", "1").replace(
+            "o", "0").replace("O", "0").replace("+", ":").replace(';', ':')
         string = string.replace(".", ":").split(":")
         sections = {
             0: 1,  # second
@@ -111,6 +113,15 @@ class ScreenHelper:
         #print(str(upgrade_time) + "---------")
         # print(time.time())
         return str(upgrade_time)
+
+    def convertTimeMapReset(self, string):
+        if "New missions in: " in string:
+            string = string[17:]
+        else:
+            string = "5:59:59"
+
+        string = self.convertTime2(string)
+        return string
 
     def convertTimeGuildExpeditions(self, string):
         print("Guild tester time: " + string)
@@ -197,6 +208,7 @@ class ScreenHelper:
             "img_path": data["image"],
             "type": data["type"]
         }
+        print(upgrade_info)
         text = self.getScreenshotText2(upgrade_info)
         print(data["msg"] + text)
         return text

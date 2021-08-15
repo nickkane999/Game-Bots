@@ -28,6 +28,7 @@ class Tester:
 
     def performTest(self, actor):
         actor.processMissionMap()
+        # actor.mission_start.sortMissions()
         '''
         data = actor.game_bot.db.data
         print(data)

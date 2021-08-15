@@ -23,8 +23,8 @@ class Bot:
         # self.run_actions = ["library", "single_reward", "multiple_rewards"]
         # self.run_actions = ["library", "single_reward",
         #                    "multiple_rewards", "magic_quarter", "campaign", "guild", "server_swap", "map"]
-        self.run_actions = ["library", "single_reward",
-                            "magic_quarter", "campaign", "guild", "server_swap", "map"]
+        self.run_actions = ["single_reward", "multiple_rewards",
+                            "magic_quarter", "campaign", "guild", "map", "server_swap"]
         # self.run_actions = ["library"]
         # run_actions = ["startup", "guild", "library", "campaign", "temple", "battle"]
         # run_actions = ["library", "magic_quarter"]

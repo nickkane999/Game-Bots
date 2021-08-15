@@ -15,6 +15,7 @@ class ScreenshotData:
             # "map": self.getMapScreenshotData(),
             "missions": self.getMapMissionData(),
             "mission-claim": self.getMapMissionClaimData(),
+            "alchemy-experiments": self.getAlchemyExperimentData(),
         }
 
         return screenshot_data
@@ -430,6 +431,18 @@ class ScreenshotData:
                 "type": "map-sidebar-claim",
                 "msg": "mission slot 3 claim text: ",
             },
+            "reset_timer": {
+                "region": (10, 1020, 365, 45),
+                "image": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone\data\imgs\map\reset_timer.png',
+                "type": "map-reset-timer",
+                "msg": "Map reset timer: ",
+            },
+            "mission_time_region": {
+                "region": (1030, 860, 150, 50),
+                "image": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone\data\imgs\map\mission_timer.png',
+                "type": "map-mission-timer",
+                "msg": "mission timer text: ",
+            },
         }
         return map_data
 
@@ -463,3 +476,26 @@ class ScreenshotData:
             }
         }
         return missions
+
+    def getAlchemyExperimentData(self):
+        map_data = {
+            "experiement_timer_1": {
+                "region": (860, 685, 150, 50),
+                "image": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone\data\imgs\map\claim_slot_1.png',
+                "type": "map-sidebar-claim",
+                "msg": "mission slot 1 claim text: ",
+            },
+            "experiement_timer_2": {
+                "region": (1240, 685, 150, 50),
+                "image": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone\data\imgs\map\claim_slot_2.png',
+                "type": "map-sidebar-claim",
+                "msg": "mission slot 2 claim text: ",
+            },
+            "experiement_timer_3": {
+                "region": (1615, 685, 150, 50),
+                "image": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone\data\imgs\map\claim_slot_3.png',
+                "type": "map-sidebar-claim",
+                "msg": "mission slot 3 claim text: ",
+            },
+        }
+        return map_data

@@ -49,40 +49,35 @@ class MissionClaim:
 
         if needs_claim:
             self.clickOnClaims()
+            print("Missions have been claimed")
 
         save_data = {
             "remaining_missions": remaining_missions
         }
+        # print("remaining missions")
+        # print(remaining_missions)
         self.saveClaimData(save_data)
+        print("Missions claims have been saved")
 
     def clickOnClaims(self):
         instructions = self.instructions
         claim_images = self.claim_regions
+        screenshot_helper = self.game_bot.screenshot_helper
         map_coordinates = self.map_screen["icons"]
 
-        missions = instructions["mission_claim_list"]
-        missions_adjusted = dict(missions)
-        screenshot_helper = self.game_bot.screenshot_helper
+        claim_count = instructions["mission_claim_count"]
+        claim_area = claim_images["claim_slot_1"]
+        point_claim = map_coordinates["claim_slot_1"]
+        point_ok = map_coordinates["claim_ok_side"]
 
-        for mission in missions:
-            adjusted_slot = missions_adjusted[mission]["slot"]
-            slot_string = "claim_slot_" + str(adjusted_slot)
-            claim_text = screenshot_helper.getScreenshotTime(
-                claim_images[slot_string])
+        for x in range(claim_count):
+            claim_text = screenshot_helper.getScreenshotTime(claim_area)
             if claim_text == "Claim":
-                point_claim = map_coordinates[slot_string]
-                point_ok = map_coordinates["claim_ok_side"]
                 self.game_bot.click(point_claim)
                 self.game_bot.click(point_ok)
                 time.sleep(1)
-                #print("Clicked point")
-                # print(point)
-                missions_adjusted = self.changeMissionSlots(
-                    missions_adjusted, mission)
-                mission_text = mission
-                del missions_adjusted[mission_text]
-
-        return missions_adjusted
+                # print("Clicked point")
+                # print(point_claim)
 
     def changeMissionSlots(self, missions, lookup_mission):
         found_mission = False

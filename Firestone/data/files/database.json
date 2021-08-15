@@ -9,11 +9,11 @@
                 "magic_quarter_progress": false
             },
             "current_swap_option": "short",
-            "last_swap_time": 1628801989.5341713,
+            "last_swap_time": 1629068604.7817376,
             "swap_options": {
                 "long": 3600,
                 "medium": 600,
-                "short": 1200
+                "short": 1800
             }
         }
     },
@@ -22,14 +22,14 @@
             "campaign_claim_time": 21598,
             "dailies": {
                 "liberation": {
-                    "mission_1": false,
-                    "mission_2": false,
-                    "mission_3": false,
+                    "mission_1": true,
+                    "mission_2": true,
+                    "mission_3": true,
                     "mission_4": "locked"
                 }
             },
             "daily_wait_time": 50,
-            "save_time": 1628798824.7413251
+            "save_time": 1629064312.0199692
         },
         "firestone_progress": {
             "current_tier": 1,
@@ -72,7 +72,7 @@
                 },
                 "12": {
                     "completed": false,
-                    "current_level": 39,
+                    "current_level": 49,
                     "index": 12,
                     "max_level": 50,
                     "name": "firestone_armor",
@@ -81,7 +81,7 @@
                 },
                 "13": {
                     "completed": false,
-                    "current_level": 38,
+                    "current_level": 43,
                     "index": 13,
                     "max_level": 50,
                     "name": "firestone_health",
@@ -90,7 +90,7 @@
                 },
                 "14": {
                     "completed": true,
-                    "current_level": 20,
+                    "current_level": 21,
                     "index": 14,
                     "max_level": 20,
                     "name": "firestone_loot_chance",
@@ -99,7 +99,7 @@
                 },
                 "15": {
                     "completed": false,
-                    "current_level": 18,
+                    "current_level": 24,
                     "index": 15,
                     "max_level": 30,
                     "name": "firestone_loot_bonus",
@@ -182,53 +182,75 @@
             "upgrades_in_progress": {
                 "count": 2,
                 "items": {
-                    "firestone_armor": 6186.549743413925,
-                    "firestone_health": 6231
+                    "firestone_armor": 6231,
+                    "firestone_loot_bonus": 5067.146548748016
                 },
-                "save_time": 1628801215.2110925
+                "save_time": 1628950240.7850091
             }
         },
         "general": {
-            "current_time": 1628777204.3384027,
-            "reset_time": 85996
+            "current_time": 1629042586.1861174,
+            "reset_time": 79814
         },
         "guild_progress": {
             "expeditions": {
-                "renew_time": 17257,
-                "save_time": 1628801162.001249,
-                "upgrade_time": 1920
+                "renew_time": 11361,
+                "save_time": 1629068547.4145772,
+                "upgrade_time": 0
             },
-            "expeditions_remaining": 3,
+            "expeditions_remaining": 5,
             "save_time": 1628293592.4005527
         },
         "magic_quarter_progress": {
             "priority_guardian": 2,
-            "save_time": 1628792541.2610538,
-            "upgrade_time": "14688"
+            "save_time": 1629063920.0348682,
+            "upgrade_time": "14400"
         },
         "map_progress": {
             "missions": {
-                "items": {
-                    "mission_1": {
-                        "slot": 2,
-                        "squad_cost": 1,
-                        "time": 1461,
-                        "type": "1"
+                "available": {
+                    "map_1": {
+                        "type_1": [],
+                        "type_2": [],
+                        "type_3": [],
+                        "type_4": [
+                            {
+                                "x": 920,
+                                "y": 667
+                            }
+                        ]
                     },
-                    "mission_4": {
-                        "slot": 1,
-                        "squad_cost": 2,
-                        "time": 1387.2834510803223,
-                        "type": "4"
+                    "map_2": {
+                        "type_1": [],
+                        "type_2": [],
+                        "type_3": [],
+                        "type_4": []
                     }
                 },
-                "save_time": 1628801749.1354756,
-                "total_missions": 2,
+                "in_progress": [
+                    {
+                        "squad_cost": 1,
+                        "time": 1381.1365058422089,
+                        "type": 3
+                    },
+                    {
+                        "squad_cost": 1,
+                        "time": 4734.80529665947,
+                        "type": 3
+                    },
+                    {
+                        "squad_cost": 1,
+                        "time": 5291,
+                        "type": 3
+                    }
+                ],
+                "total_missions": 3,
                 "total_squads": 3
             },
-            "save_time": 1628801749.1354756,
             "stats": {
                 "mission_level": 3,
+                "reset_time": 15820.84565448761,
+                "save_time": 1629067429.5310764,
                 "squad_count": 3
             }
         },
@@ -236,49 +258,49 @@
         "merchant_progress": {
             "items": {
                 "0": 12,
-                "Bucket of Gold": 16,
-                "Crate of Gold": 22,
+                "Bucket of Gold": 23,
+                "Crate of Gold": 25,
                 "Dragon Armor": 0,
-                "Guardian's Rune": 19,
-                "Midas' Touch": 0,
-                "Pile of Gold": 24,
-                "Pouch of Gold": 0,
-                "Scroll of Damage": 0,
-                "Scroll of Health": 15,
+                "Guardian's Rune": 8,
+                "Midas' Touch": 18,
+                "Pile of Gold": 29,
+                "Pouch of Gold": 16,
+                "Scroll of Damage": 15,
+                "Scroll of Health": 19,
                 "Scroll of Speed": 0,
                 "Ta": 0,
                 "Totem Of Agony": 33,
                 "Totem of": 0,
-                "Totem of Agony": 12,
+                "Totem of Agony": 0,
                 "Totem of Annihilation": 0,
-                "War Banner": 19,
+                "War Banner": 18,
                 "net": 0
             }
         },
         "multiple_rewards_progress": {
-            "check_interval": 8000000,
-            "completed_quests": 0,
+            "check_interval": 8000,
+            "completed_quests": 9,
             "daily_reset_timer": "3300",
-            "performed_dailies": false,
+            "performed_dailies": true,
             "quests": {
                 "Collector": {
                     "claimed": true,
                     "completed": true
                 },
                 "Conqueror": {
-                    "claimed": false,
-                    "completed": false
+                    "claimed": true,
+                    "completed": true
                 },
                 "Expeditioner": {
-                    "claimed": false,
-                    "completed": false
+                    "claimed": true,
+                    "completed": true
                 },
                 "Gamer": {
                     "claimed": true,
                     "completed": true
                 },
                 "Liberator": {
-                    "claimed": false,
+                    "claimed": true,
                     "completed": true
                 },
                 "Merchant": {
@@ -290,11 +312,11 @@
                     "completed": true
                 },
                 "Trainer": {
-                    "claimed": true,
-                    "completed": true
+                    "claimed": false,
+                    "completed": false
                 }
             },
-            "save_time": 1628733849.5750644,
+            "save_time": 1629052214.558766,
             "total_quests": 8
         }
     },
@@ -310,7 +332,7 @@
                 }
             },
             "daily_wait_time": 40,
-            "save_time": 1628785149.7293797
+            "save_time": 1629066360.852359
         },
         "firestone_progress": {
             "current_tier": 1,
@@ -353,7 +375,7 @@
                 },
                 "12": {
                     "completed": false,
-                    "current_level": 36,
+                    "current_level": 44,
                     "index": 12,
                     "max_level": 50,
                     "name": "firestone_armor",
@@ -362,7 +384,7 @@
                 },
                 "13": {
                     "completed": false,
-                    "current_level": 34,
+                    "current_level": 39,
                     "index": 13,
                     "max_level": 50,
                     "name": "firestone_health",
@@ -380,7 +402,7 @@
                 },
                 "15": {
                     "completed": false,
-                    "current_level": 16,
+                    "current_level": 21,
                     "index": 15,
                     "max_level": 30,
                     "name": "firestone_loot_bonus",
@@ -463,53 +485,89 @@
             "upgrades_in_progress": {
                 "count": 2,
                 "items": {
-                    "firestone_armor": 7779,
-                    "firestone_health": 7703.05960392952
+                    "firestone_armor": 6858,
+                    "firestone_health": 6858
                 },
-                "save_time": 1628797733.1868415
+                "save_time": 1628950653.562211
             }
         },
         "general": {
-            "current_time": 1628785205.0955038,
-            "reset_time": 77996
+            "current_time": 1629049676.1751366,
+            "reset_time": 72724
         },
         "guild_progress": {
             "expeditions": {
-                "renew_time": 17020,
-                "save_time": 1628802030.1994808,
-                "upgrade_time": 2820
+                "renew_time": 17929,
+                "save_time": 1629068619.7265258,
+                "upgrade_time": 3600
             },
-            "expeditions_remaining": 2,
+            "expeditions_remaining": 4,
             "save_time": 1628293592.4005527
         },
         "magic_quarter_progress": {
             "priority_guardian": 2,
-            "save_time": 1628797675.5460873,
-            "upgrade_time": "17568"
+            "save_time": 1629065830.61421,
+            "upgrade_time": "15552"
         },
         "map_progress": {
             "missions": {
-                "items": {
-                    "mission_1": {
-                        "slot": 2,
-                        "squad_cost": 1,
-                        "time": 1255.1474440097809,
-                        "type": "1"
+                "available": {
+                    "map_1": {
+                        "type_1": [
+                            {
+                                "x": 446,
+                                "y": 316
+                            }
+                        ],
+                        "type_2": [],
+                        "type_3": [
+                            {
+                                "x": 1353,
+                                "y": 572
+                            }
+                        ],
+                        "type_4": []
                     },
-                    "mission_3": {
-                        "slot": 1,
-                        "squad_cost": 1,
-                        "time": 4368.147444009781,
-                        "type": "3"
+                    "map_2": {
+                        "type_1": [],
+                        "type_2": [],
+                        "type_3": [
+                            {
+                                "x": 940,
+                                "y": 577
+                            },
+                            {
+                                "x": 1504,
+                                "y": 628
+                            }
+                        ],
+                        "type_4": []
                     }
                 },
-                "save_time": 1628802523.8730721,
-                "total_missions": 2,
-                "total_squads": 2
+                "in_progress": [
+                    {
+                        "squad_cost": 1,
+                        "time": 1197,
+                        "type": 1
+                    },
+                    {
+                        "squad_cost": 1,
+                        "time": 2318,
+                        "type": 2
+                    },
+                    {
+                        "squad_cost": 1,
+                        "time": 2746,
+                        "type": 2
+                    }
+                ],
+                "total_missions": 3,
+                "total_squads": 3
             },
-            "save_time": 1628802523.8730721,
             "stats": {
                 "mission_level": 3,
+                "reset_time": 21137.22981119156,
+                "save_time": 1629068675.7115517,
                 "squad_count": 3
             }
         },
@@ -533,10 +591,10 @@
             }
         },
         "multiple_rewards_progress": {
-            "check_interval": 1000000000,
-            "completed_quests": 0,
+            "check_interval": 8000,
+            "completed_quests": 1,
             "daily_reset_timer": "3300",
-            "performed_dailies": false,
+            "performed_dailies": true,
             "quests": {
                 "Collector": {
                     "claimed": true,
@@ -555,7 +613,7 @@
                     "completed": true
                 },
                 "Liberator": {
-                    "claimed": false,
+                    "claimed": true,
                     "completed": true
                 },
                 "Merchant": {
@@ -567,11 +625,11 @@
                     "completed": true
                 },
                 "Trainer": {
-                    "claimed": false,
-                    "completed": false
+                    "claimed": true,
+                    "completed": true
                 }
             },
-            "save_time": 1628726124.9538884,
+            "save_time": 1629065931.421239,
             "total_quests": 8
         }
     }

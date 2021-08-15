@@ -60,30 +60,50 @@ class Map:
         pyautogui.dragTo(1630, 970, 1, button='left')
         time.sleep(2)
 
-    def processMissionMap(self):
+    def getClaimInstructions(self):
         self.game_bot.db.refreshData()
-        game_bot = self.game_bot
-        queue_processor = game_bot.queue_processor
+        db = self.game_bot.db
+        queue_processor = self.game_bot.queue_processor
 
-        map_coordinates = self.map_screen["icons"]
-        db = game_bot.db
-        instructions = queue_processor.verifyQueueInstructionsMap(db)
+        instructions = queue_processor.verifyQueueInstructionsMissionClaim(db)
+        print("Claim instructions")
         print(instructions)
-        needs_claim = instructions["mission_claim"]["needs_claim"]
-        needs_mission_start = instructions["mission_start"]["needs_mission_start"]
+        return instructions
 
-        if needs_claim or needs_mission_start:
+    def getMissionStartInstructions(self):
+        self.game_bot.db.refreshData()
+        db = self.game_bot.db
+        queue_processor = self.game_bot.queue_processor
+
+        instructions = queue_processor.verifyQueueInstructionsMissionStart(db)
+        print("Mission start instructions")
+        print(instructions)
+        return instructions
+
+    def processMissionMap(self):
+        game_bot = self.game_bot
+        map_coordinates = self.map_screen["icons"]
+
+        claim_instructions = self.getClaimInstructions()
+        needs_claim = claim_instructions["needs_claim"]
+
+        if needs_claim:
             self.enterMapZone()
             print("Entered map")
 
-            self.mission_claim.processMissionClaim(
-                instructions["mission_claim"])
-            print("Finished claim")
-            self.game_bot.db.refreshData()
-            self.mission_start.processMissionStart(
-                instructions["mission_start"])
+            self.mission_claim.processMissionClaim(claim_instructions)
 
-            self.returnToBattleScreen()
+        start_instructions = self.getMissionStartInstructions()
+        needs_mission_start = start_instructions["needs_mission_start"]
+        missions_have_reset = start_instructions["missions_have_reset"]
+
+        if needs_mission_start or missions_have_reset:
+            if not needs_claim:
+                self.enterMapZone()
+
+            print("Entered map. Starting mission select / refresh")
+            self.game_bot.db.refreshData()
+            self.mission_start.processMissionStart(start_instructions)
 
     def enterMapZone(self):
         self.game_bot.click(self.battle_screen["icons"]["map"])

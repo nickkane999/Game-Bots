@@ -137,5 +137,18 @@ class QueueProcessor:
         }
 
         results["mission_claim"] = queue_instructions.getQueueInstructionsMissionClaim()
+        # unclaimed_missions = results["mission_claim"]["mission_unclaimed_list"]
+        # queue_instructions.adjustQueueInstructionsMissionStart(unclaimed_missions)
         results["mission_start"] = queue_instructions.getQueueInstructionsMissionStart()
+        sys.exit()
+        return results
+
+    def verifyQueueInstructionsMissionClaim(self, db):
+        self.queue_instructions.setDatabase(db)
+        results = self.queue_instructions.getQueueInstructionsMissionClaim()
+        return results
+
+    def verifyQueueInstructionsMissionStart(self, db):
+        self.queue_instructions.setDatabase(db)
+        results = self.queue_instructions.getQueueInstructionsMissionStart()
         return results

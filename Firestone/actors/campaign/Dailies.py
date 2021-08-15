@@ -45,6 +45,7 @@ class Dailies:
 
         self.exitDailyLiberation()
         self.exitDailyMenu()
+        self.returnToBattleScreen()
 
     def enterDailyLiberationZone(self):
         self.game_bot.click(self.coordinates["campaign_daily_start"])
