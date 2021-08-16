@@ -27,7 +27,10 @@ class Tester:
         pyautogui.click(cordX, cordY)
 
     def performTest(self, actor):
-        actor.processMissionMap()
+        area = {'region': (1030, 140, 150, 40), 'image': 'C:\\Users\\nickk\\Dropbox\\Portfolio\\Game Bots\\Firestone\\data\\imgs\\guild\\expedition_renew.png',
+                'type': 'guild-expedition-time', 'msg': 'Test data'}
+        actor.game_bot.screenshot_helper.getScreenshotTimeNoScreenshot(area)
+        # actor.processMissionMap()
         # actor.mission_start.sortMissions()
         '''
         data = actor.game_bot.db.data

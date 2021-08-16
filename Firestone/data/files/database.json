@@ -1,6 +1,6 @@
 {
     "general": {
-        "current_server": "5",
+        "current_server": "1",
         "server_swap_progress": {
             "actor_status": {
                 "campaign_progress": false,
@@ -9,27 +9,27 @@
                 "magic_quarter_progress": false
             },
             "current_swap_option": "short",
-            "last_swap_time": 1629068604.7817376,
+            "last_swap_time": 1629123064.9942803,
             "swap_options": {
                 "long": 3600,
                 "medium": 600,
-                "short": 1800
+                "short": 1500
             }
         }
     },
     "server_1": {
         "campaign_progress": {
-            "campaign_claim_time": 21598,
+            "campaign_claim_time": 21599,
             "dailies": {
                 "liberation": {
-                    "mission_1": true,
-                    "mission_2": true,
-                    "mission_3": true,
+                    "mission_1": false,
+                    "mission_2": false,
+                    "mission_3": false,
                     "mission_4": "locked"
                 }
             },
             "daily_wait_time": 50,
-            "save_time": 1629064312.0199692
+            "save_time": 1629113732.7912557
         },
         "firestone_progress": {
             "current_tier": 1,
@@ -189,21 +189,21 @@
             }
         },
         "general": {
-            "current_time": 1629042586.1861174,
-            "reset_time": 79814
+            "current_time": 1629123114.314489,
+            "reset_time": 85686
         },
         "guild_progress": {
             "expeditions": {
-                "renew_time": 11361,
-                "save_time": 1629068547.4145772,
-                "upgrade_time": 0
+                "renew_time": 11695,
+                "save_time": 1629123094.9365604,
+                "upgrade_time": 1380
             },
-            "expeditions_remaining": 5,
+            "expeditions_remaining": 1,
             "save_time": 1628293592.4005527
         },
         "magic_quarter_progress": {
             "priority_guardian": 2,
-            "save_time": 1629063920.0348682,
+            "save_time": 1629113737.8538256,
             "upgrade_time": "14400"
         },
         "map_progress": {
@@ -213,12 +213,7 @@
                         "type_1": [],
                         "type_2": [],
                         "type_3": [],
-                        "type_4": [
-                            {
-                                "x": 920,
-                                "y": 667
-                            }
-                        ]
+                        "type_4": []
                     },
                     "map_2": {
                         "type_1": [],
@@ -230,27 +225,22 @@
                 "in_progress": [
                     {
                         "squad_cost": 1,
-                        "time": 1381.1365058422089,
+                        "time": 1538.9378843307495,
                         "type": 3
                     },
                     {
                         "squad_cost": 1,
-                        "time": 4734.80529665947,
-                        "type": 3
-                    },
-                    {
-                        "squad_cost": 1,
-                        "time": 5291,
+                        "time": 1257.4724411964417,
                         "type": 3
                     }
                 ],
-                "total_missions": 3,
-                "total_squads": 3
+                "total_missions": 2,
+                "total_squads": 2
             },
             "stats": {
                 "mission_level": 3,
-                "reset_time": 15820.84565448761,
-                "save_time": 1629067429.5310764,
+                "reset_time": 11708.63845705986,
+                "save_time": 1629123100.4155958,
                 "squad_count": 3
             }
         },
@@ -265,38 +255,38 @@
                 "Midas' Touch": 18,
                 "Pile of Gold": 29,
                 "Pouch of Gold": 16,
-                "Scroll of Damage": 15,
-                "Scroll of Health": 19,
-                "Scroll of Speed": 0,
+                "Scroll of Damage": 0,
+                "Scroll of Health": 26,
+                "Scroll of Speed": 14,
                 "Ta": 0,
                 "Totem Of Agony": 33,
                 "Totem of": 0,
                 "Totem of Agony": 0,
                 "Totem of Annihilation": 0,
-                "War Banner": 18,
+                "War Banner": 8,
                 "net": 0
             }
         },
         "multiple_rewards_progress": {
             "check_interval": 8000,
-            "completed_quests": 9,
+            "completed_quests": 3,
             "daily_reset_timer": "3300",
             "performed_dailies": true,
             "quests": {
                 "Collector": {
-                    "claimed": true,
+                    "claimed": false,
                     "completed": true
                 },
                 "Conqueror": {
-                    "claimed": true,
-                    "completed": true
+                    "claimed": false,
+                    "completed": false
                 },
                 "Expeditioner": {
                     "claimed": true,
                     "completed": true
                 },
                 "Gamer": {
-                    "claimed": true,
+                    "claimed": false,
                     "completed": true
                 },
                 "Liberator": {
@@ -316,7 +306,7 @@
                     "completed": false
                 }
             },
-            "save_time": 1629052214.558766,
+            "save_time": 1629123267.2858012,
             "total_quests": 8
         }
     },
@@ -332,7 +322,7 @@
                 }
             },
             "daily_wait_time": 40,
-            "save_time": 1629066360.852359
+            "save_time": 1629113499.1360323
         },
         "firestone_progress": {
             "current_tier": 1,
@@ -492,73 +482,59 @@
             }
         },
         "general": {
-            "current_time": 1629049676.1751366,
-            "reset_time": 72724
+            "current_time": 1629122719.5641901,
+            "reset_time": 86093
         },
         "guild_progress": {
             "expeditions": {
-                "renew_time": 17929,
-                "save_time": 1629068619.7265258,
+                "renew_time": 11233,
+                "save_time": 1629119879.9956641,
                 "upgrade_time": 3600
             },
-            "expeditions_remaining": 4,
+            "expeditions_remaining": 2,
             "save_time": 1628293592.4005527
         },
         "magic_quarter_progress": {
             "priority_guardian": 2,
-            "save_time": 1629065830.61421,
-            "upgrade_time": "15552"
+            "save_time": 1629113504.2082896,
+            "upgrade_time": "14975"
         },
         "map_progress": {
             "missions": {
                 "available": {
                     "map_1": {
-                        "type_1": [
-                            {
-                                "x": 446,
-                                "y": 316
-                            }
-                        ],
+                        "type_1": [],
                         "type_2": [],
-                        "type_3": [
+                        "type_3": [],
+                        "type_4": [
                             {
-                                "x": 1353,
-                                "y": 572
+                                "x": 910,
+                                "y": 659
                             }
-                        ],
-                        "type_4": []
+                        ]
                     },
                     "map_2": {
                         "type_1": [],
                         "type_2": [],
-                        "type_3": [
-                            {
-                                "x": 940,
-                                "y": 577
-                            },
-                            {
-                                "x": 1504,
-                                "y": 628
-                            }
-                        ],
+                        "type_3": [],
                         "type_4": []
                     }
                 },
                 "in_progress": [
                     {
                         "squad_cost": 1,
-                        "time": 1197,
-                        "type": 1
+                        "time": 1502.57417345047,
+                        "type": 3
                     },
                     {
                         "squad_cost": 1,
-                        "time": 2318,
-                        "type": 2
+                        "time": 3233.0699470043182,
+                        "type": 3
                     },
                     {
                         "squad_cost": 1,
-                        "time": 2746,
-                        "type": 2
+                        "time": 5644,
+                        "type": 3
                     }
                 ],
                 "total_missions": 3,
@@ -566,8 +542,8 @@
             },
             "stats": {
                 "mission_level": 3,
-                "reset_time": 21137.22981119156,
-                "save_time": 1629068675.7115517,
+                "reset_time": 9588.232423782349,
+                "save_time": 1629121564.1576848,
                 "squad_count": 3
             }
         },
@@ -592,7 +568,7 @@
         },
         "multiple_rewards_progress": {
             "check_interval": 8000,
-            "completed_quests": 1,
+            "completed_quests": 0,
             "daily_reset_timer": "3300",
             "performed_dailies": true,
             "quests": {
@@ -629,7 +605,7 @@
                     "completed": true
                 }
             },
-            "save_time": 1629065931.421239,
+            "save_time": 1629121753.4660764,
             "total_quests": 8
         }
     }

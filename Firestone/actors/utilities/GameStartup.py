@@ -36,10 +36,15 @@ class GameStartup:
 
     def enterFullScreen(self, coordinates):
         bot = self.game_bot
+        # print(coordinates)
 
         bot.click(coordinates["loot_collect"])
         bot.click(coordinates["loot_collect"])
+        #print(coordinates["loot_collect"])
         bot.click(coordinates["settings_icon"])
+        #print(coordinates["settings_icon"])
         bot.click(coordinates["fullscreen_button"])
         bot.click(coordinates["fullscreen_button"])
+        #print(coordinates["fullscreen_button"])
         bot.click(coordinates["x_icon"])
+        #print(coordinates["x_icon"])

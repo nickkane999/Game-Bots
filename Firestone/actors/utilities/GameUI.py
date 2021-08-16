@@ -31,8 +31,8 @@ class GameUI:
         if self.run:
             Label(win, text="Running Game", font=('Helvetica 10 bold')).pack()
             self.game_bot.startQueue()
-            print("Pausing for 30 seconds")
-            time.sleep(30)
+            print("Pausing for 20 seconds")
+            time.sleep(20)
         if not self.run:
             Label(win, text="Not Running Game",
                   font=('Helvetica 10 bold')).pack()

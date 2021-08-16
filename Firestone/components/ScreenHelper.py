@@ -85,6 +85,8 @@ class ScreenHelper:
         section = 0
         upgrade_time = 0
         for timed_section in reversed(string):
+            print(string)
+            print(timed_section)
             upgrade_time = upgrade_time + \
                 (sections[section] * int(timed_section))
             section = section + 1
@@ -95,7 +97,7 @@ class ScreenHelper:
 
     def convertTime2(self, string):
         string = string.replace("I", "1").replace(
-            "o", "0").replace("O", "0").replace("+", ":").replace(';', ':')
+            "o", "0").replace("O", "0").replace("+", ":").replace(';', ':').replace('s', '5').replace('S', '5')
         string = string.replace(".", ":").split(":")
         sections = {
             0: 1,  # second
@@ -187,6 +189,13 @@ class ScreenHelper:
         print(img_text)
         return img_text
 
+    def getScreenshotText3(self, info):
+        img_path = info["img_path"]
+        dps_type = info["type"]
+        img_text = self.convertImageToText2(img_path, dps_type)
+        print(img_text)
+        return img_text
+
     def convertText(self, string):
         return string
 
@@ -210,5 +219,16 @@ class ScreenHelper:
         }
         print(upgrade_info)
         text = self.getScreenshotText2(upgrade_info)
+        print(data["msg"] + text)
+        return text
+
+    def getScreenshotTimeNoScreenshot(self, data):
+        upgrade_info = {
+            "area": data["region"],
+            "img_path": data["image"],
+            "type": data["type"]
+        }
+        print(upgrade_info)
+        text = self.getScreenshotText3(upgrade_info)
         print(data["msg"] + text)
         return text

@@ -70,12 +70,11 @@ def createGameBot(device):
     return bot
 
 
-def createActors(bot):
+def createActors(bot, device):
     actors = {
         "battle": Battle(bot),
         "guild": Guild(bot),
         "library": Library(bot),
-        "startup": GameStartup(bot),
         "temple": Temple(bot),
         "campaign": Campaign(bot),
         "map": Map(bot),
@@ -85,7 +84,7 @@ def createActors(bot):
         "tavern": Tavern(bot),
         "merchant": Merchant(bot),
         "inventory": Inventory(bot),
-        "server_swap": ServerSwap(bot),
+        "server_swap": ServerSwap(bot, device),
     }
 
     return actors
@@ -103,49 +102,51 @@ def assignActors(game_bot, actors):
 # --------------------------------------------
 
 
-def runUIDesktop():
-    game_bot = createGameBot("desktop")
-    actors = createActors(game_bot)
-    tester = Tester()
-    game_bot = assignActors(game_bot, actors)
-    ui = GameUI(game_bot)
-    ui.startMenu()
-
-def runUILaptop():
-    game_bot = createGameBot("laptop")
-    actors = createActors(game_bot)
+def runUIDesktop(device):
+    game_bot = createGameBot(device)
+    actors = createActors(game_bot, device)
     tester = Tester()
     game_bot = assignActors(game_bot, actors)
     ui = GameUI(game_bot)
     ui.startMenu()
 
 
-def runNormalDesktop():
-    game_bot = createGameBot("desktop")
+def runUILaptop(device):
+    game_bot = createGameBot(device)
+    actors = createActors(game_bot, device)
+    tester = Tester()
+    game_bot = assignActors(game_bot, actors)
+    ui = GameUI(game_bot)
+    ui.startMenu()
+
+
+def runNormalDesktop(device):
+    game_bot = createGameBot(device)
     actors = createActors(game_bot)
     game_bot = assignActors(game_bot, actors)
     game_bot.startQueue()
 
 
-def runNormalLaptop():
-    game_bot = createGameBot("laptop")
-    actors = createActors(game_bot)
+def runNormalLaptop(device):
+    game_bot = createGameBot(device)
+    actors = createActors(game_bot, device)
     game_bot = assignActors(game_bot, actors)
     game_bot.startQueue()
 
 
-def runTest():
-    game_bot = createGameBot()
-    actors = createActors(game_bot)
+def runTest(device):
+    game_bot = createGameBot(device)
+    actors = createActors(game_bot, device)
     tester = Tester()
     tester.performTest(actors["map"])
 
 
-# runUIDesktop()
-# runUILaptop()
-# runNormalDesktop()
-runNormalLaptop()
-# runTest()
+device = "laptop"
+# runUIDesktop(device)
+runUILaptop(device)
+# runNormalDesktop(device)
+# runNormalLaptop(device)
+# runTest(device)
 '''
 
 '''

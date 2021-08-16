@@ -248,12 +248,16 @@ class QueueInstructions:
         needs_mission_start = True if available_squads > 0 and open_missions_count > 0 else False
         has_open_missions = True if open_missions else False
 
-        print(map_data)
-        print(map_data["stats"])
+        # print(map_data)
+        # print(map_data["stats"])
         save_time = map_data["stats"]["save_time"]
         reset_time = map_data["stats"]["reset_time"]
         passed_time = time.time() - save_time
         missions_have_reset = passed_time >= reset_time
+        # print("passed_time")
+        # print(passed_time)
+        # print("reset_time")
+        # print(reset_time)
 
         results = {
             "needs_mission_start": needs_mission_start,
@@ -262,11 +266,11 @@ class QueueInstructions:
             "open_missions": open_missions,
             "missions_have_reset": missions_have_reset
         }
-        '''
-        print(results)
-        print("show mission start instructions, then quit")
-        sys.exit()
-        '''
+
+        # print(results)
+        #print("show mission start instructions, then quit")
+        # sys.exit()
+
         return results
 
     def hasEnoughTimePassed(self, action_time, save_time):

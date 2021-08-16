@@ -106,7 +106,10 @@ class MissionStart:
             self.resetMissionMap()
             print("Reset map position: ")
             open_missions = instructions["open_missions"]
-            if len(open_missions) >= 1 and not missions_have_reset:
+            check_open_missions_size = self.verifyMissionsExist(open_missions)
+            print("All missions queued")
+            print(check_open_missions_size)
+            if len(open_missions) >= 1 and not missions_have_reset and check_open_missions_size:
                 print("Select Open Missions")
                 print(open_missions)
                 select_mission_data = self.selectMissions(
@@ -125,6 +128,13 @@ class MissionStart:
                 print("Missions start have been saved")
 
         self.returnToBattleScreen()
+
+    def verifyMissionsExist(self, missions):
+        for area in missions:
+            for mission in missions[area]:
+                if len(missions[area][mission]) >= 1:
+                    return True
+        return False
 
     def scrapeMapPoints(self):
         map_points = self.captureAllMapPoints()

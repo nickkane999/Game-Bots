@@ -186,6 +186,7 @@ class DataHelper:
         file[server]["map_progress"]["missions"]["total_squads"] = used_squads
         file[server]["map_progress"]["missions"]["in_progress"] = new_missions
         file[server]["map_progress"]["stats"]["save_time"] = current_time
+        file[server]["map_progress"]["stats"]["reset_time"] -= passed_time
 
         return file
 
@@ -198,9 +199,7 @@ class DataHelper:
 
         current_time = time.time()
         save_time = file[server]["map_progress"]["stats"]["save_time"]
-        reset_time = file[server]["map_progress"]["stats"]["reset_time"]
         passed_time = current_time - save_time
-        reset_time = reset_time - passed_time
 
         file[server]["map_progress"]["missions"]["available"] = new_missions_points
 
@@ -219,7 +218,7 @@ class DataHelper:
             print("added to mission size:" + str(used_missions))
             print("added to mission cost:" + str(used_squads))
 
-        file[server]["map_progress"]["stats"]["reset_time"] = reset_time
+        file[server]["map_progress"]["stats"]["reset_time"] -= passed_time
         file[server]["map_progress"]["stats"]["save_time"] = current_time
         file[server]["map_progress"]["missions"]["total_missions"] = used_missions
         file[server]["map_progress"]["missions"]["total_squads"] = used_squads
