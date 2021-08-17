@@ -101,6 +101,27 @@ class Zones:
                         "firestone_loot_chance": {"x": 100, "y": 700},
                         "firestone_loot_bonus": {"x": 100, "y": 420},
                     },
+                    "tier_2_firestone": {
+                        "firestone_skip": {"x": 400, "y": 280},
+                        "firestone_main_attribute": {"x": 400, "y": 550},
+                        "firestone_prestigious": {"x": 400, "y": 810},
+                        "firestone_enemy_dmg": {"x": 880, "y": 430},
+                        "firestone_boss_dmg": {"x": 880, "y": 690},
+                        "firestone_raining_gold": {"x": 1380, "y": 560},
+                        "firestone_meteorite": {"x": 1780, "y": 560},
+                        
+                        "firestone_damage": {"x": 100, "y": 430},
+                        "firestone_enemy_health": {"x": 100, "y": 690},
+                        
+
+                        "firestone_guardian": {"x": 170, "y": 430},
+                        "firestone_boss_health": {"x": 170, "y": 690},
+                        "firestone_health": {"x": 680, "y": 430},
+                        "firestone_armor": {"x": 680, "y": 690},
+                        "firestone_rage": {"x": 300, "y": 280},
+                        "firestone_mana": {"x": 560, "y": 550},
+                        "firestone_energy": {"x": 820, "y": 810},
+                    },
                     "research_start": {"x": 800, "y": 790},
                     "x_icon": {"x": 1840, "y": 60},
                 }
@@ -147,6 +168,7 @@ class Zones:
                     "tavern_play_buy": {"x": 970, "y": 1000},
                     "buy_tokens": {"x": 420, "y": 800},
                     "card_1": {"x": 550, "y": 700},
+                    "empty_space": {"x": 30, "y": 500},
                     "x_icon": {"x": 1840, "y": 60},
                 }
             },

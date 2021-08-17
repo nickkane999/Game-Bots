@@ -33,37 +33,53 @@ class QueueInstructions:
             "battle": actors["battle"].startBattleDuties,
         }
 
-    def getQueueInstructionsFirestone(self, firestone):
-        data = self.data
-        server = "server_" + data["general"]["current_server"]
-        active_upgrades = data[server]["firestone_progress"]["upgrades_in_progress"]["count"]
-        items = data[server]["firestone_progress"]["upgrades_in_progress"]["items"]
-        tier = data[server]["firestone_progress"]["current_tier"]
+    def getQueueInstructionsFirestone(self):
+        server = self.db.getServerString()
+        data = self.db.data[server]["firestone_progress"]
 
-        current_time = time.time()
-        save_time = data[server]["firestone_progress"]["upgrades_in_progress"]["save_time"]
-        passed_time = current_time - save_time
+        items = data["upgrades_in_progress"]["items"]
+        tier = data["current_tier"]
 
-        upgrade_limit = 2
-        upgrades_available = upgrade_limit - active_upgrades
-        needs_upgrade = False
-        upgrade_info = None
+        unlocked_levels = data["unlocked_levels"]
+        set_upgrades = data["set_upgrades"]
+        options = data["options"]
+        sorted_options = sorted(options, key=lambda option: option["priority"])
+        available_upgrades = []
+        all_upgrades_unlocked = False
 
-        if active_upgrades > 0:
-            for item, last_upgrade_time in items.items():
-                if (passed_time > int(last_upgrade_time)):
-                    needs_upgrade = True
-                    upgrades_available += 1
-        if upgrades_available > 0:
+        save_time = data["upgrades_in_progress"]["save_time"]
+        passed_time = time.time() - save_time
+        print("passed time")
+        print(passed_time)
+
+        exclude_list = []
+        for item in items:
+            print("item remaining time")
+            print(items[item])
+            if items[item] >= passed_time:
+                exclude_list.append(item)
+
+        if len(exclude_list) < 2:
             needs_upgrade = True
-            upgrade_info = firestone.getUpgradeInstructions(upgrades_available)
+            for level in unlocked_levels:
+                if level == "all_unlocked" and unlocked_levels[level]:
+                    all_upgrades_unlocked = True
+                elif unlocked_levels[level]:
+                    for upgrade in set_upgrades[level]:
+                        if upgrade not in exclude_list:
+                            available_upgrades.append(upgrade)
+
+        upgrades_available = 2 - len(exclude_list)
+        needs_upgrade = upgrades_available > 0
 
         results = {
-            "needs_upgrade": needs_upgrade,
-            "upgrade_info": upgrade_info,
-            "upgrade_amount": upgrades_available,
             "tier": tier,
-            "server": server
+            "server": server,
+            "needs_upgrade": needs_upgrade,
+            "all_upgrades_unlocked": all_upgrades_unlocked,
+            "upgrade_amount": upgrades_available,
+            "sorted_options": sorted_options,
+            "available_upgrades": available_upgrades
         }
 
         return results

@@ -44,6 +44,7 @@ class Tavern:
             self.buyTokens(2) if (tokens <= 4) else self.buyTokens(1)
         self.playGame(times_to_play)
         self.returnToBattleScreen()
+        print("Completed Tavern")
 
     def enterTavernZone(self):
         self.game_bot.click(self.battle_screen["icons"]["town"])
@@ -68,6 +69,9 @@ class Tavern:
             time.sleep(0.5)
             bot.click(coordinates["card_1"])
             time.sleep(0.5)
+
+        bot.click(coordinates["empty_space"])
+        bot.click(coordinates["empty_space"])
 
     def returnToBattleScreen(self):
         self.game_bot.click(self.coordinates["x_icon"])

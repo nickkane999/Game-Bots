@@ -27,7 +27,7 @@ class Library:
         game_bot = self.game_bot
         queue_processor = game_bot.queue_processor
         library_coordinates = self.library_screen["icons"]
-        db = game_bot.db.data
+        db = game_bot.db
 
         instructions = queue_processor.verifyQueueLibrary(db)
         conditions = {
@@ -35,6 +35,7 @@ class Library:
             "firestone_upgrade": instructions["firestone"]["needs_upgrade"],
         }
         needs_visit = conditions["meteorite_upgrade"] or conditions["firestone_upgrade"]
+        print(instructions)
 
         if needs_visit:
             self.enterLibraryZone()
@@ -42,8 +43,9 @@ class Library:
         if conditions["meteorite_upgrade"]:
             # action tbd
             test = 123
-        elif conditions["firestone_upgrade"]:
-            self.performFirestoneMaintenance(library_coordinates, instructions)
+        if conditions["firestone_upgrade"]:
+            self.firestone.processFirestonesQueue(instructions["firestone"])
+            # self.performFirestoneMaintenance(library_coordinates, instructions)
 
     def verifyNeeds(self):
         data = self.game_bot.db.data

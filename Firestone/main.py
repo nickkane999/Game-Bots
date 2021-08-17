@@ -122,7 +122,8 @@ def runUILaptop(device):
 
 def runNormalDesktop(device):
     game_bot = createGameBot(device)
-    actors = createActors(game_bot)
+    actors = createActors(game_bot, device)
+    tester = Tester()
     game_bot = assignActors(game_bot, actors)
     game_bot.startQueue()
 
@@ -130,15 +131,33 @@ def runNormalDesktop(device):
 def runNormalLaptop(device):
     game_bot = createGameBot(device)
     actors = createActors(game_bot, device)
+    tester = Tester()
     game_bot = assignActors(game_bot, actors)
     game_bot.startQueue()
 
 
-def runTest(device):
+def runTestMap(device):
     game_bot = createGameBot(device)
     actors = createActors(game_bot, device)
     tester = Tester()
-    tester.performTest(actors["map"])
+    game_bot = assignActors(game_bot, actors)
+    tester.performTestMap(actors["map"])
+
+
+def runTestMultipleRewards(device):
+    game_bot = createGameBot(device)
+    actors = createActors(game_bot, device)
+    tester = Tester()
+    game_bot = assignActors(game_bot, actors)
+    tester.performTestMultipleRewards(actors["multiple_rewards"])
+
+
+def runTestFirestone(device):
+    game_bot = createGameBot(device)
+    actors = createActors(game_bot, device)
+    tester = Tester()
+    game_bot = assignActors(game_bot, actors)
+    tester.performTestFirestone(actors["library"])
 
 
 device = "laptop"
@@ -146,7 +165,9 @@ device = "laptop"
 runUILaptop(device)
 # runNormalDesktop(device)
 # runNormalLaptop(device)
-# runTest(device)
+# runTestMap(device)
+# runTestMultipleRewards(device)
+# runTestFirestone(device)
 '''
 
 '''

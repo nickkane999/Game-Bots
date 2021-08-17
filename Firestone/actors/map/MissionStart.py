@@ -5,6 +5,7 @@ import sys
 import os
 import cv2
 import numpy as np
+import copy
 
 
 class MissionStart:
@@ -194,7 +195,7 @@ class MissionStart:
         }
         types = ["type_1", "type_2", "type_3", "type_4"]
         missions_selected = []
-        new_available_points = dict(point_data)
+        new_available_points = copy.deepcopy(point_data)
 
         selected_missions = {}
         available_squads = self.squads
@@ -216,9 +217,12 @@ class MissionStart:
                         if mission_type == select_type:  # Only select the one mission type at a time. After that's selected, reset the map to position 1
                             for point in point_data[map_area][mission_type]:
                                 mission_cost = mission_costs[mission_type]
-                                if mission_cost <= available_squads:
+                                if mission_cost <= available_squads and self.verifyMissionsExist(new_available_points):
                                     print("clicking map point")
                                     print(point)
+                                    print(point_data[map_area])
+                                    print(point_data)
+                                    print(new_available_points)
                                     new_available_points[map_area][mission_type].remove(
                                         point)
                                     self.game_bot.click(point)
@@ -241,9 +245,8 @@ class MissionStart:
                                     available_squads -= mission_cost
                                     new_mission_index += 1
                                     used_squads += mission_cost
-                                    print("Added to return data")
                                 else:
-                                    print("can't afford next mission")
+                                    print("can't afford next mission, or no missions left to select")
                                     available_squads = -1
                                     break
 

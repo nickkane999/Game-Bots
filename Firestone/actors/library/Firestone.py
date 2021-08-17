@@ -33,21 +33,36 @@ class Firestone:
         pyautogui.click(1500, 200)
         pyautogui.dragTo(1800, 200, 0.5, button='left')
 
-    def assignQueueData(self, coordinates, instructions):
-        self.coordinates = coordinates
+    def assignQueueData(self, instructions):
+        self.coordinates = self.library_screen["icons"]
         self.instructions = instructions
 
-    def processFirestonesQueue(self):
-        instructions = self.instructions["firestone"]
+    def processFirestonesQueue(self, instructions):
+        self.assignQueueData(instructions)
+        print(instructions)
+
+        available_upgrades = instructions["available_upgrades"]
+        sorted_options = instructions["sorted_options"]
         upgrade_amount = instructions["upgrade_amount"]
+
         self.firestone_data["items"] = {}
 
         self.game_bot.click(self.coordinates["firestone"])
-        for upgrade in instructions["upgrade_info"]:
-            self.displayFirestoneUpgrade(upgrade)
-            self.upgradeFirestone(upgrade)
 
-        self.updateFirestoneDatabase()
+        for upgrade in sorted_options:
+            if upgrade["name"] in available_upgrades:
+                print(upgrade_amount)
+                self.displayFirestoneUpgrade(upgrade)
+                self.upgradeFirestone(upgrade)
+
+                upgrade_amount -= 1
+                if upgrade_amount <= 0:
+                    break
+                print("New upgrade amount")
+                print(upgrade_amount)
+
+        print("Finish firestone upgrading")
+        # self.updateFirestoneDatabase()
         self.returnToBattleScreen()
 
     def displayFirestoneUpgrade(self, upgrade):
@@ -55,10 +70,10 @@ class Firestone:
         menu = upgrade["placement_area"]
         self.navigateToMenu(menu)
 
-        instructions = self.instructions["firestone"]
-        tier = instructions["tier"]
-        upgrade_name = upgrade["name"]
+        tier = self.instructions["tier"]
         tier = "tier_" + str(tier) + "_firestone"
+        upgrade_name = upgrade["name"]
+
         upgrade_point = self.coordinates[tier][upgrade_name]
         self.game_bot.click(upgrade_point)
         time.sleep(1)
@@ -80,7 +95,9 @@ class Firestone:
         upgrade_time = screenshot_helper.getScreenshotTime(upgrade_info)
 
         self.firestone_data["items"][name] = int(upgrade_time)
-        bot.click(coordinates["research_start"])
+        print("clicking on point")
+        print(coordinates["research_start"])
+        # bot.click(coordinates["research_start"])
         self.firestone_data["save_time"] = time.time()
         bot.click(empty_point)
         time.sleep(1)

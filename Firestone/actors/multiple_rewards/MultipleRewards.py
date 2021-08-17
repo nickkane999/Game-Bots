@@ -58,16 +58,23 @@ class MultipleRewards:
             print("Quest Dailies Instructions: ")
             print(instructions)
 
-            if needs_visit:
-                for x in range(times_checked):
-                    self.enterQuestZone()
-                    if x == 0:
-                        self.moveMenuUp()
+            for x in range(times_checked):
+                self.enterQuestZone()
+                no_run_needed = self.verifyNoRunNeed()
+                if no_run_needed:
+                    # self.save
+                    self.game_bot.click(self.coordinates["x_icon"])
+                    break
+                if x == 0:
+                    self.moveMenuUp()
 
-                    quest_queue = self.buildQuestQueue()
-                    if quest_queue:
-                        self.processQuestQueue(quest_queue)
+                quest_queue = self.buildQuestQueue()
                 self.game_bot.click(self.coordinates["x_icon"])
+                print("Current quest queue")
+                print(quest_queue)
+                if quest_queue:
+                    print("Processing quests")
+                    self.processQuestQueue(quest_queue)
 
         if not self.mission_status:
             self.game_bot.click(self.coordinates["x_icon"])
@@ -76,6 +83,15 @@ class MultipleRewards:
         self.game_bot.click(self.battle_screen["icons"]["profile"])
         self.game_bot.click(self.profile_screen["icons"]["quests"])
         time.sleep(2)
+
+    def verifyNoRunNeed(self):
+        quest_images = self.quest_regions
+        screenshot_helper = self.game_bot.screenshot_helper
+
+        quest_1_claim_text = screenshot_helper.getScreenshotTime(
+            quest_images["quest_1_claim_data"])
+        run_needed = quest_1_claim_text == "Claimed"
+        return run_needed
 
     def processQuestQueue(self, quest_queue):
         instructions = self.instructions["multiple_rewards"]
@@ -90,11 +106,17 @@ class MultipleRewards:
         if (run_needed):
             self.assignMissions()
             for quest in quest_queue:
+                print("Quest")
+                print(quest)
+                print(quest_queue[quest])
+
                 data = self.processQuestRequest(quest_queue[quest])
                 print("Finished Quest: " + quest_queue[quest]["title"])
                 quest_queue[quest]["data"] = data
 
             quest_queue["server"] = server
+            print("Saving progress. New quest queue")
+            print(quest_queue)
             self.saveCurrentProgress(quest_queue)
 
     def assignMissions(self):
@@ -103,11 +125,13 @@ class MultipleRewards:
             "Conqueror": None,
             "Trainer": None,
             "Expeditioner": None,
+            "Collector": None,
+            "Miner": None,
             "Gamer": actors["tavern"].completeQuest,
-            "Collector": actors["inventory"].completeQuest,
             "Merchant": actors["merchant"].completeQuest,
             "Liberator": actors["campaign"].completeQuest,
-            "Miner": actors["guild"].completeMinerQuest,
+            # "Collector": actors["inventory"].completeQuest,
+            # "Miner": actors["guild"].completeMinerQuest,
         }
 
     def processQuestRequest(self, quest):
@@ -115,8 +139,6 @@ class MultipleRewards:
         mission_actions = self.mission_actions
         title = quest["title"]
         result_text = quest["claim"]
-        icon = "quest_" + str(quest["icon"])
-        icon = "quest_1"
         coordinates = self.coordinates
 
         quest_results = {
@@ -126,8 +148,10 @@ class MultipleRewards:
         }
 
         if(result_text == "Claim"):
-            bot.click(coordinates[icon])
-            bot.click(coordinates["x_icon"])
+            self.enterQuestZone()
+            self.game_bot.click(coordinates["quest_1"])
+            self.game_bot.click(coordinates["x_icon"])
+            self.game_bot.click(coordinates["x_icon"])
             quest_results["completed"] = True
             quest_results["claimed"] = True
             quest_results["add_completion"] = True
@@ -135,23 +159,15 @@ class MultipleRewards:
             print("I was claimed")
             quest_results["completed"] = True
             quest_results["claimed"] = True
-            self.restartMenu()
         elif (result_text != "Claimed" and mission_actions[title] is not None):
             print("I was not claimed and not a mission action")
             times_completed = self.getCompletedTimes(result_text)
-
-            if (title in ["Miner", "Collector"]):
-                self.restartMenu()
-            else:
-                self.game_bot.click(self.coordinates["x_icon"])
-
             time.sleep(1)
             mission_actions[title](times_completed)
             quest_results["completed"] = True
         else:
             print(
                 "Mission wasn't found in 1st 6 options, or not created yet for the name: " + quest["title"])
-            self.mission_status = False
 
         print("Mission Results:")
         print(quest_results)
@@ -194,35 +210,35 @@ class MultipleRewards:
 
         if (run_needed):
             quest_queue = {
-                "quest_6": {
-                    "title": screenshot_helper.getScreenshotTime(quest_images["quest_6_title_data"]),
-                    "claim": screenshot_helper.getScreenshotTime(quest_images["quest_6_claim_data"]),
-                    "icon": 6
-                },
-                "quest_5": {
-                    "title": screenshot_helper.getScreenshotTime(quest_images["quest_5_title_data"]),
-                    "claim": screenshot_helper.getScreenshotTime(quest_images["quest_5_claim_data"]),
-                    "icon": 5
-                },
-                "quest_4": {
-                    "title": screenshot_helper.getScreenshotTime(quest_images["quest_4_title_data"]),
-                    "claim": screenshot_helper.getScreenshotTime(quest_images["quest_4_claim_data"]),
-                    "icon": 4
-                },
-                "quest_3": {
-                    "title": screenshot_helper.getScreenshotTime(quest_images["quest_3_title_data"]),
-                    "claim": screenshot_helper.getScreenshotTime(quest_images["quest_3_claim_data"]),
-                    "icon": 3
+                "quest_1": {
+                    "title": screenshot_helper.getScreenshotTime(quest_images["quest_1_title_data"]),
+                    "claim": screenshot_helper.getScreenshotTime(quest_images["quest_1_claim_data"]),
+                    "icon": 1
                 },
                 "quest_2": {
                     "title": screenshot_helper.getScreenshotTime(quest_images["quest_2_title_data"]),
                     "claim": screenshot_helper.getScreenshotTime(quest_images["quest_2_claim_data"]),
                     "icon": 2
                 },
-                "quest_1": {
-                    "title": screenshot_helper.getScreenshotTime(quest_images["quest_1_title_data"]),
-                    "claim": screenshot_helper.getScreenshotTime(quest_images["quest_1_claim_data"]),
-                    "icon": 1
+                "quest_3": {
+                    "title": screenshot_helper.getScreenshotTime(quest_images["quest_3_title_data"]),
+                    "claim": screenshot_helper.getScreenshotTime(quest_images["quest_3_claim_data"]),
+                    "icon": 3
+                },
+                "quest_4": {
+                    "title": screenshot_helper.getScreenshotTime(quest_images["quest_4_title_data"]),
+                    "claim": screenshot_helper.getScreenshotTime(quest_images["quest_4_claim_data"]),
+                    "icon": 4
+                },
+                "quest_5": {
+                    "title": screenshot_helper.getScreenshotTime(quest_images["quest_5_title_data"]),
+                    "claim": screenshot_helper.getScreenshotTime(quest_images["quest_5_claim_data"]),
+                    "icon": 5
+                },
+                "quest_6": {
+                    "title": screenshot_helper.getScreenshotTime(quest_images["quest_6_title_data"]),
+                    "claim": screenshot_helper.getScreenshotTime(quest_images["quest_6_claim_data"]),
+                    "icon": 6
                 },
             }
             return quest_queue

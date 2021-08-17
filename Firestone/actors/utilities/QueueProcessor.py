@@ -41,8 +41,8 @@ class QueueProcessor:
             "server_swap": actors["server_swap"].startServerSwapDuties,
         }
 
-    def verifyQueueLibrary(self, data):
-        self.queue_instructions.setData(data)
+    def verifyQueueLibrary(self, db):
+        self.queue_instructions.setDatabase(db)
         firestone = self.actors["library"].firestone
         # meteorite = self.actors["meteorite"]
         queue_instructions = self.queue_instructions
@@ -51,8 +51,7 @@ class QueueProcessor:
             "firestone": {}
         }
 
-        results["firestone"] = queue_instructions.getQueueInstructionsFirestone(
-            firestone)
+        results["firestone"] = queue_instructions.getQueueInstructionsFirestone()
         results["meteorite"] = {
             "needs_upgrade": False,
             "upgrade_info": None

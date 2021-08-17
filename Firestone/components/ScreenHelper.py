@@ -186,7 +186,7 @@ class ScreenHelper:
         screenshot = pyautogui.screenshot(region=area)
         screenshot.save(img_path)
         img_text = self.convertImageToText2(img_path, dps_type)
-        print(img_text)
+        # print(img_text)
         return img_text
 
     def getScreenshotText3(self, info):
@@ -217,7 +217,7 @@ class ScreenHelper:
             "img_path": data["image"],
             "type": data["type"]
         }
-        print(upgrade_info)
+        # print(upgrade_info)
         text = self.getScreenshotText2(upgrade_info)
         print(data["msg"] + text)
         return text

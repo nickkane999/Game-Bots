@@ -26,10 +26,7 @@ class Tester:
         pyautogui.moveTo(point["x"], point["y"])
         pyautogui.click(cordX, cordY)
 
-    def performTest(self, actor):
-        area = {'region': (1030, 140, 150, 40), 'image': 'C:\\Users\\nickk\\Dropbox\\Portfolio\\Game Bots\\Firestone\\data\\imgs\\guild\\expedition_renew.png',
-                'type': 'guild-expedition-time', 'msg': 'Test data'}
-        actor.game_bot.screenshot_helper.getScreenshotTimeNoScreenshot(area)
+    def performTestMap(self, actor):
         # actor.processMissionMap()
         # actor.mission_start.sortMissions()
         '''
@@ -46,6 +43,24 @@ class Tester:
 
         # actor.mission_claim.processMissionClaim()
         # actor.mission_start.processMissionMap()
+
+    def performTestMultipleRewards(self, actor):
+        print("Testing")
+        actor.startMultipleRewardsDuties()
+
+    def performTestFirestone(self, actor):
+        '''
+        print("Testing")
+        actor.game_bot.db.refreshData()
+        db = actor.game_bot.db
+        instructions = actor.game_bot.queue_processor.verifyQueueLibrary(db)
+        '''
+        actor.startLibraryDuties()
+
+    def performTestExpeditions(self, actor):
+        area = {'region': (1030, 140, 150, 40), 'image': 'C:\\Users\\nickk\\Dropbox\\Portfolio\\Game Bots\\Firestone\\data\\imgs\\guild\\expedition_renew.png',
+                'type': 'guild-expedition-time', 'msg': 'Test data'}
+        actor.game_bot.screenshot_helper.getScreenshotTimeNoScreenshot(area)
 
     def performTest2(self, temp):
         #string = pytesseract.image_to_string(temp)
