@@ -232,9 +232,11 @@ class MissionStart:
                                     self.game_bot.click(ok_button)
                                     self.game_bot.click(empty_space)
 
+                                    # Mission time needs buffer, otherwise uncompleted missions will register as completed
+                                    # May need a more thorough explaination and solution on how this buffer bug in time is being created
                                     mission_selected_data = {
                                         "squad_cost": mission_cost,
-                                        "time": int(img_time),
+                                        "time": int(img_time) + 200,
                                         "type": int(mission_type[-1])
                                     }
                                     new_mission_string = "mission_" + \
@@ -246,7 +248,8 @@ class MissionStart:
                                     new_mission_index += 1
                                     used_squads += mission_cost
                                 else:
-                                    print("can't afford next mission, or no missions left to select")
+                                    print(
+                                        "can't afford next mission, or no missions left to select")
                                     available_squads = -1
                                     break
 

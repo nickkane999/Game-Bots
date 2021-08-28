@@ -15,7 +15,6 @@ class Firestone:
         self.game_bot = bot
         self.library_screen = bot.data["library"]
         self.coordinates = ""
-        self.firestone_data = {}
 
     def moveFirestoneMenuRight(self):
         pyautogui.click(1800, 200)

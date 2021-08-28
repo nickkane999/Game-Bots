@@ -6,6 +6,8 @@ import os
 import cv2
 import numpy as np
 
+from actors.utilities.FirestoneQueueHelper import FirestoneQueueHelper
+
 
 class QueueInstructions:
     # Variables
@@ -13,7 +15,7 @@ class QueueInstructions:
 
     # Initializing Object
     def __init__(self):
-        self.zone = ""
+        self.firestone_queue_helper = FirestoneQueueHelper()
 
     def assignActorActions(self, actors):
         for k, v in actors.items():
@@ -36,6 +38,12 @@ class QueueInstructions:
     def getQueueInstructionsFirestone(self):
         server = self.db.getServerString()
         data = self.db.data[server]["firestone_progress"]
+        firestone_qh = self.firestone_queue_helper
+
+        firestone_qh.assignData(data)
+        new_data = firestone_qh.getFirestoneInstructions()
+
+        '''
 
         items = data["upgrades_in_progress"]["items"]
         tier = data["current_tier"]
@@ -45,7 +53,9 @@ class QueueInstructions:
         options = data["options"]
         sorted_options = sorted(options, key=lambda option: option["priority"])
         available_upgrades = []
-        all_upgrades_unlocked = False
+        all_upgrades_unlocked = data["unlocked_levels"]["all_unlocked"]
+
+        if not all_upgrades_unlocked:
 
         save_time = data["upgrades_in_progress"]["save_time"]
         passed_time = time.time() - save_time
@@ -62,9 +72,7 @@ class QueueInstructions:
         if len(exclude_list) < 2:
             needs_upgrade = True
             for level in unlocked_levels:
-                if level == "all_unlocked" and unlocked_levels[level]:
-                    all_upgrades_unlocked = True
-                elif unlocked_levels[level]:
+                if unlocked_levels[level]:
                     for upgrade in set_upgrades[level]:
                         if upgrade not in exclude_list:
                             available_upgrades.append(upgrade)
@@ -83,6 +91,10 @@ class QueueInstructions:
         }
 
         return results
+        '''
+
+    def getUnlockOrder(self):
+        available_upgrades = self.getAvailableUpgrades
 
     def getQueueInstructionsMagicQuarter(self, magic_quarter):
         data = self.data

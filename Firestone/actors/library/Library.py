@@ -35,7 +35,9 @@ class Library:
             "firestone_upgrade": instructions["firestone"]["needs_upgrade"],
         }
         needs_visit = conditions["meteorite_upgrade"] or conditions["firestone_upgrade"]
+        print("New Instructions")
         print(instructions)
+        sys.exit()
 
         if needs_visit:
             self.enterLibraryZone()

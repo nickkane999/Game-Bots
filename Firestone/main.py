@@ -21,6 +21,7 @@ from actors.temple.Temple import Temple
 from actors.merchant.Merchant import Merchant
 from actors.magic_quarter.MagicQuarter import MagicQuarter
 from actors.inventory.Inventory import Inventory
+from actors.sleeper.Sleeper import Sleeper
 from actors.utilities.GameStartup import GameStartup
 from actors.utilities.ServerSwap import ServerSwap
 from actors.utilities.ConditionManager import ConditionManager
@@ -85,6 +86,7 @@ def createActors(bot, device):
         "merchant": Merchant(bot),
         "inventory": Inventory(bot),
         "server_swap": ServerSwap(bot, device),
+        "sleeper": Sleeper(bot, device)
     }
 
     return actors
@@ -162,8 +164,8 @@ def runTestFirestone(device):
 
 device = "laptop"
 # runUIDesktop(device)
-runUILaptop(device)
-# runNormalDesktop(device)
+# runUILaptop(device)
+runNormalDesktop(device)
 # runNormalLaptop(device)
 # runTestMap(device)
 # runTestMultipleRewards(device)

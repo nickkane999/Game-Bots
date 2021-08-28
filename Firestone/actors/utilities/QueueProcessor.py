@@ -39,6 +39,7 @@ class QueueProcessor:
             "single_reward": actors["single_reward"].getDailyRewardTimer,
             "multiple_rewards": actors["multiple_rewards"].startMultipleRewardsDuties,
             "server_swap": actors["server_swap"].startServerSwapDuties,
+            "sleeper": actors["sleeper"].startSleepDuties
         }
 
     def verifyQueueLibrary(self, db):
