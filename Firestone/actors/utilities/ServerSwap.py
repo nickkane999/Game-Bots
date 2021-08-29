@@ -5,16 +5,17 @@ import sys
 import os
 
 from actors.utilities.GameStartup import GameStartup
+from actors.ActorTemplate import ActorTemplate
+from actors.utilities.save_helper.ServerSwapSaveHelper import ServerSwapSaveHelper
 
 
-class ServerSwap:
-    # Variables
-    rotationsAfterBoss = 0
+class ServerSwap(ActorTemplate):
 
     # Initializing Object
     def __init__(self, bot, desktop_type):
-        self.zone = "123"
+        super(ServerSwap, self).__init__(bot)
         self.game_bot = bot
+        self.save_helper = ServerSwapSaveHelper(bot)
         self.battle_screen = bot.data["battle"]
         self.setting_screen = bot.data["settings"]
         self.conditions = bot.conditions
@@ -25,26 +26,19 @@ class ServerSwap:
         self.coordinates = coordinates
         self.instructions = instructions
 
-    def startServerSwapDuties(self):
-        self.game_bot.db.refreshData()
-        game_bot = self.game_bot
-        queue_processor = game_bot.queue_processor
-
-        coordinates = self.setting_screen["icons"]
-        db = game_bot.db
-        instructions = queue_processor.verifyQueueServerSwap(db)
-        self.assignQueueData(coordinates, instructions)
+    def startDuties(self):
+        self.loadData()
+        instructions = self.instructions
 
         needs_swap = instructions["server_swap"]["needs_swap"]
 
         if needs_swap:
             self.processServerSwap()
 
-            swap_info = {
-                "current_time": time.time(),
+            data = {
                 "current_server": self.getChangedServerData()
             }
-            self.saveCurrentProgress(swap_info)
+            self.saveProgress(data)
 
     def determineServerSwap(self, server_swap_settings):
         game_bot = self.game_bot
@@ -87,11 +81,6 @@ class ServerSwap:
     def getChangedServerData(self):
         server = self.game_bot.db.getServerString()
         return "1" if (server == "server_5") else "5"
-
-    def saveCurrentProgress(self, data):
-        file = self.game_bot.db.data
-        self.game_bot.db.data = self.game_bot.db.saveServerSwap(data, file)
-        self.game_bot.db.saveDataFile()
 
     def pullBattleDps(self):
         screenshot_helper = self.screenshot_helper

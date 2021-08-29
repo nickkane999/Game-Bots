@@ -16,6 +16,7 @@ class ScreenshotData:
             "missions": self.getMapMissionData(),
             "mission-claim": self.getMapMissionClaimData(),
             "alchemy-experiments": self.getAlchemyExperimentData(),
+            "magic_quarter": self.getMagicQuarterData(),
         }
 
         return screenshot_data
@@ -499,3 +500,14 @@ class ScreenshotData:
             },
         }
         return map_data
+
+    def getMagicQuarterData(self):
+        data = {
+            "magic_quarter_timer": {
+                "region": (1145, 705, 130, 40),
+                "img_path": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone\magic_progress_temp.png',
+                "type": "magic-progress",
+                "msg": "Magic quarter train timer: "
+            },
+        }
+        return data

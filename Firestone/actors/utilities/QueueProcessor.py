@@ -29,17 +29,17 @@ class QueueProcessor:
     def defineQueueActions(self):
         actors = self.actors
         self.actions = {
-            "guild": actors["guild"].startGuildDuties,
-            "library": actors["library"].startLibraryDuties,
-            "map": actors["map"].processMissionMap,
-            "campaign": actors["campaign"].startCampaignDuties,
-            "temple": actors["temple"].startTempleDuties,
-            "battle": actors["battle"].startBattleDuties,
-            "magic_quarter": actors["magic_quarter"].startMagicDuties,
-            "single_reward": actors["single_reward"].getDailyRewardTimer,
-            "multiple_rewards": actors["multiple_rewards"].startMultipleRewardsDuties,
-            "server_swap": actors["server_swap"].startServerSwapDuties,
-            "sleeper": actors["sleeper"].startSleepDuties
+            "Guild": actors["Guild"].startDuties,
+            "Library": actors["Library"].startLibraryDuties,
+            "Map": actors["Map"].processMissionMap,
+            "Campaign": actors["Campaign"].startDuties,
+            "Temple": actors["Temple"].startTempleDuties,
+            "Battle": actors["Battle"].startBattleDuties,
+            "MagicQuarter": actors["MagicQuarter"].startDuties,
+            "SingleReward": actors["SingleReward"].startDuties,
+            "MultipleRewards": actors["MultipleRewards"].startDuties,
+            "ServerSwap": actors["ServerSwap"].startDuties,
+            "Sleeper": actors["Sleeper"].startSleepDuties
         }
 
     def verifyQueueLibrary(self, db):

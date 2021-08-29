@@ -4,38 +4,31 @@ import re
 import sys
 import os
 
+from actors.ActorTemplate import ActorTemplate
+from actors.utilities.save_helper.GuildSaveHelper import GuildSaveHelper
 
-class Guild:
+
+class Guild(ActorTemplate):
     # Variables
     rotationsAfterBoss = 0
 
     # Initializing Object
     def __init__(self, bot):
-        self.zone = "123"
-        self.game_bot = bot
-        self.conditions = bot.conditions
-        self.expedition_regions = bot.screenshot_data.data["guild-expedition"]
+        super(Guild, self).__init__(bot)
+        self.save_helper = GuildSaveHelper(bot)
+        self.expedition_regions = bot.screenshot_data.data["guild_expedition"]
 
         self.battle_screen = bot.data["battle"]
         self.town_screen = bot.data["town"]
         self.guild_screen = bot.data["guild"]
 
-    def assignQueueData(self, coordinates, instructions):
-        self.coordinates = coordinates
-        self.instructions = instructions
-
     def completeMinerQuest(self, times_completed):
         return True
 
-    def startGuildDuties(self):
-        self.game_bot.db.refreshData()
-        game_bot = self.game_bot
-        queue_processor = game_bot.queue_processor
-
-        db = game_bot.db
-        instructions = queue_processor.verifyQueueGuild(db)
-        guild_coordinates = self.guild_screen["icons"]
-        self.assignQueueData(guild_coordinates, instructions)
+    def startDuties(self):
+        self.loadData()
+        instructions = self.instructions
+        coordinates = self.coordinates
 
         print("Guild Instructions: ")
         print(instructions)
@@ -59,6 +52,7 @@ class Guild:
 
         self.server = db.getServerString()
         instructions = self.instructions["expeditions"]
+        print(self.coordinates)
 
         bot.click(self.coordinates["expeditions"])
         time.sleep(1)
@@ -83,14 +77,14 @@ class Guild:
             expedition_1_time = 0
 
         bot.click(self.coordinates["expeditions"])
-        save_data = {
+        data = {
             "expedition_1_time": int(expedition_1_time),
             "expedition_reset_time": int(expedition_reset_time),
             "current_time": time.time(),
             "has_renewed": instructions["has_renewed"],
             "server": self.server,
         }
-        self.saveExpeditionData(save_data)
+        self.saveProgress(data)
 
     def claimExpedition(self):
         server = self.server
@@ -102,22 +96,6 @@ class Guild:
 
     def startExpedition(self):
         self.game_bot.click(self.coordinates["expedition_1"])
-
-    def saveExpeditionData(self, data):
-        file = self.game_bot.db.data
-        self.game_bot.db.data = self.game_bot.db.saveExpeditions(data, file)
-        self.game_bot.db.saveDataFile()
-
-    def getScreenshotTime(self, data):
-        screenshot_helper = self.game_bot.screenshot_helper
-        upgrade_info = {
-            "area": data["region"],
-            "img_path": data["image"],
-            "type": data["type"]
-        }
-        text = screenshot_helper.getScreenshotText2(upgrade_info)
-        print(data["msg"] + text)
-        return text
 
     def performExpedition(self):
         bot = self.game_bot

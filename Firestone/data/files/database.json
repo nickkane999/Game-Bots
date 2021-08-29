@@ -1,6 +1,6 @@
 {
     "general": {
-        "current_server": "5",
+        "current_server": "1",
         "server_swap_progress": {
             "actor_status": {
                 "campaign_progress": false,
@@ -23,7 +23,7 @@
     },
     "server_1": {
         "campaign_progress": {
-            "campaign_claim_time": 21599,
+            "campaign_claim_time": 6406,
             "dailies": {
                 "liberation": {
                     "mission_1": true,
@@ -33,7 +33,7 @@
                 }
             },
             "daily_wait_time": 50,
-            "save_time": 1629811613.9778237
+            "save_time": 1630176221.8376658
         },
         "firestone_progress": {
             "current_tier": 2,
@@ -193,11 +193,11 @@
         },
         "guild_progress": {
             "expeditions": {
-                "renew_time": 11374,
-                "save_time": 1629821616.9661493,
-                "upgrade_time": 3600
+                "renew_time": 5986,
+                "save_time": 1630176573.12368,
+                "upgrade_time": 0
             },
-            "expeditions_remaining": 2,
+            "expeditions_remaining": 5,
             "save_time": 1628293592.4005527
         },
         "magic_quarter_progress": {
@@ -311,17 +311,17 @@
     },
     "server_5": {
         "campaign_progress": {
-            "campaign_claim_time": 21598,
+            "campaign_claim_time": 11699,
             "dailies": {
                 "liberation": {
-                    "mission_1": true,
-                    "mission_2": true,
-                    "mission_3": true,
-                    "mission_4": true
+                    "mission_1": false,
+                    "mission_2": false,
+                    "mission_3": false,
+                    "mission_4": false
                 }
             },
             "daily_wait_time": 40,
-            "save_time": 1629811965.0702567
+            "save_time": 1630129910.9369895
         },
         "firestone_progress": {
             "current_tier": 2,
@@ -476,21 +476,21 @@
             }
         },
         "general": {
-            "current_time": 1629813687.2300782,
-            "reset_time": 86312
+            "current_time": 1630131819.80694,
+            "reset_time": 27383
         },
         "guild_progress": {
             "expeditions": {
-                "renew_time": 7708,
-                "save_time": 1629825751.776063,
-                "upgrade_time": 1740
+                "renew_time": 5020,
+                "save_time": 1630132309.5153024,
+                "upgrade_time": 0
             },
-            "expeditions_remaining": 2,
+            "expeditions_remaining": 5,
             "save_time": 1628293592.4005527
         },
         "magic_quarter_progress": {
             "priority_guardian": 2,
-            "save_time": 1629811969.861946,
+            "save_time": 1630175703.8026643,
             "upgrade_time": "14400"
         },
         "map_progress": {
@@ -560,7 +560,7 @@
         },
         "multiple_rewards_progress": {
             "check_interval": 8000,
-            "completed_quests": 2,
+            "completed_quests": 0,
             "daily_reset_timer": "3300",
             "performed_dailies": false,
             "quests": {

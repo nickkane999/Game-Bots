@@ -57,6 +57,27 @@ class Tester:
         '''
         actor.startLibraryDuties()
 
+    def performTestGuild(self, actor):
+        actor.startDuties()
+
+    def performTestCampaign(self, actor):
+        actor.startDuties()
+
+    def performTestMagicQuarter(self, actor):
+        actor.startDuties()
+
+    def performTestMultipleRewards(self, actor):
+        actor.startDuties()
+
+    def performTestSingleReward(self, actor):
+        actor.startDuties()
+
+    def performTestServerSwap(self, actor):
+        actor.startDuties()
+
+    def performActorTest(self, actor):
+        actor.startDuties()
+
     def performTestExpeditions(self, actor):
         area = {'region': (1030, 140, 150, 40), 'image': 'C:\\Users\\nickk\\Dropbox\\Portfolio\\Game Bots\\Firestone\\data\\imgs\\guild\\expedition_renew.png',
                 'type': 'guild-expedition-time', 'msg': 'Test data'}

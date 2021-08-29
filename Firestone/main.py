@@ -37,6 +37,9 @@ from data.DataHelper import DataHelper
 from data.Config import Config
 from data.ScreenshotData import ScreenshotData
 
+
+from actors.utilities.queue_instructions.GuildQueueHelper import GuildQueueHelper
+
 pyautogui.PAUSE = 0.3
 
 
@@ -73,20 +76,20 @@ def createGameBot(device):
 
 def createActors(bot, device):
     actors = {
-        "battle": Battle(bot),
-        "guild": Guild(bot),
-        "library": Library(bot),
-        "temple": Temple(bot),
-        "campaign": Campaign(bot),
-        "map": Map(bot),
-        "magic_quarter": MagicQuarter(bot),
-        "multiple_rewards": MultipleRewards(bot),
-        "single_reward": SingleReward(bot),
-        "tavern": Tavern(bot),
-        "merchant": Merchant(bot),
+        "Battle": Battle(bot),
+        "Guild": Guild(bot),
+        "Library": Library(bot),
+        "Temple": Temple(bot),
+        "Campaign": Campaign(bot),
+        "Map": Map(bot),
+        "MagicQuarter": MagicQuarter(bot),
+        "MultipleRewards": MultipleRewards(bot),
+        "SingleReward": SingleReward(bot),
+        "Tavern": Tavern(bot),
+        "Merchant": Merchant(bot),
         "inventory": Inventory(bot),
-        "server_swap": ServerSwap(bot, device),
-        "sleeper": Sleeper(bot, device)
+        "ServerSwap": ServerSwap(bot, device),
+        "Sleeper": Sleeper(bot, device)
     }
 
     return actors
@@ -143,7 +146,7 @@ def runTestMap(device):
     actors = createActors(game_bot, device)
     tester = Tester()
     game_bot = assignActors(game_bot, actors)
-    tester.performTestMap(actors["map"])
+    tester.performTestMap(actors["Map"])
 
 
 def runTestMultipleRewards(device):
@@ -151,7 +154,7 @@ def runTestMultipleRewards(device):
     actors = createActors(game_bot, device)
     tester = Tester()
     game_bot = assignActors(game_bot, actors)
-    tester.performTestMultipleRewards(actors["multiple_rewards"])
+    tester.performTestMultipleRewards(actors["MultipleRewards"])
 
 
 def runTestFirestone(device):
@@ -159,17 +162,74 @@ def runTestFirestone(device):
     actors = createActors(game_bot, device)
     tester = Tester()
     game_bot = assignActors(game_bot, actors)
-    tester.performTestFirestone(actors["library"])
+    tester.performTestFirestone(actors["Library"])
 
 
-device = "laptop"
+def runTestGuild(device):
+    game_bot = createGameBot(device)
+    actors = createActors(game_bot, device)
+    tester = Tester()
+    game_bot = assignActors(game_bot, actors)
+    tester.performTestGuild(actors["Guild"])
+
+
+def runTestCampaign(device):
+    game_bot = createGameBot(device)
+    actors = createActors(game_bot, device)
+    tester = Tester()
+    game_bot = assignActors(game_bot, actors)
+    tester.performTestCampaign(actors["Campaign"])
+
+
+def runTestMagicQuarter(device):
+    game_bot = createGameBot(device)
+    actors = createActors(game_bot, device)
+    tester = Tester()
+    game_bot = assignActors(game_bot, actors)
+    tester.performTestMagicQuarter(actors["MagicQuarter"])
+
+
+def runTestSingleReward(device):
+    game_bot = createGameBot(device)
+    actors = createActors(game_bot, device)
+    tester = Tester()
+    game_bot = assignActors(game_bot, actors)
+    tester.performTestSingleReward(actors["SingleReward"])
+
+
+def runTestServerSwap(device):
+    game_bot = createGameBot(device)
+    actors = createActors(game_bot, device)
+    tester = Tester()
+    game_bot = assignActors(game_bot, actors)
+    tester.performTestServerSwap(actors["ServerSwap"])
+
+
+def runActorTest(device, input_actors):
+    game_bot = createGameBot(device)
+    actors = createActors(game_bot, device)
+    tester = Tester()
+    game_bot = assignActors(game_bot, actors)
+    for actor in input_actors:
+        tester.performActorTest(actors[actor])
+
+
+device = "desktop"
+actors = ["MultipleRewards"]
 # runUIDesktop(device)
 # runUILaptop(device)
-runNormalDesktop(device)
+# runNormalDesktop(device)
 # runNormalLaptop(device)
+
 # runTestMap(device)
 # runTestMultipleRewards(device)
 # runTestFirestone(device)
+# runTestGuild(device)
+# runTestCampaign(device)
+# runTestMagicQuarter(device)
+# runTestSingleReward(device)
+# runTestServerSwap(device)
+runActorTest(device, actors)
 '''
 
 '''

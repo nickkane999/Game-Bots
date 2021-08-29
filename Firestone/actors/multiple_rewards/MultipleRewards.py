@@ -4,14 +4,18 @@ import re
 import sys
 import os
 
+from actors.ActorTemplate import ActorTemplate
+from actors.utilities.save_helper.MultipleRewardsSaveHelper import MultipleRewardsSaveHelper
 
-class MultipleRewards:
+
+class MultipleRewards(ActorTemplate):
     # Variables
     rotationsAfterBoss = 0
 
     # Initializing Object
     def __init__(self, bot):
-        self.zone = "123"
+        super(MultipleRewards, self).__init__(bot)
+        self.save_helper = MultipleRewardsSaveHelper(bot)
         self.game_bot = bot
         self.conditions = bot.conditions
         self.quest_regions = bot.screenshot_data.data["quests"]
@@ -32,16 +36,11 @@ class MultipleRewards:
         self.coordinates = coordinates
         self.instructions = instructions
 
-    def startMultipleRewardsDuties(self):
-        self.game_bot.db.refreshData()
-        print("Short sleep before starting multiple rewards")
+    def startDuties(self):
+        self.loadData()
+        instructions = self.instructions
+        coordinates = self.coordinates
         time.sleep(3)
-        game_bot = self.game_bot
-        queue_processor = game_bot.queue_processor
-
-        quest_coordinates = self.quests_screen["icons"]
-        db = game_bot.db
-        instructions = queue_processor.verifyQueueMultipleRewards(db)
 
         needs_visit = instructions["multiple_rewards"]["needs_visit"]
         performed_dailies = instructions["multiple_rewards"]["performed_dailies"]
@@ -53,10 +52,7 @@ class MultipleRewards:
         print(needs_visit)
         '''
         if (not performed_dailies and needs_visit):
-            self.assignQueueData(quest_coordinates, instructions)
-
-            print("Quest Dailies Instructions: ")
-            print(instructions)
+            print("Evaluating Quest Dailies: ")
 
             for x in range(times_checked):
                 self.enterQuestZone()
@@ -115,9 +111,7 @@ class MultipleRewards:
                 quest_queue[quest]["data"] = data
 
             quest_queue["server"] = server
-            print("Saving progress. New quest queue")
-            print(quest_queue)
-            self.saveCurrentProgress(quest_queue)
+            self.saveProgress(quest_queue)
 
     def assignMissions(self):
         actors = self.game_bot.queue_processor.actors
@@ -127,9 +121,9 @@ class MultipleRewards:
             "Expeditioner": None,
             "Collector": None,
             "Miner": None,
-            "Gamer": actors["tavern"].completeQuest,
-            "Merchant": actors["merchant"].completeQuest,
-            "Liberator": actors["campaign"].completeQuest,
+            "Gamer": actors["Tavern"].completeQuest,
+            "Merchant": actors["Merchant"].completeQuest,
+            "Liberator": actors["Campaign"].completeQuest,
             # "Collector": actors["inventory"].completeQuest,
             # "Miner": actors["guild"].completeMinerQuest,
         }
@@ -191,11 +185,6 @@ class MultipleRewards:
         bot = self.game_bot
         profile_coordinates = self.profile_screen["icons"]
         bot.click(profile_coordinates["x_icon"])
-
-    def saveCurrentProgress(self, data):
-        file = self.game_bot.db.data
-        self.game_bot.db.data = self.game_bot.db.saveMultipleDuties(data, file)
-        self.game_bot.db.saveDataFile()
 
     def buildQuestQueue(self):
         time.sleep(1)

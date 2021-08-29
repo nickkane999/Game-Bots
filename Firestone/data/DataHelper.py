@@ -39,19 +39,6 @@ class DataHelper:
     # ---------------------------
     # Save Data functions for other class files
     #----------------------------
-    def saveDataSingleReward(self, data, file):
-        server = self.getServerString()
-        reset_time = data["reset_time"]
-        current_time = time.time()
-
-        file[server]["general"]["reset_time"] = reset_time
-        file[server]["general"]["current_time"] = current_time
-        file[server]["multiple_rewards_progress"]["completed_quests"] = 0
-
-        file[server] = self.resetCampaignDailies(file[server])
-
-        return file
-
     def resetCampaignDailies(self, file):
         for zone in file["campaign_progress"]["dailies"]:
             print(zone)
@@ -60,23 +47,6 @@ class DataHelper:
                 print(file["campaign_progress"]["dailies"])
                 if file["campaign_progress"]["dailies"][zone][mission] != "locked":
                     file["campaign_progress"]["dailies"][zone][mission] = False
-        return file
-
-    def resetMultipleRewardDailies(self, file):
-        server = self.getServerString()
-        quests = file[server]["multiple_rewards_progress"]["quests"]
-
-        for quest in quests:
-            file[server]["multiple_rewards_progress"]["quests"][quest]["completed"] = False
-            file[server]["multiple_rewards_progress"]["quests"][quest]["claimed"] = False
-        file[server]["multiple_rewards_progress"]["performed_dailies"] = False
-        file[server]["multiple_rewards_progress"]["completed_quests"] = 0
-
-        campaign_progress = file[server]["campaign_progress"]
-        for daily in campaign_progress["dailies"]["liberation"]:
-            if daily != "locked":
-                file[server]["campaign_progress"]["dailies"]["liberation"][daily] = False
-
         return file
 
     def saveFirestone(self, data, file):
@@ -134,30 +104,6 @@ class DataHelper:
             if add_completion:
                 file[server]["multiple_rewards_progress"]["completed_quests"] += 1
         file[server]["multiple_rewards_progress"]["save_time"] = save_time
-        return file
-
-    def saveExpeditions(self, data, file):
-        server = data["server"]
-        save_time = data["current_time"]
-        renew_time = data["expedition_reset_time"]
-        current_expedition_time = data["expedition_1_time"]
-        has_renewed = data["has_renewed"]
-
-        file[server]["guild_progress"]["expeditions"]["save_time"] = save_time
-        file[server]["guild_progress"]["expeditions"]["renew_time"] = renew_time
-        file[server]["guild_progress"]["expeditions"]["upgrade_time"] = current_expedition_time
-        if has_renewed:
-            file[server]["guild_progress"]["expeditions_remaining"] = 5
-
-        return file
-
-    def saveServerSwap(self, data, file):
-        server = data["current_server"]
-        current_time = data["current_time"]
-
-        file["general"]["current_server"] = server
-        file["general"]["server_swap_progress"]["last_swap_time"] = current_time
-
         return file
 
     def saveMissionsClaimed(self, data, file):

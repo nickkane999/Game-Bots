@@ -6,7 +6,16 @@ import os
 import cv2
 import numpy as np
 
-from actors.utilities.FirestoneQueueHelper import FirestoneQueueHelper
+from actors.utilities.queue_instructions.FirestoneQueueHelper import FirestoneQueueHelper
+from actors.utilities.queue_instructions.GuildQueueHelper import GuildQueueHelper
+from actors.utilities.queue_instructions.CampaignQueueHelper import CampaignQueueHelper
+from actors.utilities.queue_instructions.MagicQuarterQueueHelper import MagicQuarterQueueHelper
+from actors.utilities.queue_instructions.MultipleRewardsQueueHelper import MultipleRewardsQueueHelper
+from actors.utilities.queue_instructions.SingleRewardQueueHelper import SingleRewardQueueHelper
+
+from actors.utilities.queue_instructions.ServerSwapQueueHelper import ServerSwapQueueHelper
+
+from actors.utilities.queue_instructions.MapQueueHelper import MapQueueHelper
 
 
 class QueueInstructions:
@@ -15,7 +24,16 @@ class QueueInstructions:
 
     # Initializing Object
     def __init__(self):
-        self.firestone_queue_helper = FirestoneQueueHelper()
+        self.queue_helpers = {
+            "Guild": GuildQueueHelper(),
+            "Campaign": CampaignQueueHelper(),
+            "MagicQuarter": MagicQuarterQueueHelper(),
+            "MultipleRewards": MultipleRewardsQueueHelper(),
+            "SingleReward": SingleRewardQueueHelper(),
+            "ServerSwap": ServerSwapQueueHelper(),
+            "Map": MapQueueHelper(),
+            "Firestone": FirestoneQueueHelper(),
+        }
 
     def assignActorActions(self, actors):
         for k, v in actors.items():
@@ -28,12 +46,18 @@ class QueueInstructions:
         actors = self.actors
         self.actions = {
             "startup": actors["startup"].runStartup,
-            "guild": actors["guild"].startGuildDuties,
+            "guild": actors["guild"].startDuties,
             "library": actors["library"].startLibraryDuties,
-            "campaign": actors["campaign"].startCampaignDuties,
+            "campaign": actors["campaign"].startDuties,
             "temple": actors["temple"].startTempleDuties,
             "battle": actors["battle"].startBattleDuties,
         }
+
+    def getQueueInstructions(self, db, class_name):
+        queue_helper = self.queue_helpers[class_name]
+        queue_helper.setDatabase(db)
+        instructions = queue_helper.getInstructions()
+        return instructions
 
     def getQueueInstructionsFirestone(self):
         server = self.db.getServerString()

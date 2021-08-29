@@ -7,15 +7,19 @@ import os
 from actors.campaign.Dailies import Dailies
 from actors.campaign.Story import Story
 
+from actors.ActorTemplate import ActorTemplate
+from actors.utilities.save_helper.CampaignSaveHelper import CampaignSaveHelper
 
-class Campaign:
+
+class Campaign(ActorTemplate):
     # Variables
     rotationsAfterBoss = 0
 
     # Initializing Object
     def __init__(self, bot):
-        self.zone = "123"
+        super(Campaign, self).__init__(bot)
         self.game_bot = bot
+        self.save_helper = CampaignSaveHelper(bot)
         self.conditions = bot.conditions
         self.dailies = Dailies(bot)
         self.campaign_regions = bot.screenshot_data.data["campaign"]
@@ -23,10 +27,6 @@ class Campaign:
         self.battle_screen = bot.data["battle"]
         self.town_screen = bot.data["town"]
         self.campaign_screen = bot.data["campaign"]
-
-    def assignQueueData(self, coordinates, instructions):
-        self.coordinates = coordinates
-        self.instructions = instructions
 
     def completeQuest(self, times_completed):
         self.coordinates = self.campaign_screen["icons"]
@@ -36,16 +36,10 @@ class Campaign:
         dailies.processDailyMissions()
         return True
 
-    def startCampaignDuties(self):
-        self.game_bot.db.refreshData()
-        game_bot = self.game_bot
-        queue_processor = game_bot.queue_processor
-
-        campaign_coordinates = self.campaign_screen["icons"]
-        db = game_bot.db.data
-        instructions = queue_processor.verifyQueueCampaign(db)
-        self.assignQueueData(campaign_coordinates, instructions)
-
+    def startDuties(self):
+        self.loadData()
+        instructions = self.instructions
+        coordinates = self.coordinates
         needs_visit = instructions["campaign"]["needs_visit"]
 
         if needs_visit:
@@ -78,21 +72,12 @@ class Campaign:
             "current_time": time.time(),
             "server": server
         }
-        self.saveCurrentProgress(data)
+        self.saveProgress(data)
 
     def returnToBattleScreen(self):
         bot = self.game_bot
         campaign_coordinates = self.campaign_screen["icons"]
         print("Exiting Campaign")
-        print(campaign_coordinates)
 
         bot.click(campaign_coordinates["x_icon"])
         bot.click(campaign_coordinates["x_icon"])
-
-    def saveCurrentProgress(self, data):
-        server = data["server"]
-        claim_time = int(data["campaign_claim_time"])
-
-        self.game_bot.db.data[server]["campaign_progress"]["campaign_claim_time"] = claim_time
-        self.game_bot.db.data[server]["campaign_progress"]["save_time"] = data["current_time"]
-        self.game_bot.db.saveDataFile()
