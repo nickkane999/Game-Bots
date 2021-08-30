@@ -24,7 +24,7 @@ class GameLoopTest(TestTemplate):
         self.tests = self.getTests()
         self.bot = Bot()
         self.tower_selector = TowerSelector()
-        self.current_trophies = 11
+        self.current_trophies = 4
         self.extra_turrets = {
             "monkey village": {
                 "point": {"x": 880, "y": 580}
@@ -76,7 +76,7 @@ class GameLoopTest(TestTemplate):
         start_time = time.time()
 
         for x in range(1000):
-            if current_trophies >= 20:
+            if current_trophies >= 30:
                 print("Done")
                 break
             finished_process = False
@@ -85,6 +85,7 @@ class GameLoopTest(TestTemplate):
             self.setTurrets()
             self.bot.click(game_menu["next_wave"])
             self.bot.click(game_menu["next_wave"])
+            self.bot.click(game_menu["empty_space"])
 
             while (not finished_process):
                 has_finished = sh.verifyMsg(finish_info, "next")
