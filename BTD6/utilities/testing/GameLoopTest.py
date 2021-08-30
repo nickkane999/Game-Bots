@@ -104,6 +104,7 @@ class GameLoopTest(TestTemplate):
                         self.bot.click(game_menu["level_accept"])
                         time.sleep(0.5)
                         self.bot.click(game_menu["next_wave"])
+                        self.bot.click(game_menu["empty_space"])
                     time.sleep(3)
 
     def clickOnDarkScreenIcons(self):

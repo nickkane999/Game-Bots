@@ -14,6 +14,7 @@ class GameMapMenu(MenuDataTemplate):
             "next_wave": {"x": 1830, "y": 1000},
             "deflation_ok": {"x": 960, "y": 760},
             "level_accept": {"x": 940, "y": 540},
+            "empty_space": {"x": 400, "y": 980},
             "upgrade_slots": {
                 "left": {
                     "slot_1": {"x": 340, "y": 490},
