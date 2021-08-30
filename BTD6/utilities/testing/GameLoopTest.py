@@ -24,7 +24,7 @@ class GameLoopTest(TestTemplate):
         self.tests = self.getTests()
         self.bot = Bot()
         self.tower_selector = TowerSelector()
-        self.current_trophies = 10
+        self.current_trophies = 11
         self.extra_turrets = {
             "monkey village": {
                 "point": {"x": 880, "y": 580}
@@ -102,6 +102,7 @@ class GameLoopTest(TestTemplate):
                     if has_play_button:
                         self.bot.click(game_menu["level_accept"])
                         self.bot.click(game_menu["level_accept"])
+                        time.sleep(0.5)
                         self.bot.click(game_menu["next_wave"])
                     time.sleep(3)
 
