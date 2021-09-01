@@ -13,7 +13,16 @@ class TowerSelector():
         self.current_menu = "menu_one"
         self.menu_one = self.getMenuOneTowersDeflation()
         self.menu_two = self.getMenuTwoTowersDeflation()
-        self.empty_point = {"x": 80, "y": 1040}
+        self.hot_key_towers = self.getHotKeyTowers()
+        self.empty_point = {"x": 680, "y": 1040}
+
+    def getHotKeyTowers(self):
+        towers = {
+            "hero": "u",
+            "monkey village": "k",
+            "super monkey": "s"
+        }
+        return towers
 
     def getMenuOneTowersDeflation(self):
         towers = {
@@ -80,29 +89,23 @@ class TowerSelector():
         }
         return towers
 
-    def selectTower(self, monkey):
-        menu_one = self.menu_one
-        menu_two = self.menu_two
-        current_menu = self.current_menu
+    def placeTower(self, monkey, info):
+        tower_button = self.hot_key_towers
         empty_point = self.empty_point
+        point = info["point"]
+        upgrade_order = info["upgrade_order"]
+        pyautogui.click(empty_point["x"], empty_point["y"])
 
-        if (monkey in menu_one):
-            monkey_point = menu_one[monkey]
-            print("selecting monkey " + monkey)
-            if (current_menu == "menu_two"):
-                self.moveMenu()
-        if (monkey in menu_two):
-            print("selecting monkey " + monkey)
-            monkey_point = menu_two[monkey]
-            if (current_menu == "menu_one"):
-                self.moveMenu()
-        if (monkey_point):
+        if (tower_button[monkey]):
+            pyautogui.press(tower_button[monkey])
+            time.sleep(0.2)
+            pyautogui.moveTo(point["x"], point["y"])
+            pyautogui.click(point["x"], point["y"])
+            pyautogui.click(point["x"], point["y"])
+            for upgrade in upgrade_order:
+                pyautogui.press(upgrade)
             pyautogui.click(empty_point["x"], empty_point["y"])
-            pyautogui.click(monkey_point["x"], monkey_point["y"])
-
-    def placeTower(self, monkey, point):
-        self.selectTower(monkey)
-        pyautogui.click(point["x"], point["y"])
+        pyautogui.click(empty_point["x"], empty_point["y"])
 
     def moveMenu(self):
         current_menu = self.current_menu

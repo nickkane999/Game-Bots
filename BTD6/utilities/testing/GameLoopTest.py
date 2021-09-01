@@ -24,13 +24,19 @@ class GameLoopTest(TestTemplate):
         self.tests = self.getTests()
         self.bot = Bot()
         self.tower_selector = TowerSelector()
-        self.current_trophies = 4
+        self.current_trophies = 0
         self.extra_turrets = {
             "monkey village": {
-                "point": {"x": 880, "y": 580}
+                "point": {"x": 880, "y": 580},
+                "upgrade_order": ["/", "/", ".", "."]
             },
             "super monkey": {
-                "point": {"x": 770, "y": 500}
+                "point": {"x": 770, "y": 500},
+                "upgrade_order": [",", ",", ".", ".", "."]
+            },
+            "hero": {
+                "point": {"x": 760, "y": 590},
+                "upgrade_order": []
             }
         }
         '''        
@@ -75,8 +81,8 @@ class GameLoopTest(TestTemplate):
 
         start_time = time.time()
 
-        for x in range(1000):
-            if current_trophies >= 30:
+        for x in range(36):
+            if current_trophies >= 100:
                 print("Done")
                 break
             finished_process = False
@@ -103,10 +109,10 @@ class GameLoopTest(TestTemplate):
                     if has_play_button:
                         self.bot.click(game_menu["level_accept"])
                         self.bot.click(game_menu["level_accept"])
-                        time.sleep(0.5)
-                        self.bot.click(game_menu["next_wave"])
+                        time.sleep(0.1)
+                        pyautogui.press("space")
                         self.bot.click(game_menu["empty_space"])
-                    time.sleep(3)
+                    time.sleep(1)
 
     def clickOnDarkScreenIcons(self):
         info2 = {
@@ -139,7 +145,7 @@ class GameLoopTest(TestTemplate):
         game_menu_upgrades = menus["5"]["gamemap"]["upgrade_slots"]
 
         self.setExtraTurrets()
-        self.setTurretsCornMap()
+        # self.setTurretsCornMap()
 
         '''
         tower_point = {"x": 480, "y": 520}
@@ -188,7 +194,7 @@ class GameLoopTest(TestTemplate):
         extra_turrets = self.extra_turrets
         for turret in extra_turrets:
             self.tower_selector.placeTower(
-                turret, extra_turrets[turret]["point"])
+                turret, extra_turrets[turret])
 
     def enterMapSelection(self):
         home_menu = self.menu_navigator.menus["1"]["home"]
