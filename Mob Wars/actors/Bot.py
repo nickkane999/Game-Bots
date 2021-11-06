@@ -11,7 +11,7 @@ import json
 
 # from commonFunctions import *
 # from SegmentedData import *
-
+from actors.BattleRoyale import BattleRoyale
 
 class Bot:
     # Initializing Object
@@ -20,6 +20,8 @@ class Bot:
         self.browser = data['browser']
         self.driver = data['browser'].driver
         self.save_data = data['save_data']
+
+        self.battleRoyal = BattleRoyale(self)
         
 
     def clickElement(self, xpath):
@@ -37,12 +39,12 @@ class Bot:
 
     def getValue(self, xpath):
         driver = self.driver
-        element = driver.find_element_by_xpath(xpath)
 
         try:
+            element = driver.find_element_by_xpath(xpath)
             return element.text
         except Exception as e:
-            print("Xpath for text couldnt be processed")
+            # print("Xpath for text couldnt be processed")
             # print(traceback.format_exc())
             return False
     
@@ -53,7 +55,7 @@ class Bot:
             element = driver.find_element_by_xpath(xpath)
             return element.value_of_css_property(name)
         except Exception as e:
-            print("Xpath for css property couldnt be processed")
+            # print("Xpath for css property couldnt be processed")
             # print(traceback.format_exc())
             return False
 
@@ -174,6 +176,10 @@ class Bot:
             health = self.getCSSAttribute(xpath, 'width')
             if health:
                 health = float(health.replace('px', ''))
+            else:
+                print("Issue finding health, going to break")
+                print(xpath)
+                print(asdasdasd)
 
             if not mobs:
                 print("No mobs found")
@@ -220,7 +226,7 @@ class Bot:
             if clicked:
                 self.continueFight()
         
-
+    
 
 
     ############################################

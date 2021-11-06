@@ -32,6 +32,22 @@
       "recruit_tab": "//*[@class=\"ri-contents-tab-wrapper\"]/div[1]",
       "add_member_recommended": "//*[@id=\"ri-item-NNN\"]/div/div[2]/a",
       "add_member_post": "//*[@id=\"chat-msgs-box\"]/div[NNN]/div[2]/span[1]"
+    },
+    "battle_royale": {
+      "enemy_health": "//*[@id=\"br_fl_targets\"]/div[NNN]/div[2]/div/div",
+      "attack": "//*[@id=\"br_fl_targets\"]/div[NNN]/div[2]/a",
+      "health": "//*[@id=\"br_vitals_health\"]/div[2]",
+      "heal": "//*[@id=\"br_pb_medkit_use\"]",
+      "vitality": "//*[@id=\"br_current_vitality\"]",
+      "vitality_boost": "//*[@id=\"br_pb_vb_use\"]",
+      "player_count": "//*[@id=\"br_fl_stats\"]",
+      "weapon_slot_strength": "//*[@id=\"br_item_weapon_slot_NNN\"]/div/div[1]/div/span[1]",
+      "armor_slot_strength": "//*[@id=\"br_item_armor_slot_NNN\"]/div/div[1]/div/span[1]",
+      "weapon_slot": "//*[@id=\"br_item_weapon_slot_NNN\"]",
+      "armor_slot": "//*[@id=\"br_item_armor_slot_NNN\"]",
+      "game_id": "//*[@id=\"br_game_id_text\"]",
+      "heal_boost_count": "//*[@id=\"br_pb_medkit_remaining\"]/div",
+      "vitality_boost_count": "//*[@id=\"br_pb_vb_remaining\"]/div"
     }
   }
 }
