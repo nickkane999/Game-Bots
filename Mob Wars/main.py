@@ -14,27 +14,45 @@ application.browser.start()
 
 
 application.bot.switchToIFrame()
-
-
-risk_model = {
-    'rounds': 10,
-    'mob_count': 55
-}
-risk_model2 = {
-    'rounds': 10,
-    'mob_count': 54
-}
-application.bot.runFightsLoop(risk_model2)
-
-
-application.bot.runFights(risk_model2)
-
+application.bot.battleRoyal.healSelfLoop(500)
+# application.bot.battleRoyal.healSelfLoop(30)
 
 
 application.bot.switchToIFrame()
+application.bot.battleRoyal.reset()
+application.bot.battleRoyal.attackEnemiesLoop(600)
+
+
+application.bot.switchToIFrame()
+risk_model = {
+    'rounds': 50,
+    'mob_count': 500
+}
+application.bot.runFightsLoop(risk_model)
+
+
+# application.bot.runFights(risk_model2)
+
+//*[@id="edb901b5-3dc3-4338-91c5-15ae5591acb9_row"]/div[2]/a
+
+//*[@id=\"br_fl_targets\"]/[@class=\"br-fight-list-target\"]
+//*[@id="br_fl_targets"]/[@class="br-fight-list-target"]
+//*[@id=\"br_fl_targets\"]/[div[NNN]
+//*[@id="br_pb_medkit_use"]
+
+//*[@id="d4c6f65d-9800-4197-a452-0ab444dbabfd_row"]/div[2]/div/div
+
+application.bot.switchToIFrame()
 application.bot.pullMobs()
-scripts = "INSERT DATA HERE"
 application.bot.addMobs(scripts)
+application.bot.addMobs()
+
+
+
+application.bot.addMobsRecommended()
+
+
+
 
 //*[@id="battle_response_wrapper"]/div[1]/div[4]/div/table/tbody/tr[2]/td[2]
 //*[@id="battle_response_wrapper"]/div[1]/div[4]/div/table/tbody/tr[2]/td[2]
