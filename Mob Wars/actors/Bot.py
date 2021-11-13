@@ -22,6 +22,7 @@ class Bot:
         self.save_data = data['save_data']
 
         self.battleRoyal = BattleRoyale(self)
+        self.health_limit = 1
         
 
     def clickElement(self, xpath):
@@ -185,7 +186,7 @@ class Bot:
                 print("No mobs found")
 
 
-            if mobs and int(mobs) < mob_size_limit and health >= 152:
+            if mobs and int(mobs) < mob_size_limit and health >= self.health_limit:
                 print("Mobs found")
                 xpath = xpaths["fight"]["mob_menu"]["attack"].replace("NNN", str(x))
                 print(xpath)
