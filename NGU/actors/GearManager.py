@@ -59,13 +59,15 @@ class GearManager:
         inventory_points = self.getInventoryPoints()
 
         while True:
+            self.clearInventory()
             for point in inventory_points:
                 self.clickSlot(point)
             for point in gear_points:
                 self.clickSlot(point)
-            self.clearInventory()
-            print("Cycle for upgrading items completed")
+            print("Cycle for upgrading items completed. Sleeping 30 seconds")
             print(time.time() - start_time)
+            time.sleep(30)
+            
 
 
     def getGearPoints(self):
