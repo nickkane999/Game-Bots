@@ -1,0 +1,27 @@
+{
+  "gear": {
+    "slots": 60,
+    "start_slot": 20,
+    "inv_grid_start": [795, 622],
+    "grid": [4, 4],
+    "box_size": 75,
+    "positions": {
+      "grid_start": [950, 200],
+      "accessory_1": 0,
+      "accessory_2": 3,
+      "accessory_3": 6,
+      "head": 1,
+      "body": 4,
+      "pants": 7,
+      "feet": 10,
+      "weapon": 5
+    },
+    "gear_slot_priority": ["accessory_1", "head", "body", "pants"],
+    "inventory_slot_priority": [48, 49, 50, 51],
+    "colors": {
+      "red": "q",
+      "blue": "w",
+      "yellow": "e"
+    }
+  }
+}
