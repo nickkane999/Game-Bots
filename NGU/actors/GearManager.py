@@ -53,17 +53,20 @@ class GearManager:
         }
         return point
 
-    def upgradeItems(self):
+    def upgradeItems(self, is_reversed = False):
         start_time = time.time()
         gear_points = self.getGearPoints()
         inventory_points = self.getInventoryPoints()
 
         while True:
-            self.clearInventory()
+            if is_reversed:
+                self.clearInventory()                
             for point in inventory_points:
                 self.clickSlot(point)
             for point in gear_points:
                 self.clickSlot(point)
+            if not is_reversed:
+                self.clearInventory()
             print("Cycle for upgrading items completed. Sleeping 30 seconds")
             print(time.time() - start_time)
             time.sleep(30)
