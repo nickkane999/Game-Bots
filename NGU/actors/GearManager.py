@@ -27,6 +27,7 @@ class GearManager:
         self.gear_settings = self.bot.save_data.db["gear"]
         self.transform_color = "yellow"
         self.method = "upgrade"
+        self.cycle_count = 0
 
     def get_pixel_colour(self, i_x, i_y):
         i_desktop_window_id = win32gui.GetDesktopWindow()
@@ -58,15 +59,21 @@ class GearManager:
         gear_points = self.getGearPoints()
         inventory_points = self.getInventoryPoints()
 
+        self.cycle_count = 0
         while True:
+            self.cycle_count = self.cycle_count + 1;
             if is_reversed:
-                self.clearInventory()                
-            for point in inventory_points:
-                self.clickSlot(point)
-            for point in gear_points:
-                self.clickSlot(point)
+                self.clickSlots(gear_points)
+                self.mergeSlots(gear_points)
+                self.clickSlots(inventory_points)
+                self.mergeSlots(inventory_points)                
+                self.clearInventory()
             if not is_reversed:
                 self.clearInventory()
+                self.clickSlots(gear_points)
+                self.mergeSlots(gear_points)
+                self.clickSlots(inventory_points)
+                self.mergeSlots(inventory_points)                
             print("Cycle for upgrading items completed. Sleeping 30 seconds")
             print(time.time() - start_time)
             time.sleep(30)
@@ -129,6 +136,26 @@ class GearManager:
             print("Cycle for upgrading gear completed")
             print(time.time() - start_time)
 
+    def clickSlots(self, points):
+        pyautogui.keyDown("a")
+        time.sleep(0.2)
+        for point in points:
+            for x in range(0, 4):
+                pyautogui.click(point["x"], point["y"])
+                time.sleep(0.1)
+        pyautogui.keyUp("a")
+        time.sleep(0.2)
+
+    def mergeSlots(self, points):
+        pyautogui.keyDown("d")
+        time.sleep(0.2)
+        for point in points:
+            for x in range(0, 2):
+                pyautogui.click(point["x"], point["y"])
+                time.sleep(0.1)
+        pyautogui.keyUp("d")
+        time.sleep(0.2)
+
     def clickSlot(self, point):
         pyautogui.keyDown("a")
         time.sleep(0.3)
@@ -136,6 +163,14 @@ class GearManager:
             pyautogui.click(point["x"], point["y"])
             time.sleep(0.1)
         pyautogui.keyUp("a")
+        time.sleep(0.3)
+
+    def mergeSlot(self, point):
+        pyautogui.keyDown("d")
+        time.sleep(0.3)
+        pyautogui.click(point["x"], point["y"])
+        time.sleep(0.1)
+        pyautogui.keyUp("d")
         time.sleep(0.3)
 
     def clearInventory(self):
@@ -169,5 +204,5 @@ class GearManager:
     def transformColor(self, point):
         color_key = self.gear_settings["colors"][self.transform_color]
         pyautogui.keyDown(color_key)
-        pyautogui.click(point["x"], point["y"])
+        pyautogui.click(point["x"] - 10, point["y"])
         pyautogui.keyUp(color_key)

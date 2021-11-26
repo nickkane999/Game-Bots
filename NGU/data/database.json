@@ -16,8 +16,8 @@
       "feet": 10,
       "weapon": 5
     },
-    "gear_slot_priority": ["accessory_1", "head", "body", "pants"],
-    "inventory_slot_priority": [48, 49, 50, 51],
+    "gear_slot_priority": ["head", "body", "pants", "feet", "weapon"],
+    "inventory_slot_priority": [48, 49, 50, 51, 52, 53, 54, 55],
     "colors": {
       "red": "q",
       "blue": "w",
