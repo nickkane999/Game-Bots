@@ -64,6 +64,7 @@ class GearManager:
             self.cycle_count = self.cycle_count + 1;
             if is_reversed:
                 self.clickSlots(gear_points)
+                self.clickSlots(gear_points)
                 self.mergeSlots(gear_points)
                 self.clickSlots(inventory_points)
                 self.mergeSlots(inventory_points)                
@@ -74,9 +75,9 @@ class GearManager:
                 self.mergeSlots(gear_points)
                 self.clickSlots(inventory_points)
                 self.mergeSlots(inventory_points)                
-            print("Cycle for upgrading items completed. Sleeping 30 seconds")
+            print("Cycle for upgrading items completed. Sleeping 60 seconds")
             print(time.time() - start_time)
-            time.sleep(30)
+            time.sleep(60)
             
 
 
@@ -189,7 +190,7 @@ class GearManager:
         for current_slot in range(0, grid_size):
             point = {
                 "x": start_point["x"] + (75 * (current_slot % grid[0]) ),
-                "y": start_point["y"] + (75 * math.trunc(current_slot / grid[1]) )
+                "y": start_point["y"] + (75 * math.trunc(current_slot / grid[0]) )
             }
             if self.get_pixel_colour(point["x"], point["y"]) == (238, 238, 188):
                 pyautogui.keyUp("ctrl")
