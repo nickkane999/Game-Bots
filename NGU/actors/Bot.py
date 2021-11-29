@@ -12,6 +12,9 @@ import json
 # from commonFunctions import *
 # from SegmentedData import *
 from actors.GearManager import GearManager
+from actors.GameUI import GameUI
+from actors.TimeMachineManager import TimeMachineManager
+from actors.AugmentationManager import AugmentationManager
 
 class Bot:
     # Initializing Object
@@ -20,463 +23,93 @@ class Bot:
         self.save_data = data['save_data']
 
         self.gear_manager = GearManager(self)
+        self.game_ui = GameUI(self)
+        self.time_machine_manager = TimeMachineManager(self)
+        self.augmentation_manager = AugmentationManager(self)
         
+        self.phase_count = 0
 
-    def clickElement(self, xpath):
-        driver = self.driver
+    def startCycle(self):
+        self.current_cycle_time = time.time()
 
-        try:
-            div = driver.find_element_by_xpath(xpath)
-            div.click()
-            time.sleep(0.33)
-            return True
-        except Exception as e:
-            print("Xpath for click couldnt be processed")
-            # print(traceback.format_exc())
-            return False
+        self.game_ui.startRebirth()
+        print("10 seconds before cycle starts")
+        time.sleep(5)
 
-    def getValue(self, xpath):
-        driver = self.driver
-
-        try:
-            element = driver.find_element_by_xpath(xpath)
-            return element.text
-        except Exception as e:
-            # print("Xpath for text couldnt be processed")
-            # print(traceback.format_exc())
-            return False
-    
-    def getCSSAttribute(self, xpath, name):
-        driver = self.driver
-
-        try:
-            element = driver.find_element_by_xpath(xpath)
-            return element.value_of_css_property(name)
-        except Exception as e:
-            # print("Xpath for css property couldnt be processed")
-            # print(traceback.format_exc())
-            return False
-
-    def getAttributeValue(self, xpath, name):
-        # name = "onclick"
-        # xpath = "'//*[@id=\"chat-msgs-box\"]/div[50]/div[2]/span[1]'"
-        driver = self.driver
-
-        try:
-            element = driver.find_element_by_xpath(xpath)
-            return element.get_attribute(name)
-        except Exception as e:
-            print("Xpath for attribute " + name + " couldnt be processed")
-            # print(traceback.format_exc())
-            return False
+        self.setBasicTraining()
+        self.fightBosses()
+        #self.setLoadout(1)
+        self.phase_count = 0
         
+        while (time.time() - self.current_cycle_time < 900):
+            self.rebirthPhaseOne()
+            self.phaseCheck()
+        self.phase_count = 0
 
-    def switchToIFrame(self):
-        iframe = self.driver.find_element_by_xpath('//*[@id="gamefilearea"]//iframe')
-        self.driver.switch_to.frame(iframe)
+        while (time.time() - self.current_cycle_time < 1800):
+            self.rebirthPhaseTwo()
+            self.phaseCheck()
+        self.phase_count = 0
 
-        # iframe = driver.find_element_by_xpath(xpath)
-        # self.driver.switch_to.frame(iframe)
+    def rebirthPhaseOne(self):
+        self.setTimeMachine()
+        print("Time machine set in phase 1 rebirth cycle. Sleeping 60 seconds")
+        self.phase_count = self.phase_count + 1
+        time.sleep(60)
 
-        # //*[@id="main_menu_div"]/div/table/tbody/tr/td[4]/a
+    def rebirthPhaseTwo(self):
+        self.setAugmentation(True)
+        self.setTimeMachine()
+        print("Phase 2 rebirth cycle complete. Sleeping 60 seconds")
+        self.phase_count = self.phase_count + 1
+        time.sleep(60)
 
-    def pullMobs(self):
-        data = self.save_data.db
-        self.xpaths = data["xpaths"]
-        # self.filterJobPosts()
-        self.pullMobsFromPost()
-
-    def addMobs(self, mob_add_scripts):
-        data = self.save_data.db
-        self.xpaths = data["xpaths"]
-        for script in mob_add_scripts:
-            self.driver.execute_script(script)
-            time.sleep(0.5)
-
-
-
-    def filterJobPosts(self):
-        xpaths = self.xpaths
-        shop = xpaths["side_menu"]["shop"]
-        job = xpaths["side_menu"]["job"]
-
-        shop.click()
-        job.click()
-
-    def pullMobsFromPost(self):
-        xpaths = self.xpaths
-        add_scripts = []
-        for message in range(0, 50):
-            add_link = xpaths["mobs"]["add_member_post"].replace("NNN", str(message))
-            name = self.getAttributeValue(add_link, "onclick")
-            if name and "add_friend" in name:
-                # self.driver.execute_script(name)
-                print(name)
-                add_scripts.append(name)
-
-        print("My scripts")
-        print("--------")
-        print("--------")
-        print("--------")
-        print(add_scripts)
+    def phaseCheck(self):
+        if self.phase_count % 5 == 0:
+            self.fightBosses()
 
 
-    def addMobsRecommended(self):
-        data = self.save_data.db
-        self.xpaths = data["xpaths"]
-        xpaths = self.xpaths
-        print(data)
-        xpath = xpaths["mobs"]["recruit_tab"]
-        self.clickElement(xpath)
-        for person in range(0, 100):
-            xpath = xpaths["mobs"]["add_member_recommended"].replace("NNN", str(person))
-            clicked = self.clickElement(xpath)
-            if not clicked:
-                print("Couldn't find any more mob members to invite")
-                break;
-        
-        print("Finished processing adding mobs")
+    def setTimeMachine(self, reclaim = False):
+        if reclaim:
+            self.reclaimResources()
+        self.game_ui.accessMenu("time_machine")
+        self.time_machine_manager.add("machine_speed")
+        self.time_machine_manager.add("gold_speed")
 
+    def setBasicTraining(self):
+        menu = self.save_data.db["basic_training"]
+        self.game_ui.accessMenu("basic_training")
+        attack_point = menu["attack_1"]
+        defense_point = menu["defense_1"]
 
-    def runFights(self, risk_information):
-        data = self.save_data.db
-        self.xpaths = data["xpaths"]
-        print(data)
-        for rounds in range(1, 100):
-            if risk_information:
-                self.startFight(risk_information)
-                round_limit = risk_information['rounds']
-                if rounds > round_limit:
-                    print("Finished fights with risk")
-                    break;
-        
-        print("Finished processing fights")
-
-
-    def runFightsLoop(self, risk_information):
-        while True:
-            self.runFights(risk_information)
-            print("Finished fight Loop, waiting 1 minute")
-            time.sleep(60)
-
-    def startFight(self, risk_information):
-        xpaths = self.xpaths
-        mob_size_limit = risk_information['mob_count']
-
-        for x in range(2, 17):
-            xpath = xpaths["fight"]["mob_menu"]["mob_count"].replace("NNN", str(x))
-            # print(xpath)
-            mobs = self.getValue(xpath)
-            print("Mobs: ")
-            print(mobs)
-            xpath = xpaths["fight"]["mob_menu"]["health"].replace("NNN", str(x))
-            # print(xpath)
-            health = self.getCSSAttribute(xpath, 'width')
-            if health:
-                health = float(health.replace('px', ''))
-            else:
-                print("Issue finding health, going to break")
-                print(xpath)
-                print(asdasdasd)
-
-            if not mobs:
-                print("No mobs found")
-
-
-            if mobs and int(mobs) < mob_size_limit and health >= self.health_limit:
-                print("Mobs found")
-                xpath = xpaths["fight"]["mob_menu"]["attack"].replace("NNN", str(x))
-                print(xpath)
-                self.clickElement(xpath)
-                self.finishFight()
-                print("restart fights loop")
-                break;
-
-            if x == 15:
-                print("Loading new fights")
-                fights = xpaths["main_menu"]["fight"]
-                self.clickElement(fights)
-                break;
-
-        
-        print("Finished startFights")
-
-    
-    def finishFight(self):
-        xpaths = self.xpaths
-        
-        xpath = xpaths["fight"]["fight_menu"]["result"]
-        value = self.getValue(xpath)
-        if value == 'WON':
-            attack = xpaths["fight"]["fight_menu"]["attack"]
-            self.clickElement(attack)
-            self.continueFight()
-
-        fights = xpaths["main_menu"]["fight"]
-        self.clickElement(fights)
-        print("finished fight")
-
-    def continueFight(self):
-        xpaths = self.xpaths
-        attack = xpaths["fight"]["fight_menu"]["attack"]
-        if attack:
-            clicked = self.clickElement(attack)
-            if clicked:
-                self.continueFight()
-        
-    
-
-
-    ############################################
-    # Old Functions
-    ############################################
-
-
-''' 
-    def openTemplateFile(self):
-        actionComplete = self.openTemplate();
-        time.sleep(1);
-        result = True if actionComplete else False;
-        return result;
-
-    def changeImageLogo(self, position, imgSize):
-        actionComplete = self.deleteImage()
-        actionComplete = self.openImage() if actionComplete else self.log.writeError('Image was not oppened successfully') 
         time.sleep(1)
-        actionComplete = self.scaleImage(imgSize) if actionComplete else self.log.writeError('Image was not scaled successfully') 
+        pyautogui.click(attack_point[0], attack_point[1])
         time.sleep(1)
-        actionComplete = self.offsetImage(position) if actionComplete else self.log.writeError('Image was not offset successfully') 
-        return actionComplete
+        pyautogui.click(defense_point[0], defense_point[1])
 
-    def changeHeaderText(self, newText):
-        section = self.SegmentedData.headlineTextData
-
-        areaSelected = self.clickIcon(section['layerIconData'])
-        if areaSelected:
-            time.sleep(0.2)
-            areaSelected = self.clickIcon(section['editTextData'])
-            time.sleep(0.2)
-            pyautogui.hotkey('ctrl', 'a')
-            pyautogui.write(newText)
-            time.sleep(0.2)
-            pyautogui.press('esc')
-        return areaSelected
-
-    def changeBackgroundColor(self, newColor):
-        section = self.SegmentedData.backgroundColorData
-
-        areaSelected = self.clickIcon(section['layerIconData'])
-        if areaSelected:
-            backgroundToolPosition = self.storePosition(section['backgroundColorToolData'])
-            areaSelected = self.clickIcon(section['backgroundColorToolData'])
-        if areaSelected:
-            areaSelected = self.clickIcon(section['textCodeIconData'])
-            pyautogui.write(newColor)
-        if areaSelected:
-            areaSelected = self.clickIcon(section['okButtonBackgroundColorData'])
-            pyautogui.press('enter')
-            time.sleep(0.5)
-        if areaSelected:
-            pyautogui.hotkey('shift', 'b')
-            areaSelected = self.clickIcon(section['pictureBackgroundColorData'])
-
-        if areaSelected:
-            pos = backgroundToolPosition
-            print(pos)
-            pyautogui.click(pos[0]+2, pos[1]+2)
-            areaSelected = self.clickIcon(section['textCodeIconData'])
-            pyautogui.write(self.themeColor)
-            time.sleep(0.2)
-            if areaSelected:
-                areaSelected = self.clickIcon(section['okButtonBackgroundColorData'])
-                pyautogui.press('enter')
-                time.sleep(0.5)
-
-        return areaSelected
-
-    def saveEditedFile(self):
-        pyautogui.hotkey('ctrl', 'shift', 's')
-        self.saveImage();
-        pyautogui.hotkey('ctrl', 'shift', 'e')
-        time.sleep(0.3)
-        pyautogui.press('enter')
-        pyautogui.press('enter')
-        time.sleep(4)
-        pyautogui.press('enter')        
-
-    ############################################
-    # General Functions
-    ############################################
-    def openTemplate(self):
-        iconDirectory = self.SegmentedData.openTemplateData['openTemplateData']
-        pyautogui.hotkey('ctrl', 'o')
+    def fightBosses(self):
+        menu = self.save_data.db["fight_boss"]
+        self.game_ui.accessMenu("fight_boss")
         time.sleep(0.2)
-        print(iconDirectory)
-        confidence = self.itemInfo["confidence"]
+        nuke = menu["nuke"]
+        fight = menu["fight"]
+        pyautogui.click(nuke[0], nuke[1])
+        time.sleep(6)
+        for x in range(0, 4):
+            pyautogui.click(fight[0], fight[1])
+            time.sleep(3)
 
-        for index, item in enumerate(iconDirectory):
-            if (index) == 0:
-                itemPosition = pyautogui.locateOnScreen(item, grayscale=True, confidence=confidence)
-                areaSelected = clickImage(itemPosition, data={'sleepTime':0.3, 'clicks':2, 'offsetX':0, 'offsetY':0})
-                areaSelected = clickImage(itemPosition, data={'sleepTime':0.3, 'clicks':2, 'offsetX':200, 'offsetY':0})
-            else:
-                pyautogui.write(item)
-                pyautogui.press('enter')
-                time.sleep(0.1)
-        return areaSelected
+    def setLoadout(self, loadout):
+        self.game_ui.accessMenu("inventory")
+        self.gear_manager.swapLoadout(loadout)
 
-
-    def deleteImage(self):
-        section = self.SegmentedData.deleteImageData
-
-        areaSelected = self.clickIcon(section['layerIconData'])
-        if areaSelected: areaSelected = self.clickIcon(section['deleteLayerData'])
-        return areaSelected
+    def setAugmentation(self, reclaim = False):
+        if reclaim:
+            self.reclaimResources()
+        self.game_ui.accessMenu("augmentation")
+        self.augmentation_manager.assignEnergy()
 
 
-    def openImage(self):
-        iconDirectory = self.SegmentedData.openImageData['openImageData']
-        pyautogui.hotkey('ctrl', 'alt', 'o')
-        time.sleep(0.2)
-        print(iconDirectory)
-        confidence = self.itemInfo["confidence"]
-
-        for index, item in enumerate(iconDirectory):
-            if (index) == 0:
-                itemPosition = pyautogui.locateOnScreen(item, grayscale=True, confidence=confidence)
-                areaSelected = clickImage(itemPosition, data={'sleepTime':0.3, 'clicks':2, 'offsetX':0, 'offsetY':0})
-                areaSelected = clickImage(itemPosition, data={'sleepTime':0.3, 'clicks':2, 'offsetX':200, 'offsetY':0})
-                time.sleep(0.5)
-            else:
-                pyautogui.write(item)
-                time.sleep(0.5)
-                pyautogui.press('enter')
-                time.sleep(0.5)
-        return areaSelected
-
-
-    def saveImage(self):
-        iconDirectory = self.SegmentedData.saveImageData['saveImageData']
-        time.sleep(0.2)
-        confidence = self.itemInfo["confidence"]
-
-        for index, item in enumerate(iconDirectory):
-            if (index) == 0:
-                pyautogui.write(item)
-                time.sleep(0.1)
-            elif (index) == 1:
-                itemPosition = pyautogui.locateOnScreen(item, grayscale=True, confidence=confidence)
-                areaSelected = clickImage(itemPosition, data={'sleepTime':0.3, 'clicks':2, 'offsetX':0, 'offsetY':0})
-                areaSelected = clickImage(itemPosition, data={'sleepTime':0.3, 'clicks':2, 'offsetX':200, 'offsetY':0})             
-            else:
-                pyautogui.write(item)
-                pyautogui.press('enter')
-                time.sleep(0.1)
-
-        pyautogui.press('enter')
-        pyautogui.press('enter')
-        time.sleep(0.5)
-
-        return areaSelected
-
-
-    def scaleImage(self, width=None):
-        if width is not None:
-            section = self.SegmentedData.scaleImageData
-
-            areaSelected = self.clickIcon(section['layerIconData'])
-            if areaSelected:
-                areaSelected = self.clickIcon(section['scaleLayerStartData'])
-                pyautogui.write(str(width))
-            if areaSelected: areaSelected = self.clickIcon(section['scaleLayerScaleButtonData'])
-            return areaSelected
-
-
-    def offsetImage(self, position):
-        section = self.SegmentedData.offsetImageData
-        areaSelected = self.clickIcon(section['layerIconData'])
-
-        if areaSelected: areaSelected = self.clickIcon(section['editLayerStartData'])
-        if areaSelected: 
-            areaSelected = self.clickIcon(section['offsetXButtonData'])
-            pyautogui.write(str(position[0]))
-        if areaSelected:
-            areaSelected = self.clickIcon(section['offsetYButtonData'])
-            pyautogui.write(str(position[1]))
-        if areaSelected:
-            areaSelected = self.clickIcon(section['editLayerCompleteData'])
-            pyautogui.press('enter')
-        return areaSelected
-
-
-    ############################################
-    # Component Functions
-    ############################################
-    def clickIcon(self, section):
-        self.SegmentedData.updatePosition(section)
-        return self.selectArea(data=section)
-
-
-    def selectArea(self, data):
-        return self.callAction(data)
-
-    def callAction(self, data):
-        if data['position']:
-            pyautogui.moveTo(data['position'][0], data['position'][1])
-            time.sleep(0.2)
-        return data['action'](data['position'], data['clickParams'])
-
-    def gimpLocateOnScreen(self, data):
-        pyautogui.locateOnScreen(icon, grayscale=True, confidence=gimpBot.confidence, region=layerRegion)
-
-    def storePosition(self, section):
-        self.SegmentedData.updatePosition(section)
-        return [section['position'][0], section['position'][1]]
-        
-'''
-
-
-'''
-        icon = self.icons["templates"][self.template]["layer_menu"]["header_img"]["logo"]
-        layerRegion = self.regions["layer_menu"]
-        layerData = {
-            'icon': icon,
-            'position': pyautogui.locateOnScreen(icon, grayscale=True, confidence=self.confidence, region=layerRegion),
-            'action': clickImage
-        }
-
-
-
-
-    # checkStatus Helper Functions
-    def checkSpecialization(self):
-        if pyautogui.locateOnScreen('images/specialization.png')is not None: # Check if specialization screen is active
-            self.addSpecialization()
-
-    def checkAutoRun(self):
-        autoButton = pyautogui.locateOnScreen('images/stopAutoProgress.png')
-        if autoButton is not None:
-            self.clickItem(autoButton)
-
-    def useSpecials(self):
-        pyautogui.typewrite('123456789')
-
-
-    # checkSpecialization Helper Function
-    # Temp solution: Need to add process for understanding/selecting upgrades depending on different people
-    def addSpecialization(self):
-        buttons = list(pyautogui.locateAllOnScreen('images/selectSpecialization.png'))
-        self.clickItem(buttons[0])
-
-    def tempUpgrade(self):
-        if pyautogui.locateOnScreen('images/specialization.png', region=(520, 80, 325, 72) is not None:
-            print("Specialization Title Fund")
-            if pyautogui.locateOnScreen('images/troops/Celeste.png', region=(755, 230, 165, 30) is not None:
-                print("Specific person found")
-            
-    
-    # General Helper Functions
-    def clickItem(self, button):
-        cordX, cordY = pyautogui.center(button)
-        pyautogui.click(cordX, cordY)
-'''
+    def reclaimResources(self):
+        pyautogui.press("r")
+        pyautogui.press("t")

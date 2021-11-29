@@ -11,7 +11,6 @@ import json
 import sys
 import math
 import win32gui
-from actors.GameUI import GameUI
 
 
 
@@ -19,7 +18,6 @@ class GearManager:
     # Initializing Object
     def __init__(self, bot):
         self.bot = bot
-        self.GameUI = GameUI(bot)
         self.reset()
 
     def reset(self):
@@ -28,6 +26,7 @@ class GearManager:
         self.transform_color = "yellow"
         self.method = "upgrade"
         self.cycle_count = 0
+        self.timer = self.gear_settings["timer"]
 
     def get_pixel_colour(self, i_x, i_y):
         i_desktop_window_id = win32gui.GetDesktopWindow()
@@ -63,10 +62,11 @@ class GearManager:
         while True:
             self.cycle_count = self.cycle_count + 1;
             if is_reversed:
+                pyautogui.click(795, 622)
+                self.mergeSlots(inventory_points)                
                 self.clickSlots(gear_points)
-                self.clickSlots(gear_points)
-                self.mergeSlots(gear_points)
                 self.clickSlots(inventory_points)
+                self.mergeSlots(gear_points)
                 self.mergeSlots(inventory_points)                
                 self.clearInventory()
             if not is_reversed:
@@ -75,9 +75,9 @@ class GearManager:
                 self.mergeSlots(gear_points)
                 self.clickSlots(inventory_points)
                 self.mergeSlots(inventory_points)                
-            print("Cycle for upgrading items completed. Sleeping 60 seconds")
+            print("Cycle for upgrading items completed. Sleeping " + str(self.timer) + " seconds")
             print(time.time() - start_time)
-            time.sleep(60)
+            time.sleep(self.timer)
             
 
 
@@ -192,10 +192,17 @@ class GearManager:
                 "x": start_point["x"] + (75 * (current_slot % grid[0]) ),
                 "y": start_point["y"] + (75 * math.trunc(current_slot / grid[0]) )
             }
-            if self.get_pixel_colour(point["x"], point["y"]) == (238, 238, 188):
+            temp_color = self.get_pixel_colour(point["x"], point["y"]) 
+            ring = (207, 191, 231)
+            boosts = (238, 238, 188)
+            
+            if temp_color == boosts:
                 pyautogui.keyUp("ctrl")
                 self.transformColor(point)
                 pyautogui.keyDown("ctrl")
+            if temp_color == ring:
+                print("Ring, do not destroy")
+                time.sleep(0.2)
             else:
                 pyautogui.click(point["x"], point["y"])
                 time.sleep(0.1)

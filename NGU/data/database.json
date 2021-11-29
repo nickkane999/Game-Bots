@@ -1,7 +1,7 @@
 {
   "gear": {
     "slots": 60,
-    "start_slot": 8,
+    "start_slot": 7,
     "inv_grid_start": [795, 622],
     "grid": [5, 5],
     "box_size": 75,
@@ -16,12 +16,53 @@
       "feet": 10,
       "weapon": 5
     },
-    "gear_slot_priority": ["weapon", "head", "body", "pants", "feet"],
-    "inventory_slot_priority": [48, 49, 50, 51, 52, 53, 54, 55],
+    "gear_slot_priority": ["accessory_2"],
+    "inventory_slot_priority": [48, 49, 50, 51, 36, 37, 38, 39, 40, 41, 42, 43],
     "colors": {
       "red": "q",
       "blue": "w",
       "yellow": "e"
-    }
+    },
+    "timer": 200
+  },
+  "menu": {
+    "menu_start": [582, 133],
+    "box_size": [160, 40],
+    "positions": {
+      "basic_training": 0,
+      "fight_boss": 1,
+      "money_pit": 2,
+      "adventure": 3,
+      "inventory": 4,
+      "augmentation": 5,
+      "adv_training": 6,
+      "time_machine": 7,
+      "blood_magic": 8,
+      "wandos": 9,
+      "ngu": 10,
+      "yggdrasil": 11,
+      "gold_diggers": 12
+    },
+    "rebirth": [370, 730],
+    "rebirth_2": [1060, 880],
+    "rebirth_confirm": [890, 570]
+  },
+  "time_machine": {
+    "machine_speed": [1040, 450],
+    "gold_speed": [1040, 600]
+  },
+  "basic_training": {
+    "attack_1": [1500, 310],
+    "defense_1": [1500, 680]
+  },
+  "fight_boss": {
+    "nuke": [1180, 320],
+    "fight": [1180, 490]
+  },
+  "augmentation": {
+    "scroll_top": [1655, 490],
+    "scroll_bottom": [1655, 960],
+    "energy_buster": [1050, 680],
+    "aug_adjustment": 50
   }
 }

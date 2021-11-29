@@ -1,14 +1,24 @@
 # from data.models.actions.FunctionActions import FunctionActions
 # from data.models.instructions.ProgramInstructions import ProgramInstructions
 from Application import Application;
-
 instructions = {
     'data_file': r'C:\Users\nickk\Music\Portfolio\Game-Bots\NGU\data\database.json'
 }
 application = Application(instructions)
-application.bot.gear_manager.get_pixel_colour(1422, 644)
+application.bot.startCycle()
+
+application.bot.setAugmentation()
+application.bot.setTimeMachine()
+application.bot.setBasicTraining()
+application.bot.fightBosses()
 
 
+application.bot.gear_manager.upgradeItems(True)
+
+
+
+
+application.bot.gear_manager.clearInventory()
 
 application.bot.gear_manager.upgradeItems()
 
@@ -33,7 +43,7 @@ application.bot.gear_manager.upgradeGear("accessory_2")
 import pyautogui
 import time
 
-def startProgram():
+def startProgram():add_member_posta
     gear_pos = (1025, 200)
     inv_pos = (1515, 675)
     inv_start_pos = (765, 600)
