@@ -16,13 +16,25 @@
       "feet": 10,
       "weapon": 5
     },
-    "gear_slot_priority": ["accessory_2"],
-    "inventory_slot_priority": [48, 49, 50, 51, 36, 37, 38, 39, 40, 41, 42, 43],
+    "gear_slot_priority": [
+      "accessory_1",
+      "accessory_2",
+      "accessory_3",
+      "head",
+      "body",
+      "pants",
+      "feet",
+      "weapon"
+    ],
+    "inventory_slot_priority": [
+      48, 49, 50, 51, 52, 53, 54, 36, 37, 38, 39, 40, 41, 42, 43
+    ],
     "colors": {
       "red": "q",
       "blue": "w",
       "yellow": "e"
     },
+    "cube": [1180, 270],
     "timer": 200
   },
   "menu": {
@@ -51,9 +63,14 @@
     "machine_speed": [1040, 450],
     "gold_speed": [1040, 600]
   },
+  "wandos": {
+    "energy_dump": [1070, 470],
+    "magic_dump": [1070, 620]
+  },
   "basic_training": {
     "attack_1": [1500, 310],
-    "defense_1": [1500, 680]
+    "defense_1": [1500, 680],
+    "adjustment": 50
   },
   "fight_boss": {
     "nuke": [1180, 320],
@@ -64,5 +81,69 @@
     "scroll_bottom": [1655, 960],
     "energy_buster": [1050, 680],
     "aug_adjustment": 50
+  },
+  "cycles": {
+    "cycle_1": {
+      "300": {
+        "once": ["fight_boss", "adventure"],
+        "multiple": [
+          ["time_machine", "70"],
+          ["augmentation", "30"]
+        ]
+      }
+    }
+  },
+  "adventure": {
+    "arrow_right": [1645, 415],
+    "arrow_left": [1340, 415],
+    "first_button": [840, 267],
+    "button_space": [160, 55],
+    "hp": [930, 738],
+    "buttons": {
+      "idle": [0, 0],
+      "regular": [1, 0],
+      "strong": [2, 0],
+      "parry": [3, 0],
+      "pierce": [4, 0],
+      "ultimate_attack": [5, 0],
+      "block": [0, 1],
+      "defense_buff": [1, 1],
+      "heal": [2, 1],
+      "offense_buff": [3, 1],
+      "charge": [4, 1],
+      "ultimate_buff": [5, 1],
+      "paralyze": [0, 2],
+      "regen": [1, 2]
+    },
+    "cooldowns": {
+      "regular": 1,
+      "strong": 4,
+      "parry": 15,
+      "pierce": 8,
+      "ultimate_attack": 15,
+      "block": 10,
+      "defense_buff": 45,
+      "heal": 15,
+      "offense_buff": 45,
+      "charge": 30,
+      "ultimate_buff": 45,
+      "paralyze": 15,
+      "regen": 35
+    },
+    "cooldowns_start": {
+      "regular": 0,
+      "strong": 0,
+      "parry": 0,
+      "pierce": 0,
+      "ultimate_attack": 0,
+      "block": 0,
+      "defense_buff": 0,
+      "heal": 0,
+      "offense_buff": 0,
+      "charge": 0,
+      "ultimate_buff": 0,
+      "paralyze": 0,
+      "regen": 0
+    }
   }
 }

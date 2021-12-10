@@ -200,7 +200,7 @@ class GearManager:
                 pyautogui.keyUp("ctrl")
                 self.transformColor(point)
                 pyautogui.keyDown("ctrl")
-            if temp_color == ring:
+            elif temp_color == ring:
                 print("Ring, do not destroy")
                 time.sleep(0.2)
             else:
@@ -214,3 +214,14 @@ class GearManager:
         pyautogui.keyDown(color_key)
         pyautogui.click(point["x"] - 10, point["y"])
         pyautogui.keyUp(color_key)
+
+    def applyCubeBoostLoop(self):
+        cube_point = self.gear_settings["cube"]
+        while True:
+            pyautogui.click(cube_point[0] - 100, cube_point[1])
+            time.sleep(0.2)
+            pyautogui.keyDown("a")
+            pyautogui.click(cube_point[0], cube_point[1])
+            pyautogui.keyUp("a")
+            print("Added boosts, sleeping 120 seconds")
+            time.sleep(120)

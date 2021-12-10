@@ -15,6 +15,8 @@ from actors.GearManager import GearManager
 from actors.GameUI import GameUI
 from actors.TimeMachineManager import TimeMachineManager
 from actors.AugmentationManager import AugmentationManager
+from actors.CycleManager import CycleManager
+from actors.BattleManager import BattleManager
 
 class Bot:
     # Initializing Object
@@ -26,6 +28,8 @@ class Bot:
         self.game_ui = GameUI(self)
         self.time_machine_manager = TimeMachineManager(self)
         self.augmentation_manager = AugmentationManager(self)
+        self.cycle_manager = CycleManager(self, self.game_ui)
+        self.battle_manager = BattleManager(self, self.game_ui)
         
         self.phase_count = 0
 
