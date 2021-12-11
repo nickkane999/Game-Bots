@@ -53,13 +53,13 @@ class GearManager:
         }
         return point
 
-    def upgradeItems(self, is_reversed = False):
+    def upgradeItems(self, is_reversed = False, cycle_time = 100000000000000):
         start_time = time.time()
         gear_points = self.getGearPoints()
         inventory_points = self.getInventoryPoints()
 
         self.cycle_count = 0
-        while True:
+        while (time.time() - start_time) < cycle_time:
             self.cycle_count = self.cycle_count + 1;
             if is_reversed:
                 pyautogui.click(795, 622)
@@ -78,7 +78,7 @@ class GearManager:
             print("Cycle for upgrading items completed. Sleeping " + str(self.timer) + " seconds")
             print(time.time() - start_time)
             time.sleep(self.timer)
-            
+        print("Finished upgrade cycle")
 
 
     def getGearPoints(self):
@@ -187,6 +187,7 @@ class GearManager:
 
         pyautogui.keyDown("ctrl")
         time.sleep(0.3)
+        self.applyCubeBoost()
         for current_slot in range(0, grid_size):
             point = {
                 "x": start_point["x"] + (75 * (current_slot % grid[0]) ),
@@ -201,7 +202,7 @@ class GearManager:
                 self.transformColor(point)
                 pyautogui.keyDown("ctrl")
             elif temp_color == ring:
-                print("Ring, do not destroy")
+                print("Ring or other good item, do not destroy")
                 time.sleep(0.2)
             else:
                 pyautogui.click(point["x"], point["y"])
@@ -225,3 +226,12 @@ class GearManager:
             pyautogui.keyUp("a")
             print("Added boosts, sleeping 120 seconds")
             time.sleep(120)
+
+    def applyCubeBoost(self):
+        cube_point = self.gear_settings["cube"]
+        pyautogui.click(cube_point[0] - 100, cube_point[1])
+        time.sleep(0.2)
+        pyautogui.keyDown("a")
+        pyautogui.click(cube_point[0], cube_point[1])
+        pyautogui.keyUp("a")
+        print("Added boosts")

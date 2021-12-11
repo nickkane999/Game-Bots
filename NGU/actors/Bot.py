@@ -8,6 +8,10 @@ import glob
 import shutil
 from time import sleep
 import json
+import sys
+import math
+import win32gui
+
 
 # from commonFunctions import *
 # from SegmentedData import *
@@ -28,10 +32,18 @@ class Bot:
         self.game_ui = GameUI(self)
         self.time_machine_manager = TimeMachineManager(self)
         self.augmentation_manager = AugmentationManager(self)
-        self.cycle_manager = CycleManager(self, self.game_ui)
         self.battle_manager = BattleManager(self, self.game_ui)
+        self.cycle_manager = CycleManager(self, self.game_ui)
         
         self.phase_count = 0
+
+    def get_pixel_colour(self, i_x, i_y):
+        i_desktop_window_id = win32gui.GetDesktopWindow()
+        i_desktop_window_dc = win32gui.GetWindowDC(i_desktop_window_id)
+        long_colour = win32gui.GetPixel(i_desktop_window_dc, i_x, i_y)
+        i_colour = int(long_colour)
+        win32gui.ReleaseDC(i_desktop_window_id,i_desktop_window_dc)
+        return (i_colour & 0xff), ((i_colour >> 8) & 0xff), ((i_colour >> 16) & 0xff)
 
     def startCycle(self):
         self.current_cycle_time = time.time()

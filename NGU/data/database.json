@@ -1,15 +1,16 @@
 {
   "gear": {
     "slots": 60,
-    "start_slot": 7,
+    "start_slot": 6,
     "inv_grid_start": [795, 622],
-    "grid": [5, 5],
+    "grid": [6, 5],
     "box_size": 75,
     "positions": {
       "grid_start": [950, 200],
       "accessory_1": 0,
       "accessory_2": 3,
       "accessory_3": 6,
+      "accessory_4": 9,
       "head": 1,
       "body": 4,
       "pants": 7,
@@ -20,9 +21,9 @@
       "accessory_1",
       "accessory_2",
       "accessory_3",
+      "accessory_4",
       "head",
       "body",
-      "pants",
       "feet",
       "weapon"
     ],
@@ -35,7 +36,7 @@
       "yellow": "e"
     },
     "cube": [1180, 270],
-    "timer": 200
+    "timer": 20
   },
   "menu": {
     "menu_start": [582, 133],
@@ -145,5 +146,16 @@
       "paralyze": 0,
       "regen": 0
     }
+  },
+  "yggdrasil": {
+    "harvest_max": [1470, 770],
+    "luck": [1370, 510],
+    "power": [740, 650],
+    "ap": [1045, 650]
+  },
+  "ngu": {
+    "swap": [800, 260],
+    "power": [1010, 720],
+    "yggdrasil": [1010, 460]
   }
 }

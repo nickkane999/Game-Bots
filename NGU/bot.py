@@ -5,9 +5,36 @@ instructions = {
     'data_file': r'C:\Users\nickk\Music\Portfolio\Game-Bots\NGU\data\database.json'
 }
 application = Application(instructions)
+
+application.bot.cycle_manager.idleCycle(1)
+
+application.bot.battle_manager.adventureCycle()
+
+application.bot.battle_manager.getState("parry")
+application.bot.battle_manager.getState("pierce")
+application.bot.battle_manager.getState("ultimate_attack")
+
+application.bot.battle_manager.getState("block")
+application.bot.battle_manager.getState("defense_buff")
+
+application.bot.battle_manager.getState("paralyze")
+application.bot.battle_manager.getState("regen")
+
+
+application.bot.gear_manager.applyCubeBoostLoop()
+
+application.bot.cycle_manager.timeMachineCycle()
+
+
+application.bot.cycle_manager.wandosCycle()
+
+
+
+application.bot.gear_manager.upgradeItems(True)
+
 application.bot.startCycle()
 
-application.bot.setAugmentation()
+application.bot.setAugmentation(True)
 application.bot.setTimeMachine()
 application.bot.setBasicTraining()
 application.bot.fightBosses()
@@ -16,14 +43,14 @@ application.bot.fightBosses()
 application.bot.gear_manager.upgradeItems(True)
 
 
-
+application.bot.setAugmentation(True)
 
 application.bot.gear_manager.clearInventory()
 
 application.bot.gear_manager.upgradeItems()
 
 
-application.bot.gear_manager.upgradeGearPriority()
+application.bot.gear_manager.upgradeGearPriority()d
 application.bot.gear_manager.upgradeInventoryPriority()
 get_pixel_colour
 

@@ -24,6 +24,60 @@ class CycleManager:
     def reset(self):
         self.cycle_type = "cycle_1"
         self.settings = self.bot.save_data.db
+        self.yggdrasil_inactive_color = (180, 179, 180)
+
+    def idleCycle(self, cycle_time):
+        reset_time = time.time()
+        while True:
+            if (time.time() - reset_time) > cycle_time * 60:
+                self.yggdrasilHarvest()
+            self.nguCycle()
+            self.game_ui.accessMenu("inventory")
+            time.sleep(0.2)
+            self.bot.gear_manager.upgradeItems(True, 30)
+            print("Finished upgrade cycle and yggdrasil harvest cycle. Resting 20 seconds")
+            time.sleep(1)
+
+
+    def nguCycle(self):
+        self.game_ui.accessMenu("ngu")
+        ngu_settings = self.settings["ngu"]
+        time.sleep(0.2)
+
+        energy = ngu_settings["power"]
+        magic = ngu_settings["yggdrasil"]
+        swap = ngu_settings["swap"]
+
+        pyautogui.click(energy[0], energy[1]) 
+        pyautogui.click(magic[0], magic[1])
+        pyautogui.click(swap[0], swap[1])
+        time.sleep(0.2)
+        pyautogui.click(energy[0], energy[1]) 
+        pyautogui.click(magic[0], magic[1])
+        pyautogui.click(swap[0], swap[1])
+        time.sleep(0.2)
+
+        print("Finished NGU cycle")
+
+    def yggdrasilHarvest(self):
+        yggdrasil_settings = self.settings["yggdrasil"]
+        harvest = yggdrasil_settings["harvest_max"]
+        fruits = ["luck", "power", "ap"]
+
+        self.game_ui.accessMenu("yggdrasil")
+        time.sleep(0.2)
+        pyautogui.click(harvest[0], harvest[1])
+        time.sleep(0.2)
+        pyautogui.click(harvest[0], harvest[1])
+
+        for fruit in fruits:
+            button = yggdrasil_settings[fruit]
+            if self.bot.get_pixel_colour(button[0], button[1] - 50) == self.yggdrasil_inactive_color:
+                self.bot.reclaimResources()
+                time.sleep(0.2)
+                pyautogui.click(button[0], button[1]) 
+    
+        print("Harvested yggdrasil and ate available fruits")
 
     def wandosCycle(self):
         wandos_settings = self.settings["wandos"]
