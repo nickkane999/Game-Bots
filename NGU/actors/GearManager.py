@@ -235,3 +235,9 @@ class GearManager:
         pyautogui.click(cube_point[0], cube_point[1])
         pyautogui.keyUp("a")
         print("Added boosts")
+
+    def assignLoadout(self, slot):
+        loadout = self.gear_settings["loadout_slot_start"]
+        slot = self.gear_settings["loadout_slots"][slot]
+        pyautogui.click(loadout[0] + (40 * slot), loadout[1])
+

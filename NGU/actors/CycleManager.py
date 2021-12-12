@@ -25,18 +25,42 @@ class CycleManager:
         self.cycle_type = "cycle_1"
         self.settings = self.bot.save_data.db
         self.yggdrasil_inactive_color = (180, 179, 180)
+        self.boss_data = {
+            "cooldown_bonus": 15,
+            "boss1": 60,
+            "boss2": 120,
+            "highest_boss_cooldown": 120
+        }
+        self.boss_cooldown_time = 15
 
-    def idleCycle(self, cycle_time):
-        reset_time = time.time()
+
+    def idleCycle(self, rebirth_time):
+        start_time = time.time()
+        print(rebirth_time % self.boss_data["highest_boss_cooldown"])
+
         while True:
-            if (time.time() - reset_time) > cycle_time * 60:
-                self.yggdrasilHarvest()
+            self.yggdrasilHarvest()
             self.nguCycle()
             self.game_ui.accessMenu("inventory")
             time.sleep(0.2)
             self.bot.gear_manager.upgradeItems(True, 30)
+
+            rebirth_time = int((time.time() - start_time) / 60) + rebirth_time
+            self.setGearSlot(rebirth_time)
             print("Finished upgrade cycle and yggdrasil harvest cycle. Resting 20 seconds")
             time.sleep(20)
+
+
+    def setGearSlot(self, rebirth_time):
+        print(rebirth_time)
+        largest_boss = self.boss_data["highest_boss_cooldown"] - self.boss_data["cooldown_bonus"]
+        reset_time = largest_boss - (rebirth_time % largest_boss)
+        print(reset_time)
+        if reset_time <= 5:
+            self.bot.gear_manager.assignLoadout("drop_rate_build")
+        else:
+            self.bot.gear_manager.assignLoadout("resource_build")
+
 
 
     def nguCycle(self):

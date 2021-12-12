@@ -36,7 +36,7 @@
       "yellow": "e"
     },
     "cube": [1180, 270],
-    "timer": 20
+    "timer": 200
   },
   "menu": {
     "menu_start": [582, 133],
@@ -155,6 +155,28 @@
   },
   "ngu": {
     "swap": [800, 260],
+    "start_power": [1010, 460],
+    "distance": 50,
+    "energy": {
+      "augment": 0,
+      "wandos": 1,
+      "respawn": 2,
+      "gold": 3,
+      "adventure": 4,
+      "power": 5,
+      "drop_chance": 6,
+      "magic_ngu": 7,
+      "pp": 8
+    },
+    "magic": {
+      "yggdrasil": 0,
+      "exp": 1,
+      "power": 2,
+      "number": 3,
+      "time_machine": 4,
+      "energy_ngu": 5,
+      "adventure": 6
+    },
     "power": [1010, 720],
     "yggdrasil": [1010, 460]
   }
