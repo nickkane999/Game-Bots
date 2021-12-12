@@ -36,7 +36,7 @@ class CycleManager:
             time.sleep(0.2)
             self.bot.gear_manager.upgradeItems(True, 30)
             print("Finished upgrade cycle and yggdrasil harvest cycle. Resting 20 seconds")
-            time.sleep(1)
+            time.sleep(20)
 
 
     def nguCycle(self):
@@ -44,18 +44,19 @@ class CycleManager:
         ngu_settings = self.settings["ngu"]
         time.sleep(0.2)
 
-        energy = ngu_settings["power"]
-        magic = ngu_settings["yggdrasil"]
+        point = ngu_settings["start_power"]
+        energy_slot = ngu_settings["energy"]["wandos"]
+        magic_slot = ngu_settings["magic"]["yggdrasil"]
         swap = ngu_settings["swap"]
 
-        pyautogui.click(energy[0], energy[1]) 
-        pyautogui.click(magic[0], magic[1])
+        pyautogui.click(point[0], point[1] + (50 * energy_slot)) 
+        pyautogui.click(point[0], point[1] + (50 * energy_slot))
         pyautogui.click(swap[0], swap[1])
-        time.sleep(0.2)
-        pyautogui.click(energy[0], energy[1]) 
-        pyautogui.click(magic[0], magic[1])
+        time.sleep(0.4)
+        pyautogui.click(point[0], point[1] + (50 * magic_slot))
+        pyautogui.click(point[0], point[1] + (50 * magic_slot)) 
         pyautogui.click(swap[0], swap[1])
-        time.sleep(0.2)
+        time.sleep(0.4)
 
         print("Finished NGU cycle")
 
@@ -72,6 +73,8 @@ class CycleManager:
 
         for fruit in fruits:
             button = yggdrasil_settings[fruit]
+            print(fruit)
+            print(self.bot.get_pixel_colour(button[0], button[1] - 50))
             if self.bot.get_pixel_colour(button[0], button[1] - 50) == self.yggdrasil_inactive_color:
                 self.bot.reclaimResources()
                 time.sleep(0.2)
