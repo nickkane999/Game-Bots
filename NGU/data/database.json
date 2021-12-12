@@ -36,7 +36,12 @@
       "yellow": "e"
     },
     "cube": [1180, 270],
-    "timer": 200
+    "timer": 200,
+    "loadout_slot_start": [740, 480],
+    "loadout_slots": {
+      "resource_build": 0,
+      "drop_rate_build": 1
+    }
   },
   "menu": {
     "menu_start": [582, 133],
