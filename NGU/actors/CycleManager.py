@@ -32,11 +32,16 @@ class CycleManager:
             "highest_boss_cooldown": 120
         }
         self.boss_cooldown_time = 15
+        self.digger_type = "resource_build"
+        self.diggers = {
+            "resource_build": ["magic_ngu"],
+            "drop_chance_build": ["drop_chance"]
+        }
 
 
     def idleCycle(self, rebirth_time):
         loop_start_time = time.time()
-        print(rebirth_time % self.boss_data["highest_boss_cooldown"])
+        rebirth_time = rebirth_time * 60
 
         while True:
             loop_start_time = time.time()
@@ -46,24 +51,47 @@ class CycleManager:
             time.sleep(0.2)
             self.bot.gear_manager.upgradeItems(True, 30)
 
-            temp_rebirth_time = int((time.time() - loop_start_time) / 60) + rebirth_time
-            self.setGearSlot(temp_rebirth_time)
+            current_rebirth_time = time.time() - loop_start_time + rebirth_time
+            self.setGearSlot(current_rebirth_time)
             print("Finished upgrade cycle and yggdrasil harvest cycle. Resting 20 seconds")
             time.sleep(20)
-            rebirth_time = int((time.time() - loop_start_time) / 60) + rebirth_time
+            rebirth_time = time.time() - loop_start_time + rebirth_time
 
 
     def setGearSlot(self, rebirth_time):
         print(rebirth_time)
         largest_boss = self.boss_data["highest_boss_cooldown"] - self.boss_data["cooldown_bonus"]
-        reset_time = largest_boss - (rebirth_time % largest_boss)
+        reset_time = largest_boss - (int(rebirth_time) % largest_boss)
         print(reset_time)
         if reset_time <= 5:
             self.bot.gear_manager.assignLoadout("drop_rate_build")
+            if self.digger_type == "resource_build":
+                self.setDigger("drop_rate_build")
         else:
             self.bot.gear_manager.assignLoadout("resource_build")
+            if self.digger_type == "drop_rate_build":
+                self.setDigger("resource_build")
 
+    def setDigger(self, digger_type):
+        self.game_ui.accessMenu("gold_diggers")
+        digger_settings = self.settings["gold_diggers"]
+        page_point = digger_settings["page_start"]
+        clear_point = digger_settings["clear_button"]
+        diggers = []
 
+        for digger in self.diggers[digger_type]:
+            digger_points.append(digger_settings["digger_info"][digger])
+
+        pyautogui.click(clear_point[0], clear_point[1])
+        time.sleep(0.2)
+
+        cap_buttons = digger_settings["cap_buttons"]
+        for digger in diggers:
+            pyautogui.click(page_point[0] + (digger[0] * 100), page_point[1])
+            time.sleep(0.2)
+            pyautogui.click(cap_buttons[digger[1]][0], cap_buttons[digger[1]][1])
+
+        self.digger_type = digger_type
 
     def nguCycle(self):
         self.game_ui.accessMenu("ngu")
@@ -71,8 +99,8 @@ class CycleManager:
         time.sleep(0.2)
 
         point = ngu_settings["start_power"]
-        energy_slot = ngu_settings["energy"]["wandos"]
-        magic_slot = ngu_settings["magic"]["yggdrasil"]
+        energy_slot = ngu_settings["energy"]["augment"]
+        magic_slot = ngu_settings["magic"]["number"]
         swap = ngu_settings["swap"]
 
         pyautogui.click(point[0], point[1] + (50 * energy_slot)) 
