@@ -46,10 +46,11 @@ class CycleManager:
             time.sleep(0.2)
             self.bot.gear_manager.upgradeItems(True, 30)
 
-            rebirth_time = int((time.time() - loop_start_time) / 60) + rebirth_time
-            self.setGearSlot(rebirth_time)
+            temp_rebirth_time = int((time.time() - loop_start_time) / 60) + rebirth_time
+            self.setGearSlot(temp_rebirth_time)
             print("Finished upgrade cycle and yggdrasil harvest cycle. Resting 20 seconds")
             time.sleep(20)
+            rebirth_time = int((time.time() - loop_start_time) / 60) + rebirth_time
 
 
     def setGearSlot(self, rebirth_time):
