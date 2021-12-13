@@ -35,17 +35,18 @@ class CycleManager:
 
 
     def idleCycle(self, rebirth_time):
-        start_time = time.time()
+        loop_start_time = time.time()
         print(rebirth_time % self.boss_data["highest_boss_cooldown"])
 
         while True:
+            loop_start_time = time.time()
             self.yggdrasilHarvest()
             self.nguCycle()
             self.game_ui.accessMenu("inventory")
             time.sleep(0.2)
             self.bot.gear_manager.upgradeItems(True, 30)
 
-            rebirth_time = int((time.time() - start_time) / 60) + rebirth_time
+            rebirth_time = int((time.time() - loop_start_time) / 60) + rebirth_time
             self.setGearSlot(rebirth_time)
             print("Finished upgrade cycle and yggdrasil harvest cycle. Resting 20 seconds")
             time.sleep(20)
