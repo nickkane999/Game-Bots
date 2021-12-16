@@ -53,10 +53,11 @@ class RebirthManager:
                 self.timeMachineCycle(10)
             
             print("Finished Cycle 1")
+            sub_cycle_count = 0
             new_adventure_zone_set = False
             while time.time() - rebirth_start_time < 120:
                 self.nukeBoss()
-                if not new_adventure_zone_set:
+                if not new_adventure_zone_set and sub_cycle_count >= 2:
                     self.changeGearSlot("resource_build")
                     self.setAdventureZone("increment")
                     self.setDiggers()
@@ -67,6 +68,7 @@ class RebirthManager:
                 self.assignAugments(6, self.augment)
                 self.bot.reclaimResource(True)
                 self.timeMachineCycle(12)
+                sub_cycle_count = sub_cycle_count + 1
 
             print("Finished Cycle 2")
             while time.time() - rebirth_start_time < 270:
@@ -90,9 +92,9 @@ class RebirthManager:
             print("Finished Cycle 5")
             while time.time() - rebirth_start_time < 480:
                 self.bot.reclaimResource(True)
-                self.assignAugments(4, self.augment, True)
+                self.assignAugments(3, self.augment, True)
                 self.bot.reclaimResource(True)
-                self.assignAugments(8, self.augment)
+                self.assignAugments(9, self.augment)
                 self.setBlood("blood_4")
                 self.nukeBoss()
                 time.sleep(5)
