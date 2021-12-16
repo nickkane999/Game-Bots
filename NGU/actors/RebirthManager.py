@@ -234,7 +234,7 @@ class RebirthManager:
 
     def selectGear(self, gear):
         self.game_ui.accessMenu("inventory")
-        time.sleep(2)
+        time.sleep(1)
         self.bot.gear_manager.selectGear(gear)
 
     def enterRebirth(self):
