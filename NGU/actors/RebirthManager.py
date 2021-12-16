@@ -47,7 +47,10 @@ class RebirthManager:
                 if not adventure_zone_set:
                     self.changeGearSlot("drop_rate_build")
                     self.setAdventureZone("low")
-                    self.assignAugments(10, self.augment)
+                    self.assignAugments(13, self.augment)
+                    self.nukeBoss()
+                    time.sleep(2)
+                    self.setAdventureZone("increment")
                     self.bot.reclaimResource(True)
                     adventure_zone_set = True
                 self.timeMachineCycle(10)
