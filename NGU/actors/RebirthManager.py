@@ -50,15 +50,17 @@ class RebirthManager:
                     self.bot.rebirth_manager.assignAugments(self.augment)
                     time.sleep(10)
                     self.bot.reclaimResource(True)
+                    adventure_zone_set = True
                 self.bot.rebirth_manager.timeMachineCycle(10)
             
             new_adventure_zone_set = False
             while time.time() - rebirth_start_time < 120:
                 self.bot.rebirth_manager.nukeBoss()
-                if not adventure_zone_set:
+                if not new_adventure_zone_set:
                     self.bot.rebirth_manager.changeGearSlot("resource_build")
                     self.bot.rebirth_manager.setAdventureZone("increment")
                     self.bot.rebirth_manager.setDiggers()
+                    new_adventure_zone_set = True
                 self.bot.reclaimResource(True)
                 self.bot.rebirth_manager.assignAugments(self.augment, True)
                 time.sleep(2)
