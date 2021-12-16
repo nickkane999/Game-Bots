@@ -92,6 +92,8 @@ class RebirthManager:
                 self.setBlood("blood_4")
                 self.nukeBoss()
                 self.timeMachineCycle(5, "energy")
+                self.bot.reclaimResource(False)
+                self.setBlood("blood_5")
                 time.sleep(5)
 
             print("Finished Cycle 5")
