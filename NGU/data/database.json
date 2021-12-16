@@ -185,9 +185,23 @@
     "power": [1010, 720],
     "yggdrasil": [1010, 460]
   },
+  "blood": {
+    "blood_start": [1090, 440],
+    "distance": 50,
+    "info": {
+      "blood_1": 0,
+      "blood_2": 1,
+      "blood_3": 2,
+      "blood_4": 3,
+      "blood_5": 4,
+      "blood_6": 5,
+      "blood_7": 6,
+      "blood_8": 7
+    }
+  },
   "gold_diggers": {
     "page_start": [750, 260],
-    "distance": 100,
+    "distance": 50,
     "clear_button": [1600, 250],
     "digger_info": {
       "drop_chance": [0, 0],
@@ -209,5 +223,10 @@
       [1060, 660],
       [1540, 660]
     ]
+  },
+  "rebirth": {
+    "enter_menu": [380, 730],
+    "rebirth_start": [1060, 880],
+    "rebirth_confirm_start": [890, 580]
   }
 }

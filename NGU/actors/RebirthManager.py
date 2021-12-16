@@ -38,34 +38,88 @@ class RebirthManager:
         loop_time = current_time
 
         while True:
-            return True
+            rebirth_time = 0
+            rebirth_start_time = time.time()
 
-        #self.bot.reclaimResource(True)
-        #self.bot.reclaimResource(False)
-        #self.bot.gear_manager.selectGear(self.gear["chest"])
-        #self.bot.gear_manager.selectGear(self.gear["accessory"])
-        loop_start_time = time.time()
-        rebirth_time = rebirth_time * 60
+            adventure_zone_set = False
+            while time.time() - rebirth_start_time < 60:
+                self.bot.rebirth_manager.nukeBoss()
+                if not adventure_zone_set:
+                    self.bot.rebirth_manager.changeGearSlot("drop_rate_build")
+                    self.bot.rebirth_manager.setAdventureZone("low")
+                    self.bot.rebirth_manager.assignAugments(self.augment)
+                    time.sleep(10)
+                    self.bot.reclaimResource(True)
+                self.bot.rebirth_manager.timeMachineCycle(10)
+            
+            new_adventure_zone_set = False
+            while time.time() - rebirth_start_time < 120:
+                self.bot.rebirth_manager.nukeBoss()
+                if not adventure_zone_set:
+                    self.bot.rebirth_manager.changeGearSlot("resource_build")
+                    self.bot.rebirth_manager.setAdventureZone("increment")
+                    self.bot.rebirth_manager.setDiggers()
+                self.bot.reclaimResource(True)
+                self.bot.rebirth_manager.assignAugments(self.augment, True)
+                time.sleep(2)
+                self.bot.rebirth_manager.assignAugments(self.augment)
+                time.sleep(2)
+                self.bot.reclaimResource(True)
+                self.bot.rebirth_manager.timeMachineCycle(12)
 
-        while True:
-            loop_start_time = time.time()
-            self.yggdrasilHarvest()
-            self.nguCycle()
-            self.game_ui.accessMenu("inventory")
-            time.sleep(0.2)
-            self.bot.gear_manager.upgradeItems(True, 30)
+            while time.time() - rebirth_start_time < 270:
+                self.bot.rebirth_manager.timeMachineCycle(10)
+                self.bot.rebirth_manager.nukeBoss()
+                
+            self.bot.gear_manager.selectGear(self.gear["chest"])
+            while time.time() - rebirth_start_time < 300:
+                self.bot.rebirth_manager.timeMachineCycle(10)
+                self.bot.rebirth_manager.nukeBoss()
 
-            current_rebirth_time = time.time() - loop_start_time + rebirth_time
-            self.setGearSlot(current_rebirth_time)
-            print("Finished upgrade cycle and yggdrasil harvest cycle. Resting 20 seconds")
-            time.sleep(20)
-            rebirth_time = time.time() - loop_start_time + rebirth_time
+            self.bot.reclaimResource(False)
+            while time.time() - rebirth_start_time < 360:
+                application.bot.rebirth_manager.setBlood("blood_4")
+                self.bot.rebirth_manager.nukeBoss()
+                self.bot.rebirth_manager.timeMachineCycle(5, "energy")
+                time.sleep(5)
+
+            self.bot.reclaimResource(True)
+            while time.time() - rebirth_start_time < 480:
+                self.bot.rebirth_manager.assignAugments(self.augment, True)
+                time.sleep(2)
+                self.bot.reclaimResource(True)
+                self.bot.rebirth_manager.assignAugments(self.augment)
+                application.bot.rebirth_manager.assignAugments("blood_4")
+                self.bot.rebirth_manager.nukeBoss()
+                time.sleep(5)
+
+            self.bot.reclaimResource(True)
+            self.bot.reclaimResource(False)
+            self.bot.gear_manager.selectGear(self.gear["accessory"])
+            self.bot.rebirth_manager.setDiggers(False)
+            while time.time() - rebirth_start_time < 590:
+                self.bot.rebirth_manager.wandosCycle(10)
+                self.bot.rebirth_manager.nukeBoss()
+                time.sleep(5)
+
+            self.attackBoss()
+            
+            print("Finished cycle")
+            print(asdasdasdas)
 
     def nukeBoss(self):
         self.game_ui.accessMenu("fight_boss")
         time.sleep(0.2)
         nuke = self.settings["fight_boss"]["nuke"]
         self.click(nuke)
+
+    def attackBoss(self):
+        self.game_ui.accessMenu("fight_boss")
+        time.sleep(0.2)
+        fight = self.settings["fight_boss"]["fight"]
+        for x in range(0, 8):
+            self.click(fight)
+            time.sleep(2)
 
     def changeGearSlot(self, slot):
         #resource_build = 0, drop_rate_build = 1
@@ -124,9 +178,9 @@ class RebirthManager:
 
         while loop_time - current_time < set_time:
             self.game_ui.accessMenu("wandos")
-            if dump is not "energy":
+            if dump != "energy":
                 self.click(magic_dump)
-            if dump is not "magic":
+            if dump != "magic":
                 self.click(energy_dump)
             loop_time = time.time()
             time.sleep(0.5)
@@ -143,9 +197,9 @@ class RebirthManager:
 
         while loop_time - current_time < set_time:
             self.game_ui.accessMenu("time_machine")
-            if machine is not "energy":
+            if machine != "energy":
                 self.click(gold_speed)
-            if machine is not "magic":
+            if machine != "magic":
                 self.click(machine_speed)
             loop_time = time.time()
             time.sleep(0.5)
