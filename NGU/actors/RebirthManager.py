@@ -74,7 +74,7 @@ class RebirthManager:
                 self.nukeBoss()
                 
             print("Finished Cycle 3")
-            self.bot.gear_manager.selectGear(self.gear["chest"])
+            self.selectGear(self.gear["chest"])
             while time.time() - rebirth_start_time < 300:
                 self.timeMachineCycle(10)
                 self.nukeBoss()
@@ -88,10 +88,11 @@ class RebirthManager:
                 time.sleep(5)
 
             print("Finished Cycle 5")
-            self.bot.reclaimResource(True)
             while time.time() - rebirth_start_time < 480:
-                self.assignAugments(3, self.augment, True)
-                self.assignAugments(3, self.augment)
+                self.bot.reclaimResource(True)
+                self.assignAugments(2, self.augment, True)
+                self.bot.reclaimResource(True)
+                self.assignAugments(8, self.augment)
                 self.setBlood("blood_4")
                 self.nukeBoss()
                 time.sleep(5)
@@ -99,7 +100,7 @@ class RebirthManager:
             print("Finished Cycle 6")
             self.bot.reclaimResource(True)
             self.bot.reclaimResource(False)
-            self.bot.gear_manager.selectGear(self.gear["accessory"])
+            self.selectGear(self.gear["accessory"])
             self.setDiggers(False)
             while time.time() - rebirth_start_time < 590:
                 self.wandosCycle(10)
@@ -108,7 +109,7 @@ class RebirthManager:
 
             self.bot.reclaimResource(True)
             self.bot.reclaimResource(False)
-            self.bot.gear_manager.selectGear(self.gear["accessory"])
+            self.selectGear(self.gear["accessory"])
             self.attackBoss()
             
             print("Finished cycle. Restarting")
@@ -230,6 +231,11 @@ class RebirthManager:
         distance = blood_settings["distance"]
         self.click([start_point[0], start_point[1] + (blood_settings["info"][blood_type] * distance)])
         print("Set blood")
+
+    def selectGear(self, gear):
+        self.game_ui.accessMenu("inventory")
+        time.sleep(0.2)
+        self.bot.gear_manager.selectGear(gear)
 
     def enterRebirth(self):
         self.click(self.settings["rebirth"]["enter_menu"])
