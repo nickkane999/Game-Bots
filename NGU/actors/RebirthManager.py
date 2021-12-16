@@ -28,7 +28,8 @@ class RebirthManager:
         self.augment = "energy_buster"
         self.gear = {
             "chest": 0,
-            "accessory": 1
+            "accessory": 1,
+            "head": 2
         }
         self.bood_type = "blood_4"
         self.cycle_time = 600
@@ -107,6 +108,7 @@ class RebirthManager:
             self.bot.reclaimResource(True)
             self.bot.reclaimResource(False)
             self.selectGear(self.gear["accessory"])
+            self.selectGear(self.gear["head"])
             self.setDiggers(False)
             while time.time() - rebirth_start_time < 590:
                 self.wandosCycle(10)
@@ -116,6 +118,7 @@ class RebirthManager:
             self.bot.reclaimResource(True)
             self.bot.reclaimResource(False)
             self.selectGear(self.gear["accessory"])
+            self.selectGear(self.gear["head"])
             self.attackBoss()
             
             print("Finished cycle. Restarting")
