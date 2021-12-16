@@ -31,6 +31,15 @@ class RebirthManager:
             "accessory": 1,
             "head": 2
         }
+        self.cycle_times = {
+            "one": 60,
+            "two": 120,
+            "three": 240,
+            "four": 300,
+            "five": 360,
+            "six": 480,
+            "seven": 590
+        }
         self.bood_type = "blood_4"
         self.cycle_time = 600
 
@@ -43,7 +52,7 @@ class RebirthManager:
             rebirth_start_time = time.time()
 
             adventure_zone_set = False
-            while time.time() - rebirth_start_time < 60:
+            while time.time() - rebirth_start_time < self.cycle_times["one"]:
                 self.nukeBoss()
                 if not adventure_zone_set:
                     self.changeGearSlot("drop_rate_build")
@@ -59,7 +68,7 @@ class RebirthManager:
             print("Finished Cycle 1")
             sub_cycle_count = 0
             new_adventure_zone_set = False
-            while time.time() - rebirth_start_time < 120:
+            while time.time() - rebirth_start_time < self.cycle_times["two"]:
                 self.nukeBoss()
                 if not new_adventure_zone_set and sub_cycle_count >= 1:
                     self.setAdventureZone("increment")
@@ -76,19 +85,19 @@ class RebirthManager:
                 sub_cycle_count = sub_cycle_count + 1
 
             print("Finished Cycle 2")
-            while time.time() - rebirth_start_time < 270:
+            while time.time() - rebirth_start_time < self.cycle_times["three"]:
                 self.timeMachineCycle(10)
                 self.nukeBoss()
                 
             print("Finished Cycle 3")
             self.selectGear(self.gear["chest"])
-            while time.time() - rebirth_start_time < 300:
+            while time.time() - rebirth_start_time < self.cycle_times["four"]:
                 self.timeMachineCycle(10)
                 self.nukeBoss()
 
             print("Finished Cycle 4")
             self.bot.reclaimResource(False)
-            while time.time() - rebirth_start_time < 360:
+            while time.time() - rebirth_start_time < self.cycle_times["five"]:
                 self.setBlood("blood_4")
                 self.nukeBoss()
                 self.timeMachineCycle(5, "energy")
@@ -97,7 +106,7 @@ class RebirthManager:
                 time.sleep(5)
 
             print("Finished Cycle 5")
-            while time.time() - rebirth_start_time < 480:
+            while time.time() - rebirth_start_time < self.cycle_times["six"]:
                 self.bot.reclaimResource(True)
                 self.assignAugments(3, self.augment, True)
                 self.bot.reclaimResource(True)
@@ -112,7 +121,7 @@ class RebirthManager:
             self.selectGear(self.gear["accessory"])
             self.selectGear(self.gear["head"])
             self.setDiggers(False)
-            while time.time() - rebirth_start_time < 590:
+            while time.time() - rebirth_start_time < self.cycle_times["seven"]:
                 self.wandosCycle(10)
                 self.nukeBoss()
                 time.sleep(5)
