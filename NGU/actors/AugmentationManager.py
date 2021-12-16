@@ -38,3 +38,11 @@ class AugmentationManager:
             pyautogui.click(point[0], point[1] + menu["aug_adjustment"])
         else:
             pyautogui.click(point[0], point[1])
+
+    def assignEnergy(self, item, expensive_upgrade = False):
+        point = self.settings[item]
+        if expensive_upgrade:
+            pyautogui.click(point[0], point[1] + self.settings["aug_adjustment"])
+        else:
+            pyautogui.click(point[0], point[1])
+        time.sleep(0.1)

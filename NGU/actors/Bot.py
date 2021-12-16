@@ -21,6 +21,7 @@ from actors.TimeMachineManager import TimeMachineManager
 from actors.AugmentationManager import AugmentationManager
 from actors.CycleManager import CycleManager
 from actors.BattleManager import BattleManager
+from actors.RebirthManger import RebirthManger
 
 class Bot:
     # Initializing Object
@@ -34,6 +35,7 @@ class Bot:
         self.augmentation_manager = AugmentationManager(self)
         self.battle_manager = BattleManager(self, self.game_ui)
         self.cycle_manager = CycleManager(self, self.game_ui)
+        self.rebirth_manager = RebirthManager(self, self.game_ui)
         
         self.phase_count = 0
 
@@ -129,3 +131,9 @@ class Bot:
     def reclaimResources(self):
         pyautogui.press("r")
         pyautogui.press("t")
+
+    def reclaimResource(self, is_energy = True):
+        if is_energy:
+            pyautogui.press("r")
+        else:
+            pyautogui.press("t")

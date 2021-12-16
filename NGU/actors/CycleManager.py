@@ -34,8 +34,8 @@ class CycleManager:
         self.boss_cooldown_time = 15
         self.digger_type = "resource_build"
         self.diggers = {
-            "resource_build": ["magic_ngu"],
-            "drop_chance_build": ["drop_chance"]
+            "resource_build": ["magic_ngu", "energy_ngu"],
+            "drop_rate_build": ["drop_chance"]
         }
 
 
@@ -61,7 +61,7 @@ class CycleManager:
     def setGearSlot(self, rebirth_time):
         print(rebirth_time)
         largest_boss = self.boss_data["highest_boss_cooldown"] - self.boss_data["cooldown_bonus"]
-        reset_time = largest_boss - (int(rebirth_time) % largest_boss)
+        reset_time = largest_boss - (int(rebirth_time / 60)  % largest_boss)
         print(reset_time)
         if reset_time <= 5:
             self.bot.gear_manager.assignLoadout("drop_rate_build")
@@ -80,7 +80,7 @@ class CycleManager:
         diggers = []
 
         for digger in self.diggers[digger_type]:
-            digger_points.append(digger_settings["digger_info"][digger])
+            diggers.append(digger_settings["digger_info"][digger])
 
         pyautogui.click(clear_point[0], clear_point[1])
         time.sleep(0.2)

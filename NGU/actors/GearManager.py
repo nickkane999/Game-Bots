@@ -240,4 +240,10 @@ class GearManager:
         loadout = self.gear_settings["loadout_slot_start"]
         slot = self.gear_settings["loadout_slots"][slot]
         pyautogui.click(loadout[0] + (40 * slot), loadout[1])
+        time.sleep(0.1)
 
+    def selectGear(self, slot)
+        start_point = self.gear_settings["inv_grid_start"]
+        size = self.gear_settings["box_size"]
+        pyautogui.click(start_point[0] + start_point[1] + (size * slot), button='right')
+        time.sleep(0.1)
