@@ -21,7 +21,7 @@ from actors.TimeMachineManager import TimeMachineManager
 from actors.AugmentationManager import AugmentationManager
 from actors.CycleManager import CycleManager
 from actors.BattleManager import BattleManager
-from actors.RebirthManger import RebirthManger
+from actors.RebirthManager import RebirthManager
 
 class Bot:
     # Initializing Object

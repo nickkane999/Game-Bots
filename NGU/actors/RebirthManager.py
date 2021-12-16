@@ -25,14 +25,13 @@ class RebirthManager:
         self.settings = self.bot.save_data.db
         self.sleep_time = 0.1
         self.diggers = ["wandos", "stat"]
+        self.augment = "energy_buster"
         self.gear = {
             "chest": 0,
             "accessory": 1
         }
         self.bood_type = "blood_4"
         self.cycle_time = 600
-
-
 
     def idleCycle(self):
         current_time = time.time()
@@ -65,30 +64,33 @@ class RebirthManager:
     def nukeBoss(self):
         self.game_ui.accessMenu("fight_boss")
         time.sleep(0.2)
-        nuke = menu["nuke"]
+        nuke = self.settings["fight_boss"]["nuke"]
         self.click(nuke)
 
     def changeGearSlot(self, slot):
         #resource_build = 0, drop_rate_build = 1
+        self.game_ui.accessMenu("inventory")
+        time.sleep(0.2)
         self.bot.gear_manager.assignLoadout(slot)    
 
-    def assignAugments(self):
-        self.bot.augmentation_manager.assignEnergy("energy_buster", False)
-        self.bot.augmentation_manager.assignEnergy("energy_buster", True)
+    def assignAugments(self, augment, is_strong = False):
+        self.game_ui.accessMenu("augmentation")
+        self.bot.augmentation_manager.assignEnergy(augment, is_strong)
 
     def setAdventureZone(self, my_type = None):
+        self.game_ui.accessMenu("adventure")
         menu = self.bot.battle_manager.settings
-        arrow_left = self.settings["arrow_left"]
-        arrow_right = self.settings["arrow_right"]
-        if my_type = "low":
-            for range in (0, 12):
+        arrow_left = menu["arrow_left"]
+        arrow_right = menu["arrow_right"]
+        if my_type == "low":
+            for x in range(0, 12):
                 self.click(arrow_right)
             self.click(arrow_left)
-        elif my_type = "increment":
-            for range in(0, 5):
+        elif my_type == "increment":
+            for x in range(0, 5):
                 self.click(arrow_right)
         else:
-            for range in (0, 20):
+            for x in range(0, 20):
                 self.click(arrow_right)
 
     def setDiggers(self, clear = True):
@@ -122,9 +124,9 @@ class RebirthManager:
 
         while loop_time - current_time < set_time:
             self.game_ui.accessMenu("wandos")
-            if dump not "energy":
+            if dump is not "energy":
                 self.click(magic_dump)
-            if dump not "magic":
+            if dump is not "magic":
                 self.click(energy_dump)
             loop_time = time.time()
             time.sleep(0.5)
@@ -141,27 +143,30 @@ class RebirthManager:
 
         while loop_time - current_time < set_time:
             self.game_ui.accessMenu("time_machine")
-            if machine not "energy":
+            if machine is not "energy":
                 self.click(gold_speed)
-            if machine not "magic":
+            if machine is not "magic":
                 self.click(machine_speed)
             loop_time = time.time()
             time.sleep(0.5)
         print("Finished adding time machine")
 
     def setBlood(self, blood_type):
+        self.game_ui.accessMenu("blood_magic")
         blood_settings = self.settings["blood"]
         start_point = blood_settings["blood_start"]
         distance = blood_settings["distance"]
-        self.click([start_point[0], start_point[1] + blood_settings["info"][blood_type]])
+        self.click([start_point[0], start_point[1] + (blood_settings["info"][blood_type] * distance)])
 
     def enterRebirth(self):
-        menu = self.settings["rebirth"]
-        self.click(menu["emter_menu"])
-        self.click(menu["rebirth_start"])
-        self.click(menu["rebirth_confirm_start"])
+        self.click(self.settings["rebirth"]["enter_menu"])
+        self.click(self.settings["rebirth"]["rebirth_start"])
+        self.click(self.settings["rebirth"]["rebirth_confirm_start"])
 
 
-    def click(self, point):
+    def click(self, point, rest_time = None):
         pyautogui.click(point[0], point[1])
-        time.sleep(self.sleep_time)       
+        if not rest_time:
+            time.sleep(self.sleep_time)
+        else:
+            time.sleep(rest_time)
