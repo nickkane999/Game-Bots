@@ -43,67 +43,67 @@ class RebirthManager:
 
             adventure_zone_set = False
             while time.time() - rebirth_start_time < 60:
-                self.bot.rebirth_manager.nukeBoss()
+                self.nukeBoss()
                 if not adventure_zone_set:
-                    self.bot.rebirth_manager.changeGearSlot("drop_rate_build")
-                    self.bot.rebirth_manager.setAdventureZone("low")
-                    self.bot.rebirth_manager.assignAugments(10, self.augment)
+                    self.changeGearSlot("drop_rate_build")
+                    self.setAdventureZone("low")
+                    self.assignAugments(10, self.augment)
                     self.bot.reclaimResource(True)
                     adventure_zone_set = True
-                self.bot.rebirth_manager.timeMachineCycle(10)
+                self.timeMachineCycle(10)
             
             print("Finished Cycle 1")
             new_adventure_zone_set = False
             while time.time() - rebirth_start_time < 120:
-                self.bot.rebirth_manager.nukeBoss()
+                self.nukeBoss()
                 if not new_adventure_zone_set:
-                    self.bot.rebirth_manager.changeGearSlot("resource_build")
-                    self.bot.rebirth_manager.setAdventureZone("increment")
-                    self.bot.rebirth_manager.setDiggers()
+                    self.changeGearSlot("resource_build")
+                    self.setAdventureZone("increment")
+                    self.setDiggers()
                     new_adventure_zone_set = True
                 self.bot.reclaimResource(True)
-                self.bot.rebirth_manager.assignAugments(4, self.augment, True)
+                self.assignAugments(4, self.augment, True)
                 self.bot.reclaimResource(True)
-                self.bot.rebirth_manager.assignAugments(4, self.augment)
+                self.assignAugments(4, self.augment)
                 self.bot.reclaimResource(True)
-                self.bot.rebirth_manager.timeMachineCycle(12)
+                self.timeMachineCycle(12)
 
             print("Finished Cycle 2")
             while time.time() - rebirth_start_time < 270:
-                self.bot.rebirth_manager.timeMachineCycle(10)
-                self.bot.rebirth_manager.nukeBoss()
+                self.timeMachineCycle(10)
+                self.nukeBoss()
                 
             print("Finished Cycle 3")
             self.bot.gear_manager.selectGear(self.gear["chest"])
             while time.time() - rebirth_start_time < 300:
-                self.bot.rebirth_manager.timeMachineCycle(10)
-                self.bot.rebirth_manager.nukeBoss()
+                self.timeMachineCycle(10)
+                self.nukeBoss()
 
             print("Finished Cycle 4")
             self.bot.reclaimResource(False)
             while time.time() - rebirth_start_time < 360:
-                self.bot.rebirth_manager.setBlood("blood_4")
-                self.bot.rebirth_manager.nukeBoss()
-                self.bot.rebirth_manager.timeMachineCycle(5, "energy")
+                self.setBlood("blood_4")
+                self.nukeBoss()
+                self.timeMachineCycle(5, "energy")
                 time.sleep(5)
 
             print("Finished Cycle 5")
             self.bot.reclaimResource(True)
             while time.time() - rebirth_start_time < 480:
-                self.bot.rebirth_manager.assignAugments(3, self.augment, True)
-                self.bot.rebirth_manager.assignAugments(3, self.augment)
-                self.bot.rebirth_manager.setBlood("blood_4")
-                self.bot.rebirth_manager.nukeBoss()
+                self.assignAugments(3, self.augment, True)
+                self.assignAugments(3, self.augment)
+                self.setBlood("blood_4")
+                self.nukeBoss()
                 time.sleep(5)
 
             print("Finished Cycle 6")
             self.bot.reclaimResource(True)
             self.bot.reclaimResource(False)
             self.bot.gear_manager.selectGear(self.gear["accessory"])
-            self.bot.rebirth_manager.setDiggers(False)
+            self.setDiggers(False)
             while time.time() - rebirth_start_time < 590:
-                self.bot.rebirth_manager.wandosCycle(10)
-                self.bot.rebirth_manager.nukeBoss()
+                self.wandosCycle(10)
+                self.nukeBoss()
                 time.sleep(5)
 
             self.bot.reclaimResource(True)
@@ -144,6 +144,7 @@ class RebirthManager:
 
         while loop_time - current_time < set_time:
             self.bot.augmentation_manager.assignEnergy(augment, is_strong)
+            loop_time = time.time()
             time.sleep(0.5)
         print("Finished adding augments")
 
