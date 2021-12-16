@@ -143,16 +143,9 @@ class RebirthManager:
         time.sleep(0.2)
 
         while loop_time - current_time < set_time:
-            self.game_ui.accessMenu("wandos")
-            if dump != "energy":
-                self.click(magic_dump)
-            if dump != "magic":
-                self.click(energy_dump)
-            loop_time = time.time()
+            self.bot.augmentation_manager.assignEnergy(augment, is_strong)
             time.sleep(0.5)
         print("Finished adding augments")
-
-        self.bot.augmentation_manager.assignEnergy(augment, is_strong)
 
     def setAdventureZone(self, my_type = None):
         self.game_ui.accessMenu("adventure")
