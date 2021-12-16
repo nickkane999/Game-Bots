@@ -62,9 +62,9 @@ class RebirthManager:
                     self.setDiggers()
                     new_adventure_zone_set = True
                 self.bot.reclaimResource(True)
-                self.assignAugments(4, self.augment, True)
+                self.assignAugments(2, self.augment, True)
                 self.bot.reclaimResource(True)
-                self.assignAugments(4, self.augment)
+                self.assignAugments(6, self.augment)
                 self.bot.reclaimResource(True)
                 self.timeMachineCycle(12)
 
@@ -90,7 +90,7 @@ class RebirthManager:
             print("Finished Cycle 5")
             while time.time() - rebirth_start_time < 480:
                 self.bot.reclaimResource(True)
-                self.assignAugments(2, self.augment, True)
+                self.assignAugments(4, self.augment, True)
                 self.bot.reclaimResource(True)
                 self.assignAugments(8, self.augment)
                 self.setBlood("blood_4")
@@ -236,6 +236,7 @@ class RebirthManager:
         self.game_ui.accessMenu("inventory")
         time.sleep(1)
         self.bot.gear_manager.selectGear(gear)
+        print("Set gear slot")
 
     def enterRebirth(self):
         self.click(self.settings["rebirth"]["enter_menu"])

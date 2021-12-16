@@ -245,5 +245,5 @@ class GearManager:
     def selectGear(self, slot):
         start_point = self.gear_settings["inv_grid_start"]
         size = self.gear_settings["box_size"]
-        pyautogui.click(start_point[0], start_point[1] + (size * slot), button='right')
+        pyautogui.click(start_point[0] + (size * slot), start_point[1], button='right')
         time.sleep(0.1)
