@@ -42,6 +42,7 @@ class RebirthManager:
         }
         self.bood_type = "blood_4"
         self.cycle_time = 600
+        self.open_adventure_color = (57, 61, 60)
 
     def idleCycle(self):
         current_time = time.time()
@@ -177,13 +178,17 @@ class RebirthManager:
         if my_type == "low":
             for x in range(0, 12):
                 self.click(arrow_right)
-            self.click(arrow_left)
         elif my_type == "increment":
             for x in range(0, 5):
                 self.click(arrow_right)
         else:
             for x in range(0, 20):
                 self.click(arrow_right)
+        
+        time.sleep(6)
+        if self.get_pixel_colour(1160, 640) == self.open_adventure_color:
+            self.click(arrow_left)
+
         print("Set adventure zone")
 
     def setDiggers(self, clear = True):
@@ -271,3 +276,11 @@ class RebirthManager:
             time.sleep(self.sleep_time)
         else:
             time.sleep(rest_time)
+
+    def get_pixel_colour(self, i_x, i_y):
+        i_desktop_window_id = win32gui.GetDesktopWindow()
+        i_desktop_window_dc = win32gui.GetWindowDC(i_desktop_window_id)
+        long_colour = win32gui.GetPixel(i_desktop_window_dc, i_x, i_y)
+        i_colour = int(long_colour)
+        win32gui.ReleaseDC(i_desktop_window_id,i_desktop_window_dc)
+        return (i_colour & 0xff), ((i_colour >> 8) & 0xff), ((i_colour >> 16) & 0xff)
