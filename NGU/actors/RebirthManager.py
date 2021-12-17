@@ -29,7 +29,8 @@ class RebirthManager:
         self.gear = {
             "chest": 0,
             "accessory": 1,
-            "head": 2
+            "head": 2,
+            "weapon": 3
         }
         self.cycle_times = {
             "one": 60,
@@ -92,6 +93,7 @@ class RebirthManager:
                 
             print("Finished Cycle 3")
             self.selectGear(self.gear["chest"])
+            self.selectGear(self.gear["weapon"])
             while time.time() - rebirth_start_time < self.cycle_times["four"]:
                 self.timeMachineCycle(10)
                 self.nukeBoss()
