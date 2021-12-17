@@ -111,7 +111,7 @@ class RebirthManager:
             print("Finished Cycle 5")
             while time.time() - rebirth_start_time < self.cycle_times["six"]:
                 self.bot.reclaimResource(True)
-                self.assignAugments(3, self.augment, True)
+                self.assignAugments(5, self.augment, True)
                 self.bot.reclaimResource(True)
                 self.assignAugments(9, self.augment)
                 self.setBlood("blood_4")
