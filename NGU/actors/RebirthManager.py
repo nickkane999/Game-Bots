@@ -79,7 +79,7 @@ class RebirthManager:
                 if sub_cycle_count >= 2:
                     self.changeGearSlot("resource_build")
                 self.bot.reclaimResource(True)
-                self.assignAugments(2, self.augment, True)
+                self.assignAugments(3, self.augment, True)
                 self.bot.reclaimResource(True)
                 self.assignAugments(6, self.augment)
                 self.bot.reclaimResource(True)
