@@ -34,7 +34,7 @@ class RebirthManager:
         }
         self.cycle_times = {
             "one": 70,
-            "two": 120,
+            "two": 150,
             "three": 240,
             "four": 300,
             "five": 360,
