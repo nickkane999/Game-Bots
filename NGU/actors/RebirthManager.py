@@ -44,6 +44,7 @@ class RebirthManager:
         self.bood_type = "blood_4"
         self.cycle_time = 600
         self.open_adventure_color = (57, 61, 60)
+        self.retrieve_augments = False
 
     def idleCycle(self):
         current_time = time.time()
@@ -123,9 +124,10 @@ class RebirthManager:
             self.selectGear(self.gear["accessory"])
             self.selectGear(self.gear["head"])
             self.setDiggers(False)
+
             sub_cycle_count = 0
+            self.retrieve_augments = True
             while time.time() - rebirth_start_time < self.cycle_times["seven"]:
-                self.bot.reclaimResource(True)
                 self.wandosCycle(3)
                 if sub_cycle_count % 2 == 0:
                     self.assignAugments(2, self.augment)
@@ -134,6 +136,7 @@ class RebirthManager:
                 self.nukeBoss()
                 sub_cycle_count = sub_cycle_count + 1
 
+            self.retrieve_augments = False
             self.bot.reclaimResource(True)
             self.bot.reclaimResource(False)
             self.selectGear(self.gear["accessory"])
@@ -174,6 +177,8 @@ class RebirthManager:
         time.sleep(0.2)
 
         while loop_time - current_time < set_time:
+            if self.retrieve_augments:
+                self.bot.augmentation_manager.retrieveEnergy(augment)
             self.bot.augmentation_manager.assignEnergy(augment, is_strong)
             loop_time = time.time()
             time.sleep(0.5)

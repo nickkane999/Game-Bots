@@ -46,3 +46,9 @@ class AugmentationManager:
         else:
             pyautogui.click(point[0], point[1])
         time.sleep(0.1)
+
+    def retrieveEnergy(self, item):
+        point = self.settings[item]
+        pyautogui.click(point[0] + 50, point[1] + self.settings["aug_adjustment"])
+        pyautogui.click(point[0] + 50, point[1])
+        time.sleep(0.1)
