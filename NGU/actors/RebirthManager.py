@@ -54,14 +54,14 @@ class RebirthManager:
         }
         self.cycle_data = [
             {
-                "time": 70,
+                "time": 60,
                 "pre_cycle": [],
                 "order": [
                     "nuke",
                     ["once", [
                         ["select_gear_slot", ["drop_rate_build"]],
                         "adventure",
-                        ["augment", [13, self.augment]],
+                        ["augment", [7, self.augment]],
                         "nuke",
                         ["adventure", ["increment"]]
                     ]],
@@ -70,19 +70,21 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 80,
-                "pre_cycle": [],
-                "order": [
-                    "nuke",
-                    ["once_delay", [2, [
-                        ["adventure", ["increment"]],
-                    ]]],
+                "time": 75,
+                "pre_cycle": [
                     "reclaim",
                     ["augment", [3, self.augment, True]],
                     "reclaim",
                     ["augment", [3, self.augment]],
                     "reclaim",
-                    ["time_machine", [6]],
+                    "digger"
+                ],
+                "order": [
+                    "nuke",
+                    ["once_delay", [1, [
+                        ["adventure", ["increment"]],
+                    ]]],
+                    ["time_machine", [10]],
                     ["once", ["digger"]]
                 ]
             },
@@ -98,7 +100,7 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 60,
+                "time": 50,
                 "pre_cycle": [
                     ["select_gear", [self.gear["chest"]]],
                     ["select_gear", [self.gear["weapon"]]]
@@ -109,7 +111,7 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 60,
+                "time": 70,
                 "pre_cycle": [
                     ["reclaim", [True]]
                 ],
@@ -117,18 +119,16 @@ class RebirthManager:
                     ["blood", ["blood_5"]],
                     "nuke",
                     ["time_machine", [5, "energy"]],
-                    ["reclaim", [False]],
                 ]
             },            
             {
-                "time": 120,
+                "time": 110,
                 "pre_cycle": [],
                 "order": [
                     "reclaim",
-                    ["augment", [5, self.augment, True]],
+                    ["augment", [3, self.augment, True]],
                     "reclaim",
-                    ["augment", [9, self.augment]],
-                    ["reclaim", [True]],
+                    ["augment", [8, self.augment]],
                     ["blood", ["blood_5"]],
                     "nuke",
                 ]
@@ -152,9 +152,8 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 5,
+                "time": 2,
                 "pre_cycle": [
-                    ["set_augment_reclaim_flag", [False]],
                     "reclaim",
                     ["reclaim", [True]],
                     ["select_gear", [self.gear["accessory"]]],
@@ -162,8 +161,9 @@ class RebirthManager:
                     ["select_gear", [self.gear["weapon"]]],
                     "apply_boost",
                     ["digger", [False]],
-                    ["set_augment_reclaim_flag", [True]],   
+                    ["set_augment_reclaim_flag", [False]],
                     ["wandos", [1]],
+                    "nuke",
                     "attack"
                 ],
                 "order": []
@@ -179,12 +179,16 @@ class RebirthManager:
             self.enterRebirth()
         '''
         while True:
+            cycle_index = 0
             for cycle in self.cycle_data:
                 self.processCycle(cycle)
+                cycle_index += 1
+                print("Finished cycle " + str(cycle_index))
             self.enterRebirth()
+            # self.retrieve_augments = False
 
     def processCycle(self, info):
-        print(info)
+        # print(info)
         start_time = time.time()
         cycle_time = info["time"]
         pre_cycle = info["pre_cycle"]
@@ -196,18 +200,17 @@ class RebirthManager:
         }
 
         if pre_cycle:
-            print("Pre cycle")
+            # print("Pre cycle")
             self.processActions(pre_cycle)
 
         self.cycle_count = 0
         if order:
-            print("Order")
+            # print("Order")
             while time.time() - start_time < cycle_time:
                 self.processActions(order)
                 self.cycle_count += 1
 
-        print("Finished cycle")
-
+ 
     def processActions(self, actions):
         special_actions = ["once", "once_delay", "rotate"]
 
@@ -218,8 +221,8 @@ class RebirthManager:
                 self.runAction(item)
 
     def runAction(self, action):
-        print("Running action")
-        print(action)
+        # print("Running action")
+        # print(action)
         if isinstance(action, list):
             function = action[0]
             parameters = action[1]
@@ -228,20 +231,20 @@ class RebirthManager:
             self.actions[action]()
 
     def runActionSpecial(self, action):
-        print(action)
+        # print(action)
         if action[0] == "once" and self.cycle_count < 1 and self.flags["once"]:
-            print("Once action")
+            # print("Once action")
             for sub_action in action[1]:
                 self.runAction(sub_action)
             self.flags["once"] = False
         if action[0] == "once_delay" and self.cycle_count == action[1][0] and self.flags["once_delay"]:
-            print("Once delay")
+            # print("Once delay")
             for sub_action in action[1][1]:
                 self.runAction(sub_action)
             self.flags["once_delay"] = False
         if action[0] == "rotate":
             selected_action = self.cycle_count % len(action[1])
-            print("Rotate")
+            # print("Rotate")
             self.runAction(action[1][selected_action])
         
         print("Special Action Ran")
@@ -250,14 +253,16 @@ class RebirthManager:
         self.game_ui.accessMenu("fight_boss")
         time.sleep(0.2)
         nuke = self.settings["fight_boss"]["nuke"]
+        fight = self.settings["fight_boss"]["fight"]
         self.click(nuke)
-        print("Nuked boss")
+        self.click(fight)
+        print("Nuked and attacked boss boss")
 
     def attackBoss(self):
         self.game_ui.accessMenu("fight_boss")
         time.sleep(0.2)
         fight = self.settings["fight_boss"]["fight"]
-        for x in range(0, 8):
+        for x in range(0, 6):
             self.click(fight)
             time.sleep(2)
 
@@ -318,6 +323,8 @@ class RebirthManager:
         self.click(menu["itopod_start"])
         self.click(menu["itopod_optimal"])
         self.click(menu["itopod_confirm"])
+
+        print("Set ITOPOD")
 
 
     def setDiggers(self, info = None):
@@ -418,8 +425,11 @@ class RebirthManager:
         else:
             time.sleep(rest_time)
 
-    def updateAugmentFlag(self, status):
+    def updateAugmentFlag(self, info):
+        status = info[0]
+
         self.retrieve_augments = status
+        print("Updated Augment flag")
 
     def assignListIndex(self, info, alt_value, index):
         if len(info) > index: 
