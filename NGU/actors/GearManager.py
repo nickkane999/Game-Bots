@@ -256,4 +256,5 @@ class GearManager:
         pyautogui.moveTo(inventory_start[0] + (size * slot), inventory_start[1])
         pyautogui.mouseDown(button='left')
         pyautogui.moveTo(gear_start[0], gear_start[1] + (size * gear_slot), 1)
+        pyautogui.mouseUp(button='left')
         time.sleep(0.1)
