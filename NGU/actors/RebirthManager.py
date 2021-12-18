@@ -75,9 +75,6 @@ class RebirthManager:
                     self.setAdventureZone("increment")
                     self.setDiggers()
                     new_adventure_zone_set = True
-                if sub_cycle_count >= 2:
-                    self.changeGearSlot("resource_build")
-                    self.startItopod()
                 self.bot.reclaimResource(True)
                 self.assignAugments(3, self.augment, True)
                 self.bot.reclaimResource(True)
@@ -87,6 +84,8 @@ class RebirthManager:
                 sub_cycle_count = sub_cycle_count + 1
 
             print("Finished Cycle 2")
+            self.changeGearSlot("resource_build")
+            self.startItopod()
             while time.time() - rebirth_start_time < self.cycle_times["three"]:
                 self.timeMachineCycle(10)
                 self.nukeBoss()
