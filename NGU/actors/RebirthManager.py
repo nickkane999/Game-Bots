@@ -83,7 +83,10 @@ class RebirthManager:
                 ],
                 "order": [
                     "nuke",
-                    ["time_machine", [10]]
+                    ["time_machine", [10]],
+                    ["once_delay", [3, [
+                        ["select_gear_slot", ["resource_build"]]
+                    ]]]
                 ]
             },
             {
@@ -101,7 +104,6 @@ class RebirthManager:
             {
                 "time": 90,
                 "pre_cycle": [
-                    ["select_gear_slot", ["resource_build"]],
                     "start_itopod",
                     ["reclaim", [True]]
                 ],
