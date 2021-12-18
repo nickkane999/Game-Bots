@@ -145,6 +145,7 @@ class RebirthManager:
             self.selectGear(self.gear["head"])
             self.selectGear(self.gear["weapon"])
             self.bot.gear_manager.applyCubeBoost()
+            self.wandosCycle(1)
             self.attackBoss()
             
             print("Finished cycle. Restarting")
