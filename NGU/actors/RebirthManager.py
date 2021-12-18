@@ -102,7 +102,7 @@ class RebirthManager:
                 "time": 90,
                 "pre_cycle": [
                     ["select_gear_slot", ["resource_build"]],
-                    "start_itopod"
+                    "start_itopod",
                     ["reclaim", [True]]
                 ],
                 "order": [
