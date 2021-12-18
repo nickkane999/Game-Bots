@@ -174,6 +174,7 @@ class RebirthManager:
                     ["select_gear", [self.gear["accessory"]]],
                     ["select_gear", [self.gear["head"]]],
                     ["select_gear", [self.gear["weapon"]]],
+                    ["select_gear", [self.gear["accessory_2"], 1]],
                     "apply_boost",
                     ["digger", [False]],
                     ["set_augment_reclaim_flag", [False]],
@@ -421,13 +422,14 @@ class RebirthManager:
     def swapAutoSpell(self, info = None):
         self.game_ui.accessMenu("blood_magic")
         blood_settings = self.settings["blood"]
-        switch_menu = blood_settings["blood_start"]
+        switch_menu = blood_settings["switch_menu"]
         number = blood_settings["auto_spell"]["number"]
         gold = blood_settings["auto_spell"]["gold"]
 
         self.click(switch_menu)
         self.click(number)
         self.click(gold)
+        self.click(switch_menu)
         print("Swaped autocast spells")
 
     def selectGear(self, info):
