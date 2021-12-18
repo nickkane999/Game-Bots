@@ -113,7 +113,8 @@ class RebirthManager:
                 self.assignAugments(5, self.augment, True)
                 self.bot.reclaimResource(True)
                 self.assignAugments(9, self.augment)
-                self.setBlood("blood_4")
+                self.bot.reclaimResource(False)
+                self.setBlood("blood_5")
                 self.nukeBoss()
 
             print("Finished Cycle 6")
