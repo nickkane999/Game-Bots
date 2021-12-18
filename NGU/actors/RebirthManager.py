@@ -33,7 +33,7 @@ class RebirthManager:
             "weapon": 3
         }
         self.cycle_times = {
-            "one": 60,
+            "one": 70,
             "two": 120,
             "three": 240,
             "four": 300,
