@@ -132,8 +132,10 @@ class Bot:
         pyautogui.press("r")
         pyautogui.press("t")
 
-    def reclaimResource(self, is_energy = True):
-        if is_energy:
-            pyautogui.press("r")
-        else:
+    def reclaimResource(self, info = None):
+        has_info = info
+
+        if has_info:
             pyautogui.press("t")
+        else:
+            pyautogui.press("r")
