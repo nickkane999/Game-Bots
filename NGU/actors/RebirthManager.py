@@ -188,19 +188,24 @@ class RebirthManager:
         ]
 
     def idleCycle(self):
-        current_time = time.time()
-        loop_time = current_time
         '''
         while True:
             self.enterRebirth()
         '''
+        loop_start = time.time()
         while True:
+            cycle_start = time.time()
             cycle_index = 0
             for cycle in self.cycle_data:
                 self.processCycle(cycle)
                 cycle_index += 1
                 print("Finished cycle " + str(cycle_index))
+            while time.time() - cycle_start < 600:
+                print("Waiting for cycle end")
+                time.sleep(2) 
             self.enterRebirth()
+            print("Cycle completed. Total time so far")
+            print(time.time() - loop_start)
             # self.retrieve_augments = False
 
     def processCycle(self, info):
