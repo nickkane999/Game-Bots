@@ -63,8 +63,9 @@ class RebirthManager:
                     self.assignAugments(13, self.augment)
                     self.nukeBoss()
                     self.setAdventureZone("increment")
-                    self.bot.reclaimResource(True)
                     adventure_zone_set = True
+                time.sleep(0.1)
+                self.bot.reclaimResource(True)
                 self.timeMachineCycle(10)
             
             print("Finished Cycle 1")
