@@ -83,9 +83,6 @@ class RebirthManager:
                 ],
                 "order": [
                     "nuke",
-                    ["once", [
-                        ["adventure", ["increment"]],
-                    ]],
                     ["time_machine", [10]]
                 ]
             },
