@@ -129,11 +129,11 @@ class RebirthManager:
             sub_cycle_count = 0
             self.retrieve_augments = True
             while time.time() - rebirth_start_time < self.cycle_times["seven"]:
-                self.wandosCycle(3)
+                self.wandosCycle(2)
                 if sub_cycle_count % 2 == 0:
-                    self.assignAugments(2, self.augment)
+                    self.assignAugments(1, self.augment)
                 else:
-                    self.assignAugments(2, self.augment, True)
+                    self.assignAugments(1, self.augment, True)
                 self.nukeBoss()
                 sub_cycle_count = sub_cycle_count + 1
 
