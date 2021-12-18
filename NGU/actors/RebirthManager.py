@@ -58,7 +58,7 @@ class RebirthManager:
                 self.nukeBoss()
                 if not adventure_zone_set:
                     self.changeGearSlot("drop_rate_build")
-                    self.setAdventureZone("low")
+                    self.setAdventureZone()
                     self.assignAugments(13, self.augment)
                     self.nukeBoss()
                     self.setAdventureZone("increment")
@@ -77,6 +77,7 @@ class RebirthManager:
                     new_adventure_zone_set = True
                 if sub_cycle_count >= 2:
                     self.changeGearSlot("resource_build")
+                    self.startItopod()
                 self.bot.reclaimResource(True)
                 self.assignAugments(3, self.augment, True)
                 self.bot.reclaimResource(True)
@@ -100,7 +101,7 @@ class RebirthManager:
             print("Finished Cycle 4")
             self.bot.reclaimResource(False)
             while time.time() - rebirth_start_time < self.cycle_times["five"]:
-                self.setBlood("blood_4")
+                self.setBlood("blood_5")
                 self.nukeBoss()
                 self.timeMachineCycle(5, "energy")
                 self.bot.reclaimResource(False)
@@ -132,6 +133,7 @@ class RebirthManager:
             self.selectGear(self.gear["accessory"])
             self.selectGear(self.gear["head"])
             self.selectGear(self.gear["weapon"])
+            self.bot.gear_manager.applyCubeBoost()
             self.attackBoss()
             
             print("Finished cycle. Restarting")
@@ -186,11 +188,20 @@ class RebirthManager:
             for x in range(0, 20):
                 self.click(arrow_right)
         
-        time.sleep(6)
+        time.sleep(5)
         if self.get_pixel_colour(1160, 640) == self.open_adventure_color:
             self.click(arrow_left)
 
         print("Set adventure zone")
+
+    def startItopod(self):
+        self.game_ui.accessMenu("adventure")
+        menu = self.bot.battle_manager.settings
+
+        self.click(menu["itopod_start"])
+        self.click(menu["itopod_optimal"])
+        self.click(menu["itopod_confirm"])
+
 
     def setDiggers(self, clear = True):
         self.game_ui.accessMenu("gold_diggers")

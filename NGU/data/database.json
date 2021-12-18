@@ -105,6 +105,9 @@
     "first_button": [840, 267],
     "button_space": [160, 55],
     "hp": [930, 738],
+    "itopod_start": [800, 440],
+    "itopod_optimal": [1300, 410],
+    "itopod_confirm": [1180, 540],
     "buttons": {
       "idle": [0, 0],
       "regular": [1, 0],
