@@ -114,8 +114,8 @@ class RebirthManager:
             {
                 "time": 35,
                 "pre_cycle": [
-                    ["reclaim", [True]],
-                    "spell_swap"
+                    "spell_swap",
+                    ["reclaim", [True]]
                 ],
                 "order": [
                     ["blood", ["blood_5"]],
@@ -125,7 +125,10 @@ class RebirthManager:
             },            
             {
                 "time": 40,
-                "pre_cycle": ["spell_swap"],
+                "pre_cycle": [
+                    "spell_swap",
+                    ["reclaim", [True]]                    
+                ],
                 "order": [
                     ["blood", ["blood_5"]],
                     "nuke",
@@ -280,15 +283,11 @@ class RebirthManager:
 
     def changeGearSlot(self, info):
         slot = info[0]
-        accessory = self.assignListIndex(info, False, 1)
 
         #resource_build = 0, drop_rate_build = 1
         self.game_ui.accessMenu("inventory")
         time.sleep(0.2)
-        if accessory:
-            self.bot.gear_manager.equipAccessoryGear(slot, accessory)
-        else:
-            self.bot.gear_manager.assignLoadout(slot)
+        self.bot.gear_manager.assignLoadout(slot)
         print("Changed gear slot")
 
     def assignAugments(self, info):
@@ -433,11 +432,15 @@ class RebirthManager:
 
     def selectGear(self, info):
         gear = info[0]
+        accessory = self.assignListIndex(info, False, 1)
 
         self.game_ui.accessMenu("inventory")
-        time.sleep(1)
-        self.bot.gear_manager.selectGear(gear)
-        print("Set gear slot")
+        time.sleep(0.2)
+        if accessory:
+            self.bot.gear_manager.equipAccessoryGear(gear, accessory)
+        else:
+            self.bot.gear_manager.selectGear(gear)
+        print("Set gear item")
 
     def enterRebirth(self):
         self.click(self.settings["rebirth"]["enter_menu"])

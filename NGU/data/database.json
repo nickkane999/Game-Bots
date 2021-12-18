@@ -190,6 +190,11 @@
   },
   "blood": {
     "blood_start": [1090, 440],
+    "switch_menu": [830, 280],
+    "auto_spell": {
+      "number": [1005, 430],
+      "gold": [1515, 570]
+    },
     "distance": 50,
     "info": {
       "blood_1": 0,
