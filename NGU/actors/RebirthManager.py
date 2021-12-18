@@ -75,7 +75,6 @@ class RebirthManager:
                 self.nukeBoss()
                 if not new_adventure_zone_set and sub_cycle_count >= 1:
                     self.setAdventureZone("increment")
-                    self.setDiggers()
                     new_adventure_zone_set = True
                 self.bot.reclaimResource(True)
                 self.assignAugments(3, self.augment, True)
@@ -83,6 +82,8 @@ class RebirthManager:
                 self.assignAugments(3, self.augment)
                 self.bot.reclaimResource(True)
                 self.timeMachineCycle(6)
+                if sub_cycle_count < 1:
+                    self.setDiggers()
                 sub_cycle_count = sub_cycle_count + 1
 
             print("Finished Cycle 2")
