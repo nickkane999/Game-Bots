@@ -72,7 +72,7 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 75,
+                "time": 60,
                 "pre_cycle": [
                     "reclaim",
                     ["augment", [3, self.augment, True]],
@@ -83,12 +83,24 @@ class RebirthManager:
                 ],
                 "order": [
                     "nuke",
-                    ["once_delay", [1, [
+                    ["once", [
                         ["adventure", ["increment"]],
-                    ]]],
+                    ]],
                     ["time_machine", [10]]
                 ]
             },
+            {
+                "time": 40,
+                "pre_cycle": [
+                    "spell_swap",
+                    ["reclaim", [True]]
+                ],
+                "order": [
+                    ["blood", ["blood_5"]],
+                    "nuke",
+                    ["time_machine", [5, "energy"]],
+                ]
+            },            
             {
                 "time": 90,
                 "pre_cycle": [
@@ -112,19 +124,7 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 40,
-                "pre_cycle": [
-                    "spell_swap",
-                    ["reclaim", [True]]
-                ],
-                "order": [
-                    ["blood", ["blood_5"]],
-                    "nuke",
-                    ["time_machine", [5, "energy"]],
-                ]
-            },            
-            {
-                "time": 40,
+                "time": 50,
                 "pre_cycle": [
                     "spell_swap",
                     ["reclaim", [True]]                    
@@ -148,7 +148,7 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 110,
+                "time": 115,
                 "pre_cycle": [
                     "reclaim",
                     ["reclaim", [True]],
