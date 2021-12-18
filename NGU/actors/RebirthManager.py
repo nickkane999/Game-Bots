@@ -125,6 +125,7 @@ class RebirthManager:
             self.setDiggers(False)
             sub_cycle_count = 0
             while time.time() - rebirth_start_time < self.cycle_times["seven"]:
+                self.bot.reclaimResource(True)
                 self.wandosCycle(3)
                 if sub_cycle_count % 2 == 0:
                     self.assignAugments(3, self.augment)
