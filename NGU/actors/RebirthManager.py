@@ -84,7 +84,7 @@ class RebirthManager:
                     ["once_delay", [1, [
                         ["adventure", ["increment"]],
                     ]]],
-                    ["time_machine", [10]],
+                    ["time_machine", [10]]
                 ]
             },
             {
