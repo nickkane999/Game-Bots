@@ -61,7 +61,6 @@ class RebirthManager:
                     self.setAdventureZone("low")
                     self.assignAugments(13, self.augment)
                     self.nukeBoss()
-                    time.sleep(2)
                     self.setAdventureZone("increment")
                     self.bot.reclaimResource(True)
                     adventure_zone_set = True
@@ -116,7 +115,6 @@ class RebirthManager:
                 self.assignAugments(9, self.augment)
                 self.setBlood("blood_4")
                 self.nukeBoss()
-                time.sleep(5)
 
             print("Finished Cycle 6")
             self.bot.reclaimResource(True)
@@ -127,12 +125,12 @@ class RebirthManager:
             while time.time() - rebirth_start_time < self.cycle_times["seven"]:
                 self.wandosCycle(10)
                 self.nukeBoss()
-                time.sleep(5)
 
             self.bot.reclaimResource(True)
             self.bot.reclaimResource(False)
             self.selectGear(self.gear["accessory"])
             self.selectGear(self.gear["head"])
+            self.selectGear(self.gear["weapon"])
             self.attackBoss()
             
             print("Finished cycle. Restarting")
