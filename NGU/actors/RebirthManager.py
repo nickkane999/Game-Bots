@@ -101,7 +101,7 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 40,
+                "time": 20,
                 "pre_cycle": [
                     ["select_gear", [self.gear["chest"]]],
                     ["select_gear", [self.gear["weapon"]]]
@@ -112,7 +112,7 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 35,
+                "time": 40,
                 "pre_cycle": [
                     "spell_swap",
                     ["reclaim", [True]]
