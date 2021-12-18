@@ -80,9 +80,9 @@ class RebirthManager:
                 self.bot.reclaimResource(True)
                 self.assignAugments(3, self.augment, True)
                 self.bot.reclaimResource(True)
-                self.assignAugments(6, self.augment)
+                self.assignAugments(3, self.augment)
                 self.bot.reclaimResource(True)
-                self.timeMachineCycle(12)
+                self.timeMachineCycle(6)
                 sub_cycle_count = sub_cycle_count + 1
 
             print("Finished Cycle 2")
