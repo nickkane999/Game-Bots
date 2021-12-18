@@ -105,6 +105,7 @@ class RebirthManager:
                 "time": 90,
                 "pre_cycle": [
                     "start_itopod",
+                    ["reclaim", [True]],
                     ["reclaim", [True]]
                 ],
                 "order": [
