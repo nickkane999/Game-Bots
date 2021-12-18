@@ -85,7 +85,6 @@ class RebirthManager:
                         ["adventure", ["increment"]],
                     ]]],
                     ["time_machine", [10]],
-                    ["once", ["digger"]]
                 ]
             },
             {
