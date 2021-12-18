@@ -128,9 +128,9 @@ class RebirthManager:
                 self.bot.reclaimResource(True)
                 self.wandosCycle(3)
                 if sub_cycle_count % 2 == 0:
-                    self.assignAugments(3, self.augment)
+                    self.assignAugments(2, self.augment)
                 else:
-                    self.assignAugments(3, self.augment, True)
+                    self.assignAugments(2, self.augment, True)
                 self.nukeBoss()
                 sub_cycle_count = sub_cycle_count + 1
 
@@ -243,7 +243,7 @@ class RebirthManager:
             if dump != "energy":
                 self.click(magic_dump)
             if dump != "magic":
-                self.click(energy_dump[0] + 100, energy_dump[1])
+                self.click([energy_dump[0] + 100, energy_dump[1]])
             loop_time = time.time()
             time.sleep(0.5)
         print("Finished adding wandos")
