@@ -247,3 +247,13 @@ class GearManager:
         size = self.gear_settings["box_size"]
         pyautogui.click(start_point[0] + (size * slot), start_point[1], button='right')
         time.sleep(0.1)
+
+    def equipAccessoryGear(self, slot, gear_slot):
+        inventory_start = self.gear_settings["inv_grid_start"]
+        gear_start = self.gear_settings["positions"]["grid_start"]
+        size = self.gear_settings["box_size"]
+
+        pyautogui.moveTo(inventory_start[0] + (size * slot), inventory_start[1])
+        pyautogui.mouseDown(button='left')
+        pyautogui.moveTo(gear_start[0], gear_start[1] + (size * gear_slot), 1)
+        time.sleep(0.1)

@@ -30,7 +30,8 @@ class RebirthManager:
             "chest": 0,
             "accessory": 1,
             "head": 2,
-            "weapon": 3
+            "weapon": 3,
+            "accessory_2": 4
         }
         self.bood_type = "blood_4"
         self.cycle_time = 600
@@ -41,6 +42,7 @@ class RebirthManager:
             "set_augment_reclaim_flag": self.updateAugmentFlag,
             "time_machine": self.timeMachineCycle,
             "blood": self.setBlood,
+            "spell_swap": self.swapAutoSpell,
             "wandos": self.wandosCycle,
             "reclaim": self.bot.reclaimResource,
             "adventure": self.setAdventureZone,
@@ -99,7 +101,7 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 50,
+                "time": 40,
                 "pre_cycle": [
                     ["select_gear", [self.gear["chest"]]],
                     ["select_gear", [self.gear["weapon"]]]
@@ -110,9 +112,10 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 70,
+                "time": 35,
                 "pre_cycle": [
-                    ["reclaim", [True]]
+                    ["reclaim", [True]],
+                    "spell_swap"
                 ],
                 "order": [
                     ["blood", ["blood_5"]],
@@ -120,6 +123,15 @@ class RebirthManager:
                     ["time_machine", [5, "energy"]],
                 ]
             },            
+            {
+                "time": 40,
+                "pre_cycle": ["spell_swap"],
+                "order": [
+                    ["blood", ["blood_5"]],
+                    "nuke",
+                    ["time_machine", [5, "energy"]],
+                ]
+            },
             {
                 "time": 110,
                 "pre_cycle": [],
@@ -139,6 +151,7 @@ class RebirthManager:
                     ["reclaim", [True]],
                     ["select_gear", [self.gear["accessory"]]],
                     ["select_gear", [self.gear["head"]]],
+                    ["select_gear", [self.gear["accessory_2"], 1]],
                     ["digger", [False]],
                     ["set_augment_reclaim_flag", [True]],   
                 ],
@@ -267,11 +280,15 @@ class RebirthManager:
 
     def changeGearSlot(self, info):
         slot = info[0]
+        accessory = self.assignListIndex(info, False, 1)
 
         #resource_build = 0, drop_rate_build = 1
         self.game_ui.accessMenu("inventory")
         time.sleep(0.2)
-        self.bot.gear_manager.assignLoadout(slot)
+        if accessory:
+            self.bot.gear_manager.equipAccessoryGear(slot, accessory)
+        else:
+            self.bot.gear_manager.assignLoadout(slot)
         print("Changed gear slot")
 
     def assignAugments(self, info):
@@ -401,6 +418,18 @@ class RebirthManager:
         distance = blood_settings["distance"]
         self.click([start_point[0], start_point[1] + (blood_settings["info"][blood_type] * distance)])
         print("Set blood")
+
+    def swapAutoSpell(self, info = None):
+        self.game_ui.accessMenu("blood_magic")
+        blood_settings = self.settings["blood"]
+        switch_menu = blood_settings["blood_start"]
+        number = blood_settings["auto_spell"]["number"]
+        gold = blood_settings["auto_spell"]["gold"]
+
+        self.click(switch_menu)
+        self.click(number)
+        self.click(gold)
+        print("Swaped autocast spells")
 
     def selectGear(self, info):
         gear = info[0]
