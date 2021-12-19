@@ -91,6 +91,15 @@ class RebirthManager:
                 ]
             },
             {
+                "time": 20,
+                "pre_cycle": [],
+                "order": [
+                    ["reclaim", [True]],
+                    ["time_machine", [10]],
+                    "nuke"
+                ]
+            },
+            {
                 "time": 40,
                 "pre_cycle": [
                     ["reclaim", [True]],
@@ -103,7 +112,7 @@ class RebirthManager:
                 ]
             },            
             {
-                "time": 80,
+                "time": 60,
                 "pre_cycle": [],
                 "order": [
                     ["reclaim", [True]],
