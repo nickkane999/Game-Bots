@@ -66,11 +66,11 @@ class RebirthManager:
         cycles = self.cycle_rotation
         duration = self.cycle_data[1]
         
-        for cycle_name in in cycles:
+        for cycle_name in cycles:
             current_cycle = self.cycles.cycles[cycle_name]
             cycle_data = current_cycle[1]
             duration = current_cycle[1]
-            
+
             cycle_start = time.time()
             cycle_index = 0
             for cycle in cycle_data:
