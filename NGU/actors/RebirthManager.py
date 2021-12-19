@@ -98,7 +98,7 @@ class RebirthManager:
                 "order": [
                     ["once_delay", [3, [
                         "spell_swap"
-                    ]]]
+                    ]]],
                     ["blood", ["blood_5"]],
                     "nuke",
                     ["time_machine", [5, "energy"]],
