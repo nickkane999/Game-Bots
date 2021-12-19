@@ -86,7 +86,8 @@
     "scroll_top": [1655, 490],
     "scroll_bottom": [1655, 960],
     "scissors": [1050, 500],
-    "milk": [1050, 585],
+    "milk": [1050, 590],
+    "cannon_implant": [1050, 690],
     "shoulder_mounted": [1050, 790],
     "energy_buster": [1050, 680],
     "aug_adjustment": 50

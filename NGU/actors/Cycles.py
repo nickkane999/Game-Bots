@@ -143,6 +143,7 @@ class Cycles:
         cycle_time = 300
         augment_1 = "scissors"
         augment_2 = "milk"
+        augment_3 = "cannon_implant"
         self.gear = {
             "chest": 0,
             "accessory": 1,
@@ -152,12 +153,12 @@ class Cycles:
         }
         cycle_data = [
             {
-                "time": 180,
+                "time": 90,
                 "pre_cycle": [
+                    ["select_gear_slot", ["resource_build"]],
                     ["select_gear", [self.gear["accessory"]]],
                     ["select_gear", [self.gear["head"]]],
                     ["select_gear", [self.gear["accessory_2"], 1]],
-                    ["select_gear_slot", ["resource_build"]],
                 ],
                 "order": [
                     "nuke",
@@ -182,7 +183,7 @@ class Cycles:
                 ]
             },
             {
-                "time": 50,
+                "time": 140,
                 "pre_cycle": [],
                 "order": [
                     "nuke",
