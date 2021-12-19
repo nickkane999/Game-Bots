@@ -30,7 +30,8 @@ class Cycles:
         self.cycle_rotation = [
             "cycle_two", 
             ["cycle_three", 2],
-            ["cycle_five", 5],
+            ["cycle_four", 2],
+            ["cycle_five", 7],
             ["cycle_one", 5],
         ] 
         
@@ -41,6 +42,7 @@ class Cycles:
         blood_1 = "blood_1"
         blood_2 = "blood_2"
         blood_3 = "blood_3"
+        blood_4 = "blood_4"
         self.gear = {
             "chest": 0,
             "accessory": 1,
@@ -73,7 +75,7 @@ class Cycles:
                     "reclaim",
                     ["augment", [4, self.augment]],
                     "reclaim",
-                    ["digger", [True, "advemture"]]
+                    ["digger", [True]]
                 ],
                 "order": [
                     "nuke",
@@ -96,13 +98,13 @@ class Cycles:
             {
                 "time": 80,
                 "pre_cycle": [
-                    ["reclaim", [True]],
-                    "spell_swap"
+                    ["reclaim", [True]]
                 ],
                 "order": [
                     ["blood", [blood_1]],
                     ["blood", [blood_2]],
                     ["blood", [blood_3]],
+                    ["blood", [blood_4]],
                     "nuke",
                     ["time_machine", [5, "energy"]],
                 ]
@@ -208,9 +210,9 @@ class Cycles:
                 "order": [
                     "nuke",
                     "reclaim",
-                    ["augment", [6, augment_1]],
-                    "reclaim",
                     ["augment", [2, self.augment, True]],
+                    "reclaim",
+                    ["augment", [6, augment_1]],
                 ]
             },
             {
