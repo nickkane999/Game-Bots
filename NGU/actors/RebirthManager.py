@@ -68,7 +68,7 @@ class RebirthManager:
         
         for cycle_name in cycles:
             current_cycle = self.cycles.cycles[cycle_name]
-            cycle_data = current_cycle[1]
+            cycle_data = current_cycle[0]
             duration = current_cycle[1]
 
             cycle_start = time.time()
