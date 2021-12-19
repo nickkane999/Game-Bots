@@ -64,26 +64,32 @@ class RebirthManager:
     def idleCycleRotation(self):
         loop_start = time.time()
         cycles = self.cycle_rotation
-        duration = self.cycle_data[1]
         
         for cycle_name in cycles:
-            current_cycle = self.cycles.cycles[cycle_name]
+            if isinstance(cycle_name, list):
+                current_cycle = self.cycles.cycles[cycle_name[0]]
+                loop_count = cycle_name[1]
+            else:
+                current_cycle = self.cycles.cycles[cycle_name]
+                loop_count = 1
+
             cycle_data = current_cycle[0]
             duration = current_cycle[1]
-
             cycle_start = time.time()
             cycle_index = 0
-            for cycle in cycle_data:
-                self.processCycle(cycle)
-                cycle_index += 1
-                print("Finished cycle " + str(cycle_index))
-            while time.time() - cycle_start < duration:
-                print("Waiting for cycle end")
-                time.sleep(2) 
-            self.enterRebirth()
-            print("Cycle completed. Total time so far")
-            print(time.time() - loop_start)
-            # self.retrieve_augments = False
+
+            for x in range(loop_count):
+                for cycle in cycle_data:
+                    self.processCycle(cycle)
+                    cycle_index += 1
+                    print("Finished cycle " + str(cycle_index))
+                while time.time() - cycle_start < duration:
+                    print("Waiting for cycle end")
+                    time.sleep(2) 
+                self.enterRebirth()
+                print("Cycle completed. Total time so far")
+                print(time.time() - loop_start)
+                # self.retrieve_augments = False
 
     def idleCycle(self):
         loop_start = time.time()
