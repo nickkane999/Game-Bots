@@ -137,11 +137,11 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 110,
+                "time": 100,
                 "pre_cycle": [],
                 "order": [
                     "reclaim",
-                    ["augment", [6, self.augment, True]],
+                    ["augment", [8, self.augment, True]],
                     "reclaim",
                     ["augment", [8, self.augment]],
                     ["blood", ["blood_5"]],
@@ -149,7 +149,7 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 115,
+                "time": 125,
                 "pre_cycle": [
                     "reclaim",
                     ["reclaim", [True]],
