@@ -20,12 +20,18 @@ class Cycles:
         self.reset()
 
     def reset(self):
-        self.cycle_one = self.getCycleOne() #Current cap is 116
-        self.cycle_two = self.getCycleTwo() #Start boss is 1
+        self.cycles = {
+            "cycle_one": self.getCycleOne(), #Current cap is 116
+            "cycle_two": self.getCycleTwo(), #Start boss is 1
+            "cycle_three": self.getCycleThree() #Start boss is 37 (blood unlocked)
+        } 
         
-    def getCycleTwo(self):
-        cycle_time = 300
-        self.augment = "energy_buster"
+    def getCycleThree(self):
+        cycle_time = 420
+        augment = "energy_buster"
+        blood_1 = "blood_1"
+        blood_2 = "blood_2"
+        blood_3 = "blood_3"
         self.gear = {
             "chest": 0,
             "accessory": 1,
@@ -33,7 +39,6 @@ class Cycles:
             "weapon": 3,
             "accessory_2": 4
         }
-        self.bood_type = "blood_5"
         cycle_data = [
             {
                 "time": 60,
@@ -52,91 +57,49 @@ class Cycles:
                 ]
             },
             {
-                "time": 70,
+                "time": 50,
                 "pre_cycle": [
                     "reclaim",
-                    ["augment", [3, self.augment, True]],
+                    ["augment", [2, self.augment, True]],
                     "reclaim",
-                    ["augment", [3, self.augment]],
+                    ["augment", [4, self.augment]],
                     "reclaim",
                     ["digger", [True, "advemture"]]
                 ],
                 "order": [
                     "nuke",
                     ["time_machine", [10]],
-                    ["once_delay", [4, [
+                    ["once_delay", [2, [
                         ["select_gear_slot", ["resource_build"]],
                         "start_itopod"
                     ]]]
                 ]
             },
             {
-                "time": 20,
+                "time": 110,
                 "pre_cycle": [],
                 "order": [
                     ["reclaim", [True]],
                     ["time_machine", [10]],
                     "nuke"
-                ]
-            },
-            {
-                "time": 40,
-                "pre_cycle": [
-                    ["reclaim", [True]],
-                    "spell_swap"
-                ],
-                "order": [
-                    ["blood", ["blood_5"]],
-                    "nuke",
-                    ["time_machine", [5, "energy"]],
-                ]
-            },            
-            {
-                "time": 60,
-                "pre_cycle": [],
-                "order": [
-                    ["reclaim", [True]],
-                    ["time_machine", [10]],
-                    "nuke"
-                ]
-            },
-            {
-                "time": 10,
-                "pre_cycle": [
-                    ["select_gear", [self.gear["chest"]]],
-                    ["select_gear", [self.gear["weapon"]]]
-                ],
-                "order": [
-                    ["time_machine", [10]],
-                    "nuke"
-                ]
-            },
-            {
-                "time": 75,
-                "pre_cycle": [
-                    ["reclaim", [True]],
-                    "spell_swap"
-                ],
-                "order": [
-                    ["blood", ["blood_5"]],
-                    "nuke",
-                    ["time_machine", [5, "energy"]],
                 ]
             },
             {
                 "time": 80,
-                "pre_cycle": [],
+                "pre_cycle": [
+                    ["reclaim", [True]],
+                    "spell_swap"
+                ],
                 "order": [
-                    "reclaim",
-                    ["augment", [7, self.augment, True]],
-                    "reclaim",
-                    ["augment", [8, self.augment]],
-                    ["blood", ["blood_5"]],
+                    ["blood", [blood_1]],
+                    ["blood", [blood_2]],
+                    ["blood", [blood_3]],
                     "nuke",
+                    ["time_machine", [5, "energy"]],
                 ]
             },
             {
-                "time": 130,
+                "time": 120,
                 "pre_cycle": [
                     "reclaim",
                     ["reclaim", [True]],
@@ -173,6 +136,74 @@ class Cycles:
                 ],
                 "order": []
             },
+        ]
+        return [cycle_data, cycle_time]
+
+    def getCycleTwo(self):
+        cycle_time = 300
+        augment_1 = "scissors"
+        augment_2 = "milk"
+        self.gear = {
+            "chest": 0,
+            "accessory": 1,
+            "head": 2,
+            "weapon": 3,
+            "accessory_2": 4
+        }
+        cycle_data = [
+            {
+                "time": 180,
+                "pre_cycle": [
+                    ["select_gear", [self.gear["accessory"]]],
+                    ["select_gear", [self.gear["head"]]],
+                    ["select_gear", [self.gear["accessory_2"], 1]],
+                    ["select_gear_slot", ["resource_build"]],
+                ],
+                "order": [
+                    "nuke",
+                    ["wandos", [10]],
+                ]
+            },
+            {
+                "time": 60,
+                "pre_cycle": [
+                    "adventure",
+                    ["select_gear_slot", ["drop_rate_build"]],
+                    "attack"
+                ],
+                "order": [
+                    "nuke",
+                    "reclaim",
+                    ["wandos", [10]],
+                    ["augment", [2, augment_1]],
+                    ["once_delay", [2, [
+                       ["augment", [2, augment_2]]
+                    ]]]
+                ]
+            },
+            {
+                "time": 50,
+                "pre_cycle": [],
+                "order": [
+                    "nuke",
+                    "reclaim",
+                    ["wandos", [10]],
+                    ["augment", [2, augment_2]],
+                ]
+            },
+            {
+                "time": 2,
+                "pre_cycle": [
+                    ["select_gear", [self.gear["accessory"]]],
+                    ["select_gear", [self.gear["head"]]],
+                    ["select_gear", [self.gear["accessory_2"], 1]],
+                ],
+                "order": [
+                    "nuke",
+                    "attack"
+                ]
+            },
+
         ]
         return [cycle_data, cycle_time]
 

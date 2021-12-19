@@ -85,6 +85,9 @@
   "augmentation": {
     "scroll_top": [1655, 490],
     "scroll_bottom": [1655, 960],
+    "scissors": [1050, 500],
+    "milk": [1050, 585],
+    "shoulder_mounted": [1050, 790],
     "energy_buster": [1050, 680],
     "aug_adjustment": 50
   },
