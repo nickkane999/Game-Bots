@@ -22,6 +22,7 @@ from actors.AugmentationManager import AugmentationManager
 from actors.CycleManager import CycleManager
 from actors.BattleManager import BattleManager
 from actors.RebirthManager import RebirthManager
+from actors.Cycles import Cycles
 
 class Bot:
     # Initializing Object
@@ -35,7 +36,7 @@ class Bot:
         self.augmentation_manager = AugmentationManager(self)
         self.battle_manager = BattleManager(self, self.game_ui)
         self.cycle_manager = CycleManager(self, self.game_ui)
-        self.rebirth_manager = RebirthManager(self, self.game_ui)
+        self.rebirth_manager = RebirthManager(self, self.game_ui, Cycles())
         
         self.phase_count = 0
 

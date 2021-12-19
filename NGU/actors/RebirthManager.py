@@ -16,9 +16,10 @@ import win32gui
 
 class RebirthManager:
     # Initializing Object
-    def __init__(self, bot, game_ui):
+    def __init__(self, bot, game_ui, cycles):
         self.bot = bot
         self.game_ui = game_ui
+        self.cycles = cycles
         self.reset()
 
     def reset(self):
@@ -57,161 +58,21 @@ class RebirthManager:
             "select_gear": self.selectGear,
             "apply_boost": self.bot.gear_manager.applyCubeBoost
         }
-        self.cycle_data = [
-            {
-                "time": 60,
-                "pre_cycle": [],
-                "order": [
-                    "nuke",
-                    ["once", [
-                        ["select_gear_slot", ["drop_rate_build"]],
-                        "adventure",
-                        ["augment", [10, self.augment]],
-                        "nuke",
-                        ["adventure", ["increment"]]
-                    ]],
-                    "reclaim",
-                    ["time_machine", [10]]
-                ]
-            },
-            {
-                "time": 70,
-                "pre_cycle": [
-                    "reclaim",
-                    ["augment", [3, self.augment, True]],
-                    "reclaim",
-                    ["augment", [3, self.augment]],
-                    "reclaim",
-                    ["digger", [True, "advemture"]]
-                ],
-                "order": [
-                    "nuke",
-                    ["time_machine", [10]],
-                    ["once_delay", [4, [
-                        ["select_gear_slot", ["resource_build"]],
-                        "start_itopod"
-                    ]]]
-                ]
-            },
-            {
-                "time": 20,
-                "pre_cycle": [],
-                "order": [
-                    ["reclaim", [True]],
-                    ["time_machine", [10]],
-                    "nuke"
-                ]
-            },
-            {
-                "time": 40,
-                "pre_cycle": [
-                    ["reclaim", [True]],
-                    "spell_swap"
-                ],
-                "order": [
-                    ["blood", ["blood_5"]],
-                    "nuke",
-                    ["time_machine", [5, "energy"]],
-                ]
-            },            
-            {
-                "time": 60,
-                "pre_cycle": [],
-                "order": [
-                    ["reclaim", [True]],
-                    ["time_machine", [10]],
-                    "nuke"
-                ]
-            },
-            {
-                "time": 10,
-                "pre_cycle": [
-                    ["select_gear", [self.gear["chest"]]],
-                    ["select_gear", [self.gear["weapon"]]]
-                ],
-                "order": [
-                    ["time_machine", [10]],
-                    "nuke"
-                ]
-            },
-            {
-                "time": 75,
-                "pre_cycle": [
-                    ["reclaim", [True]],
-                    "spell_swap"
-                ],
-                "order": [
-                    ["blood", ["blood_5"]],
-                    "nuke",
-                    ["time_machine", [5, "energy"]],
-                ]
-            },
-            {
-                "time": 80,
-                "pre_cycle": [],
-                "order": [
-                    "reclaim",
-                    ["augment", [7, self.augment, True]],
-                    "reclaim",
-                    ["augment", [8, self.augment]],
-                    ["blood", ["blood_5"]],
-                    "nuke",
-                ]
-            },
-            {
-                "time": 130,
-                "pre_cycle": [
-                    "reclaim",
-                    ["reclaim", [True]],
-                    ["select_gear", [self.gear["accessory"]]],
-                    ["select_gear", [self.gear["head"]]],
-                    ["select_gear", [self.gear["accessory_2"], 1]],
-                    ["digger", [False]],
-                    ["set_augment_reclaim_flag", [True]],   
-                ],
-                "order": [
-                    ["wandos", [2]],
-                    ["rotate", [
-                        ["augment", [1, self.augment]],
-                        ["augment", [1, self.augment, True]]
-                    ]]
-                ]
-            },
-            {
-                "time": 2,
-                "pre_cycle": [
-                    "reclaim",
-                    ["reclaim", [True]],
-                    ["select_gear", [self.gear["accessory"]]],
-                    ["select_gear", [self.gear["head"]]],
-                    ["select_gear", [self.gear["weapon"]]],
-                    ["select_gear", [self.gear["accessory_2"], 1]],
-                    "apply_boost",
-                    ["digger", [False]],
-                    ["set_augment_reclaim_flag", [False]],
-                    ["wandos", [1]],
-                    "nuke",
-                    "attack"
-                ],
-                "order": []
-            },
-
-        ]
+        self.cycle_data = self.cycles.cycle_one
 
     def idleCycle(self):
-        '''
-        while True:
-            self.enterRebirth()
-        '''
         loop_start = time.time()
+        cycles = self.cycle_data[0]
+        duration = self.cycle_data[1]
+
         while True:
             cycle_start = time.time()
             cycle_index = 0
-            for cycle in self.cycle_data:
+            for cycle in cycles:
                 self.processCycle(cycle)
                 cycle_index += 1
                 print("Finished cycle " + str(cycle_index))
-            while time.time() - cycle_start < 600:
+            while time.time() - cycle_start < duration:
                 print("Waiting for cycle end")
                 time.sleep(2) 
             self.enterRebirth()
@@ -294,9 +155,9 @@ class RebirthManager:
         self.game_ui.accessMenu("fight_boss")
         time.sleep(0.2)
         fight = self.settings["fight_boss"]["fight"]
-        for x in range(0, 6):
+        for x in range(0, 12):
             self.click(fight)
-            time.sleep(2)
+            time.sleep(1)
 
     def changeGearSlot(self, info):
         slot = info[0]
