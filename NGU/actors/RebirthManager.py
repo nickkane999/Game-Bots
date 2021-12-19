@@ -114,7 +114,7 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 20,
+                "time": 10,
                 "pre_cycle": [
                     ["select_gear", [self.gear["chest"]]],
                     ["select_gear", [self.gear["weapon"]]]
@@ -125,7 +125,7 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 50,
+                "time": 60,
                 "pre_cycle": [
                     "spell_swap",
                     ["reclaim", [True]]                    
@@ -141,7 +141,7 @@ class RebirthManager:
                 "pre_cycle": [],
                 "order": [
                     "reclaim",
-                    ["augment", [8, self.augment, True]],
+                    ["augment", [7, self.augment, True]],
                     "reclaim",
                     ["augment", [8, self.augment]],
                     ["blood", ["blood_5"]],
