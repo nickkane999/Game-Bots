@@ -106,7 +106,7 @@ class RebirthManager:
                 "time": 90,
                 "pre_cycle": [],
                 "order": [
-                    ["reclaim", [True]]
+                    ["reclaim", [True]],
                     ["time_machine", [10]],
                     "nuke"
                 ]
