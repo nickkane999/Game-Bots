@@ -135,7 +135,7 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 60,
+                "time": 75,
                 "pre_cycle": [
                     ["reclaim", [True]],
                     "spell_swap"
@@ -147,7 +147,7 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 100,
+                "time": 80,
                 "pre_cycle": [],
                 "order": [
                     "reclaim",
@@ -159,7 +159,7 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 125,
+                "time": 130,
                 "pre_cycle": [
                     "reclaim",
                     ["reclaim", [True]],
