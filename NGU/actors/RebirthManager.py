@@ -91,7 +91,7 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 40,
+                "time": 50,
                 "pre_cycle": [
                     ["reclaim", [True]]
                 ],
@@ -105,7 +105,7 @@ class RebirthManager:
                 ]
             },            
             {
-                "time": 90,
+                "time": 80,
                 "pre_cycle": [],
                 "order": [
                     ["reclaim", [True]],
