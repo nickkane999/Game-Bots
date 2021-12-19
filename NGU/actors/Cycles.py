@@ -166,7 +166,7 @@ class Cycles:
                 ]
             },
             {
-                "time": 60,
+                "time": 20,
                 "pre_cycle": [
                     "adventure",
                     ["select_gear_slot", ["drop_rate_build"]],
@@ -177,7 +177,18 @@ class Cycles:
                     "reclaim",
                     ["wandos", [10]],
                     ["augment", [2, augment_1]],
-                    ["once_delay", [2, [
+                ]
+            },
+            {
+                "time": 40,
+                "pre_cycle": [
+                    ["select_gear_slot", ["resource_build"]],
+                ],
+                "order": [
+                    "nuke",
+                    "reclaim",
+                    ["wandos", [10]],
+                    ["once_delay", [1, [
                        ["augment", [2, augment_2]]
                     ]]]
                 ]
@@ -189,7 +200,7 @@ class Cycles:
                     "nuke",
                     "reclaim",
                     ["wandos", [10]],
-                    ["augment", [2, augment_2]],
+                    ["augment", [2, augment_3]],
                 ]
             },
             {
