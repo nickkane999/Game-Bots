@@ -84,7 +84,7 @@ class RebirthManager:
                 "order": [
                     "nuke",
                     ["time_machine", [10]],
-                    ["once_delay", [1, [
+                    ["once_delay", [3, [
                         ["select_gear_slot", ["resource_build"]],
                         "start_itopod"
                     ]]]
