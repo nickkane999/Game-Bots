@@ -23,10 +23,12 @@ class Cycles:
         self.cycles = {
             "cycle_one": self.getCycleOne(), #Current cap is 116
             "cycle_two": self.getCycleTwo(), #Start boss is 1
-            "cycle_three": self.getCycleThree() #Start boss is 37 (blood unlocked)
+            "cycle_three": self.getCycleThree() #2nd cycle up to 37
+            "cycle_four": self.getCycleFour() #Start boss is 37 (blood unlocked)
         } 
+        self.cycle_rotation = ["cycle_two", "cycle_three", "cycle_three"] 
         
-    def getCycleThree(self):
+    def getCycleFour(self):
         cycle_time = 420
         augment = "energy_buster"
         blood_1 = "blood_1"
@@ -139,6 +141,68 @@ class Cycles:
         ]
         return [cycle_data, cycle_time]
 
+    def getCycleThree(self):
+        cycle_time = 300
+        augment_1 = "milk"
+        augment_2 = "cannon_implant"
+        self.gear = {
+            "chest": 0,
+            "accessory": 1,
+            "head": 2,
+            "weapon": 3,
+            "accessory_2": 4
+        }
+        cycle_data = [
+            {
+                "time": 90,
+                "pre_cycle": [
+                    "nuke",
+                    "attack",
+                    ["select_gear_slot", ["drop_rate_build"]],
+                    "adventure"
+                ],
+                "order": [
+                    "nuke",
+                    ["wandos", [10]],
+                    ["once_delay", [3, [
+                       ["augment", [2, augment_1]]
+                    ]]]
+                ]
+            },
+            {
+                "time": 210,
+                "pre_cycle": [
+                    ["select_gear_slot", ["resource_build"]],
+                    ["select_gear", [self.gear["accessory"]]],
+                    ["select_gear", [self.gear["head"]]],
+                    ["select_gear", [self.gear["accessory_2"], 1]],
+                ],
+                "order": [
+                    "nuke",
+                    "reclaim",
+                    ["wandos", [10]],
+                    ["once_delay", [2, [
+                       ["augment", [2, augment_2]]
+                    ]]]
+                ]
+            },
+            {
+                "time": 2,
+                "pre_cycle": [
+                    ["select_gear", [self.gear["accessory"]]],
+                    ["select_gear", [self.gear["head"]]],
+                    ["select_gear", [self.gear["accessory_2"], 1]],
+                ],
+                "order": [
+                    "nuke",
+                    "attack"
+                ]
+            },
+
+        ]
+        return [cycle_data, cycle_time]
+
+
     def getCycleTwo(self):
         cycle_time = 300
         augment_1 = "scissors"
@@ -156,9 +220,6 @@ class Cycles:
                 "time": 90,
                 "pre_cycle": [
                     ["select_gear_slot", ["resource_build"]],
-                    ["select_gear", [self.gear["accessory"]]],
-                    ["select_gear", [self.gear["head"]]],
-                    ["select_gear", [self.gear["accessory_2"], 1]],
                 ],
                 "order": [
                     "nuke",
@@ -183,6 +244,9 @@ class Cycles:
                 "time": 40,
                 "pre_cycle": [
                     ["select_gear_slot", ["resource_build"]],
+                    ["select_gear", [self.gear["accessory"]]],
+                    ["select_gear", [self.gear["head"]]],
+                    ["select_gear", [self.gear["accessory_2"], 1]],
                 ],
                 "order": [
                     "nuke",

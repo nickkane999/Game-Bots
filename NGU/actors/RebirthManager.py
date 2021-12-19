@@ -59,6 +59,35 @@ class RebirthManager:
             "apply_boost": self.bot.gear_manager.applyCubeBoost
         }
         self.cycle_data = self.cycles.cycles["cycle_two"]
+        self.cycle_rotation = self.cycles.cycle_rotation
+
+    def idleCycleRotation(self):
+        loop_start = time.time()
+        cycles = self.cycle_rotation
+        duration = self.cycle_data[1]
+        
+        for cycle_name in in cycles:
+            current_cycle = self.cycles.cycles[cycle_name]
+            cycle_data = current_cycle[1]
+            duration = current_cycle[1]
+            
+            cycle_start = time.time()
+            cycle_index = 0
+            for cycle in cycle_data:
+                self.processCycle(cycle)
+                cycle_index += 1
+                print("Finished cycle " + str(cycle_index))
+            while time.time() - cycle_start < duration:
+                print("Waiting for cycle end")
+                time.sleep(2) 
+            self.enterRebirth()
+            print("Cycle completed. Total time so far")
+            print(time.time() - loop_start)
+            # self.retrieve_augments = False
+
+
+        while True:
+
 
     def idleCycle(self):
         loop_start = time.time()
