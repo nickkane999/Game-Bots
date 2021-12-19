@@ -127,8 +127,8 @@ class RebirthManager:
             {
                 "time": 60,
                 "pre_cycle": [
-                    "spell_swap",
-                    ["reclaim", [True]]                    
+                    ["reclaim", [True]],
+                    "spell_swap"
                 ],
                 "order": [
                     ["blood", ["blood_5"]],
