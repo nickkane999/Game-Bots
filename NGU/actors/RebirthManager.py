@@ -93,10 +93,12 @@ class RebirthManager:
             {
                 "time": 40,
                 "pre_cycle": [
-                    "spell_swap",
                     ["reclaim", [True]]
                 ],
                 "order": [
+                    ["once_delay", [3, [
+                        "spell_swap"
+                    ]]]
                     ["blood", ["blood_5"]],
                     "nuke",
                     ["time_machine", [5, "energy"]],
@@ -139,7 +141,7 @@ class RebirthManager:
                 "pre_cycle": [],
                 "order": [
                     "reclaim",
-                    ["augment", [3, self.augment, True]],
+                    ["augment", [6, self.augment, True]],
                     "reclaim",
                     ["augment", [8, self.augment]],
                     ["blood", ["blood_5"]],
