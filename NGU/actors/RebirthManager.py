@@ -90,6 +90,7 @@ class RebirthManager:
                 self.enterRebirth()
                 print("Cycle completed. Total time so far")
                 print(time.time() - loop_start)
+                cycle_index = 0
                 # self.retrieve_augments = False
 
     def idleCycle(self):
