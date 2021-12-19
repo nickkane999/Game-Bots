@@ -85,10 +85,6 @@ class RebirthManager:
             print(time.time() - loop_start)
             # self.retrieve_augments = False
 
-
-        while True:
-
-
     def idleCycle(self):
         loop_start = time.time()
         cycles = self.cycle_data[0]
