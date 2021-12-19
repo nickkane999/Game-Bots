@@ -56,7 +56,8 @@ class RebirthManager:
             "digger": self.setDiggers,
             "select_gear_slot": self.changeGearSlot,
             "select_gear": self.selectGear,
-            "apply_boost": self.bot.gear_manager.applyCubeBoost
+            "apply_boost": self.bot.gear_manager.applyCubeBoost,
+            "scroll_augment": self.scrollDownAugments
         }
         self.cycle_data = self.cycles.cycles["cycle_one"]
         self.cycle_rotation = self.cycles.cycle_rotation
@@ -216,6 +217,10 @@ class RebirthManager:
             loop_time = time.time()
             time.sleep(0.5)
         print("Finished adding augments")
+
+    def scrollDownAugments(self):
+        self.game_ui.accessMenu("augmentation")
+        self.bot.augmentation_manager.scrollDown()
 
     def setAdventureZone(self, info = None):
         my_type = info

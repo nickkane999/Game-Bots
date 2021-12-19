@@ -53,7 +53,9 @@ class Cycles:
         cycle_data = [
             {
                 "time": 60,
-                "pre_cycle": [],
+                "pre_cycle": [
+                    "scroll_augment"
+                ],
                 "order": [
                     "nuke",
                     ["once", [

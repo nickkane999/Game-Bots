@@ -52,3 +52,9 @@ class AugmentationManager:
         pyautogui.click(point[0] + 50, point[1] + self.settings["aug_adjustment"])
         pyautogui.click(point[0] + 50, point[1])
         time.sleep(0.1)
+
+    def scrollDown(self):
+        menu = self.settings
+        point = menu["scroll_bottom"]
+        pyautogui.click(point[0], point[1])
+        time.sleep(0.2)
