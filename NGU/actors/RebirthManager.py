@@ -58,7 +58,7 @@ class RebirthManager:
             "select_gear": self.selectGear,
             "apply_boost": self.bot.gear_manager.applyCubeBoost
         }
-        self.cycle_data = self.cycles.cycles["cycle_two"]
+        self.cycle_data = self.cycles.cycles["cycle_one"]
         self.cycle_rotation = self.cycles.cycle_rotation
 
     def idleCycleRotation(self):
