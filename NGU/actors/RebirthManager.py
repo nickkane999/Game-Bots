@@ -72,7 +72,7 @@ class RebirthManager:
                 ]
             },
             {
-                "time": 60,
+                "time": 70,
                 "pre_cycle": [
                     "reclaim",
                     ["augment", [3, self.augment, True]],
@@ -84,21 +84,19 @@ class RebirthManager:
                 "order": [
                     "nuke",
                     ["time_machine", [10]],
-                    ["once_delay", [3, [
+                    ["once_delay", [4, [
                         ["select_gear_slot", ["resource_build"]],
                         "start_itopod"
                     ]]]
                 ]
             },
             {
-                "time": 50,
+                "time": 40,
                 "pre_cycle": [
-                    ["reclaim", [True]]
+                    ["reclaim", [True]],
+                    "spell_swap"
                 ],
                 "order": [
-                    ["once_delay", [3, [
-                        "spell_swap"
-                    ]]],
                     ["blood", ["blood_5"]],
                     "nuke",
                     ["time_machine", [5, "energy"]],
