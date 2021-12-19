@@ -24,7 +24,10 @@ class RebirthManager:
     def reset(self):
         self.settings = self.bot.save_data.db
         self.sleep_time = 0.1
-        self.diggers = ["wandos", "stat"]
+        self.diggers = {
+            "wandos" = ["wandos", "stat"],
+            "advemture" = ["adventure", "stat"]
+        }
         self.augment = "energy_buster"
         self.gear = {
             "chest": 0,
@@ -63,7 +66,7 @@ class RebirthManager:
                     ["once", [
                         ["select_gear_slot", ["drop_rate_build"]],
                         "adventure",
-                        ["augment", [7, self.augment]],
+                        ["augment", [10, self.augment]],
                         "nuke",
                         ["adventure", ["increment"]]
                     ]],
@@ -79,7 +82,7 @@ class RebirthManager:
                     "reclaim",
                     ["augment", [3, self.augment]],
                     "reclaim",
-                    "digger"
+                    ["digger", [True, "advemture"]]
                 ],
                 "order": [
                     "nuke",
@@ -358,6 +361,7 @@ class RebirthManager:
 
     def setDiggers(self, info = None):
         clear = info
+        digger_type = self.assignListIndex(info, "wandos", 1)
 
         self.game_ui.accessMenu("gold_diggers")
         digger_settings = self.settings["gold_diggers"]
@@ -365,7 +369,7 @@ class RebirthManager:
         clear_point = digger_settings["clear_button"]
         diggers = []
 
-        for digger in self.diggers:
+        for digger in self.diggers[digger_type]:
             diggers.append(digger_settings["digger_info"][digger])
 
         if clear:
