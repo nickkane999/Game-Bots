@@ -23,7 +23,7 @@ class Cycles:
         self.cycles = {
             "cycle_one": self.getCycleOne(), #Current cap is 116
             "cycle_two": self.getCycleTwo(), #Start boss is 1
-            "cycle_three": self.getCycleThree() #2nd cycle up to 37
+            "cycle_three": self.getCycleThree(), #2nd cycle up to 37
             "cycle_four": self.getCycleFour() #Start boss is 37 (blood unlocked)
         } 
         self.cycle_rotation = ["cycle_two", "cycle_three", "cycle_three"] 
