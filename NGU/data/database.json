@@ -90,6 +90,7 @@
     "cannon_implant": [1050, 690],
     "shoulder_mounted": [1050, 790],
     "energy_buster": [1050, 680],
+    "exoskeleton": [1050, 780],
     "aug_adjustment": 50
   },
   "cycles": {

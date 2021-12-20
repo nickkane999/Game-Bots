@@ -404,7 +404,8 @@ class Cycles:
     #Current cap is 116
     def getCycleOne(self):
         cycle_time = 600
-        self.augment = "energy_buster"
+        augment = "energy_buster"
+        self.augment = "exoskeleton"
         self.gear = {
             "chest": 0,
             "accessory": 1,
@@ -422,7 +423,7 @@ class Cycles:
                     ["once", [
                         ["select_gear_slot", ["drop_rate_build"]],
                         "adventure",
-                        ["augment", [10, self.augment]],
+                        ["augment", [10, augment]],
                         "nuke",
                         ["adventure", ["increment"]]
                     ]],
@@ -507,7 +508,7 @@ class Cycles:
                 "pre_cycle": [],
                 "order": [
                     "reclaim",
-                    ["augment", [8, self.augment, True]],
+                    ["augment", [2, self.augment, True]],
                     "reclaim",
                     ["augment", [8, self.augment]],
                     ["blood", ["blood_5"]],
