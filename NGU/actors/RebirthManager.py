@@ -93,10 +93,14 @@ class RebirthManager:
                 cycle_index = 0
                 # self.retrieve_augments = False
 
-    def idleCycle(self):
+    def idleCycle(self, name = None):
+        if not name:
+            info = self.cycles.cycles["cycle_one"]
+        else:
+            info = self.cycles.cycles[name]
         loop_start = time.time()
-        cycles = self.cycle_data[0]
-        duration = self.cycle_data[1]
+        cycles = info[0]
+        duration = info[1]
 
         while True:
             cycle_start = time.time()
