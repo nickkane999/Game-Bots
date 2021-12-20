@@ -507,7 +507,7 @@ class Cycles:
                 "pre_cycle": [],
                 "order": [
                     "reclaim",
-                    ["augment", [7, self.augment, True]],
+                    ["augment", [8, self.augment, True]],
                     "reclaim",
                     ["augment", [8, self.augment]],
                     ["blood", ["blood_5"]],
