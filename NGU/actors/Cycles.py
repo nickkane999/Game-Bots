@@ -405,7 +405,7 @@ class Cycles:
     def getCycleOne(self):
         cycle_time = 600
         augment = "energy_buster"
-        self.augment = "exoskeleton"
+        self.augment = "energy_buster"
         self.gear = {
             "chest": 0,
             "accessory": 1,
@@ -423,7 +423,7 @@ class Cycles:
                     ["once", [
                         ["select_gear_slot", ["drop_rate_build"]],
                         "adventure",
-                        ["augment", [10, augment]],
+                        ["augment", [10, self.augment]],
                         "nuke",
                         ["adventure", ["increment"]]
                     ]],
@@ -508,7 +508,7 @@ class Cycles:
                 "pre_cycle": [],
                 "order": [
                     "reclaim",
-                    ["augment", [2, self.augment, True]],
+                    ["augment", [8, self.augment, True]],
                     "reclaim",
                     ["augment", [8, self.augment]],
                     ["blood", ["blood_5"]],
