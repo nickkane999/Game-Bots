@@ -347,6 +347,7 @@ class RebirthManager:
 
         self.click(switch_menu)
         self.click(number)
+        self.click(gold)
         self.click(switch_menu)
         print("Swaped autocast spells")
 
