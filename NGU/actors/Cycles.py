@@ -648,12 +648,12 @@ class Cycles:
                 ],
                 "order": [
                     ["blood", ["blood_5"]],
-                    ["time_machine", [10]],
+                    ["time_machine", [10, "energy"]],
                     "nuke"
                 ]
             },
             {
-                "time": 30,
+                "time": 40,
                 "pre_cycle": [],
                 "order": [
                     ["blood", ["blood_5"]],
@@ -665,7 +665,7 @@ class Cycles:
                 ]
             },
             {
-                "time": 80,
+                "time": 100,
                 "pre_cycle": [
                     "reclaim",
                     ["reclaim", [True]],
