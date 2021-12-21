@@ -27,7 +27,11 @@ class Cycles:
             "cycle_four": self.getCycleFour(),
             "cycle_five": self.getCycleFive(),
             "cycle_six": self.getCycleSix()
-        } 
+        }
+        self.cycle_level = [
+            "cycle_six", 
+            ["cycle_five", 2]
+        ]
         self.cycle_rotation = [
             "cycle_two", 
             ["cycle_three", 2],
@@ -616,7 +620,7 @@ class Cycles:
                 ]
             },
             {
-                "time": 40,
+                "time": 30,
                 "pre_cycle": [
                     ["reclaim", [True]],
                     "spell_swap"
@@ -637,7 +641,7 @@ class Cycles:
                 ]
             },
             {
-                "time": 20,
+                "time": 30,
                 "pre_cycle": [
                     ["reclaim", [True]],
                     "spell_swap"
