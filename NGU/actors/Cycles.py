@@ -29,8 +29,8 @@ class Cycles:
             "cycle_six": self.getCycleSix()
         }
         self.cycle_level = [
-            "cycle_six", 
-            ["cycle_one", 2]
+            ["cycle_six", 2],
+            "cycle_one"
         ]
         self.cycle_rotation = [
             "cycle_two", 
