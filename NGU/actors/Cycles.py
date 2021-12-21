@@ -560,7 +560,7 @@ class Cycles:
         ]
         return [cycle_data, cycle_time]
 
-    #Current cap is unknown, EST time is 7:00
+    #Current cap is around 107, EST time is 7:00
     def getCycleSix(self):
         cycle_time = 420
         augment = "energy_buster"
@@ -620,7 +620,7 @@ class Cycles:
                 ]
             },
             {
-                "time": 30,
+                "time": 35,
                 "pre_cycle": [
                     ["reclaim", [True]],
                     "spell_swap"
@@ -653,7 +653,7 @@ class Cycles:
                 ]
             },
             {
-                "time": 40,
+                "time": 50,
                 "pre_cycle": [],
                 "order": [
                     ["blood", ["blood_5"]],
@@ -665,7 +665,7 @@ class Cycles:
                 ]
             },
             {
-                "time": 100,
+                "time": 110,
                 "pre_cycle": [
                     "reclaim",
                     ["reclaim", [True]],
