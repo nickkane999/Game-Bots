@@ -455,7 +455,6 @@ class Cycles:
                 "time": 20,
                 "pre_cycle": [],
                 "order": [
-                    ["reclaim", [True]],
                     ["time_machine", [10]],
                     "nuke"
                 ]
