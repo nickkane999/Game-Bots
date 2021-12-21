@@ -639,8 +639,6 @@ class Cycles:
             {
                 "time": 20,
                 "pre_cycle": [
-                    ["select_gear", [self.gear["chest"]]],
-                    ["select_gear", [self.gear["weapon"]]],
                     ["reclaim", [True]],
                     "spell_swap"
                 ],
@@ -667,6 +665,8 @@ class Cycles:
                 "pre_cycle": [
                     "reclaim",
                     ["reclaim", [True]],
+                    ["select_gear", [self.gear["chest"]]],
+                    ["select_gear", [self.gear["weapon"]]],
                     ["select_gear", [self.gear["accessory"]]],
                     ["select_gear", [self.gear["head"]]],
                     ["select_gear", [self.gear["accessory_2"], 1]],
