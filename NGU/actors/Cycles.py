@@ -612,7 +612,6 @@ class Cycles:
                 "time": 30,
                 "pre_cycle": [],
                 "order": [
-                    ["reclaim", [True]],
                     ["time_machine", [10]],
                     "nuke"
                 ]
