@@ -30,7 +30,7 @@ class Cycles:
         }
         self.cycle_level = [
             "cycle_six", 
-            ["cycle_five", 2]
+            ["cycle_one", 2]
         ]
         self.cycle_rotation = [
             "cycle_two", 
