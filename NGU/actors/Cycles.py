@@ -620,7 +620,7 @@ class Cycles:
                 ]
             },
             {
-                "time": 35,
+                "time": 30,
                 "pre_cycle": [
                     ["reclaim", [True]],
                     "spell_swap"
@@ -653,7 +653,7 @@ class Cycles:
                 ]
             },
             {
-                "time": 50,
+                "time": 40,
                 "pre_cycle": [],
                 "order": [
                     ["blood", ["blood_5"]],
