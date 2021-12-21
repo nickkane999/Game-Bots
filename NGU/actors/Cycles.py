@@ -594,15 +594,15 @@ class Cycles:
                 "time": 40,
                 "pre_cycle": [
                     "reclaim",
-                    ["augment", [3, self.augment, True]],
+                    ["augment", [2, self.augment, True]],
                     "reclaim",
                     ["augment", [3, self.augment]],
                     "reclaim",
                 ],
                 "order": [
                     "nuke",
-                    ["time_machine", [7]],
-                    ["once_delay", [3, [
+                    ["time_machine", [8]],
+                    ["once_delay", [2, [
                         ["select_gear_slot", ["resource_build"]],
                         "start_itopod"
                     ]]]
@@ -653,19 +653,19 @@ class Cycles:
                 ]
             },
             {
-                "time": 60,
+                "time": 30,
                 "pre_cycle": [],
                 "order": [
                     ["blood", ["blood_5"]],
                     "reclaim",
-                    ["augment", [8, self.augment, True]],
+                    ["augment", [2, self.augment, True]],
                     "reclaim",
                     ["augment", [8, self.augment]],
                     "nuke",
                 ]
             },
             {
-                "time": 110,
+                "time": 80,
                 "pre_cycle": [
                     "reclaim",
                     ["reclaim", [True]],
