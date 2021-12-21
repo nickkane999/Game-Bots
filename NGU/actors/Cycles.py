@@ -572,7 +572,7 @@ class Cycles:
         self.bood_type = "blood_5"
         cycle_data = [
             {
-                "time": 40,
+                "time": 50,
                 "pre_cycle": [],
                 "order": [
                     "nuke",
@@ -584,14 +584,14 @@ class Cycles:
                         ["adventure", ["increment"]]
                     ]],
                     "reclaim",
-                    ["time_machine", [10]],
+                    ["time_machine", [6]],
                     ["once_delay", [2, [
                         ["digger", [True, "advemture"]]
                     ]]]
                 ]
             },
             {
-                "time": 50,
+                "time": 40,
                 "pre_cycle": [
                     "reclaim",
                     ["augment", [3, self.augment, True]],
@@ -601,7 +601,7 @@ class Cycles:
                 ],
                 "order": [
                     "nuke",
-                    ["time_machine", [10]],
+                    ["time_machine", [7]],
                     ["once_delay", [3, [
                         ["select_gear_slot", ["resource_build"]],
                         "start_itopod"
@@ -643,8 +643,11 @@ class Cycles:
                 "pre_cycle": [
                     ["select_gear", [self.gear["chest"]]],
                     ["select_gear", [self.gear["weapon"]]]
+                    ["reclaim", [True]],
+                    "spell_swap"
                 ],
                 "order": [
+                    ["blood", ["blood_5"]],
                     ["time_machine", [10]],
                     "nuke"
                 ]
@@ -653,11 +656,11 @@ class Cycles:
                 "time": 60,
                 "pre_cycle": [],
                 "order": [
+                    ["blood", ["blood_5"]],
                     "reclaim",
                     ["augment", [8, self.augment, True]],
                     "reclaim",
                     ["augment", [8, self.augment]],
-                    ["blood", ["blood_5"]],
                     "nuke",
                 ]
             },
