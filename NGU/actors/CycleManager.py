@@ -100,7 +100,7 @@ class CycleManager:
 
         point = ngu_settings["start_power"]
         energy_slot = ngu_settings["energy"]["augment"]
-        magic_slot = ngu_settings["magic"]["number"]
+        magic_slot = ngu_settings["magic"]["yggdrasil"]
         swap = ngu_settings["swap"]
 
         pyautogui.click(point[0], point[1] + (50 * energy_slot)) 
