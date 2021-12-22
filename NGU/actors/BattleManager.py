@@ -39,6 +39,7 @@ class BattleManager:
         self.cooldowns = self.bot.save_data.db["adventure"]["cooldowns_start"]
         self.healthPoint = self.bot.save_data.db["adventure"]["hp"]
         self.defensive_rotate_buttons = ["block", "paralyze"]
+        self.use_defense = True
 
     def get_pixel_colour(self, i_x, i_y):
         i_desktop_window_id = win32gui.GetDesktopWindow()
@@ -48,7 +49,9 @@ class BattleManager:
         win32gui.ReleaseDC(i_desktop_window_id,i_desktop_window_dc)
         return (i_colour & 0xff), ((i_colour >> 8) & 0xff), ((i_colour >> 16) & 0xff)
 
-    def adventureCycle(self):
+    def adventureCycle(self, offensive = False):
+        if offensive:
+            self.use_defense = False 
         start_time = time.time()        
         defensive_buttons = ["defense_buff", "regen", "heal", "parry"]
         offensive_buttons = ["charge", "ultimate_attack", "pierce"]
@@ -92,7 +95,7 @@ class BattleManager:
             if self.getState(button, point):
                 self.clickButton(point)
                 print("Clicked " + button)
-        if not exploder:
+        if not exploder and self.use_defense:
             self.defenseRotation(self.defensive_rotate_buttons)
         #print("Enemy ID")
         #print(self.get_pixel_colour(1250, 710))
