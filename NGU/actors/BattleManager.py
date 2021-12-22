@@ -24,7 +24,7 @@ class BattleManager:
     def reset(self):
         self.cycle_type = "cycle_1"
         self.settings = self.bot.save_data.db["adventure"]
-        self.cooldown = 0.74
+        self.cooldown = 0.60
         self.states = {
             "unavailable_row_1": (124, 78, 78),
             "available_row_1": (248, 155, 155),
