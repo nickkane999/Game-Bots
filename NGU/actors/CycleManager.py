@@ -39,7 +39,7 @@ class CycleManager:
         }
 
 
-    def idleCycle(self, rebirth_time):
+    def idleCycle(self, rebirth_time, only_boosts = False):
         loop_start_time = time.time()
         rebirth_time = rebirth_time * 60
 
@@ -49,7 +49,10 @@ class CycleManager:
             self.nguCycle()
             self.game_ui.accessMenu("inventory")
             time.sleep(0.2)
-            self.bot.gear_manager.upgradeItems(True, 30)
+            if only_boosts:
+                self.bot.gear_manager.applyCubeBoost()
+            else:
+                self.bot.gear_manager.upgradeItems(True, 30)
 
             current_rebirth_time = time.time() - loop_start_time + rebirth_time
             self.setGearSlot(current_rebirth_time)
