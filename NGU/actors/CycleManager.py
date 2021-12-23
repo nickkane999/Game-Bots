@@ -45,11 +45,12 @@ class CycleManager:
 
         while True:
             loop_start_time = time.time()
-            self.yggdrasilHarvest()
+            self.harvest()
             self.nguCycle()
-            self.game_ui.accessMenu("inventory")
             time.sleep(0.2)
             if only_boosts:
+                self.game_ui.accessMenu("inventory")
+                time.sleep(0.2)
                 self.bot.gear_manager.applyCubeBoost()
             else:
                 self.bot.gear_manager.upgradeItems(True, 30)
@@ -60,6 +61,23 @@ class CycleManager:
             time.sleep(20)
             rebirth_time = time.time() - loop_start_time + rebirth_time
 
+
+    def harvest(self):
+        self.game_ui.accessMenu("inventory")
+        time.sleep(0.2)
+        self.bot.gear_manager.selectGear(0)
+        time.sleep(0.2)
+        self.bot.gear_manager.selectGear(1)
+        time.sleep(0.2)
+        self.yggdrasilHarvest()
+        print("Finish harvest")
+        time.sleep(0.2)
+        self.game_ui.accessMenu("inventory")
+        time.sleep(0.2)
+        self.bot.gear_manager.selectGear(1)
+        time.sleep(0.2)
+        self.bot.gear_manager.selectGear(0)
+        time.sleep(0.2)
 
     def setGearSlot(self, rebirth_time):
         print(rebirth_time)
