@@ -430,7 +430,6 @@ class Cycles:
                         "adventure",
                         ["augment", [10, self.augment]],
                         "nuke",
-                        ["adventure", ["increment"]]
                     ]],
                     "reclaim",
                     ["time_machine", [10]]
@@ -472,7 +471,7 @@ class Cycles:
                 "order": [
                     ["blood", ["blood_5"]],
                     "nuke",
-                    ["time_machine", [5, "energy"]],
+                    ["time_machine", [5]],
                 ]
             },            
             {
@@ -487,8 +486,7 @@ class Cycles:
             {
                 "time": 10,
                 "pre_cycle": [
-                    ["select_gear", [self.gear["chest"]]],
-                    ["select_gear", [self.gear["weapon"]]]
+                    ["select_gear", [self.gear["chest"]]]
                 ],
                 "order": [
                     ["time_machine", [10]],
@@ -532,6 +530,7 @@ class Cycles:
                 ],
                 "order": [
                     ["wandos", [2]],
+                    ["blood", ["blood_5"]],
                     ["rotate", [
                         ["augment", [1, self.augment]],
                         ["augment", [1, self.augment, True]]
