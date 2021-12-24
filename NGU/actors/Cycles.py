@@ -653,7 +653,7 @@ class Cycles:
                 ]
             },
             {
-                "time": 140,
+                "time": 150,
                 "pre_cycle": [
                     "reclaim",
                     ["reclaim", [True]],
