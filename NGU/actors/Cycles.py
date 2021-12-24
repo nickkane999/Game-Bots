@@ -579,6 +579,7 @@ class Cycles:
                         "adventure",
                         ["augment", [4, self.augment]],
                         "nuke",
+                        ["adventure", ["increment", [4, 1]]]
                     ]],
                     "reclaim",
                     ["time_machine", [6]],
