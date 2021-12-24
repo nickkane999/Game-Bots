@@ -264,6 +264,7 @@ class RebirthManager:
 
     def setAdventureZone(self, info = None):
         my_type = info
+        details = self.assignListIndex(info, None, 1)
 
         self.game_ui.accessMenu("adventure")
         menu = self.bot.battle_manager.settings
@@ -275,6 +276,13 @@ class RebirthManager:
         elif my_type == "increment":
             for x in range(0, 5):
                 self.click(arrow_right)
+        elif details:
+            forward_count = details[0]
+            back_count = details[1]
+            for x in range(0, forward_count):
+                self.click(arrow_right)
+            for x in range(0, back_count):
+                self.click(arrow_left)
         else:
             for x in range(0, 20):
                 self.click(arrow_right)
