@@ -482,6 +482,7 @@ class Cycles:
                 ],
                 "order": [
                     ["reclaim", [True]],
+                    ["blood", ["blood_5"]],
                     ["time_machine", [10]],
                     "nuke"
                 ]
