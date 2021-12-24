@@ -541,7 +541,6 @@ class Cycles:
                     "reclaim",
                     ["reclaim", [True]],
                     ["select_gear", [self.gear["accessory"]]],
-                    ["select_gear", [self.gear["weapon"]]],
                     ["select_gear", [self.gear["accessory_2"], 1]],
                     "apply_boost",
                     ["digger", [False]],
