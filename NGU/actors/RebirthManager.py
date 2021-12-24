@@ -130,7 +130,7 @@ class RebirthManager:
 
     def idleCycle(self, name = None):
         if not name:
-            info = self.cycles.cycles["cycle_one"]
+            info = self.cycle_data
         else:
             info = self.cycles.cycles[name]
         loop_start = time.time()
@@ -334,7 +334,7 @@ class RebirthManager:
         while loop_time - current_time < set_time:
             self.game_ui.accessMenu("wandos")
             if dump != "energy":
-                self.click(magic_dump)
+                self.click([magic_dump[0] + 100, magic_dump[1]])
             if dump != "magic":
                 self.click([energy_dump[0] + 100, energy_dump[1]])
             loop_time = time.time()
