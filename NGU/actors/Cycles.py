@@ -614,7 +614,7 @@ class Cycles:
                 "time": 30,
                 "pre_cycle": [
                     ["reclaim", [True]],
-                    "spell_swap"
+                    "spell_swap",
                     ["reclaim", [True]]
                 ],
                 "order": [
