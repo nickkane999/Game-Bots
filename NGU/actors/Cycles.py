@@ -633,6 +633,9 @@ class Cycles:
                     ["blood", ["blood_5"]],
                     ["blood", ["blood_4"]],
                     ["time_machine", [10, "energy"]],
+                    ["once_delay", [2, [
+                        ["reclaim", [True]]
+                    ]]],
                     "nuke"
                 ]
             },
