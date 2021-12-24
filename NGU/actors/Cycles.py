@@ -482,6 +482,7 @@ class Cycles:
                 ],
                 "order": [
                     ["blood", ["blood_5"]],
+                    ["blood", ["blood_4"]],
                     ["time_machine", [10, "energy"]],
                     "nuke"
                 ]
