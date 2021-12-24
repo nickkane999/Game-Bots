@@ -481,9 +481,8 @@ class Cycles:
                     "spell_swap"
                 ],
                 "order": [
-                    ["reclaim", [True]],
                     ["blood", ["blood_5"]],
-                    ["time_machine", [10]],
+                    ["time_machine", [10, "energy"]],
                     "nuke"
                 ]
             },
@@ -509,7 +508,7 @@ class Cycles:
                 "pre_cycle": [],
                 "order": [
                     "reclaim",
-                    ["augment", [8, self.augment, True]],
+                    ["augment", [12, self.augment, True]],
                     "reclaim",
                     ["augment", [8, self.augment]],
                     ["blood", ["blood_5"]],
