@@ -266,6 +266,8 @@ class RebirthManager:
         my_type = info
         if info:
             details = self.assignListIndex(info, None, 1)
+        else:
+            details = None
 
         self.game_ui.accessMenu("adventure")
         menu = self.bot.battle_manager.settings
