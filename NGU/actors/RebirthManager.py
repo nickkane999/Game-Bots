@@ -264,7 +264,8 @@ class RebirthManager:
 
     def setAdventureZone(self, info = None):
         my_type = info
-        details = self.assignListIndex(info, None, 1)
+        if info:
+            details = self.assignListIndex(info, None, 1)
 
         self.game_ui.accessMenu("adventure")
         menu = self.bot.battle_manager.settings
