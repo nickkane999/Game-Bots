@@ -601,7 +601,8 @@ class Cycles:
                     ["time_machine", [8]],
                     ["once", [
                         ["select_gear_slot", ["resource_build"]],
-                        "start_itopod"
+                        "start_itopod",
+                        ["reclaim", [True]]
                     ]],
                     ["once_delay", [200, [
                         ["select_gear_slot", ["resource_build"]],
@@ -615,7 +616,6 @@ class Cycles:
                     ["reclaim", [True]],
                     "spell_swap"
                     ["reclaim", [True]],
-                    ["reclaim", [True]]
                 ],
                 "order": [
                     ["blood", ["blood_5"]],
@@ -631,6 +631,7 @@ class Cycles:
                 ],
                 "order": [
                     ["blood", ["blood_5"]],
+                    ["blood", ["blood_4"]],
                     ["time_machine", [10, "energy"]],
                     "nuke"
                 ]
@@ -640,7 +641,6 @@ class Cycles:
                 "pre_cycle": [],
                 "order": [
                     ["blood", ["blood_5"]],
-                    ["blood", ["blood_4"]],
                     "reclaim",
                     ["augment", [2, self.augment, True]],
                     "reclaim",
