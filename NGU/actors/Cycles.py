@@ -428,11 +428,16 @@ class Cycles:
                     ["once", [
                         ["select_gear_slot", ["drop_rate_build"]],
                         "adventure",
-                        ["augment", [10, self.augment]],
-                        "nuke",
+                        ["augment", [4, self.augment]],
+                        "nuke"
                     ]],
                     "reclaim",
                     ["time_machine", [10]]
+                    ["once_delay", [3, [
+                        ["digger", [True, "advemture"]],
+                        ["select_gear_slot", ["resource_build"]],
+                        "start_itopod"
+                    ]]]
                 ]
             },
             {
@@ -442,16 +447,11 @@ class Cycles:
                     ["augment", [3, self.augment, True]],
                     "reclaim",
                     ["augment", [3, self.augment]],
-                    "reclaim",
-                    ["digger", [True, "advemture"]]
+                    "reclaim"
                 ],
                 "order": [
                     "nuke",
-                    ["time_machine", [10]],
-                    ["once_delay", [4, [
-                        ["select_gear_slot", ["resource_build"]],
-                        "start_itopod"
-                    ]]]
+                    ["time_machine", [10]]
                 ]
             },
             {
@@ -463,7 +463,7 @@ class Cycles:
                 ]
             },
             {
-                "time": 40,
+                "time": 30,
                 "pre_cycle": [
                     ["reclaim", [True]],
                     "spell_swap"
@@ -476,7 +476,10 @@ class Cycles:
             },            
             {
                 "time": 60,
-                "pre_cycle": [],
+                "pre_cycle": [
+                    ["reclaim", [True]],
+                    "spell_swap"
+                ],
                 "order": [
                     ["reclaim", [True]],
                     ["time_machine", [10]],
@@ -485,9 +488,7 @@ class Cycles:
             },
             {
                 "time": 10,
-                "pre_cycle": [
-                    ["select_gear", [self.gear["chest"]]]
-                ],
+                "pre_cycle": [],
                 "order": [
                     ["time_machine", [10]],
                     "nuke"
@@ -495,10 +496,7 @@ class Cycles:
             },
             {
                 "time": 75,
-                "pre_cycle": [
-                    ["reclaim", [True]],
-                    "spell_swap"
-                ],
+                "pre_cycle": [],
                 "order": [
                     ["blood", ["blood_5"]],
                     "nuke",
