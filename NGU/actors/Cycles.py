@@ -599,7 +599,11 @@ class Cycles:
                 "order": [
                     "nuke",
                     ["time_machine", [8]],
-                    ["once_delay", [2, [
+                    ["once", [
+                        ["select_gear_slot", ["resource_build"]],
+                        "start_itopod"
+                    ]],
+                    ["once_delay", [200, [
                         ["select_gear_slot", ["resource_build"]],
                         "start_itopod"
                     ]]]
@@ -610,6 +614,8 @@ class Cycles:
                 "pre_cycle": [
                     ["reclaim", [True]],
                     "spell_swap"
+                    ["reclaim", [True]],
+                    ["reclaim", [True]]
                 ],
                 "order": [
                     ["blood", ["blood_5"]],
@@ -634,6 +640,7 @@ class Cycles:
                 "pre_cycle": [],
                 "order": [
                     ["blood", ["blood_5"]],
+                    ["blood", ["blood_4"]],
                     "reclaim",
                     ["augment", [2, self.augment, True]],
                     "reclaim",
@@ -654,6 +661,7 @@ class Cycles:
                 ],
                 "order": [
                     ["wandos", [2]],
+                    ["blood", ["blood_5"]],
                     ["rotate", [
                         ["augment", [1, self.augment]],
                         ["augment", [1, self.augment, True]]
