@@ -615,7 +615,7 @@ class Cycles:
                 "pre_cycle": [
                     ["reclaim", [True]],
                     "spell_swap"
-                    ["reclaim", [True]],
+                    ["reclaim", [True]]
                 ],
                 "order": [
                     ["blood", ["blood_5"]],
