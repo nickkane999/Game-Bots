@@ -273,13 +273,7 @@ class RebirthManager:
         menu = self.bot.battle_manager.settings
         arrow_left = menu["arrow_left"]
         arrow_right = menu["arrow_right"]
-        if my_type == "low":
-            for x in range(0, 12):
-                self.click(arrow_right)
-        elif my_type == "increment":
-            for x in range(0, 5):
-                self.click(arrow_right)
-        elif details:
+        if details:
             forward_count = details[0]
             back_count = details[1]
             for x in range(0, forward_count):
@@ -287,12 +281,19 @@ class RebirthManager:
             for x in range(0, back_count):
                 self.click(arrow_left)
         else:
-            for x in range(0, 20):
-                self.click(arrow_right)
-        
-        time.sleep(5)
-        if self.get_pixel_colour(1160, 640) == self.open_adventure_color:
-            self.click(arrow_left)
+            if my_type == "low":
+                for x in range(0, 12):
+                    self.click(arrow_right)
+            elif my_type == "increment":
+                for x in range(0, 5):
+                    self.click(arrow_right)
+            else:
+                for x in range(0, 20):
+                    self.click(arrow_right)
+            
+            time.sleep(5)
+            if self.get_pixel_colour(1160, 640) == self.open_adventure_color:
+                self.click(arrow_left)
 
         print("Set adventure zone")
 
