@@ -278,6 +278,7 @@ class RebirthManager:
             back_count = details[1]
             for x in range(0, forward_count):
                 self.click(arrow_right)
+            time.sleep(0.3)
             for x in range(0, back_count):
                 self.click(arrow_left)
         else:
