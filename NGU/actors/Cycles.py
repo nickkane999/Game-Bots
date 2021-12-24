@@ -432,7 +432,7 @@ class Cycles:
                         "nuke"
                     ]],
                     "reclaim",
-                    ["time_machine", [10]]
+                    ["time_machine", [10]],
                     ["once_delay", [3, [
                         ["digger", [True, "advemture"]],
                         ["select_gear_slot", ["resource_build"]],
@@ -471,7 +471,7 @@ class Cycles:
                 "order": [
                     ["blood", ["blood_5"]],
                     "nuke",
-                    ["time_machine", [5]],
+                    ["time_machine", [5]]
                 ]
             },            
             {
@@ -500,7 +500,7 @@ class Cycles:
                 "order": [
                     ["blood", ["blood_5"]],
                     "nuke",
-                    ["time_machine", [5, "energy"]],
+                    ["time_machine", [5, "energy"]]
                 ]
             },
             {
@@ -512,7 +512,7 @@ class Cycles:
                     "reclaim",
                     ["augment", [8, self.augment]],
                     ["blood", ["blood_5"]],
-                    "nuke",
+                    "nuke"
                 ]
             },
             {
@@ -524,7 +524,7 @@ class Cycles:
                     ["select_gear", [self.gear["accessory_2"], 1]],
                     ["digger", [False]],
                     "start_itopod",
-                    ["set_augment_reclaim_flag", [True]],   
+                    ["set_augment_reclaim_flag", [True]]
                 ],
                 "order": [
                     ["wandos", [2]],
