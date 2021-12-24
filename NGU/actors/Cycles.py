@@ -584,8 +584,7 @@ class Cycles:
                     "reclaim",
                     ["time_machine", [6]],
                     ["once_delay", [2, [
-                        ["digger", [True, "advemture"]],
-                        ["adventure", ["increment", [4, 1]]]
+                        ["digger", [True, "advemture"]]
                     ]]]
                 ]
             },
