@@ -406,7 +406,7 @@ class Cycles:
         ]
         return [cycle_data, cycle_time]
 
-    #Current cap is 116, time is around 10:00
+    #Current cap is around 130, time is around 10:00
     def getCycleOne(self):
         cycle_time = 600
         augment = "energy_buster"
@@ -579,7 +579,6 @@ class Cycles:
                         "adventure",
                         ["augment", [4, self.augment]],
                         "nuke",
-                        ["adventure", ["increment"]]
                     ]],
                     "reclaim",
                     ["time_machine", [6]],
@@ -592,10 +591,10 @@ class Cycles:
                 "time": 40,
                 "pre_cycle": [
                     "reclaim",
-                    ["augment", [2, self.augment, True]],
+                    ["augment", [4, self.augment, True]],
                     "reclaim",
                     ["augment", [3, self.augment]],
-                    "reclaim",
+                    "reclaim"
                 ],
                 "order": [
                     "nuke",
@@ -604,14 +603,6 @@ class Cycles:
                         ["select_gear_slot", ["resource_build"]],
                         "start_itopod"
                     ]]]
-                ]
-            },
-            {
-                "time": 30,
-                "pre_cycle": [],
-                "order": [
-                    ["time_machine", [10]],
-                    "nuke"
                 ]
             },
             {
@@ -627,16 +618,7 @@ class Cycles:
                 ]
             },    
             {
-                "time": 30,
-                "pre_cycle": [],
-                "order": [
-                    ["reclaim", [True]],
-                    ["time_machine", [10]],
-                    "nuke"
-                ]
-            },
-            {
-                "time": 30,
+                "time": 60,
                 "pre_cycle": [
                     ["reclaim", [True]],
                     "spell_swap"
@@ -660,18 +642,15 @@ class Cycles:
                 ]
             },
             {
-                "time": 110,
+                "time": 140,
                 "pre_cycle": [
                     "reclaim",
                     ["reclaim", [True]],
-                    ["select_gear", [self.gear["chest"]]],
-                    ["select_gear", [self.gear["weapon"]]],
                     ["select_gear", [self.gear["accessory"]]],
-                    ["select_gear", [self.gear["head"]]],
                     ["select_gear", [self.gear["accessory_2"], 1]],
                     ["digger", [False]],
                     "start_itopod",
-                    ["set_augment_reclaim_flag", [True]],   
+                    ["set_augment_reclaim_flag", [True]]
                 ],
                 "order": [
                     ["wandos", [2]],
@@ -687,8 +666,6 @@ class Cycles:
                     "reclaim",
                     ["reclaim", [True]],
                     ["select_gear", [self.gear["accessory"]]],
-                    ["select_gear", [self.gear["head"]]],
-                    ["select_gear", [self.gear["weapon"]]],
                     ["select_gear", [self.gear["accessory_2"], 1]],
                     "apply_boost",
                     ["digger", [False]],
