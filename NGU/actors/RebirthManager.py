@@ -337,6 +337,13 @@ class RebirthManager:
 
         print("Assigned diggers with new caps")
 
+    def clearDiggers(self):
+        digger_settings = self.settings["gold_diggers"]
+        clear_point = digger_settings["clear_button"]
+
+        self.game_ui.accessMenu("gold_diggers")
+        self.click(clear_point)
+
     def wandosCycle(self, info):
         set_time = info[0]
         dump = self.assignListIndex(info, "all", 1)
@@ -438,6 +445,7 @@ class RebirthManager:
         money_pit = settings["active_colors"]["money_pit"]
         blood_magic_color = settings["active_colors"]["blood_magic"]
         if self.get_pixel_colour(money_pit[0], money_pit[1]) == self.active_colors["money_pit"]:
+            self.clearDiggers()
             self.bot.reclaimResources()
             self.timeMachineCycle([5])        
             print("Set time machine for money pit, waiting 1 minute")
@@ -447,6 +455,7 @@ class RebirthManager:
             self.click(settings["money_pit"]["confirm"])
 
         if self.get_pixel_colour(blood_magic_color[0], blood_magic_color[1]) == self.active_colors["blood_magic"]:
+            self.clearDiggers()
             self.bot.reclaimResources()
             self.game_ui.accessMenu("blood_magic")
             self.setBloodAll()
