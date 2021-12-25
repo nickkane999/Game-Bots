@@ -88,7 +88,7 @@
     "scissors": [1050, 500],
     "milk": [1050, 590],
     "cannon_implant": [1050, 690],
-    "shoulder_mounted": [1050, 790],
+    "shoulder_mounted": [1050, 580],
     "energy_buster": [1050, 680],
     "exoskeleton": [1050, 780],
     "aug_adjustment": 50
@@ -200,6 +200,7 @@
       "number": [1005, 430],
       "gold": [1515, 570]
     },
+    "blood_pill": [1350, 430],
     "distance": 50,
     "info": {
       "blood_1": 0,
@@ -240,6 +241,14 @@
   "rebirth": {
     "enter_menu": [380, 730],
     "rebirth_start": [1060, 880],
-    "rebirth_confirm_start": [890, 580]
+    "rebirth_confirm_start": [890, 580],
+    "active_colors": {
+      "money_pit": [650, 220],
+      "blood_magic": [655, 460]
+    },
+    "money_pit": {
+      "feed": [870, 350],
+      "confirm": [880, 580]
+    }
   }
 }

@@ -62,6 +62,10 @@ class RebirthManager:
         self.cycle_data = self.cycles.cycles["cycle_one"]
         self.cycle_rotation = self.cycles.cycle_rotation
         self.cycle_level = self.cycles.cycle_level
+        self.active_colors = {
+            "money_pit": (87, 143, 41),
+            "blood_magic": (126, 14, 113)
+        }
 
     def idleCycleLevel(self):
         loop_start = time.time()
@@ -146,7 +150,8 @@ class RebirthManager:
                 print("Finished cycle " + str(cycle_index))
             while time.time() - cycle_start < duration:
                 print("Waiting for cycle end")
-                time.sleep(2) 
+                time.sleep(2)
+            self.verifyBonuses()
             self.enterRebirth()
             print("Cycle completed. Total time so far")
             print(time.time() - loop_start)
@@ -386,6 +391,18 @@ class RebirthManager:
         self.click([start_point[0], start_point[1] + (blood_settings["info"][blood_type] * distance)])
         print("Set blood")
 
+    def setBloodAll(self):
+        self.game_ui.accessMenu("blood_magic")
+        blood_settings = self.settings["blood"]
+        start_point = blood_settings["blood_start"]
+        distance = blood_settings["distance"]
+        self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_1"] * distance)])
+        self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_2"] * distance)])
+        self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_3"] * distance)])
+        self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_4"] * distance)])
+        self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_5"] * distance)])
+        print("Set blood all")
+
     def swapAutoSpell(self, info = None):
         self.game_ui.accessMenu("blood_magic")
         blood_settings = self.settings["blood"]
@@ -394,9 +411,13 @@ class RebirthManager:
         gold = blood_settings["auto_spell"]["gold"]
 
         self.click(switch_menu)
-        self.click(number)
-        self.click(gold)
+        if info:
+            self.click(number)
+        else:
+            self.click(number)
+            self.click(gold)
         self.click(switch_menu)
+        
         print("Swaped autocast spells")
 
     def selectGear(self, info):
@@ -410,6 +431,36 @@ class RebirthManager:
         else:
             self.bot.gear_manager.selectGear(gear)
         print("Set gear item")
+
+    def verifyBonuses(self):
+        #self.game_ui.accessMenu("blood_magic")
+        settings = self.settings["rebirth"]
+        money_pit = settings["active_colors"]["money_pit"]
+        blood_magic_color = settings["active_colors"]["blood_magic"]
+        if self.get_pixel_colour(money_pit[0], money_pit[1]) == self.active_colors["money_pit"]:
+            self.bot.reclaimResources()
+            self.timeMachineCycle([5])        
+            print("Set time machine for money pit, waiting 1 minute")
+            time.sleep(60)
+            self.game_ui.accessMenu("money_pit")
+            self.click(settings["money_pit"]["feed"])
+            self.click(settings["money_pit"]["confirm"])
+
+        if self.get_pixel_colour(money_pit[0], money_pit[1]) == self.active_colors["blood_magic"]:
+            self.bot.reclaimResources()
+            self.game_ui.accessMenu("blood_magic")
+            self.setBloodAll()
+            self.swapAutoSpell(["verify_bonuses_cycle"])
+            print("Waiting 180 seconds to get pill bonus")
+            time.sleep(180)
+
+            self.click(self.settings["blood"]["switch_menu"])
+            self.click(self.settings["blood"]["blood_pill"])
+            self.click(self.settings["blood"]["switch_menu"])
+            self.swapAutoSpell(["verify_bonuses_cycle"])
+
+        print("Finished adding bonuses")
+
 
     def enterRebirth(self):
         self.click(self.settings["rebirth"]["enter_menu"])
