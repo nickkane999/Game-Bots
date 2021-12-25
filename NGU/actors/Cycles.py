@@ -558,8 +558,8 @@ class Cycles:
     #Current cap is around 107, EST time is 7:00
     def getCycleSix(self):
         cycle_time = 420
-        augment = "energy_buster"
-        self.augment = "energy_buster"
+        augment = "shoulder_mounted"
+        self.augment = "shoulder_mounted"
         self.gear = {
             "chest": 0,
             "accessory": 1,
@@ -634,8 +634,14 @@ class Cycles:
                     ["blood", ["blood_5"]],
                     ["blood", ["blood_4"]],
                     ["time_machine", [10, "energy"]],
-                    ["once_delay", [2, [
-                        ["reclaim", [True]]
+                    ["once_delay", [1, [
+                        ["reclaim", [True]],
+                        ["blood", ["blood_5"]],
+                        ["blood", ["blood_4"]],
+                        ["blood", ["blood_3"]],
+                        ["blood", ["blood_2"]],
+                        ["blood", ["blood_1"]],
+                        ["time_machine", [2]]
                     ]]],
                     "nuke"
                 ]
@@ -645,10 +651,13 @@ class Cycles:
                 "pre_cycle": [],
                 "order": [
                     ["blood", ["blood_5"]],
+                    ["once", [
+                        ["time_machine", [1, "magic"]]
+                    ]],
                     "reclaim",
-                    ["augment", [2, self.augment, True]],
+                    ["augment", [3, self.augment, True]],
                     "reclaim",
-                    ["augment", [8, self.augment]],
+                    ["augment", [7, self.augment]],
                     "nuke",
                 ]
             },
@@ -683,6 +692,7 @@ class Cycles:
                     ["digger", [False]],
                     ["set_augment_reclaim_flag", [False]],
                     ["wandos", [1]],
+                    ["augment", [1, self.augment, True]],
                     "nuke",
                     "attack"
                 ],
