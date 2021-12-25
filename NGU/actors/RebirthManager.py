@@ -446,7 +446,7 @@ class RebirthManager:
             self.click(settings["money_pit"]["feed"])
             self.click(settings["money_pit"]["confirm"])
 
-        if self.get_pixel_colour(money_pit[0], money_pit[1]) == self.active_colors["blood_magic"]:
+        if self.get_pixel_colour(blood_magic_color[0], blood_magic_color[1]) == self.active_colors["blood_magic"]:
             self.bot.reclaimResources()
             self.game_ui.accessMenu("blood_magic")
             self.setBloodAll()
