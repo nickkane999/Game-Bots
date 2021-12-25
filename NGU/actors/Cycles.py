@@ -621,7 +621,10 @@ class Cycles:
                 "order": [
                     ["blood", ["blood_5"]],
                     "nuke",
-                    ["time_machine", [5, "energy"]],
+                    "reclaim",
+                    ["augment", [3, self.augment, True]],
+                    "reclaim",
+                    ["augment", [2, self.augment]]
                 ]
             },    
             {
@@ -655,10 +658,10 @@ class Cycles:
                         ["time_machine", [1, "magic"]]
                     ]],
                     "reclaim",
-                    ["augment", [3, self.augment, True]],
+                    ["augment", [8, self.augment, True]],
                     "reclaim",
-                    ["augment", [7, self.augment]],
-                    "nuke",
+                    ["augment", [2, self.augment]],
+                    "nuke"
                 ]
             },
             {

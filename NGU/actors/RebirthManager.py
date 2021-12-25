@@ -148,10 +148,10 @@ class RebirthManager:
                 self.processCycle(cycle)
                 cycle_index += 1
                 print("Finished cycle " + str(cycle_index))
+            self.verifyBonuses()
             while time.time() - cycle_start < duration:
                 print("Waiting for cycle end")
                 time.sleep(2)
-            self.verifyBonuses()
             self.enterRebirth()
             print("Cycle completed. Total time so far")
             print(time.time() - loop_start)
@@ -337,12 +337,9 @@ class RebirthManager:
 
         print("Assigned diggers with new caps")
 
-    def clearDiggers(self):
-        digger_settings = self.settings["gold_diggers"]
-        clear_point = digger_settings["clear_button"]
-
+    def clearDiggers(self, info = None):
         self.game_ui.accessMenu("gold_diggers")
-        self.click(clear_point)
+        self.click(self.settings["gold_diggers"]["clear_button"])
 
     def wandosCycle(self, info):
         set_time = info[0]
