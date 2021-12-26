@@ -45,8 +45,8 @@ class CycleManager:
 
         while True:
             loop_start_time = time.time()
-            # self.harvest()
-            self.yggdrasilHarvest()
+            self.harvest()
+            # self.yggdrasilHarvest()
             self.nguCycle()
             time.sleep(0.2)
             if only_boosts:
