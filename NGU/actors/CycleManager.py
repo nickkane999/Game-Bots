@@ -45,7 +45,8 @@ class CycleManager:
 
         while True:
             loop_start_time = time.time()
-            self.harvest()
+            # self.harvest()
+            self.yggdrasilHarvest()
             self.nguCycle()
             time.sleep(0.2)
             if only_boosts:
@@ -138,7 +139,7 @@ class CycleManager:
     def yggdrasilHarvest(self):
         yggdrasil_settings = self.settings["yggdrasil"]
         harvest = yggdrasil_settings["harvest_max"]
-        fruits = ["luck", "power", "ap"]
+        fruits = ["luck", "power", "ap", "number"]
 
         self.game_ui.accessMenu("yggdrasil")
         time.sleep(0.2)
