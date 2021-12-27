@@ -33,8 +33,8 @@ class Cycles:
             "cycle_one"
         ]
         self.cycle_rotation = [
-            "cycle_two", 
-            ["cycle_three", 2],
+            #"cycle_two", 
+            #"cycle_three",
             ["cycle_four", 2],
             ["cycle_five", 7],
             ["cycle_one", 5],
