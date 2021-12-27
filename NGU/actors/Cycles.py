@@ -36,14 +36,14 @@ class Cycles:
             #"cycle_two", 
             #"cycle_three",
             #"cycle_four",
-            ["cycle_five", 4],
+            ["cycle_five", 3],
             ["cycle_one", 10],
         ] 
         
      #Reached boss 37 (blood unlocked)
     def getCycleFive(self):
         cycle_time = 420
-        augment = "energy_buster"
+        self.augment = "shoulder_mounted"
         blood_1 = "blood_1"
         blood_2 = "blood_2"
         blood_3 = "blood_3"
