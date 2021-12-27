@@ -36,7 +36,7 @@ class Cycles:
             #"cycle_two", 
             #"cycle_three",
             #"cycle_four",
-            ["cycle_five", 3],
+            ["cycle_five", 5],
             ["cycle_one", 10],
         ] 
         
@@ -82,7 +82,8 @@ class Cycles:
                     "reclaim",
                     ["augment", [4, self.augment]],
                     "reclaim",
-                    ["digger", [True]]
+                    ["digger", [True]],
+                    ["adventure", ["increment"]]
                 ],
                 "order": [
                     "nuke",
@@ -426,8 +427,7 @@ class Cycles:
                     ["time_machine", [10]],
                     ["once_delay", [3, [
                         ["digger", [True, "advemture"]],
-                        ["select_gear_slot", ["resource_build"]],
-                        "start_itopod"
+                        "adventure"
                     ]]]
                 ]
             },
@@ -447,7 +447,10 @@ class Cycles:
             },
             {
                 "time": 20,
-                "pre_cycle": [],
+                "pre_cycle": [
+                    ["select_gear_slot", ["resource_build"]],
+                    "start_itopod"
+                ],
                 "order": [
                     ["time_machine", [10]],
                     "nuke"
