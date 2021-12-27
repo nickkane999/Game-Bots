@@ -35,9 +35,9 @@ class Cycles:
         self.cycle_rotation = [
             #"cycle_two", 
             #"cycle_three",
-            ["cycle_four", 2],
-            ["cycle_five", 7],
-            ["cycle_one", 5],
+            #"cycle_four",
+            ["cycle_five", 4],
+            ["cycle_one", 10],
         ] 
         
      #Reached boss 37 (blood unlocked)
@@ -409,8 +409,8 @@ class Cycles:
     #Current cap is around 130, time is around 10:00
     def getCycleOne(self):
         cycle_time = 600
-        augment = "energy_buster"
-        self.augment = "energy_buster"
+        augment = "shoulder_mounted"
+        self.augment = "shoulder_mounted"
         self.gear = {
             "chest": 0,
             "accessory": 1,
