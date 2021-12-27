@@ -113,7 +113,7 @@ class Cycles:
                     ["blood", [blood_3]],
                     ["blood", [blood_4]],
                     "nuke",
-                    ["time_machine", [5, "energy"]],
+                    ["time_machine", [5]],
                 ]
             },
             {
@@ -122,7 +122,6 @@ class Cycles:
                     "reclaim",
                     ["reclaim", [True]],
                     ["select_gear", [self.gear["accessory"]]],
-                    ["select_gear", [self.gear["head"]]],
                     ["select_gear", [self.gear["accessory_2"], 1]],
                     ["digger", [False]],
                     "start_itopod",
@@ -142,8 +141,6 @@ class Cycles:
                     "reclaim",
                     ["reclaim", [True]],
                     ["select_gear", [self.gear["accessory"]]],
-                    ["select_gear", [self.gear["head"]]],
-                    ["select_gear", [self.gear["weapon"]]],
                     ["select_gear", [self.gear["accessory_2"], 1]],
                     "apply_boost",
                     ["digger", [False]],
@@ -227,7 +224,6 @@ class Cycles:
                 "pre_cycle": [
                     ["select_gear_slot", ["resource_build"]],
                     ["select_gear", [self.gear["accessory"]]],
-                    ["select_gear", [self.gear["head"]]],
                     ["select_gear", [self.gear["accessory_2"], 1]],
                 ],
                 "order": [
@@ -243,7 +239,6 @@ class Cycles:
                 "time": 2,
                 "pre_cycle": [
                     ["select_gear", [self.gear["accessory"]]],
-                    ["select_gear", [self.gear["head"]]],
                     ["select_gear", [self.gear["accessory_2"], 1]],
                     "reclaim",
                 ],
@@ -293,7 +288,6 @@ class Cycles:
                 "pre_cycle": [
                     ["select_gear_slot", ["resource_build"]],
                     ["select_gear", [self.gear["accessory"]]],
-                    ["select_gear", [self.gear["head"]]],
                     ["select_gear", [self.gear["accessory_2"], 1]],
                 ],
                 "order": [
@@ -309,7 +303,6 @@ class Cycles:
                 "time": 2,
                 "pre_cycle": [
                     ["select_gear", [self.gear["accessory"]]],
-                    ["select_gear", [self.gear["head"]]],
                     ["select_gear", [self.gear["accessory_2"], 1]],
                     "reclaim",
                 ],
@@ -368,7 +361,6 @@ class Cycles:
                 "pre_cycle": [
                     ["select_gear_slot", ["resource_build"]],
                     ["select_gear", [self.gear["accessory"]]],
-                    ["select_gear", [self.gear["head"]]],
                     ["select_gear", [self.gear["accessory_2"], 1]],
                 ],
                 "order": [
@@ -394,7 +386,6 @@ class Cycles:
                 "time": 2,
                 "pre_cycle": [
                     ["select_gear", [self.gear["accessory"]]],
-                    ["select_gear", [self.gear["head"]]],
                     ["select_gear", [self.gear["accessory_2"], 1]],
                 ],
                 "order": [
