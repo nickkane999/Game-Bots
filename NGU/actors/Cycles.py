@@ -33,11 +33,11 @@ class Cycles:
             "cycle_one"
         ]
         self.cycle_rotation = [
-            #"cycle_two", 
-            #"cycle_three",
-            #"cycle_four",
+            "cycle_two", 
+            "cycle_three",
+            "cycle_four",
             ["cycle_five", 5],
-            ["cycle_one", 10],
+            ["cycle_one", 5],
         ] 
         
      #Reached boss 37 (blood unlocked)
@@ -570,7 +570,7 @@ class Cycles:
                     "nuke",
                     ["once", [
                         ["select_gear_slot", ["drop_rate_build"]],
-                        "adventure",
+                        ["adventure", ["increment", [14, 0]]],
                         ["augment", [4, self.augment]],
                         "nuke",
                         ["adventure", ["increment", [4, 1]]]
