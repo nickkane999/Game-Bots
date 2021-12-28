@@ -617,13 +617,13 @@ class Cycles:
                     "nuke",
                     ["time_machine", [8]],
                     "reclaim",
-                    ["augment", [3, self.augment, True]],
+                    ["augment", [4, self.augment, True]],
                     "reclaim",
-                    ["augment", [2, self.augment]]
+                    ["augment", [1, self.augment]]
                 ]
             },    
             {
-                "time": 60,
+                "time": 50,
                 "pre_cycle": [
                     ["reclaim", [True]],
                     "spell_swap"
@@ -645,7 +645,7 @@ class Cycles:
                 ]
             },
             {
-                "time": 40,
+                "time": 50,
                 "pre_cycle": [],
                 "order": [
                     ["blood", ["blood_5"]],
@@ -653,9 +653,9 @@ class Cycles:
                         ["time_machine", [1, "magic"]]
                     ]],
                     "reclaim",
-                    ["augment", [8, self.augment, True]],
+                    ["augment", [9, self.augment, True]],
                     "reclaim",
-                    ["augment", [2, self.augment]],
+                    ["augment", [1, self.augment]],
                     "nuke"
                 ]
             },
