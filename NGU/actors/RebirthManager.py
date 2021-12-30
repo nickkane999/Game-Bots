@@ -405,6 +405,7 @@ class RebirthManager:
         self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_3"] * distance)])
         self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_4"] * distance)])
         self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_5"] * distance)])
+        self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_6"] * distance)])
         print("Set blood all")
 
     def swapAutoSpell(self, info = None):

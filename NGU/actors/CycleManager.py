@@ -37,6 +37,7 @@ class CycleManager:
             "resource_build": ["magic_ngu", "energy_ngu"],
             "drop_rate_build": ["drop_chance"]
         }
+        self.slots = [2, 3, 4, 5]
 
 
     def idleCycle(self, rebirth_time, only_boosts = False):
@@ -52,14 +53,15 @@ class CycleManager:
             self.game_ui.accessMenu("inventory")
             time.sleep(0.2)
             if only_boosts:
-                self.bot.gear_manager.applyCubeBoost()
+                # self.bot.gear_manager.applyCubeBoost()
+                self.bot.gear_manager.applySlotBoosts(self.slots)
             else:
                 self.bot.gear_manager.upgradeItems(True, 30)
 
             current_rebirth_time = time.time() - loop_start_time + rebirth_time
             self.setGearSlot(current_rebirth_time)
-            print("Finished upgrade cycle and yggdrasil harvest cycle. Resting 20 seconds")
-            time.sleep(20)
+            print("Finished upgrade cycle and yggdrasil harvest cycle. Resting 120 seconds")
+            time.sleep(120)
             rebirth_time = time.time() - loop_start_time + rebirth_time
 
 

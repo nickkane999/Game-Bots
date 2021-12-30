@@ -258,3 +258,13 @@ class GearManager:
         pyautogui.moveTo(gear_start[0], gear_start[1] + (size * gear_slot), 1)
         pyautogui.mouseUp(button='left')
         time.sleep(0.1)
+
+    def applySlotBoosts(self, slots):
+        start_point = self.gear_settings["inv_grid_start"]
+        size = self.gear_settings["box_size"]
+        pyautogui.keyDown("a")
+        for position in slots:
+            pyautogui.click(start_point[0] + (size * position), start_point[1])
+            time.sleep(0.2)
+        pyautogui.keyUp("a")
+        time.sleep(0.1)
