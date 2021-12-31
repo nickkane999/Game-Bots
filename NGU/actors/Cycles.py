@@ -552,14 +552,12 @@ class Cycles:
     #Current cap is around 107, EST time is 7:00
     def getCycleSix(self):
         cycle_time = 420
-        augment = "shoulder_mounted"
-        self.augment = "shoulder_mounted"
+        augment = "energy_buster"
+        self.augment = "energy_buster"
         self.gear = {
-            "chest": 0,
-            "accessory": 1,
-            "head": 2,
-            "weapon": 3,
-            "accessory_2": 4
+            "accessory": 0,
+            "accessory_2": 1,
+            "weapon": 2
         }
         self.bood_type = "blood_5"
         cycle_data = [
@@ -597,11 +595,7 @@ class Cycles:
                         ["select_gear_slot", ["resource_build"]],
                         "start_itopod",
                         ["reclaim", [True]]
-                    ]],
-                    ["once_delay", [200, [
-                        ["select_gear_slot", ["resource_build"]],
-                        "start_itopod"
-                    ]]]
+                    ]]
                 ]
             },
             {
@@ -649,6 +643,10 @@ class Cycles:
                 "order": [
                     ["blood", ["blood_5"]],
                     ["once", [
+                        ["reclaim", [True]],
+                        "reclaim",
+                        ["select_gear_slot", ["augment_build"]],
+                        "start_itopod",
                         ["time_machine", [1, "magic"]]
                     ]],
                     "reclaim",

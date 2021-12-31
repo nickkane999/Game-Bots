@@ -40,7 +40,8 @@
     "loadout_slot_start": [740, 480],
     "loadout_slots": {
       "resource_build": 0,
-      "drop_rate_build": 1
+      "drop_rate_build": 1,
+      "augment_build": 2
     }
   },
   "menu": {
