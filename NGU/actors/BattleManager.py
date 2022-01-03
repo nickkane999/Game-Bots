@@ -61,7 +61,7 @@ class BattleManager:
         arrow_right = self.settings["arrow_right"]
 
         home_menu_color = (160, 160, 160)
-        exploder_color = (255, 255, 255)
+        exploder_color = False
         count = 0
 
         while True:
@@ -69,7 +69,7 @@ class BattleManager:
             if self.get_pixel_colour(1250, 710) == home_menu_color:
                 print("Died. Getting health for 10 seconds")
                 time.sleep(10)
-                for x in range(0, 16):
+                for x in range(0, 19):
                     pyautogui.click(arrow_right[0], arrow_right[1])
                     time.sleep(0.2)
 
