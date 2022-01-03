@@ -142,6 +142,7 @@ class CycleManager:
         yggdrasil_settings = self.settings["yggdrasil"]
         harvest = yggdrasil_settings["harvest_max"]
         fruits = ["luck", "power", "ap", "number"]
+        fruits = []
 
         self.game_ui.accessMenu("yggdrasil")
         time.sleep(0.2)
