@@ -56,7 +56,7 @@ class BattleManager:
         defensive_buttons = ["defense_buff", "regen", "heal", "parry"]
         offensive_buttons = ["charge", "ultimate_attack", "pierce"]
         heavy_attack = ["offense_buff", "ultimate_buff", "charge", "ultimate_attack", "pierce"]
-        normal_attacks = ["regular", "strong"]
+        normal_attacks = ["strong", "regular"]
         arrow_left = self.settings["arrow_left"]
         arrow_right = self.settings["arrow_right"]
 
