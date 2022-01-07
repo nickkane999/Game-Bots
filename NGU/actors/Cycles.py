@@ -571,6 +571,7 @@ class Cycles:
                         ["adventure", ["increment", [14, 0]]],
                         ["augment", [4, self.augment]],
                         "nuke"
+                        ["adventure", ["increment", [2, 0]]],
                     ]],
                     "reclaim",
                     ["time_machine", [6]],
@@ -622,11 +623,13 @@ class Cycles:
                     "spell_swap"
                 ],
                 "order": [
+                    ["blood", ["blood_6"]],
                     ["blood", ["blood_5"]],
                     ["blood", ["blood_4"]],
                     ["time_machine", [10, "energy"]],
                     ["once_delay", [1, [
                         ["reclaim", [True]],
+                        ["blood", ["blood_6"]],
                         ["blood", ["blood_5"]],
                         ["blood", ["blood_4"]],
                         ["blood", ["blood_3"]],
@@ -641,6 +644,7 @@ class Cycles:
                 "time": 50,
                 "pre_cycle": [],
                 "order": [
+                    ["blood", ["blood_6"]],
                     ["blood", ["blood_5"]],
                     ["once", [
                         ["reclaim", [True]],
@@ -669,6 +673,7 @@ class Cycles:
                 ],
                 "order": [
                     ["wandos", [2]],
+                    ["blood", ["blood_6"]],
                     ["blood", ["blood_5"]],
                     ["rotate", [
                         ["augment", [1, self.augment]],
