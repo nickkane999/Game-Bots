@@ -570,8 +570,8 @@ class Cycles:
                         ["select_gear_slot", ["drop_rate_build"]],
                         ["adventure", ["increment", [14, 0]]],
                         ["augment", [4, self.augment]],
-                        "nuke"
-                        ["adventure", ["increment", [2, 0]]],
+                        "nuke",
+                        ["adventure", ["increment", [2, 0]]]
                     ]],
                     "reclaim",
                     ["time_machine", [6]],
