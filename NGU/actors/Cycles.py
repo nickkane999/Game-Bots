@@ -665,8 +665,6 @@ class Cycles:
                 "pre_cycle": [
                     "reclaim",
                     ["reclaim", [True]],
-                    ["select_gear", [self.gear["accessory"]]],
-                    ["select_gear", [self.gear["accessory_2"], 1]],
                     ["digger", [False]],
                     "start_itopod",
                     ["set_augment_reclaim_flag", [True]]
@@ -686,8 +684,6 @@ class Cycles:
                 "pre_cycle": [
                     "reclaim",
                     ["reclaim", [True]],
-                    ["select_gear", [self.gear["accessory"]]],
-                    ["select_gear", [self.gear["accessory_2"], 1]],
                     "apply_boost",
                     ["digger", [False]],
                     ["set_augment_reclaim_flag", [False]],
