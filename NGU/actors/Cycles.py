@@ -689,6 +689,7 @@ class Cycles:
                     ["set_augment_reclaim_flag", [False]],
                     ["wandos", [1]],
                     ["augment", [1, self.augment, True]],
+                    "apply_boost",
                     "nuke",
                     "attack"
                 ],
