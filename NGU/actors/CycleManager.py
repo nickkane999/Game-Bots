@@ -191,7 +191,7 @@ class CycleManager:
 
     def capNGULoop(self, Time = None):
         if not Time:
-            self.game_ui.accessMenu("time_machine")
+            self.game_ui.accessMenu("ngu")
             while True:
-                pyautogui.click(1170, 430)
+                pyautogui.click(1170, 340)
                 time.sleep(0.1)
