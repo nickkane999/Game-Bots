@@ -684,12 +684,13 @@ class Cycles:
                 "pre_cycle": [
                     "reclaim",
                     ["reclaim", [True]],
+                    ["select_gear", [self.gear["accessory"]]],
+                    ["select_gear", [self.gear["accessory"]]],
                     "apply_boost",
                     ["digger", [False]],
                     ["set_augment_reclaim_flag", [False]],
                     ["wandos", [1]],
                     ["augment", [1, self.augment, True]],
-                    "apply_boost",
                     "nuke",
                     "attack"
                 ],
