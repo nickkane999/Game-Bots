@@ -157,10 +157,10 @@ class BattleManager:
                 if click_times:
                     attacks = 0
                     while attacks < click_times:
-                        if (self.get_pixel_colour(ultimate_attack[0], ultimate_attack[1]) == self.states["available_row_1"])
+                        if (self.get_pixel_colour(ultimate_attack[0], ultimate_attack[1]) == self.states["available_row_1"]):
                             pyautogui.press("y")
                             attacks += 1
-                        if (self.get_pixel_colour(pierce_attack[0], pierce_attack[1]) == self.states["available_row_1"])
+                        if (self.get_pixel_colour(pierce_attack[0], pierce_attack[1]) == self.states["available_row_1"]):
                             pyautogui.press("t")
                             attacks += 1
                         if (self.get_pixel_colour(regular_attack[0], regular_attack[1]) == self.states["available_row_1"]):
