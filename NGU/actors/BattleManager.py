@@ -141,3 +141,18 @@ class BattleManager:
     def clickButton(self, point):
         pyautogui.click(point[0], point[1])
         time.sleep(self.cooldown + 0.3)
+
+    def quickKillCycle(self, kill_count):
+        enemy_hp_point = [1600, 720]
+        count = 0
+
+        while True:
+            if self.get_pixel_colour(enemy_hp_point[0], enemy_hp_point[1]) == self.states["hp_high"]:
+                pyautogui.press("w")
+                count += 1
+                print("Kill count: " + str(count))
+            time.sleep(0.1)
+            if count >= kill_count:
+                break
+
+        print("Finished kills")
