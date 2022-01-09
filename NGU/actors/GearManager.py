@@ -108,19 +108,15 @@ class GearManager:
             self.clearInventory()
 
     def upgradeGearPriority(self):
-        start_time = time.time()
         slot_priority = self.gear_settings["gear_slot_priority"]
         ordered_slot_points = []
         for slot in slot_priority:
             point = self.getGearSlotPoint(slot)
             ordered_slot_points.append(point)
 
-        while True:
-            for point in ordered_slot_points:
-                self.clickSlot(point)
-            self.clearInventory()
-            print("Cycle for upgrading gear completed")
-            print(time.time() - start_time)
+        for point in ordered_slot_points:
+            self.clickSlot(point)
+        self.clearInventory()
 
     def upgradeInventoryPriority(self):
         start_time = time.time()

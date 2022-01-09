@@ -46,7 +46,7 @@ class CycleManager:
 
         while True:
             loop_start_time = time.time()
-            self.harvest()
+            #self.harvest()
             # self.yggdrasilHarvest()
             self.nguCycle()
             time.sleep(0.2)
@@ -55,6 +55,7 @@ class CycleManager:
             if only_boosts:
                 # self.bot.gear_manager.applyCubeBoost()
                 self.bot.gear_manager.applySlotBoosts(self.slots)
+                self.bot.gear_manager.upgradeGearPriority()
             else:
                 self.bot.gear_manager.upgradeItems(True, 30)
 
@@ -121,7 +122,10 @@ class CycleManager:
         self.game_ui.accessMenu("ngu")
         ngu_settings = self.settings["ngu"]
         time.sleep(0.2)
+        pyautogui.click(1170, 340)
+        time.sleep(0.2)
 
+        '''
         point = ngu_settings["start_power"]
         energy_slot = ngu_settings["energy"]["augment"]
         magic_slot = ngu_settings["magic"]["yggdrasil"]
@@ -135,6 +139,7 @@ class CycleManager:
         pyautogui.click(point[0], point[1] + (50 * magic_slot)) 
         pyautogui.click(swap[0], swap[1])
         time.sleep(0.4)
+        '''
 
         print("Finished NGU cycle")
 
