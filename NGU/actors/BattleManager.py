@@ -155,10 +155,13 @@ class BattleManager:
                     attacks = 0
                     while attacks < click_times:
                         if (self.get_pixel_colour(attack_1_point[0], attack_1_point[1]) == self.states["available_row_1"]):
+                            pyautogui.press("y")
+                            pyautogui.press("t")
                             pyautogui.press("e")
                             pyautogui.press("w")
                             attacks += 1
                     time.sleep(1)
+                    pyautogui.press("g")
                     pyautogui.press("h")
                     pyautogui.press("f")
                 else:
