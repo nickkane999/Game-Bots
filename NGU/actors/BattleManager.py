@@ -163,11 +163,11 @@ class BattleManager:
                         if (self.get_pixel_colour(pierce_attack[0], pierce_attack[1]) == self.states["available_row_1"]):
                             pyautogui.press("t")
                             attacks += 1
-                        if (self.get_pixel_colour(regular_attack[0], regular_attack[1]) == self.states["available_row_1"]):
-                            pyautogui.press("w")
-                            attacks += 1
                         if (self.get_pixel_colour(strong_attack[0], strong_attack[1]) == self.states["available_row_1"]):
                             pyautogui.press("e")
+                            attacks += 1
+                        if (self.get_pixel_colour(regular_attack[0], regular_attack[1]) == self.states["available_row_1"]):
+                            pyautogui.press("w")
                             attacks += 1
                     time.sleep(1)
                     pyautogui.press("g")
