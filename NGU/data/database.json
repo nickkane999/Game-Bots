@@ -18,14 +18,14 @@
       "weapon": 5
     },
     "gear_slot_priority": [
+      "weapon",
       "accessory_1",
       "accessory_2",
       "accessory_3",
       "accessory_4",
       "head",
       "body",
-      "feet",
-      "weapon"
+      "feet"
     ],
     "inventory_slot_priority": [
       48, 49, 50, 51, 52, 53, 54, 36, 37, 38, 39, 40, 41, 42, 43

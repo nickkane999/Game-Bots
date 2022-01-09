@@ -155,12 +155,12 @@ class GearManager:
 
     def clickSlot(self, point):
         pyautogui.keyDown("a")
-        time.sleep(0.3)
-        for x in range(0, 10):
+        time.sleep(0.2)
+        for x in range(0, 2):
             pyautogui.click(point["x"], point["y"])
             time.sleep(0.1)
         pyautogui.keyUp("a")
-        time.sleep(0.3)
+        time.sleep(0.2)
 
     def mergeSlot(self, point):
         pyautogui.keyDown("d")
