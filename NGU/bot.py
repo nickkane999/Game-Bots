@@ -5,10 +5,32 @@ instructions = {
     'data_file': r'C:\Users\nickk\Music\Portfolio\Game-Bots\NGU\data\database.json'
 }
 application = Application(instructions)
+application.bot.rebirth_manager.idleCycleRotation()
+application.bot.rebirth_manager.idleCycle("cycle_six")
 
+
+application.bot.gear_manager.applyCubeBoostLoop()
+application.bot.cycle_manager.setGearSlot(11)
+
+
+application.bot.rebirth_manager.changeGearSlot("drop_rate_build")
+application.bot.rebirth_manager.assignAugments("energy_buster")
+application.bot.rebirth_manager.assignAugments("energy_buster", True)
+application.bot.rebirth_manager.idleCycle()
+application.bot.rebirth_manager.idleCycleRotation()
+
+
+application.bot.rebirth_manager.assignAugments("energy_buster")
+
+application.bot.cycle_manager.idleCycle(1255)
+resource_build
 application.bot.cycle_manager.idleCycle(1)
 
 application.bot.battle_manager.adventureCycle()
+application.bot.battle_manager.quickKillCycle()
+application.bot.battle_manager.quickKillCycle(2)
+application.bot.battle_manager.quickKillCycle(200)
+
 
 application.bot.battle_manager.getState("parry")
 application.bot.battle_manager.getState("pierce")
@@ -22,11 +44,12 @@ application.bot.battle_manager.getState("regen")
 
 
 application.bot.gear_manager.applyCubeBoostLoop()
-
+application.bot.gear_manager.get_pixel_colour(1600, 720)
 application.bot.cycle_manager.timeMachineCycle()
 
-
+application.bot.cycle_manager.yggdrasilHarvest()
 application.bot.cycle_manager.wandosCycle()
+application.bot.cycle_manager.capNGULoop()
 
 
 
