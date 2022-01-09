@@ -144,7 +144,10 @@ class BattleManager:
 
     def quickKillCycle(self, click_times = None, kill_count = None):
         enemy_hp_point = [1600, 720]
-        attack_1_point = [1000, 267]
+        regular_attack = [1000, 267]
+        strong_attack = [1160, 267]
+        pierce_attack = [1480, 267]
+        ultimate_attack = [1640, 267]
         count = 0
         if not kill_count:
             kill_count = 10000
@@ -154,11 +157,17 @@ class BattleManager:
                 if click_times:
                     attacks = 0
                     while attacks < click_times:
-                        if (self.get_pixel_colour(attack_1_point[0], attack_1_point[1]) == self.states["available_row_1"]):
+                        if (self.get_pixel_colour(ultimate_attack[0], ultimate_attack[1]) == self.states["available_row_1"])
                             pyautogui.press("y")
+                            attacks += 1
+                        if (self.get_pixel_colour(pierce_attack[0], pierce_attack[1]) == self.states["available_row_1"])
                             pyautogui.press("t")
-                            pyautogui.press("e")
+                            attacks += 1
+                        if (self.get_pixel_colour(regular_attack[0], regular_attack[1]) == self.states["available_row_1"]):
                             pyautogui.press("w")
+                            attacks += 1
+                        if (self.get_pixel_colour(strong_attack[0], strong_attack[1]) == self.states["available_row_1"]):
+                            pyautogui.press("e")
                             attacks += 1
                     time.sleep(1)
                     pyautogui.press("g")
