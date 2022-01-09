@@ -158,6 +158,7 @@ class BattleManager:
                             pyautogui.press("e")
                             pyautogui.press("w")
                             attacks += 1
+                    time.sleep(1)
                     pyautogui.press("h")
                     pyautogui.press("f")
                 else:
