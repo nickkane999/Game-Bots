@@ -46,9 +46,8 @@ class CycleManager:
 
         while True:
             loop_start_time = time.time()
-            #self.harvest()
-            # self.yggdrasilHarvest()
-            self.nguCycle()
+            self.harvest()
+            self.capNGULoop(20)
             time.sleep(0.2)
             self.game_ui.accessMenu("inventory")
             time.sleep(0.2)
@@ -200,3 +199,10 @@ class CycleManager:
             while True:
                 pyautogui.click(1170, 340)
                 time.sleep(0.1)
+        else:
+            start_time = time.time()
+            while start_time - time.time() < Time:
+                pyautogui.click(1170, 340)
+                time.sleep(0.1)
+
+        print("Finished NGU Cap loop")
