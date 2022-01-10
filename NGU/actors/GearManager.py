@@ -116,7 +116,7 @@ class GearManager:
 
         for point in ordered_slot_points:
             self.clickSlot(point)
-        self.clearInventory()
+        # self.clearInventory()
 
     def upgradeInventoryPriority(self):
         start_time = time.time()
