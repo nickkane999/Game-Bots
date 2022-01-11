@@ -64,7 +64,14 @@
     },
     "rebirth": [370, 730],
     "rebirth_2": [1060, 880],
-    "rebirth_confirm": [890, 570]
+    "rebirth_confirm": [890, 570],
+    "inputs": {
+      "quantity": [860, 130],
+      "button_1": [770, 165],
+      "button_2": [930, 165],
+      "button_3": [770, 200],
+      "button_4": [930, 200]
+    }
   },
   "time_machine": {
     "machine_speed": [1040, 450],

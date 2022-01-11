@@ -385,6 +385,30 @@ class RebirthManager:
             time.sleep(0.5)
         print("Finished adding time machine")
 
+    def timeMachineSet(self, info):
+        augment1_size = info[0]
+        augment1_type =  info[1]
+        augment2_size = info[2]
+        augment2_type =  info[3]
+
+        time_machine_settings = self.settings["time_machine"]
+        machine_speed = time_machine_settings["machine_speed"]
+        gold_speed = time_machine_settings["gold_speed"]
+
+        if augment1_size == augment2_size:
+            self.enterInput(augment1_size)
+            if augment1_type == "add":
+                self.click(machine_speed)
+                self.click(gold_speed)
+            else:
+                self.click([machine_speed[0] + 50, machine_speed[1]])
+                self.click([gold_speed[0] + 50, gold_speed[1]])
+        else:
+            self.enterInput(augment1_size)
+            self.click(machine_speed) if augment1_type == "add" else self.click([machine_speed[0] + 50, machine_speed[1]])
+            self.enterInput(augment1_size)
+            self.click(gold_speed) if augment2_type == "add" else self.click([gold_speed[0] + 50, gold_speed[1]])
+
     def setBlood(self, info):
         blood_type = info[0]
 
@@ -406,6 +430,7 @@ class RebirthManager:
         self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_4"] * distance)])
         self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_5"] * distance)])
         self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_6"] * distance)])
+        self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_7"] * distance)])
         print("Set blood all")
 
     def swapAutoSpell(self, info = None):
@@ -495,6 +520,12 @@ class RebirthManager:
         else:
             return alt_value
 
+    def enterInput(self, amount):
+        settings = self.settings["menu"]["inputs"]        
+        pyautogui.click(settings["quantity"][0], settings["quantity"][1])
+        pyautogui.write(str(amount))
+        pyautogui.press('enter')
+        time.sleep(0.1)
 
     def get_pixel_colour(self, i_x, i_y):
         i_desktop_window_id = win32gui.GetDesktopWindow()
