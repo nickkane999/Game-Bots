@@ -266,7 +266,7 @@ class RebirthManager:
         print("Finished adding augments")
 
     def augmentsSet(self, info):
-        self.game_ui.accessMenu("time_machine")
+        self.game_ui.accessMenu("augmentation")
         augment = info[0]
         augment1_size = info[1]
         augment1_type =  info[2]
