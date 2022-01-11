@@ -8,6 +8,7 @@ application = Application(instructions)
 application.bot.rebirth_manager.idleCycleRotation()
 application.bot.rebirth_manager.idleCycle("cycle_six")
 
+application.bot.rebirth_manager.idleCycle("cycle_seven")
 
 application.bot.gear_manager.applyCubeBoostLoop()
 application.bot.cycle_manager.capNGULoop()
@@ -25,6 +26,7 @@ application.bot.rebirth_manager.timeMachineSet([1000, "add", 1000, "add"])
 
 time.sleep(2)
 application.bot.rebirth_manager.augmentsSet(["energy_buster", 2400000000, "add", 900000000, "add"])
+application.bot.rebirth_manager.augmentsSet(["energy_buster", 1000000000, "remove", 900000000, "add"])
 
 
 application.bot.rebirth_manager.assignAugments("energy_buster")
