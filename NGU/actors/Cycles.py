@@ -797,6 +797,8 @@ class Cycles:
                 "pre_cycle": [
                     "reclaim",
                     ["reclaim", [True]],
+                    ["select_gear", [self.gear["accessory"]]],
+                    ["select_gear", [self.gear["accessory"]]],
                     "apply_boost",
                     ["digger", [False]],
                     ["wandos", [1]],
