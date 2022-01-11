@@ -743,7 +743,7 @@ class Cycles:
                     ["blood", ["blood_6"]]
                 ],
                 "order": [
-                    ["time_machine_set", [10000000, "add", 2000000000, "add"]],
+                    ["time_machine_set", [14000000, "add", 2000000000, "add"]],
                     ["augment_set", [self.augment, 30000000, "add", 10000000, "add"]]
                 ]
             },
