@@ -710,6 +710,15 @@ class Cycles:
             "accessory_2": 1,
             "weapon": 2
         }
+        self.energy_base = 25000000
+
+        custom1 = round(self.energy_base * 0.75)
+        custom2 = self.energy_base
+        custom3 = round(self.energy_base * 0.04)
+        custom4 = round(self.energy_base * 8)
+        custom5 = round(self.energy_base * 0.5)
+        custom6 = round(self.energy_base * 1.2)
+
         cycle_data = [
             {
                 "time": 45,
@@ -723,8 +732,8 @@ class Cycles:
                         "nuke",
                         ["adventure", ["increment", [2, 0]]]
                     ]],
-                    ["time_machine_set", [15000000, "add", 200000000, "add"]],
-                    ["augment_set", [self.augment, 20000000, "add", 20000000, "add"]],
+                    ["time_machine_set", [custom1, "add", custom2, "add"]],
+                    ["augment_set", [self.augment, custom2, "add", custom2, "add"]],
                 ]
             },
             {
@@ -734,7 +743,7 @@ class Cycles:
                     ["select_gear_slot", ["resource_build"]],
                     "start_itopod",
                     ["digger", [False, "itopod"]],
-                    ["time_machine_set", [10000000, "add", 2000000000, "remove"]],
+                    ["time_machine_set", [custom3, "add", custom4, "remove"]],
                     "spell_swap",
                     ["blood", ["blood_1"]],
                     ["blood", ["blood_2"]],
@@ -745,8 +754,8 @@ class Cycles:
                     ["blood", ["blood_7"]]
                 ],
                 "order": [
-                    ["time_machine_set", [14000000, "add", 2000000000, "add"]],
-                    ["augment_set", [self.augment, 25000000, "add", 15000000, "add"]]
+                    ["time_machine_set", [custom5, "add", custom4, "add"]],
+                    ["augment_set", [self.augment, custom6, "add", custom1, "add"]]
                 ]
             },
             {
@@ -764,11 +773,11 @@ class Cycles:
                     ["blood", ["blood_6"]],
                     ["blood", ["blood_7"]],
                     "spell_swap",
-                    ["time_machine_set", [10000000, "add", 2000000000, "remove"]]
+                    ["time_machine_set", [custom5, "add", custom4, "remove"]]
                 ],
                 "order": [
-                    ["time_machine_set", [5000000, "add", 2000000000, "add"]],
-                    ["augment_set", [self.augment, 25000000, "add", 15000000, "add"]]
+                    ["time_machine_set", [custom3, "add", custom4, "add"]],
+                    ["augment_set", [self.augment, custom6, "add", custom1, "add"]]
                 ]
             },
             {
@@ -787,7 +796,7 @@ class Cycles:
                         ["blood", ["blood_3"]],
                         ["blood", ["blood_4"]]
                     ]],
-                    ["augment_set", [self.augment, 300000000, "add", 600000000, "add"]],
+                    ["augment_set", [self.augment, custom4, "add", custom4 * 3, "add"]],
                     ["blood", ["blood_6"]],
                     ["blood", ["blood_5"]],
                     ["wandos", [2]],
@@ -805,7 +814,7 @@ class Cycles:
                     "apply_boost",
                     ["digger", [True, "itopod"]],
                     ["wandos", [1]],
-                    ["augment_set", [self.augment, 0, "add", 30000000000000, "add"]],
+                    ["augment_set", [self.augment, 0, "add", custom4 * 100, "add"]],
                     "nuke",
                     "attack"
                 ],
