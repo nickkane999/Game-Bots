@@ -724,7 +724,7 @@ class Cycles:
                         ["adventure", ["increment", [2, 0]]]
                     ]],
                     ["time_machine_set", [15000000, "add", 200000000, "add"]],
-                    ["augment_set", [self.augment, 30000000, "add", 10000000, "add"]],
+                    ["augment_set", [self.augment, 20000000, "add", 20000000, "add"]],
                 ]
             },
             {
@@ -750,7 +750,6 @@ class Cycles:
             {
                 "time": 90,
                 "pre_cycle": [
-                    "reclaim",
                     ["reclaim", [True]],
                     ["digger", [False]],
                     "start_itopod",
@@ -770,7 +769,7 @@ class Cycles:
                 ]
             },
             {
-                "time": 80,
+                "time": 86,
                 "pre_cycle": [],
                 "order": [
                     ["once", [
