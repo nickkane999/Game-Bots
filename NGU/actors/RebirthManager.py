@@ -386,6 +386,7 @@ class RebirthManager:
         print("Finished adding time machine")
 
     def timeMachineSet(self, info):
+        self.game_ui.accessMenu("time_machine")
         augment1_size = info[0]
         augment1_type =  info[1]
         augment2_size = info[2]
@@ -406,7 +407,7 @@ class RebirthManager:
         else:
             self.enterInput(augment1_size)
             self.click(machine_speed) if augment1_type == "add" else self.click([machine_speed[0] + 50, machine_speed[1]])
-            self.enterInput(augment1_size)
+            self.enterInput(augment2_size)
             self.click(gold_speed) if augment2_type == "add" else self.click([gold_speed[0] + 50, gold_speed[1]])
 
     def setBlood(self, info):
