@@ -53,6 +53,14 @@ class AugmentationManager:
         pyautogui.click(point[0] + 50, point[1])
         time.sleep(0.1)
 
+    def retrieveEnergy(self, item, augment_type):
+        point = self.settings[item]
+        if augment_type == "strong":
+            pyautogui.click(point[0] + 50, point[1] + self.settings["aug_adjustment"])
+        else:
+            pyautogui.click(point[0] + 50, point[1])
+        time.sleep(0.1)        
+
     def scrollDown(self):
         menu = self.settings
         point = menu["scroll_bottom"]

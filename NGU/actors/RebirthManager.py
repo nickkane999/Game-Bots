@@ -43,8 +43,10 @@ class RebirthManager:
         self.retrieve_augments = False
         self.actions = {
             "augment": self.assignAugments,
+            "augment": self.augmentsSet,
             "set_augment_reclaim_flag": self.updateAugmentFlag,
             "time_machine": self.timeMachineCycle,
+            "time_machine_set": self.timeMachineSet,
             "blood": self.setBlood,
             "spell_swap": self.swapAutoSpell,
             "wandos": self.wandosCycle,
@@ -263,6 +265,20 @@ class RebirthManager:
             time.sleep(0.5)
         print("Finished adding augments")
 
+    def augmentsSet(self, info):
+        self.game_ui.accessMenu("time_machine")
+        augment = info[0]
+        augment1_size = info[1]
+        augment1_type =  info[2]
+        augment2_size = info[3]
+        augment2_type =  info[4]
+
+        self.enterInput(augment1_size)
+        self.bot.augmentation_manager.assignEnergy(augment, False) if augment1_type == "add" else self.bot.augmentation_manager.retrieveEnergy(augment, "weak")
+        self.enterInput(augment2_size)
+        self.bot.augmentation_manager.assignEnergy(augment, True) if augment2_type == "add" else self.bot.augmentation_manager.retrieveEnergy(augment, "strong")
+
+
     def scrollDownAugments(self):
         self.game_ui.accessMenu("augmentation")
         self.bot.augmentation_manager.scrollDown()
@@ -387,28 +403,19 @@ class RebirthManager:
 
     def timeMachineSet(self, info):
         self.game_ui.accessMenu("time_machine")
-        augment1_size = info[0]
-        augment1_type =  info[1]
-        augment2_size = info[2]
-        augment2_type =  info[3]
+        machine_size = info[0]
+        machine_type =  info[1]
+        gold_size = info[2]
+        gold_type =  info[3]
 
         time_machine_settings = self.settings["time_machine"]
         machine_speed = time_machine_settings["machine_speed"]
         gold_speed = time_machine_settings["gold_speed"]
 
-        if augment1_size == augment2_size:
-            self.enterInput(augment1_size)
-            if augment1_type == "add":
-                self.click(machine_speed)
-                self.click(gold_speed)
-            else:
-                self.click([machine_speed[0] + 50, machine_speed[1]])
-                self.click([gold_speed[0] + 50, gold_speed[1]])
-        else:
-            self.enterInput(augment1_size)
-            self.click(machine_speed) if augment1_type == "add" else self.click([machine_speed[0] + 50, machine_speed[1]])
-            self.enterInput(augment2_size)
-            self.click(gold_speed) if augment2_type == "add" else self.click([gold_speed[0] + 50, gold_speed[1]])
+        self.enterInput(machine_size)
+        self.click(machine_speed) if machine_type == "add" else self.click([machine_speed[0] + 50, machine_speed[1]])
+        self.enterInput(gold_size)
+        self.click(gold_speed) if gold_type == "add" else self.click([gold_speed[0] + 50, gold_speed[1]])
 
     def setBlood(self, info):
         blood_type = info[0]
