@@ -26,8 +26,9 @@ class RebirthManager:
         self.settings = self.bot.save_data.db
         self.sleep_time = 0.1
         self.diggers = {
-            "wandos": ["wandos", "stat", "adventure"],
-            "advemture": ["adventure", "stat", "drop_chance"]
+            "wandos": ["wandos", "stat", "adventure", "pp", "magic_beard"],
+            "advemture": ["adventure", "stat", "drop_chance"],
+            "itopod": ["pp", "adventure", "stat", "wandos", "magic_beard"]
         }
         self.augment = "energy_buster"
         self.gear = {
