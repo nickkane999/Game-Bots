@@ -723,32 +723,39 @@ class Cycles:
                         "nuke",
                         ["adventure", ["increment", [2, 0]]]
                     ]],
-                    ["time_machine_set", [10000000, "add", 200000000, "add"]],
+                    ["time_machine_set", [15000000, "add", 200000000, "add"]],
                     ["augment_set", [self.augment, 30000000, "add", 10000000, "add"]],
                 ]
             },
             {
                 "time": 45,
+                "pre_cycle": [
+                    "nuke",
+                    ["select_gear_slot", ["resource_build"]],
+                    "start_itopod",
+                    ["time_machine_set", [10000000, "add", 2000000000, "remove"]],
+                    "spell_swap",
+                    ["blood", ["blood_1"]],
+                    ["blood", ["blood_2"]],
+                    ["blood", ["blood_3"]],
+                    ["blood", ["blood_4"]],
+                    ["blood", ["blood_5"]],
+                    ["blood", ["blood_6"]]
+                ],
                 "order": [
-                    ["once", [
-                        "nuke",
-                        ["select_gear_slot", ["resource_build"]],
-                        "start_itopod",
-                        ["time_machine_set", [10000000, "add", 2000000000, "remove"]],
-                        "spell_swap",
-                        ["blood", ["blood_1"]],
-                        ["blood", ["blood_2"]],
-                        ["blood", ["blood_3"]],
-                        ["blood", ["blood_4"]],
-                        ["blood", ["blood_5"]],
-                        ["blood", ["blood_6"]],
-                    ]],
                     ["time_machine_set", [10000000, "add", 2000000000, "add"]],
                     ["augment_set", [self.augment, 30000000, "add", 10000000, "add"]]
                 ]
             },
             {
                 "time": 90,
+                "pre_cycle": [
+                    "reclaim",
+                    ["reclaim", [True]],
+                    ["digger", [False]],
+                    "start_itopod",
+                    ["set_augment_reclaim_flag", [True]]
+                ],
                 "pre_cycle": [
                     "nuke",
                     ["time_machine_set", [10000000, "add", 2000000000, "remove"]],
