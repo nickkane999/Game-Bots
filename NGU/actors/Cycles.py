@@ -26,7 +26,8 @@ class Cycles:
             "cycle_three": self.getCycleThree(), 
             "cycle_four": self.getCycleFour(),
             "cycle_five": self.getCycleFive(),
-            "cycle_six": self.getCycleSix()
+            "cycle_six": self.getCycleSix(),
+            "cycle_seven": self.getCycleSeven()
         }
         self.cycle_level = [
             ["cycle_six", 2],
@@ -578,6 +579,151 @@ class Cycles:
                     ["once_delay", [2, [
                         ["digger", [True, "advemture"]]
                     ]]]
+                ]
+            },
+            {
+                "time": 40,
+                "pre_cycle": [
+                    "reclaim",
+                    ["augment", [4, self.augment, True]],
+                    "reclaim",
+                    ["augment", [3, self.augment]],
+                    "reclaim"
+                ],
+                "order": [
+                    "nuke",
+                    ["time_machine", [8]],
+                    ["once", [
+                        ["select_gear_slot", ["resource_build"]],
+                        "start_itopod",
+                        ["reclaim", [True]]
+                    ]]
+                ]
+            },
+            {
+                "time": 30,
+                "pre_cycle": [
+                    ["reclaim", [True]],
+                    "spell_swap",
+                    ["reclaim", [True]]
+                ],
+                "order": [
+                    ["blood", ["blood_5"]],
+                    "nuke",
+                    ["time_machine", [8]],
+                    "reclaim",
+                    ["augment", [4, self.augment, True]],
+                    "reclaim",
+                    ["augment", [1, self.augment]]
+                ]
+            },    
+            {
+                "time": 50,
+                "pre_cycle": [
+                    ["reclaim", [True]],
+                    "spell_swap"
+                ],
+                "order": [
+                    ["blood", ["blood_6"]],
+                    ["blood", ["blood_5"]],
+                    ["blood", ["blood_4"]],
+                    ["time_machine", [10, "energy"]],
+                    ["once_delay", [1, [
+                        ["reclaim", [True]],
+                        ["blood", ["blood_6"]],
+                        ["blood", ["blood_5"]],
+                        ["blood", ["blood_4"]],
+                        ["blood", ["blood_3"]],
+                        ["blood", ["blood_2"]],
+                        ["blood", ["blood_1"]],
+                        ["time_machine", [2]]
+                    ]]],
+                    "nuke"
+                ]
+            },
+            {
+                "time": 50,
+                "pre_cycle": [],
+                "order": [
+                    ["blood", ["blood_6"]],
+                    ["blood", ["blood_5"]],
+                    ["once", [
+                        ["reclaim", [True]],
+                        "reclaim",
+                        ["select_gear_slot", ["augment_build"]],
+                        "start_itopod",
+                        ["time_machine", [1, "magic"]]
+                    ]],
+                    "reclaim",
+                    ["augment", [9, self.augment, True]],
+                    "reclaim",
+                    ["augment", [1, self.augment]],
+                    "nuke"
+                ]
+            },
+            {
+                "time": 150,
+                "pre_cycle": [
+                    "reclaim",
+                    ["reclaim", [True]],
+                    ["digger", [False]],
+                    "start_itopod",
+                    ["set_augment_reclaim_flag", [True]]
+                ],
+                "order": [
+                    ["wandos", [2]],
+                    ["blood", ["blood_6"]],
+                    ["blood", ["blood_5"]],
+                    ["rotate", [
+                        ["augment", [1, self.augment]],
+                        ["augment", [1, self.augment, True]]
+                    ]]
+                ]
+            },
+            {
+                "time": 2,
+                "pre_cycle": [
+                    "reclaim",
+                    ["reclaim", [True]],
+                    ["select_gear", [self.gear["accessory"]]],
+                    ["select_gear", [self.gear["accessory"]]],
+                    "apply_boost",
+                    ["digger", [False]],
+                    ["set_augment_reclaim_flag", [False]],
+                    ["wandos", [1]],
+                    ["augment", [1, self.augment, True]],
+                    "nuke",
+                    "attack"
+                ],
+                "order": []
+            },
+        ]
+        return [cycle_data, cycle_time]
+
+
+    #Current cap is around 107, EST time is 7:00
+    def getCycleSeven(self):
+        cycle_time = 420
+        self.augment = "energy_buster"
+        self.gear = {
+            "accessory": 0,
+            "accessory_2": 1,
+            "weapon": 2
+        }
+        cycle_data = [
+            {
+                "time": 50,
+                "pre_cycle": [],
+                "order": [
+                    "nuke",
+                    ["once", [
+                        ["select_gear_slot", ["drop_rate_build"]],
+                        ["adventure", ["increment", [14, 0]]],
+                        ["augment_set", [self.augment, 100000000, "add", 0, "add"]],
+                        "nuke",
+                        ["adventure", ["increment", [2, 0]]]
+                    ]],
+                    ["time_machine_set", [50000000, "add", 500000000, "add"]],
                 ]
             },
             {

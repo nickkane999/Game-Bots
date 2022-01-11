@@ -43,7 +43,7 @@ class RebirthManager:
         self.retrieve_augments = False
         self.actions = {
             "augment": self.assignAugments,
-            "augment": self.augmentsSet,
+            "augment_set": self.augmentsSet,
             "set_augment_reclaim_flag": self.updateAugmentFlag,
             "time_machine": self.timeMachineCycle,
             "time_machine_set": self.timeMachineSet,
