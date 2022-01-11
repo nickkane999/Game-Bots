@@ -27,7 +27,8 @@ class Cycles:
             "cycle_four": self.getCycleFour(),
             "cycle_five": self.getCycleFive(),
             "cycle_six": self.getCycleSix(),
-            "cycle_seven": self.getCycleSeven()
+            "cycle_seven": self.getCycleSeven(),
+            "cycle_eight": self.getCycleEight()
         }
         self.cycle_level = [
             ["cycle_six", 2],
@@ -782,6 +783,128 @@ class Cycles:
             },
             {
                 "time": 86,
+                "pre_cycle": [],
+                "order": [
+                    ["once", [
+                        ["reclaim", [True]],
+                        ["digger", [True]],
+                        "reclaim",
+                        ["select_gear_slot", ["augment_build"]],
+                        "start_itopod",
+                        ["wandos", [2]],
+                        ["blood", ["blood_1"]],
+                        ["blood", ["blood_2"]],
+                        ["blood", ["blood_3"]],
+                        ["blood", ["blood_4"]]
+                    ]],
+                    ["augment_set", [self.augment, custom4, "add", custom4 * 3, "add"]],
+                    ["blood", ["blood_6"]],
+                    ["blood", ["blood_5"]],
+                    ["wandos", [2]],
+                    ["blood", ["blood_7"]],
+                    "nuke"
+                ]
+            },
+            {
+                "time": 2,
+                "pre_cycle": [
+                    "reclaim",
+                    ["reclaim", [True]],
+                    ["select_gear", [self.gear["accessory"]]],
+                    ["select_gear", [self.gear["accessory"]]],
+                    "apply_boost",
+                    ["digger", [True, "itopod"]],
+                    ["wandos", [1]],
+                    ["augment_set", [self.augment, 0, "add", custom4 * 100, "add"]],
+                    "nuke",
+                    "attack"
+                ],
+                "order": []
+            },
+        ]
+        return [cycle_data, cycle_time]
+
+    #Current cap is around 107, EST time is 7:00
+    def getCycleEight(self):
+        cycle_time = 420
+        self.augment = "energy_buster"
+        self.gear = {
+            "accessory": 0,
+            "accessory_2": 1,
+            "weapon": 2
+        }
+        self.energy_base = 25000000
+
+        custom1 = round(self.energy_base * 0.75)
+        custom2 = self.energy_base
+        custom3 = round(self.energy_base * 0.04)
+        custom4 = round(self.energy_base * 8)
+        custom5 = round(self.energy_base * 0.5)
+        custom6 = round(self.energy_base * 1.2)
+
+        cycle_data = [
+            {
+                "time": 45,
+                "pre_cycle": [],
+                "order": [
+                    "nuke",
+                    ["once", [
+                        ["select_gear_slot", ["drop_rate_build"]],
+                        ["adventure", ["increment", [14, 0]]],
+                        ["augment_set", [self.augment, 100000000, "add", 0, "add"]],
+                        "nuke",
+                        ["adventure", ["increment", [2, 0]]]
+                    ]],
+                    ["time_machine_set", [custom1, "add", custom2, "add"]],
+                    ["augment_set", [self.augment, custom2, "add", custom2, "add"]],
+                ]
+            },
+            {
+                "time": 45,
+                "pre_cycle": [
+                    "nuke",
+                    ["select_gear_slot", ["resource_build"]],
+                    "start_itopod",
+                    ["digger", [False, "itopod"]],
+                    ["time_machine_set", [custom3, "add", custom4, "remove"]],
+                    "spell_swap",
+                    ["blood", ["blood_1"]],
+                    ["blood", ["blood_2"]],
+                    ["blood", ["blood_3"]],
+                    ["blood", ["blood_4"]],
+                    ["blood", ["blood_5"]],
+                    ["blood", ["blood_6"]],
+                    ["blood", ["blood_7"]]
+                ],
+                "order": [
+                    ["time_machine_set", [custom5, "add", custom4, "add"]],
+                    ["augment_set", [self.augment, custom6, "add", custom1, "add"]]
+                ]
+            },
+            {
+                "time": 90,
+                "pre_cycle": [
+                    ["reclaim", [True]],
+                    ["digger", [False, "itopod"]],
+                    "start_itopod",
+                    "nuke",
+                    ["blood", ["blood_1"]],
+                    ["blood", ["blood_2"]],
+                    ["blood", ["blood_3"]],
+                    ["blood", ["blood_4"]],
+                    ["blood", ["blood_5"]],
+                    ["blood", ["blood_6"]],
+                    ["blood", ["blood_7"]],
+                    "spell_swap",
+                    ["time_machine_set", [custom5, "add", custom4, "remove"]]
+                ],
+                "order": [
+                    ["time_machine_set", [custom3, "add", custom4, "add"]],
+                    ["augment_set", [self.augment, custom6, "add", custom1, "add"]]
+                ]
+            },
+            {
+                "time": 206,
                 "pre_cycle": [],
                 "order": [
                     ["once", [
