@@ -760,6 +760,7 @@ class Cycles:
                     ["blood", ["blood_4"]],
                     ["blood", ["blood_5"]],
                     ["blood", ["blood_6"]],
+                    ["blood", ["blood_7"]],
                     "spell_swap",
                     ["time_machine_set", [10000000, "add", 2000000000, "remove"]]
                 ],
