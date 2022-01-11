@@ -754,12 +754,15 @@ class Cycles:
                     ["reclaim", [True]],
                     ["digger", [False]],
                     "start_itopod",
-                    ["set_augment_reclaim_flag", [True]]
-                ],
-                "pre_cycle": [
                     "nuke",
-                    ["time_machine_set", [10000000, "add", 2000000000, "remove"]],
-                    "spell_swap"
+                    ["blood", ["blood_1"]],
+                    ["blood", ["blood_2"]],
+                    ["blood", ["blood_3"]],
+                    ["blood", ["blood_4"]],
+                    ["blood", ["blood_5"]],
+                    ["blood", ["blood_6"]],
+                    "spell_swap",
+                    ["time_machine_set", [10000000, "add", 2000000000, "remove"]]
                 ],
                 "order": [
                     ["time_machine_set", [5000000, "add", 2000000000, "add"]],
@@ -772,6 +775,7 @@ class Cycles:
                 "order": [
                     ["once", [
                         ["reclaim", [True]],
+                        ["digger", [False]],
                         "reclaim",
                         ["select_gear_slot", ["augment_build"]],
                         "start_itopod",
@@ -779,13 +783,13 @@ class Cycles:
                         ["blood", ["blood_1"]],
                         ["blood", ["blood_2"]],
                         ["blood", ["blood_3"]],
-                        ["blood", ["blood_4"]],
-                        ["digger", [False]],
+                        ["blood", ["blood_4"]]
                     ]],
                     ["augment_set", [self.augment, 300000000, "add", 600000000, "add"]],
                     ["blood", ["blood_6"]],
                     ["blood", ["blood_5"]],
                     ["wandos", [2]],
+                    ["blood", ["blood_7"]],
                     "nuke"
                 ]
             },
