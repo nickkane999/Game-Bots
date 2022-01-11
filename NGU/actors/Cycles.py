@@ -744,7 +744,7 @@ class Cycles:
                 ],
                 "order": [
                     ["time_machine_set", [14000000, "add", 2000000000, "add"]],
-                    ["augment_set", [self.augment, 30000000, "add", 10000000, "add"]]
+                    ["augment_set", [self.augment, 25000000, "add", 15000000, "add"]]
                 ]
             },
             {
@@ -762,8 +762,8 @@ class Cycles:
                     "spell_swap"
                 ],
                 "order": [
-                    ["time_machine_set", [10000000, "add", 2000000000, "add"]],
-                    ["augment_set", [self.augment, 30000000, "add", 10000000, "add"]]
+                    ["time_machine_set", [5000000, "add", 2000000000, "add"]],
+                    ["augment_set", [self.augment, 25000000, "add", 15000000, "add"]]
                 ]
             },
             {
@@ -782,7 +782,7 @@ class Cycles:
                         ["blood", ["blood_4"]],
                         ["digger", [False]],
                     ]],
-                    ["augment_set", [self.augment, 900000000, "add", 300000000, "add"]],
+                    ["augment_set", [self.augment, 300000000, "add", 600000000, "add"]],
                     ["blood", ["blood_6"]],
                     ["blood", ["blood_5"]],
                     ["wandos", [2]],
@@ -797,7 +797,7 @@ class Cycles:
                     "apply_boost",
                     ["digger", [False]],
                     ["wandos", [1]],
-                    ["augment", [1, self.augment, True]],
+                    ["augment_set", [self.augment, 0, "add", 30000000000000, "add"]],
                     "nuke",
                     "attack"
                 ],
