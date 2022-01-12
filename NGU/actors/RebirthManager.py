@@ -28,7 +28,8 @@ class RebirthManager:
         self.diggers = {
             "wandos": ["wandos", "stat", "adventure", "pp", "magic_beard"],
             "advemture": ["adventure", "stat", "drop_chance"],
-            "itopod": ["pp", "adventure", "stat", "wandos", "magic_beard"]
+            "itopod": ["pp", "adventure", "stat", "wandos", "magic_beard"],
+            "reset_nuke": ["exp", "pp", "stat", "wandos", "magic_beard"]
         }
         self.augment = "energy_buster"
         self.gear = {

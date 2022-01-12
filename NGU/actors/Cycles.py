@@ -725,13 +725,11 @@ class Cycles:
                 "time": 45,
                 "pre_cycle": [],
                 "order": [
-                    "nuke",
                     ["once", [
-                        ["select_gear_slot", ["drop_rate_build"]],
-                        ["adventure", ["increment", [14, 0]]],
-                        ["augment_set", [self.augment, 100000000, "add", 0, "add"]],
                         "nuke",
-                        ["adventure", ["increment", [2, 0]]]
+                        ["select_gear_slot", ["drop_rate_build"]],
+                        ["adventure", ["increment", [16, 0]]],
+                        ["augment_set", [self.augment, 100000000, "add", 0, "add"]],
                     ]],
                     ["time_machine_set", [custom1, "add", custom2, "add"]],
                     ["augment_set", [self.augment, custom2, "add", custom2, "add"]],
@@ -740,7 +738,6 @@ class Cycles:
             {
                 "time": 45,
                 "pre_cycle": [
-                    "nuke",
                     ["select_gear_slot", ["resource_build"]],
                     "start_itopod",
                     ["digger", [False, "itopod"]],
@@ -765,7 +762,6 @@ class Cycles:
                     ["reclaim", [True]],
                     ["digger", [False, "itopod"]],
                     "start_itopod",
-                    "nuke",
                     ["blood", ["blood_1"]],
                     ["blood", ["blood_2"]],
                     ["blood", ["blood_3"]],
@@ -801,8 +797,7 @@ class Cycles:
                     ["blood", ["blood_6"]],
                     ["blood", ["blood_5"]],
                     ["wandos", [2]],
-                    ["blood", ["blood_7"]],
-                    "nuke"
+                    ["blood", ["blood_7"]]
                 ]
             },
             {
@@ -813,7 +808,7 @@ class Cycles:
                     ["select_gear", [self.gear["accessory"]]],
                     ["select_gear", [self.gear["accessory"]]],
                     "apply_boost",
-                    ["digger", [True, "itopod"]],
+                    ["digger", [True, "itopod_exp"]],
                     ["wandos", [1]],
                     ["augment_set", [self.augment, 0, "add", custom4 * 100, "add"]],
                     "nuke",
@@ -847,13 +842,10 @@ class Cycles:
                 "time": 45,
                 "pre_cycle": [],
                 "order": [
-                    "nuke",
                     ["once", [
                         ["select_gear_slot", ["drop_rate_build"]],
-                        ["adventure", ["increment", [14, 0]]],
-                        ["augment_set", [self.augment, 100000000, "add", 0, "add"]],
-                        "nuke",
-                        ["adventure", ["increment", [2, 0]]]
+                        ["adventure", ["increment", [16, 0]]],
+                        ["augment_set", [self.augment, 100000000, "add", 0, "add"]]
                     ]],
                     ["time_machine_set", [custom1, "add", custom2, "add"]],
                     ["augment_set", [self.augment, custom2, "add", custom2, "add"]],
@@ -862,7 +854,6 @@ class Cycles:
             {
                 "time": 45,
                 "pre_cycle": [
-                    "nuke",
                     ["select_gear_slot", ["resource_build"]],
                     "start_itopod",
                     ["digger", [False, "itopod"]],
@@ -887,7 +878,6 @@ class Cycles:
                     ["reclaim", [True]],
                     ["digger", [False, "itopod"]],
                     "start_itopod",
-                    "nuke",
                     ["blood", ["blood_1"]],
                     ["blood", ["blood_2"]],
                     ["blood", ["blood_3"]],
@@ -917,14 +907,13 @@ class Cycles:
                         ["blood", ["blood_1"]],
                         ["blood", ["blood_2"]],
                         ["blood", ["blood_3"]],
-                        ["blood", ["blood_4"]]
+                        ["blood", ["blood_4"]],
+                        ["blood", ["blood_5"]],
+                        ["blood", ["blood_6"]]
                     ]],
                     ["augment_set", [self.augment, custom4, "add", custom4 * 3, "add"]],
-                    ["blood", ["blood_6"]],
-                    ["blood", ["blood_5"]],
                     ["wandos", [2]],
                     ["blood", ["blood_7"]],
-                    "nuke"
                 ]
             },
             {
@@ -935,7 +924,7 @@ class Cycles:
                     ["select_gear", [self.gear["accessory"]]],
                     ["select_gear", [self.gear["accessory"]]],
                     "apply_boost",
-                    ["digger", [True, "itopod"]],
+                    ["digger", [True, "reset_nuke"]],
                     ["wandos", [1]],
                     ["augment_set", [self.augment, 0, "add", custom4 * 100, "add"]],
                     "nuke",
