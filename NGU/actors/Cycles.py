@@ -791,7 +791,7 @@ class Cycles:
                         ["blood", ["blood_1"]],
                         ["blood", ["blood_2"]],
                         ["blood", ["blood_3"]],
-                        ["blood", ["blood_4"]]
+                        ["blood", ["blood_4"]],
                         ["blood", ["blood_5"]],
                         ["blood", ["blood_6"]]
                     ]],
