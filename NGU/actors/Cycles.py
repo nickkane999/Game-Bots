@@ -792,10 +792,10 @@ class Cycles:
                         ["blood", ["blood_2"]],
                         ["blood", ["blood_3"]],
                         ["blood", ["blood_4"]]
+                        ["blood", ["blood_5"]],
+                        ["blood", ["blood_6"]]
                     ]],
                     ["augment_set", [self.augment, custom4, "add", custom4 * 3, "add"]],
-                    ["blood", ["blood_6"]],
-                    ["blood", ["blood_5"]],
                     ["wandos", [2]],
                     ["blood", ["blood_7"]]
                 ]
@@ -808,7 +808,7 @@ class Cycles:
                     ["select_gear", [self.gear["accessory"]]],
                     ["select_gear", [self.gear["accessory"]]],
                     "apply_boost",
-                    ["digger", [True, "itopod_exp"]],
+                    ["digger", [True, "reset_nuke"]],
                     ["wandos", [1]],
                     ["augment_set", [self.augment, 0, "add", custom4 * 100, "add"]],
                     "nuke",
