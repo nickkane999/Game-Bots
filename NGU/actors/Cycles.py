@@ -726,6 +726,7 @@ class Cycles:
                 "pre_cycle": [],
                 "order": [
                     ["once", [
+                        ["time_machine_set", [custom1, "add", custom2, "add"]],
                         ["attack_increment", [109]],
                         ["select_gear_slot", ["drop_rate_build"]],
                         ["adventure", ["increment", [16, 0]]],
@@ -757,7 +758,7 @@ class Cycles:
                 ]
             },
             {
-                "time": 80,
+                "time": 90,
                 "pre_cycle": [
                     ["reclaim", [True]],
                     ["digger", [False, "itopod"]],
