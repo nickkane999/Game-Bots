@@ -726,10 +726,10 @@ class Cycles:
                 "pre_cycle": [],
                 "order": [
                     ["once", [
-                        "nuke",
+                        ["attack_increment", [109]],
                         ["select_gear_slot", ["drop_rate_build"]],
                         ["adventure", ["increment", [16, 0]]],
-                        ["augment_set", [self.augment, 100000000, "add", 0, "add"]],
+                        ["augment_set", [self.augment, 100000000, "add", 0, "add"]]
                     ]],
                     ["time_machine_set", [custom1, "add", custom2, "add"]],
                     ["augment_set", [self.augment, custom2, "add", custom2, "add"]],
@@ -757,7 +757,7 @@ class Cycles:
                 ]
             },
             {
-                "time": 90,
+                "time": 80,
                 "pre_cycle": [
                     ["reclaim", [True]],
                     ["digger", [False, "itopod"]],
