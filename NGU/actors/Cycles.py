@@ -794,11 +794,13 @@ class Cycles:
                         ["blood", ["blood_3"]],
                         ["blood", ["blood_4"]],
                         ["blood", ["blood_5"]],
-                        ["blood", ["blood_6"]]
+                        ["blood", ["blood_6"]],
+                        ["blood", ["blood_7"]]
                     ]],
                     ["augment_set", [self.augment, custom4, "add", custom4 * 3, "add"]],
                     ["wandos", [2]],
-                    ["blood", ["blood_7"]]
+                    ["blood", ["blood_7"]],
+                    ["blood", ["blood_8"]]
                 ]
             },
             {
