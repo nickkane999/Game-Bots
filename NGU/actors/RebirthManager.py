@@ -57,6 +57,7 @@ class RebirthManager:
             "start_itopod": self.startItopod,
             "nuke": self.nukeBoss,
             "attack": self.attackBoss,
+            "attack_increment": self.attackBossIncrement,
             "digger": self.setDiggers,
             "select_gear_slot": self.changeGearSlot,
             "select_gear": self.selectGear,
@@ -239,6 +240,14 @@ class RebirthManager:
         for x in range(0, 12):
             self.click(fight)
             time.sleep(1)
+
+    def attackBossIncrement(self, info):
+        clicks = info[0]
+        self.game_ui.accessMenu("fight_boss")
+        time.sleep(0.2)
+        fight = self.settings["fight_boss"]["fight"]
+        for x in range(0, clicks):
+            pyautogui.click(fight[0], fight[1])            
 
     def changeGearSlot(self, info):
         slot = info[0]
