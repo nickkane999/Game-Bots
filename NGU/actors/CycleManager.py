@@ -47,7 +47,7 @@ class CycleManager:
         while True:
             loop_start_time = time.time()
             self.harvest()
-            self.capNGULoop(20)
+            self.capNGULoop(20, "magic")
             time.sleep(0.2)
             self.game_ui.accessMenu("inventory")
             time.sleep(0.2)
@@ -195,8 +195,13 @@ class CycleManager:
             print("Added time machine, sleeping 30 seconds")
             time.sleep(30)
 
-    def capNGULoop(self, Time = None):
+    def capNGULoop(self, Time = None, ngu_type = None):
         self.game_ui.accessMenu("ngu")
+        ngu_settings = self.settings["ngu"]
+
+        if ngu_type == "magic":
+            swap_button = ngu_settings["swap"]
+            pyautogui.click(swap_button[0], swap_button[1])
 
         if not Time:
             while True:
