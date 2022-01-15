@@ -46,7 +46,7 @@ class CycleManager:
 
         while True:
             loop_start_time = time.time()
-            self.harvest()
+            self.harvest("reclaim_magic")
             self.capNGULoop(20, "magic")
             time.sleep(0.2)
             self.game_ui.accessMenu("inventory")
@@ -65,9 +65,11 @@ class CycleManager:
             rebirth_time = time.time() - loop_start_time + rebirth_time
 
 
-    def harvest(self):
+    def harvest(self, action = None):
         self.game_ui.accessMenu("inventory")
         time.sleep(0.2)
+        if action == "reclaim_magic":
+            pyautogui.press("t")
         self.bot.gear_manager.selectGear(0)
         time.sleep(0.2)
         self.bot.gear_manager.equipAccessoryGear(1, 1)
