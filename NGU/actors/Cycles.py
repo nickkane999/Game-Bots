@@ -994,14 +994,7 @@ class Cycles:
                     ]],
                     ["once_delay", [1, [
                         "spell_swap",
-                        ["blood", ["blood_1"]],
-                        ["blood", ["blood_2"]],
-                        ["blood", ["blood_3"]],
-                        ["blood", ["blood_4"]],
-                        ["blood", ["blood_5"]],
-                        ["blood", ["blood_6"]],
-                        ["blood", ["blood_7"]],
-                        ["blood", ["blood_8"]]
+                        "blood_all"
                     ]]],
                     ["time_machine_set", [eb["TM1"], "add", mb["TM1"], "add"]],
                     ["augment_set", [self.augment, eb["Aug1_1"], "add", eb["Aug2_1"], "add"]]
@@ -1033,13 +1026,7 @@ class Cycles:
                         ["time_machine_set", [eb["TM3"], "add", mb["TM3"], "add"]],
                         "spell_swap",
                         ["wandos", [2]],
-                        ["blood", ["blood_1"]],
-                        ["blood", ["blood_2"]],
-                        ["blood", ["blood_3"]],
-                        ["blood", ["blood_4"]],
-                        ["blood", ["blood_5"]],
-                        ["blood", ["blood_6"]],
-                        ["blood", ["blood_7"]]
+                        "blood_all"
                     ]],
                     ["once_delay", [2, [
                         ["blood", ["blood_8", "remove"]],
