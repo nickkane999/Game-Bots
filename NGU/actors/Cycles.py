@@ -1022,7 +1022,8 @@ class Cycles:
                     ]],
                     ["augment_set", [self.augment, custom4, "add", custom4 * 3, "add"]],
                     ["once_delay", [4, [
-                        ["blood", ["blood_8", "remove"]]
+                        ["blood", ["blood_8", "remove"]],
+                        ["time_machine_set", [0, "add", custom4 * 100, "remove"]]
                     ]]],
                     ["wandos", [2]],
                     ["blood", ["blood_7"]],
