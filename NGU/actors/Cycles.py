@@ -982,7 +982,7 @@ class Cycles:
 
         cycle_data = [
             {
-                "time": 45,
+                "time": 40,
                 "pre_cycle": [],
                 "order": [
                     ["once", [
@@ -1008,7 +1008,7 @@ class Cycles:
                 ]
             },
             {
-                "time": 15,
+                "time": 20,
                 "pre_cycle": [
                     ["select_gear_slot", ["resource_build"]],
                     ["digger", [False, "itopod_2"]],
@@ -1041,7 +1041,7 @@ class Cycles:
                         ["blood", ["blood_6"]],
                         ["blood", ["blood_7"]]
                     ]],
-                    ["once_delay", [4, [
+                    ["once_delay", [2, [
                         ["blood", ["blood_8", "remove"]],
                         ["time_machine_set", [eb["TM3_5"], "add", mb["TM3_5"], "add"]]
                     ]]],
