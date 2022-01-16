@@ -937,3 +937,108 @@ class Cycles:
             },
         ]
         return [cycle_data, cycle_time]
+
+    # 3 minute cycle
+    def getCycleNine(self):
+        cycle_time = 180
+        self.augment = "energy_buster"
+        self.gear = {
+            "accessory": 0,
+            "accessory_2": 1,
+            "weapon": 2
+        }
+        self.energy_base = 25000000
+
+        custom1 = round(self.energy_base * 0.75)
+        custom2 = self.energy_base
+        custom3 = round(self.energy_base * 0.04)
+        custom4 = round(self.energy_base * 8)
+        custom5 = round(self.energy_base * 0.5)
+        custom6 = round(self.energy_base * 1.2)
+
+        cycle_data = [
+            {
+                "time": 45,
+                "pre_cycle": [],
+                "order": [
+                    ["once", [
+                        ["attack_increment", [109]],
+                        ["select_gear_slot", ["drop_rate_build"]],
+                        ["adventure", ["increment", [16, 0]]],
+                        ["augment_set", [self.augment, 100000000, "add", 0, "add"]],
+                        ["time_machine_set", [custom1, "add", custom2, "add"]]
+                    ]],
+                    ["once_delay", [3, [
+                        ["reclaim", [True]],
+                        "spell_swap",
+                        ["blood", ["blood_1"]],
+                        ["blood", ["blood_2"]],
+                        ["blood", ["blood_3"]],
+                        ["blood", ["blood_4"]],
+                        ["blood", ["blood_5"]],
+                        ["blood", ["blood_6"]],
+                        ["blood", ["blood_7"]],
+                        ["blood", ["blood_8"]]
+                    ]]],
+                    ["time_machine_set", [custom1, "add", custom2, "add"]],
+                    ["augment_set", [self.augment, custom2, "add", custom2, "add"]]
+                ]
+            },
+            {
+                "time": 35,
+                "pre_cycle": [
+                    ["select_gear_slot", ["resource_build"]],
+                    "start_itopod",
+                    ["digger", [False, "itopod_2"]],
+                    ["time_machine_set", [custom3, "add", custom4, "remove"]]
+                ],
+                "order": [
+                    ["time_machine_set", [custom5, "add", custom4, "add"]],
+                    ["augment_set", [self.augment, custom6, "add", custom1, "add"]]
+                ]
+            },
+            {
+                "time": 86,
+                "pre_cycle": [],
+                "order": [
+                    ["once", [
+                        ["digger", [True]],
+                        ["reclaim", [True]],
+                        "reclaim",
+                        ["select_gear_slot", ["augment_build"]],
+                        "start_itopod",
+                        "spell_swap",
+                        ["wandos", [2]],
+                        ["blood", ["blood_1"]],
+                        ["blood", ["blood_2"]],
+                        ["blood", ["blood_3"]],
+                        ["blood", ["blood_4"]],
+                        ["blood", ["blood_5"]],
+                        ["blood", ["blood_6"]],
+                        ["blood", ["blood_7"]],
+                        ["time_machine_set", [custom3, "add", custom4, "add"]]
+                    ]],
+                    ["augment_set", [self.augment, custom4, "add", custom4 * 3, "add"]],
+                    ["wandos", [2]],
+                    ["blood", ["blood_7"]],
+                    ["blood", ["blood_8"]]
+                ]
+            },
+            {
+                "time": 2,
+                "pre_cycle": [
+                    "reclaim",
+                    ["reclaim", [True]],
+                    ["select_gear", [self.gear["accessory"]]],
+                    ["select_gear", [self.gear["accessory"]]],
+                    "apply_boost",
+                    ["digger", [True, "reset_nuke"]],
+                    ["wandos", [1]],
+                    ["augment_set", [self.augment, 0, "add", custom4 * 100, "add"]],
+                    "nuke",
+                    "attack"
+                ],
+                "order": []
+            },
+        ]
+        return [cycle_data, cycle_time]

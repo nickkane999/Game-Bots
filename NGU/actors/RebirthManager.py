@@ -29,7 +29,9 @@ class RebirthManager:
             "wandos": ["wandos", "stat", "adventure", "pp", "magic_beard"],
             "advemture": ["adventure", "stat", "drop_chance"],
             "itopod": ["pp", "adventure", "stat", "wandos", "magic_beard"],
-            "reset_nuke": ["exp", "pp", "stat", "wandos", "magic_beard"]
+            "itopod_2": ["pp", "adventure", "wandos", "magic_beard"],
+            "reset_nuke": ["exp", "pp", "stat", "wandos", "magic_beard"],
+            "quick_exp": ["exp"]
         }
         self.augment = "energy_buster"
         self.gear = {
@@ -341,7 +343,7 @@ class RebirthManager:
         print("Set ITOPOD")
 
 
-    def setDiggers(self, info = None):
+    def setDiggers(self, info = None, sleep_time = None):
         clear = info
         digger_type = self.assignListIndex(info, "wandos", 1)
 
@@ -356,6 +358,8 @@ class RebirthManager:
 
         if clear:
             self.click(clear_point)
+        if sleep_time:
+            time.sleep(sleep_time)
 
         cap_buttons = digger_settings["cap_buttons"]
         for digger in diggers:
