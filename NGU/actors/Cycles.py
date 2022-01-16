@@ -948,7 +948,7 @@ class Cycles:
             "accessory_2": 1,
             "weapon": 2
         }
-        self.energy_base = 25000000
+        self.energy_base = 35000000
 
         custom1 = round(self.energy_base * 0.75)
         custom2 = self.energy_base
@@ -967,7 +967,7 @@ class Cycles:
                         ["attack_increment", [109]],
                         ["select_gear_slot", ["drop_rate_build"]],
                         ["adventure", ["increment", [16, 0]]],
-                        ["augment_set", [self.augment, 100000000, "add", 0, "add"]],
+                        ["augment_set", [self.augment, 100000000, "add", 60000000, "add"]],
                         ["time_machine_set", [custom1, "add", custom2, "add"]]
                     ]],
                     ["once_delay", [3, [
@@ -1008,7 +1008,6 @@ class Cycles:
                         ["digger", [True]],
                         ["reclaim", [True]],
                         "reclaim",
-                        ["select_gear_slot", ["augment_build"]],
                         "start_itopod",
                         ["time_machine_set", [custom7, "add", custom7, "add"]],
                         "spell_swap",
@@ -1035,12 +1034,11 @@ class Cycles:
                 "pre_cycle": [
                     "reclaim",
                     ["reclaim", [True]],
-                    ["select_gear", [self.gear["accessory"]]],
-                    ["select_gear", [self.gear["accessory"]]],
+                    ["select_gear_slot", ["augment_build"]],
                     "apply_boost",
                     ["digger", [True, "reset_nuke"]],
                     ["wandos", [1]],
-                    ["augment_set", [self.augment, 0, "add", custom4 * 100, "add"]],
+                    ["augment_set", [self.augment, custom4, "add", custom4 * 100, "add"]],
                     "nuke",
                     "attack"
                 ],
