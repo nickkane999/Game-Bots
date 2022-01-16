@@ -949,6 +949,22 @@ class Cycles:
             "weapon": 2
         }
         self.energy_base = 35000000
+        self.magic_base = 25000000
+
+        # energy TM1 = 30,000,000 per 6-8 seconds
+        # magic TM1 = 30,000,000 per 4-6 seconds
+        # energy Agument 1 (Energy Buster) = 180,000,000 - 240,000,000 per 1 second
+        # energy Agument 2 (Energy Buster) = 50,000,000 - 80,000,000 per 1 second
+
+        eb = {
+            "TM1": 30000000,
+            "Aug1": 150000000,
+            "Aug2": 80000000,
+        }
+
+        mb = {
+            "TM1": 40000000
+        }
 
         custom1 = round(self.energy_base * 0.75)
         custom2 = self.energy_base
@@ -967,10 +983,10 @@ class Cycles:
                         ["attack_increment", [109]],
                         ["select_gear_slot", ["drop_rate_build"]],
                         ["adventure", ["increment", [16, 0]]],
-                        ["augment_set", [self.augment, 100000000, "add", 60000000, "add"]],
-                        ["time_machine_set", [custom1, "add", custom2, "add"]]
+                        ["augment_set", [self.augment, eb["Aug1"], "add", eb["Aug2"], "add"]],
+                        ["time_machine_set", [eb["TM1"], "add", mb["TM1"], "add"]]
                     ]],
-                    ["once_delay", [3, [
+                    ["once_delay", [1, [
                         ["reclaim", [True]],
                         "spell_swap",
                         ["blood", ["blood_1"]],
@@ -1021,10 +1037,6 @@ class Cycles:
                         ["blood", ["blood_7"]]
                     ]],
                     ["augment_set", [self.augment, custom4, "add", custom4 * 3, "add"]],
-                    ["once_delay", [4, [
-                        ["blood", ["blood_8", "remove"]],
-                        ["time_machine_set", [0, "add", custom4 * 100, "remove"]]
-                    ]]],
                     ["wandos", [2]],
                     ["blood", ["blood_7"]],
                     ["blood", ["blood_8"]]
