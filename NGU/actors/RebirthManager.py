@@ -434,12 +434,16 @@ class RebirthManager:
 
     def setBlood(self, info):
         blood_type = info[0]
+        is_removed = self.assignListIndex(info, "add", 1)
 
         self.game_ui.accessMenu("blood_magic")
         blood_settings = self.settings["blood"]
         start_point = blood_settings["blood_start"]
         distance = blood_settings["distance"]
-        self.click([start_point[0], start_point[1] + (blood_settings["info"][blood_type] * distance)])
+        if is_removed == "remove":
+            self.click([start_point[0] - 50, start_point[1] + (blood_settings["info"][blood_type] * distance)])
+        else:
+            self.click([start_point[0], start_point[1] + (blood_settings["info"][blood_type] * distance)])
         print("Set blood")
 
     def setBloodAll(self):
