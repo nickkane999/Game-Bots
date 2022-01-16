@@ -511,7 +511,7 @@ class RebirthManager:
             self.bot.reclaimResources()
             self.game_ui.accessMenu("blood_magic")
             self.setBloodAll()
-            self.swapAutoSpell(["verify_bonuses_cycle"]
+            self.swapAutoSpell(["verify_bonuses_cycle"])
             print("Waiting 180 seconds to get pill bonus")
             time.sleep(180)
 
