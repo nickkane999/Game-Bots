@@ -53,6 +53,7 @@ class RebirthManager:
             "time_machine": self.timeMachineCycle,
             "time_machine_set": self.timeMachineSet,
             "blood": self.setBlood,
+            "blood_all": self.setBloodAll,
             "spell_swap": self.swapAutoSpell,
             "wandos": self.wandosCycle,
             "reclaim": self.bot.reclaimResource,
@@ -459,6 +460,7 @@ class RebirthManager:
         self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_5"] * distance)])
         self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_6"] * distance)])
         self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_7"] * distance)])
+        self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_8"] * distance)])
         print("Set blood all")
 
     def swapAutoSpell(self, info = None):
@@ -509,7 +511,7 @@ class RebirthManager:
             self.bot.reclaimResources()
             self.game_ui.accessMenu("blood_magic")
             self.setBloodAll()
-            self.swapAutoSpell(["verify_bonuses_cycle"])
+            self.swapAutoSpell(["verify_bonuses_cycle"]
             print("Waiting 180 seconds to get pill bonus")
             time.sleep(180)
 
