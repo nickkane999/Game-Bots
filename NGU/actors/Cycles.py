@@ -1005,7 +1005,7 @@ class Cycles:
                 "pre_cycle": [],
                 "order": [
                     ["once", [
-                        ["digger", [True]],
+                        ["digger", [False, "wandos_2"]],
                         ["reclaim", [True]],
                         "reclaim",
                         "start_itopod",

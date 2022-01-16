@@ -27,6 +27,7 @@ class RebirthManager:
         self.sleep_time = 0.1
         self.diggers = {
             "wandos": ["wandos", "stat", "adventure", "pp", "magic_beard"],
+            "wandos_2": ["wandos", "blood", "adventure", "pp", "magic_beard"],
             "advemture": ["adventure", "stat", "drop_chance"],
             "itopod": ["pp", "adventure", "stat", "wandos", "magic_beard"],
             "itopod_2": ["pp", "adventure", "wandos", "magic_beard"],
