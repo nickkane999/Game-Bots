@@ -990,8 +990,8 @@ class Cycles:
                 "time": 15,
                 "pre_cycle": [
                     ["select_gear_slot", ["resource_build"]],
-                    "start_itopod",
-                    ["digger", [False, "itopod_2"]]
+                    ["digger", [False, "itopod_2"]],
+                    "start_itopod"
                 ],
                 "order": [
                     ["time_machine_set", [custom5, "add", custom5, "add"]],
