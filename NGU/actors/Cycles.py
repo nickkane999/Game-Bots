@@ -1027,9 +1027,9 @@ class Cycles:
                 "order": [
                     ["once", [
                         ["digger", [False, "wandos_2"]],
+                        "start_itopod",
                         ["reclaim", [True]],
                         "reclaim",
-                        "start_itopod",
                         ["time_machine_set", [eb["TM3"], "add", mb["TM3"], "add"]],
                         "spell_swap",
                         ["wandos", [2]],

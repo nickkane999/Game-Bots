@@ -496,14 +496,13 @@ class RebirthManager:
         money_pit = settings["active_colors"]["money_pit"]
         blood_magic_color = settings["active_colors"]["blood_magic"]
         if self.get_pixel_colour(money_pit[0], money_pit[1]) == self.active_colors["money_pit"]:
-            self.clearDiggers()
-            self.bot.reclaimResources()
             self.timeMachineCycle([5])        
-            print("Set time machine for money pit, waiting 1 minute")
-            time.sleep(60)
+            print("Set time machine for money pit, waiting 10 seconds")
+            time.sleep(10)
             self.game_ui.accessMenu("money_pit")
             self.click(settings["money_pit"]["feed"])
             self.click(settings["money_pit"]["confirm"])
+            self.attackBoss()
 
         if self.get_pixel_colour(blood_magic_color[0], blood_magic_color[1]) == self.active_colors["blood_magic"]:
             self.clearDiggers()
