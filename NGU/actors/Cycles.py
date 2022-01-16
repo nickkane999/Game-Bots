@@ -956,6 +956,7 @@ class Cycles:
         custom4 = round(self.energy_base * 8)
         custom5 = round(self.energy_base * 0.5)
         custom6 = round(self.energy_base * 1.2)
+        custom7 = round(self.energy_base * 5)
 
         cycle_data = [
             {
@@ -1009,6 +1010,7 @@ class Cycles:
                         "reclaim",
                         ["select_gear_slot", ["augment_build"]],
                         "start_itopod",
+                        ["time_machine_set", [custom7, "add", custom7, "add"]],
                         "spell_swap",
                         ["wandos", [2]],
                         ["blood", ["blood_1"]],
@@ -1020,7 +1022,7 @@ class Cycles:
                         ["blood", ["blood_7"]]
                     ]],
                     ["augment_set", [self.augment, custom4, "add", custom4 * 3, "add"]],
-                    ["once_delay", [5, [
+                    ["once_delay", [4, [
                         ["blood", ["blood_8", "remove"]]
                     ]]],
                     ["wandos", [2]],
