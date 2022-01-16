@@ -994,14 +994,14 @@ class Cycles:
                     ["digger", [False, "itopod_2"]]
                 ],
                 "order": [
-                    ["time_machine_set", [custom5, "add", custom3, "add"]],
+                    ["time_machine_set", [custom5, "add", custom5, "add"]],
                     ["augment_set", [self.augment, custom6, "add", 0, "add"]],
                     ["blood", ["blood_7"]],
                     ["blood", ["blood_8"]]
                 ]
             },
             {
-                "time": 86,
+                "time": 90,
                 "pre_cycle": [],
                 "order": [
                     ["once", [
