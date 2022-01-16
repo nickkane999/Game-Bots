@@ -986,15 +986,17 @@ class Cycles:
                 ]
             },
             {
-                "time": 35,
+                "time": 15,
                 "pre_cycle": [
                     ["select_gear_slot", ["resource_build"]],
                     "start_itopod",
                     ["digger", [False, "itopod_2"]]
                 ],
                 "order": [
-                    ["time_machine_set", [custom5, "add", custom4, "add"]],
-                    ["augment_set", [self.augment, custom6, "add", custom1, "add"]]
+                    ["time_machine_set", [custom5, "add", custom3, "add"]],
+                    ["augment_set", [self.augment, custom6, "add", 0, "add"]],
+                    ["blood", ["blood_7"]],
+                    ["blood", ["blood_8"]]
                 ]
             },
             {
