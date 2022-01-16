@@ -958,15 +958,16 @@ class Cycles:
 
         eb = {
             "TM1": 30000000,
-            "Aug1": 150000000,
-            "Aug2": 80000000,
+            "Aug1_1": 150000000,
+            "Aug2_1": 80000000,
+            "TM2": 1,
             "TM3": 175000000,
             "TM3_5": 100000000,
         }
 
         mb = {
             "TM1": 40000000,
-            "TM2": 40000000,
+            "TM2": 1,
             "TM3": 175000000,
             "TM3_5": 200000000
         }
@@ -989,7 +990,7 @@ class Cycles:
                         ["select_gear_slot", ["drop_rate_build"]],
                         ["adventure", ["increment", [16, 0]]],
                         ["time_machine_set", [eb["TM1"], "add", mb["TM1"], "add"]],
-                        ["augment_set", [self.augment, eb["Aug1"], "add", eb["Aug2"], "add"]]
+                        ["augment_set", [self.augment, eb["Aug1_1"], "add", eb["Aug2_1"], "add"]]
                     ]],
                     ["once_delay", [1, [
                         "spell_swap",
@@ -1003,7 +1004,7 @@ class Cycles:
                         ["blood", ["blood_8"]]
                     ]]],
                     ["time_machine_set", [eb["TM1"], "add", mb["TM1"], "add"]],
-                    ["augment_set", [self.augment, eb["Aug1"], "add", eb["Aug2"], "add"]]
+                    ["augment_set", [self.augment, eb["Aug1_1"], "add", eb["Aug2_1"], "add"]]
                 ]
             },
             {
@@ -1014,8 +1015,8 @@ class Cycles:
                     "start_itopod"
                 ],
                 "order": [
-                    ["time_machine_set", [eb["TM1"], "add", mb["TM1"], "add"]],
-                    ["augment_set", [self.augment, eb["Aug1"], "add", eb["Aug2"], "add"]],
+                    ["time_machine_set", [eb["TM2"], "add", mb["TM2"], "add"]],
+                    ["augment_set", [self.augment, eb["Aug1_1"], "add", eb["Aug2_1"], "add"]],
                     ["blood", ["blood_7"]],
                     ["blood", ["blood_8"]]
                 ]
