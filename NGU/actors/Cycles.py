@@ -28,7 +28,8 @@ class Cycles:
             "cycle_five": self.getCycleFive(),
             "cycle_six": self.getCycleSix(),
             "cycle_seven": self.getCycleSeven(),
-            "cycle_eight": self.getCycleEight()
+            "cycle_eight": self.getCycleEight(),
+            "cycle_nine": self.getCycleNine()
         }
         self.cycle_level = [
             ["cycle_six", 2],
