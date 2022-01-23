@@ -52,9 +52,9 @@ class CycleManager:
             self.game_ui.accessMenu("inventory")
             time.sleep(0.2)
             if only_boosts:
-                # self.bot.gear_manager.applyCubeBoost()
-                self.bot.gear_manager.applySlotBoosts(self.slots)
-                self.bot.gear_manager.upgradeGearPriority()
+                self.bot.gear_manager.applyCubeBoost()
+                # self.bot.gear_manager.applySlotBoosts(self.slots)
+                # self.bot.gear_manager.upgradeGearPriority()
             else:
                 self.bot.gear_manager.upgradeItems(True, 30)
 
