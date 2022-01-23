@@ -46,8 +46,8 @@ class CycleManager:
 
         while True:
             loop_start_time = time.time()
-            self.harvest("reclaim_magic")
-            self.capNGULoop(20, "magic")
+            self.harvest()
+            #self.capNGULoop(20, "magic")
             time.sleep(0.2)
             self.game_ui.accessMenu("inventory")
             time.sleep(0.2)
