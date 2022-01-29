@@ -66,7 +66,7 @@ class BattleManager:
 
         while True:
             current_time = time.time()
-            if self.get_pixel_colour(1250, 710) == home_menu_color:
+            if self.get_pixel_colour(1250, 710) == home_menu_color and False:
                 print("Died. Getting health for 10 seconds")
                 time.sleep(10)
                 for x in range(0, 19):
