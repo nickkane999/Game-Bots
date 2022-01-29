@@ -217,3 +217,14 @@ class CycleManager:
                 time.sleep(0.1)
 
         print("Finished NGU Cap loop")
+
+    def addPerk(self, upgrade, times):
+        itopod = self.settings["itopod"]
+        size = itopod["box_size"]
+        upgrade = [itopod["box_1"][0] + (size * (upgrade % 12)), itopod["box_1"][1] + (size * int(upgrade/12))]
+        confirm_buy = itopod["confirm_buy"]
+        for x in range(0, times):
+            pyautogui.click(upgrade[0], upgrade[1])
+            time.sleep(0.1)
+            pyautogui.click(confirm_buy[0], confirm_buy[1])
+            time.sleep(0.1)
