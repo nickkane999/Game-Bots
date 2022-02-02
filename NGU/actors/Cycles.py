@@ -990,7 +990,7 @@ class Cycles:
                         ["select_gear_slot", ["drop_rate_build"]],
                         ["adventure", ["increment", [16, 0]]],
                         ["time_machine_set", [eb["TM1"], "add", mb["TM1"], "add"]],
-                        ["augment_set", [self.augment, eb["Aug1_1"], "add", eb["Aug2_1"], "add"]]
+                        ["augment_set", [self.augment, eb["Aug1_1"], "add", eb["Aug2_1"], "add"]],
                         "spell_swap",
                         "blood_all"
                     ]],
