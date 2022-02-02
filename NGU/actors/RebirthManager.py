@@ -30,8 +30,8 @@ class RebirthManager:
             "wandos_2": ["wandos", "blood", "adventure", "pp", "magic_beard"],
             "advemture": ["adventure", "stat", "drop_chance"],
             "itopod": ["pp", "adventure", "stat", "wandos", "magic_beard"],
-            "itopod_2": ["pp", "adventure", "wandos", "blood", "magic_beard"],
-            "reset_nuke": ["exp", "pp", "stat", "wandos", "magic_beard"],
+            "itopod_2": ["pp", "exp", "blood", "adventure", "daycare", "magic_beard"],
+            "reset_nuke": ["exp", "pp", "stat", "adventure", "magic_beard"],
             "quick_exp": ["exp"]
         }
         self.augment = "energy_buster"
