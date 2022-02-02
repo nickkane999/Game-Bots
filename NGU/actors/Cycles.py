@@ -982,7 +982,7 @@ class Cycles:
 
         cycle_data = [
             {
-                "time": 40,
+                "time": 30,
                 "pre_cycle": [],
                 "order": [
                     ["once", [
@@ -991,17 +991,15 @@ class Cycles:
                         ["adventure", ["increment", [16, 0]]],
                         ["time_machine_set", [eb["TM1"], "add", mb["TM1"], "add"]],
                         ["augment_set", [self.augment, eb["Aug1_1"], "add", eb["Aug2_1"], "add"]]
-                    ]],
-                    ["once_delay", [1, [
                         "spell_swap",
                         "blood_all"
-                    ]]],
+                    ]],
                     ["time_machine_set", [eb["TM1"], "add", mb["TM1"], "add"]],
                     ["augment_set", [self.augment, eb["Aug1_1"], "add", eb["Aug2_1"], "add"]]
                 ]
             },
             {
-                "time": 20,
+                "time": 30,
                 "pre_cycle": [
                     ["select_gear_slot", ["resource_build"]],
                     ["digger", [False, "itopod_2"]],
@@ -1009,9 +1007,7 @@ class Cycles:
                 ],
                 "order": [
                     ["time_machine_set", [eb["TM2"], "add", mb["TM2"], "add"]],
-                    ["augment_set", [self.augment, eb["Aug1_1"], "add", eb["Aug2_1"], "add"]],
-                    ["blood", ["blood_7"]],
-                    ["blood", ["blood_8"]]
+                    ["augment_set", [self.augment, eb["Aug1_1"], "add", eb["Aug2_1"], "add"]]
                 ]
             },
             {
@@ -1020,22 +1016,12 @@ class Cycles:
                 "order": [
                     ["once", [
                         ["digger", [False, "wandos_2"]],
-                        ["reclaim", [True]],
-                        "reclaim",
                         "start_itopod",
-                        ["time_machine_set", [eb["TM3"], "add", mb["TM3"], "add"]],
                         "spell_swap",
-                        ["wandos", [2]],
-                        "blood_all"
+                        ["wandos", [2]]
                     ]],
-                    ["once_delay", [2, [
-                        ["blood", ["blood_8", "remove"]],
-                        ["time_machine_set", [eb["TM3_5"], "add", mb["TM3_5"], "add"]]
-                    ]]],
                     ["augment_set", [self.augment, custom4, "add", custom4 * 3, "add"]],
-                    ["wandos", [2]],
-                    ["blood", ["blood_7"]],
-                    ["blood", ["blood_8"]]
+                    ["wandos", [2]]
                 ]
             },
             {
@@ -1047,7 +1033,7 @@ class Cycles:
                     "apply_boost",
                     ["digger", [True, "reset_nuke"]],
                     ["wandos", [1]],
-                    ["augment_set", [self.augment, custom4, "add", custom4 * 100, "add"]],
+                    ["augment_set", [self.augment, custom4 * 16, "add", custom4 * 100, "add"]],
                     "nuke",
                     "attack"
                 ],
