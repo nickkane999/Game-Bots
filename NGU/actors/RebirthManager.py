@@ -507,8 +507,8 @@ class RebirthManager:
             self.attackBoss()
 
         if self.get_pixel_colour(blood_magic_color[0], blood_magic_color[1]) == self.active_colors["blood_magic"]:
-            self.clearDiggers()
-            self.bot.reclaimResources()
+            # self.clearDiggers()
+            # self.bot.reclaimResources()
             self.game_ui.accessMenu("blood_magic")
             self.setBloodAll()
             self.swapAutoSpell(["verify_bonuses_cycle"])
