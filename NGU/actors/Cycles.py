@@ -958,6 +958,8 @@ class Cycles:
         # energy Agument 2 (Energy Buster) = 50,000,000 - 80,000,000 per 1 second
 
         eb = {
+            "energy_buster_cap1": 6000000,
+            "energy_buster_cap2": 3000000,
             "TM1": 30000000,
             "Aug1_1": 150000000,
             "Aug2_1": 80000000,
@@ -991,13 +993,12 @@ class Cycles:
                         ["select_gear_slot", ["drop_rate_build"]],
                         ["adventure", ["increment", [16, 0]]],
                         ["time_machine_set", [eb["TM1"], "add", mb["TM1"], "add"]],
-                        ["augment_set", [self.augment, eb["Aug1_1"], "add", eb["Aug2_1"], "add"]],
+                        ["augment_set", [self.augment, eb["energy_buster_cap1"], "add", eb["energy_buster_cap2"], "add"]],
                         "spell_swap",
                         "blood_all"
                     ]],
                     ["time_machine_set", [eb["TM1"], "add", mb["TM1"], "add"]],
-                    ["augment_set", [self.augment, eb["Aug1_1"]/2, "add", eb["Aug2_1"]/2, "add"]],
-                    ["augment_set", [self.augment_2, eb["Aug1_1"]/2, "add", eb["Aug2_1"]/2, "add"]]
+                    ["augment_set", [self.augment_2, eb["Aug1_1"], "add", eb["Aug2_1"], "add"]]
                 ]
             },
             {
@@ -1009,8 +1010,7 @@ class Cycles:
                 ],
                 "order": [
                     ["time_machine_set", [eb["TM2"], "add", mb["TM2"], "add"]],
-                    ["augment_set", [self.augment, eb["Aug1_1"]/2, "add", eb["Aug2_1"]/2, "add"]],
-                    ["augment_set", [self.augment_2, eb["Aug1_1"]/2, "add", eb["Aug2_1"]/2, "add"]]
+                    ["augment_set", [self.augment_2, eb["Aug1_1"], "add", eb["Aug2_1"], "add"]]
                 ]
             },
             {
@@ -1023,8 +1023,7 @@ class Cycles:
                         "spell_swap",
                         ["wandos", [2]]
                     ]],
-                    ["augment_set", [self.augment, custom4 / 4, "add", custom4 / 4, "add"]],
-                    ["augment_set", [self.augment_2, custom4 * 12, "add", custom4 * 12, "add"]],
+                    ["augment_set", [self.augment_2, custom4 * 14, "add", custom4 * 14, "add"]],
                     ["wandos", [2]]
                 ]
             },
@@ -1037,7 +1036,7 @@ class Cycles:
                     "apply_boost",
                     ["digger", [True, "reset_nuke"]],
                     ["wandos", [1]],
-                    ["augment_set", [self.augment, custom4 * 16, "add", custom4 * 16, "add"]],
+                    ["augment_set", [self.augment, eb["energy_buster_cap1"], "add", eb["energy_buster_cap2"], "add"]],
                     ["augment_set", [self.augment_2, custom4 * 20, "add", custom4 * 1000, "add"]],
                     "nuke",
                     "attack"
