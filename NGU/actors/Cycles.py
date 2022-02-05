@@ -997,7 +997,7 @@ class Cycles:
                     ]],
                     ["time_machine_set", [eb["TM1"], "add", mb["TM1"], "add"]],
                     ["augment_set", [self.augment, eb["Aug1_1"]/2, "add", eb["Aug2_1"]/2, "add"]],
-                    ["augment_set", [self.augment_2, eb["Aug1_1"]/2, "add", eb["Aug2_1"]/2, "add"]]
+                    ["augment_set", [self.augment_2, eb["Aug1_1"] * 10, "add", eb["Aug2_1"] * 10, "add"]]
                 ]
             },
             {
@@ -1010,7 +1010,7 @@ class Cycles:
                 "order": [
                     ["time_machine_set", [eb["TM2"], "add", mb["TM2"], "add"]],
                     ["augment_set", [self.augment, eb["Aug1_1"]/2, "add", eb["Aug2_1"]/2, "add"]],
-                    ["augment_set", [self.augment_2, eb["Aug1_1"]/2, "add", eb["Aug2_1"]/2, "add"]]
+                    ["augment_set", [self.augment_2, eb["Aug1_1"] * 10, "add", eb["Aug2_1"] * 10, "add"]]
                 ]
             },
             {
@@ -1023,7 +1023,7 @@ class Cycles:
                         "spell_swap",
                         ["wandos", [2]]
                     ]],
-                    ["augment_set", [self.augment, custom4, "add", custom4 * 3, "add"]],
+                    ["augment_set", [self.augment, custom4, "add", custom4 / 2, "add"]],
                     ["augment_set", [self.augment_2, custom4, "add", custom4 * 3, "add"]],
                     ["wandos", [2]]
                 ]
