@@ -1021,7 +1021,9 @@ class Cycles:
                         ["digger", [False, "itopod_2"]],
                         "start_itopod",
                         "spell_swap",
-                        ["wandos", [2]]
+                        "reclaim",
+                        ["wandos", [2]],
+                        ["augment_set", [self.augment, eb["energy_buster_cap1"], "add", eb["energy_buster_cap2"], "add"]]
                     ]],
                     ["augment_set", [self.augment_2, custom4 * 14, "add", custom4 * 14, "add"]],
                     ["wandos", [2]]
