@@ -943,6 +943,7 @@ class Cycles:
     def getCycleNine(self):
         cycle_time = 180
         self.augment = "energy_buster"
+        self.augment_2 = "exoskeleton"
         self.gear = {
             "accessory": 0,
             "accessory_2": 1,
@@ -995,7 +996,8 @@ class Cycles:
                         "blood_all"
                     ]],
                     ["time_machine_set", [eb["TM1"], "add", mb["TM1"], "add"]],
-                    ["augment_set", [self.augment, eb["Aug1_1"], "add", eb["Aug2_1"], "add"]]
+                    ["augment_set", [self.augment, eb["Aug1_1"]/2, "add", eb["Aug2_1"]/2, "add"]],
+                    ["augment_set", [self.augment_2, eb["Aug1_1"]/2, "add", eb["Aug2_1"]/2, "add"]]
                 ]
             },
             {
@@ -1007,7 +1009,8 @@ class Cycles:
                 ],
                 "order": [
                     ["time_machine_set", [eb["TM2"], "add", mb["TM2"], "add"]],
-                    ["augment_set", [self.augment, eb["Aug1_1"], "add", eb["Aug2_1"], "add"]]
+                    ["augment_set", [self.augment, eb["Aug1_1"]/2, "add", eb["Aug2_1"]/2, "add"]],
+                    ["augment_set", [self.augment_2, eb["Aug1_1"]/2, "add", eb["Aug2_1"]/2, "add"]]
                 ]
             },
             {
@@ -1021,6 +1024,7 @@ class Cycles:
                         ["wandos", [2]]
                     ]],
                     ["augment_set", [self.augment, custom4, "add", custom4 * 3, "add"]],
+                    ["augment_set", [self.augment_2, custom4, "add", custom4 * 3, "add"]],
                     ["wandos", [2]]
                 ]
             },
@@ -1033,7 +1037,8 @@ class Cycles:
                     "apply_boost",
                     ["digger", [True, "reset_nuke"]],
                     ["wandos", [1]],
-                    ["augment_set", [self.augment, custom4 * 16, "add", custom4 * 100, "add"]],
+                    ["augment_set", [self.augment, custom4 * 16, "add", custom4 * 16, "add"]],
+                    ["augment_set", [self.augment_2, custom4 * 20, "add", custom4 * 100, "add"]],
                     "nuke",
                     "attack"
                 ],
