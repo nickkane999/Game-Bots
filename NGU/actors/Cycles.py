@@ -1038,7 +1038,7 @@ class Cycles:
                     ["digger", [True, "reset_nuke"]],
                     ["wandos", [1]],
                     ["augment_set", [self.augment, custom4 * 16, "add", custom4 * 16, "add"]],
-                    ["augment_set", [self.augment_2, custom4 * 20, "add", custom4 * 100, "add"]],
+                    ["augment_set", [self.augment_2, custom4 * 20, "add", custom4 * 1000, "add"]],
                     "nuke",
                     "attack"
                 ],
