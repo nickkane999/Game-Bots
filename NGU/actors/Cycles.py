@@ -1024,7 +1024,7 @@ class Cycles:
                         ["wandos", [2]]
                     ]],
                     ["augment_set", [self.augment, custom4 / 4, "add", custom4 / 4, "add"]],
-                    ["augment_set", [self.augment_2, custom4 * 8, "add", custom4 * 7, "add"]],
+                    ["augment_set", [self.augment_2, custom4 * 12, "add", custom4 * 12, "add"]],
                     ["wandos", [2]]
                 ]
             },
