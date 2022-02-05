@@ -958,8 +958,8 @@ class Cycles:
         # energy Agument 2 (Energy Buster) = 50,000,000 - 80,000,000 per 1 second
 
         eb = {
-            "energy_buster_cap1": 6000000,
-            "energy_buster_cap2": 3000000,
+            "energy_buster_cap1": 600000000,
+            "energy_buster_cap2": 300000000,
             "TM1": 30000000,
             "Aug1_1": 150000000,
             "Aug2_1": 80000000,
