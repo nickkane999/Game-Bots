@@ -966,15 +966,15 @@ class Cycles:
             "TM2": 1,
             "TM3": 175000000,
             "TM3_5": 100000000,
-            "TMcap_1": 300000000,
-            "TMcap_2": 300000000
+            "TMcap": 300000000
         }
 
         mb = {
             "TM1": 40000000,
             "TM2": 1,
             "TM3": 175000000,
-            "TM3_5": 200000000
+            "TM3_5": 200000000,
+            "TMcap": 300000000
         }
 
         custom1 = round(self.energy_base * 0.75)
@@ -1026,7 +1026,7 @@ class Cycles:
                         "reclaim",
                         ["wandos", [2]],
                         ["augment_set", [self.augment, eb["energy_buster_cap1"], "add", eb["energy_buster_cap2"], "add"]],
-                        ["time_machine_set", [eb["TMcap_1"], "add", mb["TMcap_2"], "add"]]
+                        ["time_machine_set", [eb["TMcap"], "add", mb["TMcap"], "add"]]
                     ]],
                     ["augment_set", [self.augment_2, custom4 * 14, "add", custom4 * 14, "add"]],
                     ["wandos", [2]]
