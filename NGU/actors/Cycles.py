@@ -997,7 +997,8 @@ class Cycles:
                         ["time_machine_set", [eb["TM1"], "add", mb["TM1"], "add"]],
                         ["augment_set", [self.augment, eb["energy_buster_cap1"], "add", eb["energy_buster_cap2"], "add"]],
                         "spell_swap",
-                        "blood_all"
+                        "blood_all",
+                        ["augment_set", [self.augment_2, eb["Aug1_1"] * 5, "add", eb["Aug2_1"]  * 5, "add"]]
                     ]],
                     ["time_machine_set", [eb["TM1"], "add", mb["TM1"], "add"]],
                     ["augment_set", [self.augment_2, eb["Aug1_1"], "add", eb["Aug2_1"], "add"]]
@@ -1027,7 +1028,6 @@ class Cycles:
                         ["wandos", [2]],
                         ["augment_set", [self.augment, eb["energy_buster_cap1"], "add", eb["energy_buster_cap2"], "add"]],
                         ["augment_set", [self.augment_2, custom4 * 50, "add", custom4 * 50, "add"]],
-
                         ["time_machine_set", [eb["TMcap"], "add", mb["TMcap"], "add"]]
                     ]],
                     ["augment_set", [self.augment_2, custom4 * 9, "add", custom4 * 9, "add"]],
