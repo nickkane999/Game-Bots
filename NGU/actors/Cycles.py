@@ -960,6 +960,8 @@ class Cycles:
         eb = {
             "energy_buster_cap1": 600000000,
             "energy_buster_cap2": 300000000,
+            "exoskeleton_cap1": 300000000,
+            "exoskeleton_cap2": 16000000000,
             "TM1": 30000000,
             "Aug1_1": 1500000000,
             "Aug2_1": 800000000,
@@ -1027,10 +1029,10 @@ class Cycles:
                         "reclaim",
                         ["wandos", [2]],
                         ["augment_set", [self.augment, eb["energy_buster_cap1"], "add", eb["energy_buster_cap2"], "add"]],
-                        ["augment_set", [self.augment_2, custom4 * 50, "add", custom4 * 50, "add"]],
+                        ["augment_set", [self.augment_2, custom4 * 50, "add", eb["exoskeleton_cap2"], "add"]],
                         ["time_machine_set", [eb["TMcap"], "add", mb["TMcap"], "add"]]
                     ]],
-                    ["augment_set", [self.augment_2, custom4 * 9, "add", custom4 * 9, "add"]],
+                    ["augment_set", [self.augment_2, custom4 * 5000, "add", 1, "add"]],
                     ["wandos", [2]]
                 ]
             },
@@ -1044,7 +1046,7 @@ class Cycles:
                     ["digger", [True, "reset_nuke"]],
                     ["wandos", [1]],
                     ["augment_set", [self.augment, eb["energy_buster_cap1"], "add", eb["energy_buster_cap2"], "add"]],
-                    ["augment_set", [self.augment_2, custom4 * 20, "add", custom4 * 1000, "add"]],
+                    ["augment_set", [self.augment_2, custom4 * 400, "add", eb["exoskeleton_cap2"] * 1.2, "add"]],
                     "nuke",
                     "attack"
                 ],
