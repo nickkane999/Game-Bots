@@ -149,11 +149,13 @@ class BattleManager:
         pierce_attack = [1480, 267]
         ultimate_attack = [1640, 267]
         count = 0
+        wait_time = 0
         if not kill_count:
             kill_count = 10000
 
         while True:
             if self.get_pixel_colour(enemy_hp_point[0], enemy_hp_point[1]) == self.states["hp_high"]:
+                wait_time = 0
                 if click_times:
                     attacks = 0
                     while attacks < click_times:
@@ -180,4 +182,10 @@ class BattleManager:
             time.sleep(0.1)
             if count >= kill_count:
                 break
+            else:
+                time.sleep(0.1)
+                wait_time += 1
+                if wait_time > 50:
+                    wait_time = 0
+                    pyautogui.press("w")
         print("Finished kills")
