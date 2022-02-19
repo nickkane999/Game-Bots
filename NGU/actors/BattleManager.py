@@ -151,7 +151,7 @@ class BattleManager:
         count = 0
         wait_time = 0
         if not kill_count:
-            kill_count = 10000
+            kill_count = 10000000000000000000
 
         while True:
             if self.get_pixel_colour(enemy_hp_point[0], enemy_hp_point[1]) == self.states["hp_high"]:
