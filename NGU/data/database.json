@@ -204,6 +204,7 @@
   },
   "blood": {
     "blood_start": [1090, 440],
+    "blood_cap_all": [1480, 270],
     "switch_menu": [830, 280],
     "auto_spell": {
       "number": [1005, 430],
@@ -263,6 +264,7 @@
   "itopod": {
     "box_1": [760, 340],
     "box_size": 75,
-    "grid_size": [12, 9]
+    "grid_size": [12, 9],
+    "confirm_buy": [900, 570]
   }
 }

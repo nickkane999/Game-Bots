@@ -999,7 +999,7 @@ class Cycles:
                         ["time_machine_set", [eb["TM1"], "add", mb["TM1"], "add"]],
                         ["augment_set", [self.augment, eb["energy_buster_cap1"], "add", eb["energy_buster_cap2"], "add"]],
                         "spell_swap",
-                        "blood_all",
+                        ["blood_all", [True]],
                         ["augment_set", [self.augment_2, eb["Aug1_1"] * 5, "add", eb["Aug2_1"]  * 5, "add"]]
                     ]],
                     ["time_machine_set", [eb["TM1"], "add", mb["TM1"], "add"]],
@@ -1010,6 +1010,7 @@ class Cycles:
                 "time": 30,
                 "pre_cycle": [
                     ["select_gear_slot", ["resource_build"]],
+                    ["blood_all", [True]],
                     ["digger", [False, "itopod_2"]],
                     "start_itopod"
                 ],
