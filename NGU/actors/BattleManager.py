@@ -16,7 +16,7 @@ import win32gui
 
 class BattleManager:
     # Initializing Object
-    def __init__(self, bot, game_ui, battle_manager):
+    def __init__(self, bot, game_ui):
         self.bot = bot
         self.game_ui = game_ui
         self.battle_manager = battle_manager

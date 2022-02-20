@@ -16,9 +16,10 @@ import win32gui
 
 class CycleManager:
     # Initializing Object
-    def __init__(self, bot, game_ui):
+    def __init__(self, bot, game_ui, battle_manager):
         self.bot = bot
         self.game_ui = game_ui
+        self.battle_manager = battle_manager
         self.reset()
 
     def reset(self):
