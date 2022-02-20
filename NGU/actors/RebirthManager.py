@@ -510,7 +510,8 @@ class RebirthManager:
             self.click(settings["money_pit"]["confirm"])
             self.attackBoss()
 
-        if self.get_pixel_colour(blood_magic_color[0], blood_magic_color[1]) == self.active_colors["blood_magic"]:
+        #if self.get_pixel_colour(blood_magic_color[0], blood_magic_color[1]) == self.active_colors["blood_magic"]:
+        if False:
             # self.clearDiggers()
             # self.bot.reclaimResources()
             self.game_ui.accessMenu("blood_magic")
