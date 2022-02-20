@@ -455,7 +455,7 @@ class RebirthManager:
         cap_all = blood_settings["blood_cap_all"]
         distance = blood_settings["distance"]
         if info:
-            self.click(cap_all[0], cap_all[1])
+            self.click([cap_all[0], cap_all[1])]
         else:
             self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_1"] * distance)])
             self.click([start_point[0], start_point[1] + (blood_settings["info"]["blood_2"] * distance)])
