@@ -63,7 +63,7 @@ class CycleManager:
             # self.setGearSlot(current_rebirth_time)
             print("Finished upgrade cycle and yggdrasil harvest cycle. Resting 120 seconds")
             self.game_ui.accessMenu("adventure")
-            idle_button = self.settings["adventure"]["idle"]
+            idle_button = self.settings["adventure"]["first_button"]
             pyautogui.click(idle_button[0], idle_button[1])
             rest_time = time.time()
             while time.time() - rest_time < 120:
