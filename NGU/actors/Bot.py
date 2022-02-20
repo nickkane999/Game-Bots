@@ -35,7 +35,7 @@ class Bot:
         self.time_machine_manager = TimeMachineManager(self)
         self.augmentation_manager = AugmentationManager(self)
         self.battle_manager = BattleManager(self, self.game_ui)
-        self.cycle_manager = CycleManager(self, self.game_ui)
+        self.cycle_manager = CycleManager(self, self.game_ui, self.battle_manager)
         self.rebirth_manager = RebirthManager(self, self.game_ui, Cycles())
         
         self.phase_count = 0
