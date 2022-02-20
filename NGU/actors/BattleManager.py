@@ -19,7 +19,6 @@ class BattleManager:
     def __init__(self, bot, game_ui):
         self.bot = bot
         self.game_ui = game_ui
-        self.battle_manager = battle_manager
         self.reset()
 
     def reset(self):
