@@ -229,7 +229,7 @@ actors = ["MultipleRewards"]
 # runTestMagicQuarter(device)
 # runTestSingleReward(device)
 # runTestServerSwap(device)
-runActorTest(device, actors)
+# runActorTest(device, actors)
 '''
 
 '''
