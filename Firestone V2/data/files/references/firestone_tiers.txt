@@ -1,0 +1,281 @@
+Tier 1 (Options)
+"options": {
+	"0": {
+		"completed": true,
+		"current_level": 20,
+		"index": 0,
+		"max_level": 20,
+		"name": "firestone_prestigious",
+		"placement_area": 2,
+		"priority": 1
+	},
+	"1": {
+		"completed": true,
+		"current_level": 25,
+		"index": 1,
+		"max_level": 25,
+		"name": "firestone_gold",
+		"placement_area": 1,
+		"priority": 2
+	},
+	"10": {
+		"completed": true,
+		"current_level": 15,
+		"index": 10,
+		"max_level": 15,
+		"name": "firestone_weak_enemy",
+		"placement_area": 2,
+		"priority": 11
+	},
+	"11": {
+		"completed": true,
+		"current_level": 15,
+		"index": 11,
+		"max_level": 15,
+		"name": "firestone_weak_boss",
+		"placement_area": 2,
+		"priority": 12
+	},
+	"12": {
+		"completed": false,
+		"current_level": 49,
+		"index": 12,
+		"max_level": 50,
+		"name": "firestone_armor",
+		"placement_area": 1,
+		"priority": 13
+	},
+	"13": {
+		"completed": false,
+		"current_level": 43,
+		"index": 13,
+		"max_level": 50,
+		"name": "firestone_health",
+		"placement_area": 1,
+		"priority": 14
+	},
+	"14": {
+		"completed": true,
+		"current_level": 21,
+		"index": 14,
+		"max_level": 20,
+		"name": "firestone_loot_chance",
+		"placement_area": 3,
+		"priority": 15
+	},
+	"15": {
+		"completed": false,
+		"current_level": 24,
+		"index": 15,
+		"max_level": 30,
+		"name": "firestone_loot_bonus",
+		"placement_area": 3,
+		"priority": 16
+	},
+	"2": {
+		"completed": true,
+		"current_level": 25,
+		"index": 2,
+		"max_level": 25,
+		"name": "firestone_training",
+		"placement_area": 2,
+		"priority": 3
+	},
+	"3": {
+		"completed": true,
+		"current_level": 25,
+		"index": 3,
+		"max_level": 25,
+		"name": "firestone_wave",
+		"placement_area": 2,
+		"priority": 4
+	},
+	"4": {
+		"completed": true,
+		"current_level": 20,
+		"index": 4,
+		"max_level": 20,
+		"name": "firestone_mission_planning",
+		"placement_area": 2,
+		"priority": 5
+	},
+	"5": {
+		"completed": true,
+		"current_level": 12,
+		"index": 5,
+		"max_level": 12,
+		"name": "firestone_honor",
+		"placement_area": 2,
+		"priority": 6
+	},
+	"6": {
+		"completed": true,
+		"current_level": 50,
+		"index": 6,
+		"max_level": 50,
+		"name": "firestone_damage",
+		"placement_area": 1,
+		"priority": 7
+	},
+	"7": {
+		"completed": true,
+		"current_level": 30,
+		"index": 7,
+		"max_level": 30,
+		"name": "firestone_projectiles",
+		"placement_area": 1,
+		"priority": 8
+	},
+	"8": {
+		"completed": true,
+		"current_level": 30,
+		"index": 8,
+		"max_level": 30,
+		"name": "firestone_fist",
+		"placement_area": 1,
+		"priority": 9
+	},
+	"9": {
+		"completed": true,
+		"current_level": 30,
+		"index": 9,
+		"max_level": 30,
+		"name": "firestone_guardian",
+		"placement_area": 1,
+		"priority": 10
+	}
+}
+
+----------------------------------------------
+
+Tier 2 (Options)
+"options": [
+	{
+		"completed": false,
+		"current_level": 0,
+		"max_level": 30,
+		"name": "firestone_meteorite",
+		"placement_area": 3,
+		"priority": 1
+	},
+	{
+		"completed": false,
+		"current_level": 0,
+		"max_level": 30,
+		"name": "firestone_raining_gold",
+		"placement_area": 1,
+		"priority": 2
+	},
+	{
+		"completed": false,
+		"current_level": 0,
+		"max_level": 50,
+		"name": "firestone_main_attribute",
+		"placement_area": 1,
+		"priority": 3
+	},
+	{
+		"completed": false,
+		"current_level": 0,
+		"max_level": 50,
+		"name": "firestone_damage",
+		"placement_area": 3,
+		"priority": 4
+	},
+	{
+		"completed": false,
+		"current_level": 4,
+		"max_level": 20,
+		"name": "firestone_skip",
+		"placement_area": 1,
+		"priority": 5
+	},
+	{
+		"completed": false,
+		"current_level": 0,
+		"max_level": 30,
+		"name": "firestone_rage",
+		"placement_area": 2,
+		"priority": 6
+	},
+	{
+		"completed": false,
+		"current_level": 0,
+		"max_level": 30,
+		"name": "firestone_mana",
+		"placement_area": 2,
+		"priority": 7
+	},
+	{
+		"completed": false,
+		"current_level": 0,
+		"max_level": 30,
+		"name": "firestone_energy",
+		"placement_area": 2,
+		"priority": 8
+	},	
+	{
+		"completed": false,
+		"current_level": 4,
+		"max_level": 40,
+		"name": "firestone_prestigious",
+		"placement_area": 1,
+		"priority": 9
+	},
+	{
+		"completed": false,
+		"current_level": 0,
+		"max_level": 50,
+		"name": "firestone_guardian",
+		"placement_area": 2,
+		"priority": 10
+	},
+	{
+		"completed": false,
+		"current_level": 0,
+		"max_level": 15,
+		"name": "firestone_enemy_health",
+		"placement_area": 2,
+		"priority": 11
+	},
+	{
+		"completed": false,
+		"current_level": 0,
+		"max_level": 15,
+		"name": "firestone_boss_health",
+		"placement_area": 2,
+		"priority": 12
+	},
+	{
+		"completed": false,
+		"current_level": 0,
+		"max_level": 50,
+		"name": "firestone_health",
+		"placement_area": 2,
+		"priority": 13
+	},
+	{
+		"completed": false,
+		"current_level": 0,
+		"max_level": 50,
+		"name": "firestone_armor",
+		"placement_area": 2,
+		"priority": 14
+	},
+	{
+		"completed": false,
+		"current_level": 0,
+		"max_level": 15,
+		"name": "firestone_enemy_dmg",
+		"placement_area": 1,
+		"priority": 15
+	},
+	{
+		"completed": false,
+		"current_level": 0,
+		"max_level": 15,
+		"name": "firestone_boss_dmg",
+		"placement_area": 1,
+		"priority": 16
+	},
+]
