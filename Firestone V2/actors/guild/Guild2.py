@@ -6,23 +6,40 @@ import os
 
 from actors.ActorTemplate import ActorTemplate
 from actors.utilities.save_helper.GuildSaveHelper import GuildSaveHelper
-from actors.guild.Guild2 import Guild2
 
 
-class Guild(ActorTemplate):
+class Guild2(ActorTemplate):
     # Variables
     rotationsAfterBoss = 0
 
     # Initializing Object
     def __init__(self, bot):
-        super(Guild, self).__init__(bot)
+        super(Guild2, self).__init__(bot)
         self.save_helper = GuildSaveHelper(bot)
         #self.expedition_regions = bot.screenshot_data.data["guild_expedition"]
 
         self.battle_screen = bot.data["battle"]
         self.town_screen = bot.data["town"]
         self.guild_screen = bot.data["guild"]
-        self.guild2 = Guild2(bot)
+        
+        self.points = {
+            "guild_icon": {"x": 1510, "y": 140},
+            "expedition_icon": {"x": 260, "y": 370},
+            "expedition_claim": {"x": 1330, "y": 310},
+            "expedition_claim_success_exit": {"x": 380, "y": 1000},
+            "expedition_close": {"x": 1510, "y": 70},
+            "guild_close": {"x": 1840, "y": 50},
+        }
+
+
+    def runExpeditionCheck(self):
+        pyautogui.press("t")        
+        for point in self.points:
+            self.game_bot.click(self.points[point])
+            time.sleep(0.5)
+        
+        self.game_bot.click(self.points["guild_close"])
+        print("Finished clicking points")
 
 
     def completeMinerQuest(self, times_completed):

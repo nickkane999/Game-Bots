@@ -60,31 +60,44 @@ class Tester:
         '''
         #actor.startLibraryDuties()
 
-    def runFirestoneLoop(self, actor):
-        pyautogui.click(400,400)
-        time.sleep(0.4)
+    def runIdleLoop(self, actors):
         while True:
             pyautogui.click(400,400)
             print("Running Loop in 5 seconds ")
             time.sleep(5)
+
             pyautogui.click(400,400)
-            actor.firestone2.runFirestoneCheck()
-            print("sleeping for 3 minutes")
+            self.runFirestoneLoop(actors["Library"])
             pyautogui.click(1840,50)
+            print("firestone done")
+            time.sleep(2)
+            self.runExpeditionLoop(actors["Guild"])
+            print("expedition done")
+            print("sleeping for 3 minutes")
             time.sleep(175)
+
+
+    def runFirestoneLoop(self, actor):
+        pyautogui.click(400,400)
+        time.sleep(0.4)
+        pyautogui.click(400,400)
+        actor.firestone2.runFirestoneCheck()
+        pyautogui.click(1840,50)
 
     def runExpeditionLoop(self, actor):
         pyautogui.click(400,400)
         time.sleep(0.4)
-        while True:
-            pyautogui.click(400,400)
-            print("Running Loop in 5 seconds ")
-            time.sleep(5)
-            pyautogui.click(400,400)
-            actor.firestone2.runFirestoneCheck()
-            print("sleeping for 3 minutes")
-            pyautogui.click(1840,50)
-            time.sleep(175)
+        pyautogui.click(400,400)
+        actor.guild2.runExpeditionCheck()
+        """
+        pyautogui.click(400,400)
+        print("Running Loop in 5 seconds ")
+        time.sleep(5)
+        pyautogui.click(400,400)
+        print("sleeping for 3 minutes")
+        pyautogui.click(1840,50)
+        time.sleep(175)
+        """
 
     def performTestGuild(self, actor):
         actor.startDuties()

@@ -78,6 +78,7 @@ def createGameBot(device):
 def createActors(bot, device):
     actors = {
         "Battle": Battle(bot),
+        "Guild": Guild(bot),
         "Library": Library(bot),
         "Temple": Temple(bot),
         "Campaign": Campaign(bot),
