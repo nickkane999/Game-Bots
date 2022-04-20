@@ -49,13 +49,42 @@ class Tester:
         actor.startMultipleRewardsDuties()
 
     def performTestFirestone(self, actor):
+        pyautogui.click(400,400)
+        time.sleep(0.4)
+        actor.firestone2.runFirestoneCheck()
         '''
         print("Testing")
         actor.game_bot.db.refreshData()
         db = actor.game_bot.db
         instructions = actor.game_bot.queue_processor.verifyQueueLibrary(db)
         '''
-        actor.startLibraryDuties()
+        #actor.startLibraryDuties()
+
+    def runFirestoneLoop(self, actor):
+        pyautogui.click(400,400)
+        time.sleep(0.4)
+        while True:
+            pyautogui.click(400,400)
+            print("Running Loop in 5 seconds ")
+            time.sleep(5)
+            pyautogui.click(400,400)
+            actor.firestone2.runFirestoneCheck()
+            print("sleeping for 3 minutes")
+            pyautogui.click(1840,50)
+            time.sleep(175)
+
+    def runExpeditionLoop(self, actor):
+        pyautogui.click(400,400)
+        time.sleep(0.4)
+        while True:
+            pyautogui.click(400,400)
+            print("Running Loop in 5 seconds ")
+            time.sleep(5)
+            pyautogui.click(400,400)
+            actor.firestone2.runFirestoneCheck()
+            print("sleeping for 3 minutes")
+            pyautogui.click(1840,50)
+            time.sleep(175)
 
     def performTestGuild(self, actor):
         actor.startDuties()
