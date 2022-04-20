@@ -68,9 +68,10 @@ class Tester:
 
             pyautogui.click(400,400)
             self.runFirestoneLoop(actors["Library"])
+            # pyautogui.moveTo(1840,50)
             pyautogui.click(1840,50)
             print("firestone done")
-            time.sleep(2)
+            time.sleep(5)
             self.runExpeditionLoop(actors["Guild"])
             print("expedition done")
             print("sleeping for 3 minutes")
