@@ -3,6 +3,7 @@ import time
 import re
 import sys
 import os
+import win32gui
 
 from actors.utilities.ConditionManager import ConditionManager
 
@@ -107,6 +108,14 @@ class Bot:
                 else:
                     print("Not processing action: " + item)
             break
+
+    def get_pixel_color(self, i_x, i_y):
+        i_desktop_window_id = win32gui.GetDesktopWindow()
+        i_desktop_window_dc = win32gui.GetWindowDC(i_desktop_window_id)
+        long_colour = win32gui.GetPixel(i_desktop_window_dc, i_x, i_y)
+        i_colour = int(long_colour)
+        win32gui.ReleaseDC(i_desktop_window_id,i_desktop_window_dc)
+        return (i_colour & 0xff), ((i_colour >> 8) & 0xff), ((i_colour >> 16) & 0xff)
 
     def test(self):
         print("testing bot 123")

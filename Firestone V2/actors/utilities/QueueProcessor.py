@@ -29,7 +29,6 @@ class QueueProcessor:
     def defineQueueActions(self):
         actors = self.actors
         self.actions = {
-            "Guild": actors["Guild"].startDuties,
             "Library": actors["Library"].startLibraryDuties,
             "Map": actors["Map"].processMissionMap,
             "Campaign": actors["Campaign"].startDuties,

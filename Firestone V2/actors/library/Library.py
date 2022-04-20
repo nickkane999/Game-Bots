@@ -5,6 +5,7 @@ import sys
 import os
 
 from actors.library.Firestone import Firestone
+from actors.library.Firestone2 import Firestone2
 from actors.library.Meteorite import Meteorite
 
 
@@ -20,6 +21,7 @@ class Library:
         self.library_screen = bot.data["library"]
 
         self.firestone = Firestone(bot)
+        self.firestone2 = Firestone2(bot)
         self.meteorite = Meteorite(bot)
 
     def startLibraryDuties(self):

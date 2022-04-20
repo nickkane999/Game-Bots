@@ -4,6 +4,7 @@ import time
 import cv2
 import numpy as np
 import operator
+import win32gui
 
 from actors.Bot import Bot
 from actors.Tester import Tester
@@ -77,7 +78,6 @@ def createGameBot(device):
 def createActors(bot, device):
     actors = {
         "Battle": Battle(bot),
-        "Guild": Guild(bot),
         "Library": Library(bot),
         "Temple": Temple(bot),
         "Campaign": Campaign(bot),
@@ -106,6 +106,13 @@ def assignActors(game_bot, actors):
 # --------------------------------------------
 # --------------------------------------------
 
+
+def runFirestoneLoop(device):
+    game_bot = createGameBot(device)
+    actors = createActors(game_bot, device)
+    tester = Tester()
+    game_bot = assignActors(game_bot, actors)
+    tester.performTestFirestone(actors["Library"])
 
 def runUIDesktop(device):
     game_bot = createGameBot(device)
