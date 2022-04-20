@@ -8,6 +8,7 @@ import numpy as np
 
 from actors.map.MissionStart import MissionStart
 from actors.map.MissionClaim import MissionClaim
+from actors.map.Map2 import Map2
 
 
 class Map:
@@ -28,6 +29,7 @@ class Map:
 
         self.mission_claim = MissionClaim(bot)
         self.mission_start = MissionStart(bot)
+        self.map2 = Map2(bot)
 
     def buildMissions(self):
         missions = {

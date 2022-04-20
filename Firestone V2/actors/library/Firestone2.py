@@ -15,11 +15,11 @@ class Firestone2:
         self.game_bot = bot
         self.library_screen = bot.data["library"]
         self.upgrade_heights = {
+            "height5": 767,
             "height1": 245, 
             "height2": 377,
             "height3": 506,
             "height4": 635,
-            "height5": 767
         }
         self.screen_width = 1800
         self.completed_upgrade_slot = [1140, 1000] 
@@ -31,15 +31,18 @@ class Firestone2:
     def runFirestoneCheck(self):
         print("I'm in the firestone check")
         pyautogui.press("l")
-        self.moveFirestoneMenuLeft()
+        self.moveFirestoneMenuRight()
+        self.moveFirestoneMenuSlightLeft()
+        #self.moveFirestoneMenuLeft()
         finished_upgrades = self.selectUpgrades()
         if finished_upgrades:
             self.moveFirestoneMenuLeft()
             print("Moved Menu back left, exiting loop")
             return True
         else:
-            self.moveFirestoneMenuRight()
-            self.moveFirestoneMenuSlightLeft()
+            #self.moveFirestoneMenuRight()
+            #self.moveFirestoneMenuSlightLeft()
+            self.moveFirestoneMenuLeft()
             time.sleep(1)
             finished_upgrades = self.selectUpgrades()
         return

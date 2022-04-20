@@ -68,22 +68,21 @@ class Tester:
 
             pyautogui.click(400,400)
             self.runFirestoneLoop(actors["Library"])
-            # pyautogui.moveTo(1840,50)
+            pyautogui.moveTo(1840,50)
+            time.sleep(0.5)
             pyautogui.click(1840,50)
             print("firestone done")
-            time.sleep(5)
+            time.sleep(0.5)
             self.runExpeditionLoop(actors["Guild"])
             print("expedition done")
             print("sleeping for 3 minutes")
             time.sleep(175)
-
 
     def runFirestoneLoop(self, actor):
         pyautogui.click(400,400)
         time.sleep(0.4)
         pyautogui.click(400,400)
         actor.firestone2.runFirestoneCheck()
-        pyautogui.click(1840,50)
 
     def runExpeditionLoop(self, actor):
         pyautogui.click(400,400)
@@ -99,6 +98,12 @@ class Tester:
         pyautogui.click(1840,50)
         time.sleep(175)
         """
+
+    def runMapLoop(self, actor):
+        pyautogui.click(400,400)
+        time.sleep(0.4)
+        pyautogui.click(400,400)
+        actor.map2.runMapCheck()
 
     def performTestGuild(self, actor):
         actor.startDuties()
