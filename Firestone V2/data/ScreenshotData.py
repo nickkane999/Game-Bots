@@ -450,28 +450,25 @@ class ScreenshotData:
     def getMapMissionData(self):
         missions = {
             "type_1": {
-                "map": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone\data\imgs\map\map_type_1.png',
-                "side_menu": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone\data\imgs\maps\side_menu_1.png',
+                "map": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone V2\data\imgs\map\map_type_1.png',
+                "side_menu": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone V2\data\imgs\maps\side_menu_1.png',
             },
             "type_2": {
-                "map": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone\data\imgs\map\map_type_2.png',
-                "side_menu": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone\data\imgs\map\side_menu_2.png',
+                "map": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone V2\data\imgs\map\map_type_2.png',
+                "side_menu": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone V2\data\imgs\map\side_menu_2.png',
             },
             "type_3": {
-                "map": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone\data\imgs\map\map_type_3.png',
-                "side_menu": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone\data\imgs\map\side_menu_3.png',
+                "map": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone V2\data\imgs\map\map_type_3.png',
+                "side_menu": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone V2\data\imgs\map\side_menu_3.png',
             },
             "type_4": {
-                "map": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone\data\imgs\map\map_type_4.png',
-                "side_menu": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone\data\imgs\maps\side_menu_4.png',
+                "map": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone V2\data\imgs\map\map_type_4.png',
+                "side_menu": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone V2\data\imgs\maps\side_menu_4.png',
             },
-            "map_screenshots": {
-                "screenshot_slot_1": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone\data\imgs\map\map_save_mission_1.png',
-                "screenshot_slot_2": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone\data\imgs\map\map_save_mission_2.png',
-            },
+            "map_screenshot": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone V2\data\imgs\map\map_save_mission_1.png',
             "mission_time_region": {
                 "region": (1030, 860, 150, 50),
-                "image": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone\data\imgs\map\mission_timer.png',
+                "image": r'C:\Users\nickk\Dropbox\Portfolio\Game Bots\Firestone V2\data\imgs\map\mission_timer.png',
                 "type": "map-mission-timer",
                 "msg": "mission timer text: ",
             }

@@ -75,8 +75,16 @@ class Tester:
             time.sleep(0.5)
             self.runExpeditionLoop(actors["Guild"])
             print("expedition done")
+            self.runMapLoop(actors["Map"])
+            print("missions done")
+            pyautogui.moveTo(1840,50)
+            time.sleep(0.5)
+            pyautogui.click(1840,50)
+
             print("sleeping for 3 minutes")
-            time.sleep(175)
+            time.sleep(150)
+            print("sleeping for 30 seconds")
+            time.sleep(25)
 
     def runFirestoneLoop(self, actor):
         pyautogui.click(400,400)
