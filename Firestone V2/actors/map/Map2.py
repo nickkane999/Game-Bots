@@ -30,7 +30,7 @@ class Map2:
             "mission_claim_confirm": (12, 158, 8),
             "mission_start": (13, 161, 5),
             "no_missions_available": (239, 218, 189),
-            "mission_claim_2": (253, 177, 71),
+            "mission_claim_2": [(253, 177, 71), (252, 177, 71)],
         }
 
         self.locations = {
@@ -157,7 +157,7 @@ class Map2:
             time.sleep(0.5)
             bot.click({"x": 50, "y": 950})
             time.sleep(0.5)
-        elif bot.get_pixel_color(self.locations["mission_claim_2"][0], self.locations["mission_claim_2"][1]) == self.status["mission_claim_2"] or \
+        elif bot.get_pixel_color(self.locations["mission_claim_2"][0], self.locations["mission_claim_2"][1]) in self.status["mission_claim_2"] or \
         bot.get_pixel_color(self.locations["mission_claim_confirm"][0], self.locations["mission_claim_confirm"][1]) == self.status["mission_claim_confirm"]:
             print("Mission complete")
             bot.click({"x": self.locations["mission_claim_2"][0], "y": self.locations["mission_claim_2"][1]})
