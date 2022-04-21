@@ -30,6 +30,7 @@ class Map2:
             "mission_claim_confirm": (12, 158, 8),
             "mission_start": (13, 161, 5),
             "no_missions_available": (239, 218, 189),
+            "mission_claim_2": (253, 177, 71),
         }
 
         self.locations = {
@@ -38,6 +39,7 @@ class Map2:
             "mission_claim_confirm": [950, 450],
             "mission_start": [1000, 925],
             "mission_exit": [50, 950],
+            "mission_claim_2": [960, 895],
         }
 
         self.claim_points = [
@@ -144,7 +146,7 @@ class Map2:
     def processPoint(self, point):
         bot = self.game_bot
         bot.click(point)
-        time.sleep(0.5)
+        time.sleep(1)
         if bot.get_pixel_color(self.locations["mission_cancel"][0], self.locations["mission_cancel"][1]) == self.status["mission_cancel"]:
             print("Mission in progress")
             bot.click({"x": self.locations["mission_exit"][0], "y": self.locations["mission_exit"][1]})
@@ -155,20 +157,22 @@ class Map2:
             time.sleep(0.5)
             bot.click({"x": 50, "y": 950})
             time.sleep(0.5)
-        elif bot.get_pixel_color(self.locations["mission_claim"][0], self.locations["mission_claim"][1]) == self.status["mission_claim"] or \
+        elif bot.get_pixel_color(self.locations["mission_claim_2"][0], self.locations["mission_claim_2"][1]) == self.status["mission_claim_2"] or \
         bot.get_pixel_color(self.locations["mission_claim_confirm"][0], self.locations["mission_claim_confirm"][1]) == self.status["mission_claim_confirm"]:
             print("Mission complete")
-            bot.click({"x": self.locations["mission_claim"][0], "y": self.locations["mission_claim"][1]})
+            bot.click({"x": self.locations["mission_claim_2"][0], "y": self.locations["mission_claim_2"][1]})
             time.sleep(0.5)
             bot.click({"x": self.locations["mission_claim_confirm"][0], "y": self.locations["mission_claim_confirm"][1]})
             time.sleep(0.5)
-        elif bot.get_pixel_color(self.locations["mission_claim"][0], self.locations["mission_claim"][1]) == self.status["mission_claim"]:
-            print("Mission complete")
+        elif bot.get_pixel_color(self.locations["mission_claim"][0], self.locations["mission_claim"][1]) == self.status["mission_claim"] and \
+        bot.get_pixel_color(self.locations["mission_cancel"][0], self.locations["mission_cancel"][1]) != self.status["mission_cancel"]:
+            print("Not enough squads")
             bot.click({"x": self.locations["mission_claim"][0], "y": self.locations["mission_claim"][1]})
             time.sleep(0.5)
-            bot.click({"x": self.locations["mission_claim_confirm"][0], "y": self.locations["mission_claim_confirm"][1]})
+            bot.click({"x": 50, "y": 950})
             time.sleep(0.5)
-        
+
+
     def buildMissions(self, base_path):
         print("I was run")
         missions = {
