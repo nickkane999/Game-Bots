@@ -60,7 +60,8 @@ class Tester:
         '''
         #actor.startLibraryDuties()
 
-    def runIdleLoop(self, actors):
+    def runIdleLoop(self, actors, base_path = None):
+        self.base_path = base_path
         while True:
             pyautogui.click(400,400)
             print("Running Loop in 5 seconds ")
@@ -111,7 +112,7 @@ class Tester:
         pyautogui.click(400,400)
         time.sleep(0.4)
         pyautogui.click(400,400)
-        actor.map2.runMapCheck()
+        actor.map2.runMapCheck(self.base_path)
 
     def performTestGuild(self, actor):
         actor.startDuties()
