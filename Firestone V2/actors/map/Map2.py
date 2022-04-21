@@ -161,7 +161,13 @@ class Map2:
             bot.click({"x": self.locations["mission_claim"][0], "y": self.locations["mission_claim"][1]})
             time.sleep(0.5)
             bot.click({"x": self.locations["mission_claim_confirm"][0], "y": self.locations["mission_claim_confirm"][1]})
-            time.sleep(0.5)        
+            time.sleep(0.5)
+        elif bot.get_pixel_color(self.locations["mission_claim"][0], self.locations["mission_claim"][1]) == self.status["mission_claim"]:
+            print("Mission complete")
+            bot.click({"x": self.locations["mission_claim"][0], "y": self.locations["mission_claim"][1]})
+            time.sleep(0.5)
+            bot.click({"x": self.locations["mission_claim_confirm"][0], "y": self.locations["mission_claim_confirm"][1]})
+            time.sleep(0.5)
         
     def buildMissions(self, base_path):
         print("I was run")
