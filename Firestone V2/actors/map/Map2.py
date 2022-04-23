@@ -25,6 +25,7 @@ class Map2:
         # self.map_regions = bot.screenshot_data.data["map"]
 
         self.status = {
+            "map_active": (255, 255, 255),
             "mission_cancel": (231, 88, 79),
             "mission_claim": (239, 218, 189),
             "mission_claim_confirm": (12, 158, 8),
@@ -34,6 +35,7 @@ class Map2:
         }
 
         self.locations = {
+            "map_active": [1900, 290],
             "mission_cancel": [730, 905],
             "mission_claim": [960, 875],
             "mission_claim_confirm": [950, 450],
@@ -56,20 +58,28 @@ class Map2:
 
     def runMapCheck(self, base_path = None):
         print("I'm in the map check")
-        pyautogui.press("m")
-        time.sleep(0.5)
-        in_menu = self.menuCheck("Map", self.game_bot)
-        if in_menu:
-            if base_path:
-                self.mission_images = self.buildMissions(base_path)
+        if self.checkMapChange():
+            in_menu = self.menuCheck("Map", self.game_bot)
+            if in_menu:
+                if base_path:
+                    self.mission_images = self.buildMissions(base_path)
 
-            # Claim missions
-            # self.claimMissions()
+                # Claim missions
+                # self.claimMissions()
 
-            # Start missions
-            self.startMissions()
+                # Start missions
+                self.startMissions()
+            else:
+                print("Did not find map menu")
+
+    def checkMapChange(self):
+        if self.game_bot.get_pixel_color(self.locations["map_active"][0], self.locations["map_active"][1]) == self.status["map_active"]:
+            print("Map is active")
+            pyautogui.press("m")
+            time.sleep(0.5)
+            return True
         else:
-            print("Did not find map menu")
+            return False
 
     def startMissions(self):
         print("Finding missions")

@@ -31,20 +31,45 @@ class Guild2(ActorTemplate):
             "expedition_close": {"x": 1510, "y": 70},
         }
 
+        self.point_status = {
+            "guild_active": {"x": 1630, "y": 220},
+            "expedition_active": {"x": 400, "y": 460},
+        }
+        
+        self.status = {
+            "change_active": [(255, 255, 255), (247, 0, 0)],
+        }
+
 
     def runExpeditionCheck(self):
-        pyautogui.press("t")        
-        self.game_bot.click(self.guild_icon)
-        time.sleep(0.5)
-        in_menu = self.menuCheck("Guild", self.game_bot)
-        if in_menu:
-            for point in self.points:
-                self.game_bot.click(self.points[point])
-                time.sleep(0.5)
-            print("Finished clicking points")
-        else:
-            print("Did not find guild menu")
+        pyautogui.press("t")
+        if self.checkGuildChange():
+            in_menu = self.menuCheck("Guild", self.game_bot)
+            if in_menu and self.checkExpeditionChange():
+                for point in self.points:
+                    self.game_bot.click(self.points[point])
+                    time.sleep(0.5)
+                print("Finished clicking points")
+            else:
+                print("Did not find guild menu")
 
+    def checkGuildChange(self):
+        if self.game_bot.get_pixel_color(self.point_status["guild_active"]["x"], self.point_status["guild_active"]["y"]) in self.status["change_active"]:
+            print("Guild is active")
+            self.game_bot.click(self.guild_icon)
+            time.sleep(0.5)
+            return True
+        else:
+            return False
+
+    def checkExpeditionChange(self):
+        if self.game_bot.get_pixel_color(self.point_status["expedition_active"]["x"], self.point_status["expedition_active"]["y"]) in self.status["change_active"]:
+            print("Expedition is active")
+            pyautogui.press("m")
+            time.sleep(0.5)
+            return True
+        else:
+            return False
 
     def completeMinerQuest(self, times_completed):
         return True
