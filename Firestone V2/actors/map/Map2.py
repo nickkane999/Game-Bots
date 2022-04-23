@@ -58,22 +58,23 @@ class Map2:
         print("I'm in the map check")
         pyautogui.press("m")
         time.sleep(0.5)
+        in_menu = self.menuCheck("Map", self.game_bot)
+        if in_menu:
+            if base_path:
+                self.mission_images = self.buildMissions(base_path)
 
-        if base_path:
-            self.mission_images = self.buildMissions(base_path)
+            # Claim missions
+            # self.claimMissions()
 
-        # Claim missions
-        # self.claimMissions()
-
-        # Start missions
-        self.startMissions()
+            # Start missions
+            self.startMissions()
+        else:
+            print("Did not find map menu")
 
     def startMissions(self):
-        bot = self.game_bot
         print("Finding missions")
         img_path_1 = self.mission_images["map_screenshot"]
         map_points = self.getMapIconCoordinates(img_path_1)
-        print("Found missions")
         print(map_points)
 
         for mission_type in map_points:
@@ -174,7 +175,6 @@ class Map2:
 
 
     def buildMissions(self, base_path):
-        print("I was run")
         missions = {
             "type_1": {
                 "map": base_path + r'\data\imgs\map\map_type_1.png',

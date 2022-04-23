@@ -21,25 +21,29 @@ class Guild2(ActorTemplate):
         self.battle_screen = bot.data["battle"]
         self.town_screen = bot.data["town"]
         self.guild_screen = bot.data["guild"]
+        self.guild_icon = {"x": 1510, "y": 140}
+
         
         self.points = {
-            "guild_icon": {"x": 1510, "y": 140},
             "expedition_icon": {"x": 260, "y": 370},
             "expedition_claim": {"x": 1330, "y": 310},
             "expedition_claim_success_exit": {"x": 380, "y": 1000},
             "expedition_close": {"x": 1510, "y": 70},
-            "guild_close": {"x": 1840, "y": 50},
         }
 
 
     def runExpeditionCheck(self):
         pyautogui.press("t")        
-        for point in self.points:
-            self.game_bot.click(self.points[point])
-            time.sleep(0.5)
-        
-        self.game_bot.click(self.points["guild_close"])
-        print("Finished clicking points")
+        self.game_bot.click(self.guild_icon)
+        time.sleep(0.5)
+        in_menu = self.menuCheck("Guild", self.game_bot)
+        if in_menu:
+            for point in self.points:
+                self.game_bot.click(self.points[point])
+                time.sleep(0.5)
+            print("Finished clicking points")
+        else:
+            print("Did not find guild menu")
 
 
     def completeMinerQuest(self, times_completed):

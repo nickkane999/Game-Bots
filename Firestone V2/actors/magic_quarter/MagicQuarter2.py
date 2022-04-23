@@ -29,12 +29,15 @@ class MagicQuarter2(ActorTemplate):
     def runMagicQuarterCheck(self):
         pyautogui.press('g')
         time.sleep(0.5)
-        self.game_bot.click(self.points["upgrade"])
-        time.sleep(0.5)
-        self.game_bot.click(self.points["close"])
-        time.sleep(0.5)
+        in_menu = self.menuCheck("MagicQuarter", self.game_bot)
+        if in_menu:
+            self.game_bot.click(self.points["upgrade"])
+            time.sleep(0.5)
+            self.game_bot.click(self.points["close"])
+            time.sleep(0.5)
+        else:
+            print("Did not find Magic quarter menu")
         
-
     def startDuties(self):
         self.loadData()
         instructions = self.instructions

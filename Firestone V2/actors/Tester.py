@@ -63,6 +63,12 @@ class Tester:
     def runIdleLoop(self, actors, base_path = None):
         self.base_path = base_path
         game_bot = actors["Guild"].game_bot
+
+        actors["Library"].firestone2.menuCheck = self.menuCheck
+        actors["Guild"].guild2.menuCheck = self.menuCheck
+        actors["Map"].map2.menuCheck = self.menuCheck
+        actors["MagicQuarter"].magicquarter2.menuCheck = self.menuCheck
+        
         while True:
             game_bot.click({"x":400, "y":400})
             print("Running Loop in 5 seconds ")
@@ -127,6 +133,31 @@ class Tester:
         time.sleep(0.4)
         actor.magicquarter2.runMagicQuarterCheck()
         self.closeMenu(actor.game_bot)
+
+    def menuCheck(self, name, bot):
+        names = {
+            "Map": {
+                "position": {"x":620, "y":40},
+                "active": [(74, 211, 74), (99, 226, 96)]
+            },
+            "Guild": {
+                "position": {"x":1020, "y":990},
+                "active": [(19, 138, 255), (96, 228, 253)]
+            },
+            "MagicQuarter": {
+                "position": {"x":560, "y":880},
+                "active": [(118, 44, 44)]
+            },
+            "Firestone": {
+                "position": {"x":110, "y":40},
+                "active": [(88, 129, 187)]
+            }            
+        }
+        time.sleep(1)
+        if bot.get_pixel_color(names[name]["position"]["x"], names[name]["position"]["y"]) in names[name]["active"]:
+            return True
+        else:
+            return False
 
     def performTestGuild(self, actor):
         actor.startDuties()

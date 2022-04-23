@@ -31,19 +31,23 @@ class Firestone2:
     def runFirestoneCheck(self):
         print("I'm in the firestone check")
         pyautogui.press("l")
-        self.moveFirestoneMenuLeft()
-        finished_upgrades = self.selectUpgrades()
-        if finished_upgrades:
-            #self.moveFirestoneMenuLeft()
-            #print("Moved Menu back left, exiting loop")
-            return True
-        else:
-            self.moveFirestoneMenuRight()
-            self.moveFirestoneMenuSlightLeft()
-            #self.moveFirestoneMenuLeft()
-            time.sleep(1)
-            finished_upgrades = self.selectUpgrades()
+        in_menu = self.menuCheck("Firestone", self.game_bot)
+        if in_menu:
             self.moveFirestoneMenuLeft()
+            finished_upgrades = self.selectUpgrades()
+            if finished_upgrades:
+                #self.moveFirestoneMenuLeft()
+                #print("Moved Menu back left, exiting loop")
+                return True
+            else:
+                self.moveFirestoneMenuRight()
+                self.moveFirestoneMenuSlightLeft()
+                #self.moveFirestoneMenuLeft()
+                time.sleep(1)
+                finished_upgrades = self.selectUpgrades()
+                self.moveFirestoneMenuLeft()
+        else:
+            print("Did not find firestone menu")
         return
 
     def selectUpgrades(self):
