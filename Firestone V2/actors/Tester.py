@@ -62,42 +62,50 @@ class Tester:
 
     def runIdleLoop(self, actors, base_path = None):
         self.base_path = base_path
+        game_bot = actors["Guild"].game_bot
         while True:
-            pyautogui.click(400,400)
+            game_bot.click({"x":400, "y":400})
             print("Running Loop in 5 seconds ")
             time.sleep(5)
 
-            pyautogui.click(400,400)
             self.runFirestoneLoop(actors["Library"])
-            pyautogui.moveTo(1840,50)
-            time.sleep(0.5)
-            pyautogui.click(1840,50)
+            self.closeMenu(game_bot)
             print("firestone done")
             time.sleep(0.5)
             self.runExpeditionLoop(actors["Guild"])
             print("expedition done")
             self.runMapLoop(actors["Map"])
             print("missions done")
-            pyautogui.moveTo(1840,50)
-            time.sleep(0.5)
-            pyautogui.click(1840,50)
+            self.runMagicQuarterLoop(actors["MagicQuarter"])
+            print("magic quarter done")
 
             print("sleeping for 3 minutes")
             time.sleep(150)
             print("sleeping for 30 seconds")
             time.sleep(25)
 
+    def closeMenu(self, bot):
+        close_button_active = [(255, 77, 5), (255, 88, 16)]
+        print("in close menu")
+        time.sleep(1)
+        print(bot.get_pixel_color(1840,80))
+        while bot.get_pixel_color(1840,80) in close_button_active:
+            print("I was closed")
+            bot.click({"x": 1840, "y": 50})
+            time.sleep(1)
+
+
     def runFirestoneLoop(self, actor):
-        pyautogui.click(400,400)
+        actor.game_bot.click({"x":400, "y":400})
         time.sleep(0.4)
-        pyautogui.click(400,400)
         actor.firestone2.runFirestoneCheck()
+        self.closeMenu(actor.game_bot)
 
     def runExpeditionLoop(self, actor):
-        pyautogui.click(400,400)
+        actor.game_bot.click({"x":400, "y":400})
         time.sleep(0.4)
-        pyautogui.click(400,400)
         actor.guild2.runExpeditionCheck()
+        self.closeMenu(actor.game_bot)
         """
         pyautogui.click(400,400)
         print("Running Loop in 5 seconds ")
@@ -109,10 +117,16 @@ class Tester:
         """
 
     def runMapLoop(self, actor):
-        pyautogui.click(400,400)
+        actor.game_bot.click({"x":400, "y":400})
         time.sleep(0.4)
-        pyautogui.click(400,400)
         actor.map2.runMapCheck(self.base_path)
+        self.closeMenu(actor.game_bot)
+
+    def runMagicQuarterLoop(self, actor):
+        actor.game_bot.click({"x":400, "y":400})
+        time.sleep(0.4)
+        actor.magicquarter2.runMagicQuarterCheck()
+        self.closeMenu(actor.game_bot)
 
     def performTestGuild(self, actor):
         actor.startDuties()

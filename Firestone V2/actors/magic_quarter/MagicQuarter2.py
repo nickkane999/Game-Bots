@@ -7,14 +7,12 @@ import operator
 
 from actors.ActorTemplate import ActorTemplate
 from actors.utilities.save_helper.MagicQuarterSaveHelper import MagicQuarterSaveHelper
-from actors.magic_quarter.MagicQuarter2 import MagicQuarter2
 
-
-class MagicQuarter(ActorTemplate):
+class MagicQuarter2(ActorTemplate):
 
     # Initializing Object
     def __init__(self, bot):
-        super(MagicQuarter, self).__init__(bot)
+        super(MagicQuarter2, self).__init__(bot)
         self.game_bot = bot
         self.save_helper = MagicQuarterSaveHelper(bot)
         self.magic_quarter_regions = bot.screenshot_data.data["magic_quarter"]
@@ -23,8 +21,19 @@ class MagicQuarter(ActorTemplate):
         self.town_screen = bot.data["town"]
         self.magic_screen = bot.data["magic_quarter"]
 
-        self.magicquarter2 = MagicQuarter2(bot)
-
+        self.points = {
+            "upgrade": {"x": 1230, "y": 810},
+            "close": {"x": 1840, "y": 50},
+        }
+        
+    def runMagicQuarterCheck(self):
+        pyautogui.press('g')
+        time.sleep(0.5)
+        self.game_bot.click(self.points["upgrade"])
+        time.sleep(0.5)
+        self.game_bot.click(self.points["close"])
+        time.sleep(0.5)
+        
 
     def startDuties(self):
         self.loadData()
