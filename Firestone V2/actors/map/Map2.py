@@ -23,25 +23,40 @@ class Map2:
         self.town_screen = bot.data["town"]
         self.map_screen = bot.data["map"]
         # self.map_regions = bot.screenshot_data.data["map"]
+        self.screen_width = 1800
 
         self.status = {
             "map_active": (255, 255, 255),
+            "battles_active": [(255, 255, 255), (247, 4, 0)],
+            "campaign_active": [(255, 255, 255), (247, 4, 0)],
+            "campaign_daily_active": [(255, 255, 255), (247, 4, 0)],
             "mission_cancel": (231, 88, 79),
             "mission_claim": (239, 218, 189),
             "mission_claim_confirm": (12, 158, 8),
             "mission_start": (13, 161, 5),
             "no_missions_available": (239, 218, 189),
             "mission_claim_2": [(253, 177, 71), (252, 177, 71)],
+            "campaign_daily_mission_unavailable": [(192, 145, 101), (173, 130, 90), (237, 217, 188)],
+            "campaign_mission_completed": [(11, 160, 8), (22, 188, 22)]
         }
 
         self.locations = {
-            "map_active": [1900, 290],
             "mission_cancel": [730, 905],
             "mission_claim": [960, 875],
             "mission_claim_confirm": [950, 450],
             "mission_start": [1000, 925],
             "mission_exit": [50, 950],
             "mission_claim_2": [960, 895],
+            "map_active": [1900, 290],
+            "battles_active": [435, 270],
+            "battles_select": [310, 200],
+            "campaign_active": [920, 335],
+            "campaign_select": [700, 420],
+            "campaign_claim": [60, 990],
+            "campaign_daily_active": [1880, 980],
+            "campaign_daily_select": [1780, 1020],
+            "campaign_liberation": [600, 800],
+            "campaign_mission_completed": [880, 770],
         }
 
         self.claim_points = [
@@ -72,11 +87,76 @@ class Map2:
             else:
                 print("Did not find map menu")
 
+
+    def runCampaignCheck(self):
+        bot = self.game_bot
+        print("I'm in the campaign check")
+        if self.checkCampaignChange():
+            in_menu = self.menuCheck("Campaign", self.game_bot)
+            if in_menu:
+                print("Found campaign menu")
+                bot.click({"x": self.locations["campaign_claim"][0], "y": self.locations["campaign_claim"][1]})
+                time.sleep(0.5)
+                bot.click({"x": self.locations["campaign_claim"][0], "y": self.locations["campaign_claim"][1]})
+                time.sleep(0.5)
+                if self.checkCampaignDailyChange():
+                    print("Found campaign daily")
+                    bot.click({"x": self.locations["campaign_daily_select"][0], "y": self.locations["campaign_daily_select"][1]})
+                    time.sleep(0.5)
+                    bot.click({"x": self.locations["campaign_liberation"][0], "y": self.locations["campaign_liberation"][1]})
+                    time.sleep(0.5)
+                    self.selectDailyMissions()
+                    bot.click({"x": 30, "y": 30})
+                    time.sleep(0.5)
+                    return True
+            else:
+                print("Did not find campaign menu")
+
+    def selectDailyMissions(self):
+        bot = self.game_bot
+        height = 775
+        for x in range(200, self.screen_width + 200, 200):
+            if bot.get_pixel_color(x, height) not in self.status["campaign_daily_mission_unavailable"]:
+                bot.click({"x": x, "y": height})
+                time.sleep(0.5)
+                bot.click({"x": 30, "y": 30})
+                time.sleep(0.5)
+                print("Waiting for battle to end")
+                while bot.get_pixel_color(self.locations["campaign_mission_completed"][0], self.locations["campaign_mission_completed"][1]) not in self.status["campaign_mission_completed"]:
+                    time.sleep(3)
+                bot.click({"x": self.locations["campaign_mission_completed"][0], "y": self.locations["campaign_mission_completed"][1]})
+                time.sleep(0.5)
+        bot.click({"x": 30, "y": 30})
+        time.sleep(0.5)
+
     def checkMapChange(self):
         if self.game_bot.get_pixel_color(self.locations["map_active"][0], self.locations["map_active"][1]) == self.status["map_active"]:
             print("Map is active")
             pyautogui.press("m")
             time.sleep(0.5)
+            return True
+        else:
+            return False
+
+    def checkCampaignChange(self):
+        bot = self.game_bot
+        pyautogui.press("t")
+        time.sleep(0.5)
+        if self.game_bot.get_pixel_color(self.locations["battles_active"][0], self.locations["battles_active"][1]) in self.status["battles_active"]:
+            bot.click({"x": self.locations["battles_select"][0], "y": self.locations["battles_select"][1]})
+            time.sleep(0.5)
+            if self.game_bot.get_pixel_color(self.locations["campaign_active"][0], self.locations["campaign_active"][1]) in self.status["campaign_active"]:
+                bot.click({"x": self.locations["campaign_select"][0], "y": self.locations["campaign_select"][1]})
+                time.sleep(0.5)
+                return True
+            else:
+                bot.click({"x": 30, "y": 30})
+                print("Battles does not show campaign as active")
+        
+        return False
+
+    def checkCampaignDailyChange(self):
+        if self.game_bot.get_pixel_color(self.locations["campaign_daily_active"][0], self.locations["campaign_daily_active"][1]) in self.status["campaign_daily_active"]:
             return True
         else:
             return False

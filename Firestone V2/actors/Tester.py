@@ -74,6 +74,8 @@ class Tester:
             print("Running Loop in 5 seconds ")
             time.sleep(5)
 
+            self.runCampaignLoop(actors["Map"])
+            print("campaigns done")
             self.runFirestoneLoop(actors["Library"])
             self.closeMenu(game_bot)
             print("firestone done")
@@ -82,6 +84,8 @@ class Tester:
             print("expedition done")
             self.runMapLoop(actors["Map"])
             print("missions done")
+            #self.runCampaignLoop(actors["Map"])
+            #print("campaigns done")
             self.runMagicQuarterLoop(actors["MagicQuarter"])
             print("magic quarter done")
 
@@ -128,6 +132,12 @@ class Tester:
         actor.map2.runMapCheck(self.base_path)
         self.closeMenu(actor.game_bot)
 
+    def runCampaignLoop(self, actor):
+        actor.game_bot.click({"x":400, "y":400})
+        time.sleep(0.4)
+        actor.map2.runCampaignCheck()
+        self.closeMenu(actor.game_bot)
+
     def runMagicQuarterLoop(self, actor):
         actor.game_bot.click({"x":400, "y":400})
         time.sleep(0.4)
@@ -138,6 +148,10 @@ class Tester:
         names = {
             "Map": {
                 "position": {"x":620, "y":40},
+                "active": [(74, 211, 74), (99, 226, 96)]
+            },
+            "Campaign": {
+                "position": {"x":485, "y":40},
                 "active": [(74, 211, 74), (99, 226, 96)]
             },
             "Guild": {
