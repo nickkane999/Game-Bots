@@ -117,6 +117,9 @@ class Map2:
         height = 775
         for x in range(200, self.screen_width + 200, 200):
             if bot.get_pixel_color(x, height) not in self.status["campaign_daily_mission_unavailable"]:
+                print(str(x) + ", " + str(height))
+                bot.click({"x": x, "y": height})
+                time.sleep(0.5)
                 bot.click({"x": x, "y": height})
                 time.sleep(0.5)
                 bot.click({"x": 30, "y": 30})
