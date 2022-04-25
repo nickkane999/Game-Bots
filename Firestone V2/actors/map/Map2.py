@@ -37,7 +37,7 @@ class Map2:
             "no_missions_available": (239, 218, 189),
             "mission_claim_2": [(253, 177, 71), (252, 177, 71)],
             "campaign_daily_mission_unavailable": [(192, 145, 101), (173, 130, 90), (237, 217, 188)],
-            "campaign_mission_completed": [(11, 160, 8), (22, 188, 22)]
+            "campaign_mission_completed": [(11, 160, 8), (11, 159, 8), (22, 188, 22), (22, 188, 21)]
         }
 
         self.locations = {
