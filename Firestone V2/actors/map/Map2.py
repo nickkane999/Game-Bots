@@ -215,6 +215,8 @@ class Map2:
                 "type_2": cv2.imread(mission_images["type_2"]["map"]),
                 "type_3": cv2.imread(mission_images["type_3"]["map"]),
                 "type_4": cv2.imread(mission_images["type_4"]["map"]),
+                "type_5": cv2.imread(mission_images["type_5"]["map"]),
+                "type_6": cv2.imread(mission_images["type_6"]["map"]),
             },
         }
         return map_data
@@ -284,6 +286,14 @@ class Map2:
             "type_4": {
                 "map": base_path + r'\data\imgs\map\map_type_4.png',
                 "side_menu": base_path + r'\data\imgs\maps\side_menu_4.png',
+            },
+            "type_5": {
+                "map": base_path + r'\data\imgs\map\map_type_5.png',
+                "side_menu": base_path + r'\data\imgs\maps\side_menu_5.png',
+            },
+            "type_6": {
+                "map": base_path + r'\data\imgs\map\map_type_6.png',
+                "side_menu": base_path + r'\data\imgs\maps\side_menu_6.png',
             },
             "map_screenshot": base_path + r'\data\imgs\map\map_save_mission_1.png',
             "mission_time_region": {

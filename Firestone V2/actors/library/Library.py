@@ -7,6 +7,7 @@ import os
 from actors.library.Firestone import Firestone
 from actors.library.Firestone2 import Firestone2
 from actors.library.Meteorite import Meteorite
+from actors.library.Alchemy import Alchemy
 
 
 class Library:
@@ -23,6 +24,7 @@ class Library:
         self.firestone = Firestone(bot)
         self.firestone2 = Firestone2(bot)
         self.meteorite = Meteorite(bot)
+        self.alchemy = Alchemy(bot)
 
     def startLibraryDuties(self):
         self.game_bot.db.refreshData()

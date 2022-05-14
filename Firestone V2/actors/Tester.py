@@ -68,6 +68,7 @@ class Tester:
         actors["Guild"].guild2.menuCheck = self.menuCheck
         actors["Map"].map2.menuCheck = self.menuCheck
         actors["MagicQuarter"].magicquarter2.menuCheck = self.menuCheck
+        actors["Library"].alchemy.menuCheck = self.menuCheck
         
         while True:
             game_bot.click({"x":400, "y":400})
@@ -77,9 +78,9 @@ class Tester:
             self.runCampaignLoop(actors["Map"])
             print("campaigns done")
             self.runFirestoneLoop(actors["Library"])
-            self.closeMenu(game_bot)
             print("firestone done")
-            time.sleep(0.5)
+            self.runAlchemyLoop(actors["Library"])
+            print("alchemy done")
             self.runExpeditionLoop(actors["Guild"])
             print("expedition done")
             self.runMapLoop(actors["Map"])
@@ -109,6 +110,12 @@ class Tester:
         actor.game_bot.click({"x":400, "y":400})
         time.sleep(0.4)
         actor.firestone2.runFirestoneCheck()
+        self.closeMenu(actor.game_bot)
+
+    def runAlchemyLoop(self, actor):
+        actor.game_bot.click({"x":400, "y":400})
+        time.sleep(0.4)
+        actor.alchemy.runAlchemyCheck()
         self.closeMenu(actor.game_bot)
 
     def runExpeditionLoop(self, actor):
@@ -165,7 +172,12 @@ class Tester:
             "Firestone": {
                 "position": {"x":110, "y":40},
                 "active": [(88, 129, 187)]
-            }            
+            },
+            "Town": {
+                # Need to update
+                "position": {"x":1020, "y":990},
+                "active": [(19, 138, 255), (96, 228, 253)]
+            },            
         }
         time.sleep(1)
         if bot.get_pixel_color(names[name]["position"]["x"], names[name]["position"]["y"]) in names[name]["active"]:
