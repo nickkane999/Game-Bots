@@ -15,16 +15,16 @@ class Firestone2:
         self.game_bot = bot
         self.library_screen = bot.data["library"]
         self.upgrade_heights = {
-            "height1": 245, 
-            "height2": 377,
-            "height3": 506,
-            "height4": 635,
-            "height5": 767,
+            "height1": 213, 
+            "height2": 342,
+            "height3": 473,
+            "height4": 600,
+            "height5": 732,
         }
         self.screen_width = 1800
         self.completed_upgrade_slot = [1140, 1000] 
         self.checks = {
-            "is_locked": [(16, 181, 19), (16, 182, 16), (16, 181, 18)],
+            "is_locked": [(22, 187, 13), (19, 185, 19), (16, 181, 19), (16, 181, 18)],
             "all_slots_active": (244, 160, 67)
         }
 
