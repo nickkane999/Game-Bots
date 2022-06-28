@@ -22,10 +22,10 @@ class Firestone2:
             "height5": 732,
         }
         self.screen_width = 1800
-        self.completed_upgrade_slot = [1140, 1000] 
+        self.completed_upgrade_slot = [1300, 980] 
         self.checks = {
-            "is_locked": [(22, 187, 13), (19, 185, 19), (16, 181, 19), (16, 181, 18)],
-            "all_slots_active": (244, 160, 67)
+            "is_locked": [(22, 187, 13), (22, 185, 16), (19, 185, 19), (16, 181, 19), (16, 181, 18)],
+            "all_slots_active": [(244, 160, 67), (247, 162, 66)]
         }
 
     def runFirestoneCheck(self):
@@ -55,7 +55,7 @@ class Firestone2:
         print("I'm selecting upgrades")
         for y in self.upgrade_heights:
             for x in range(200, self.screen_width + 200, 200):
-                if bot.get_pixel_color(self.completed_upgrade_slot[0], self.completed_upgrade_slot[1]) == self.checks["all_slots_active"]:
+                if bot.get_pixel_color(self.completed_upgrade_slot[0], self.completed_upgrade_slot[1]) in self.checks["all_slots_active"]:
                     print("All upgrades are active")
                     return True
                 print(bot.get_pixel_color(x, self.upgrade_heights[y]))

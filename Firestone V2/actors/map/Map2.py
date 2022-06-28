@@ -247,6 +247,8 @@ class Map2:
             print("Mission in progress")
             bot.click({"x": self.locations["mission_exit"][0], "y": self.locations["mission_exit"][1]})
             time.sleep(0.5)
+            bot.click({"x": 1800, "y": 770})
+            time.sleep(0.5)
         elif bot.get_pixel_color(self.locations["mission_start"][0], self.locations["mission_start"][1]) == self.status["mission_start"]:
             print("Mission start")
             bot.click({"x": self.locations["mission_start"][0], "y": self.locations["mission_start"][1]})
