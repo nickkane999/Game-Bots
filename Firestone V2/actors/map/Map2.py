@@ -258,14 +258,14 @@ class Map2:
         elif bot.get_pixel_color(self.locations["mission_claim_2"][0], self.locations["mission_claim_2"][1]) in self.status["mission_claim_2"] or \
         bot.get_pixel_color(self.locations["mission_claim_confirm"][0], self.locations["mission_claim_confirm"][1]) == self.status["mission_claim_confirm"]:
             print("Mission complete")
-            bot.click({"x": self.locations["mission_claim_2"][0], "y": self.locations["mission_claim_2"][1] + 20})
+            bot.click({"x": self.locations["mission_claim_2"][0], "y": (self.locations["mission_claim_2"][1] + 30)})
             time.sleep(0.5)
             bot.click({"x": self.locations["mission_claim_confirm"][0], "y": self.locations["mission_claim_confirm"][1]})
             time.sleep(0.5)
         elif bot.get_pixel_color(self.locations["mission_claim"][0], self.locations["mission_claim"][1]) == self.status["mission_claim"] and \
         bot.get_pixel_color(self.locations["mission_cancel"][0], self.locations["mission_cancel"][1]) != self.status["mission_cancel"]:
             print("Not enough squads")
-            bot.click({"x": self.locations["mission_claim"][0], "y": self.locations["mission_claim"][1] + 20})
+            bot.click({"x": self.locations["mission_claim"][0], "y": (self.locations["mission_claim"][1] + 50)})
             time.sleep(0.5)
             bot.click({"x": 1800, "y": 770})
             time.sleep(0.5)
