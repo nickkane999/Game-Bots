@@ -36,7 +36,9 @@ class Bot:
 
     def click(self, point):
         pyautogui.moveTo(point["x"], point["y"])
+        pyautogui.moveTo(point["x"], point["y"])
         pyautogui.click(point["x"], point["y"])
+        print("Clicked at " + str(point["x"]) + ", " + str(point["y"]))
 
     def setData(self, actors, timer):
         self.actors = actors

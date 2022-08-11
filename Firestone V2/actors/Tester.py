@@ -96,7 +96,7 @@ class Tester:
             time.sleep(25)
 
     def closeMenu(self, bot):
-        close_button_active = [(255, 77, 5), (255, 88, 16)]
+        close_button_active = [(255, 77, 5), (255, 88, 16), (255, 76, 8)]
         print("in close menu")
         time.sleep(1)
         print(bot.get_pixel_color(1840,80))
@@ -167,7 +167,7 @@ class Tester:
             },
             "MagicQuarter": {
                 "position": {"x":560, "y":880},
-                "active": [(118, 44, 44)]
+                "active": [(118, 44, 44), (121, 45, 44)]
             },
             "Firestone": {
                 "position": {"x":110, "y":40},
