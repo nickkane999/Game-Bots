@@ -96,11 +96,11 @@ class Tester:
             time.sleep(25)
 
     def closeMenu(self, bot):
-        close_button_active = [(255, 77, 5), (255, 88, 16), (255, 76, 8)]
+        close_button_active = [(255, 77, 5), (255, 88, 16), (255, 76, 8), (255, 250, 206)]
         print("in close menu")
         time.sleep(1)
-        print(bot.get_pixel_color(1840,80))
-        while bot.get_pixel_color(1840,80) in close_button_active:
+        print(bot.get_pixel_color(1840,50))
+        while bot.get_pixel_color(1840,50) in close_button_active:
             print("I was closed")
             bot.click({"x": 1840, "y": 50})
             time.sleep(1)
